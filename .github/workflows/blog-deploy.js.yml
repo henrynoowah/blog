@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
-    branches: ["main"]
+    branches: ['main']
 
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: 'npm'
 
       - name: Install dependencies
         run: |
@@ -38,6 +38,7 @@ jobs:
       # - run: npm ci
       - run: npm run build --if-present
       - run: npm run export
+      - run: touch /out/.nojekyll
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.3.3
