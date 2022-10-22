@@ -37,7 +37,7 @@ const Home: NextPage = () => {
       <div className="flex flex-col justify-end items-center relative">
         <span
           className={`absolute top-0 -translate-y-[24px] text-[12px] font-bold text-[#8A64EB] capitalize px-[8px] py-[4px] bg-white rounded-full transition duration-200 shadow-sm ${
-            hover === nav.name ? 'opacity-100' : 'opacity-0'
+            hover === nav.name ? 'opacity-0 md:opacity-100' : 'opacity-0'
           }`}
         >
           {nav.name}
@@ -50,7 +50,7 @@ const Home: NextPage = () => {
               className="w-[50px] h-[50px] aspect-square overflow-hidden rounded-full flex justify-center items-center transition duration-200 hover:shadow-lg bg-gradient-to-br from-[#64EbDE] to-[#8A64EB]"
             >
               <div className="w-full h-full hover:scale-125 opacity-80 transition duration-200 relative flex justify-center items-center">
-                <span className="w-[24px] h-[24px] aspect-square absolute">{iconSelection(nav.name)}</span>
+                <span className="w-[24px] h-[24px] aspect-square">{iconSelection(nav.name)}</span>
               </div>
             </div>
           </a>
@@ -67,8 +67,8 @@ const Home: NextPage = () => {
       </div>
 
       {/* Navigatio */}
-      <div className="w-full max-w-[900px] h-full py-[60px] justify-start items-end z-50">
-        <div className="w-full h-full flex flex-col-reverse">
+      <div className="fixed bottom-[30px] md:bottom-[60px] w-full max-w-[900px] h-full justify-start items-end z-50">
+        <div className="w-full h-full flex flex-col-reverse bottom-[200px]">
           <nav className="flex justify-center gap-[16px]">
             {navList.map((nav, idx) => (
               <div key={idx}>{navItem(nav)}</div>
