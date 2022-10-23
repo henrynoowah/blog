@@ -68,13 +68,9 @@ const Home: NextPage = () => {
     if (iframeRef.current) {
       setLoaded(true)
     }
-
     // not sure if we need to check if the iframe already loaded (e.g. readyState)
-
     // const listener = () => console.log('event listener')
-
     // iframe.addEventListener('load', listener)
-
     return () => {
       setLoaded(false)
       // iframe.removeEventListener('load', listener)
@@ -87,9 +83,10 @@ const Home: NextPage = () => {
       <div className="relative flex justify-center w-full h-full bg-gradient-to-tl from-[#64EbDE80] to-[#B65EBA80]">
         <div className="absolute w-full h-full flex justify-center translate-y-[60px]">
           <iframe
+            key={`${loaded}`}
             ref={iframeRef}
             id="scaled-frame"
-            className={`!block ${loaded ? 'opacity-100' : 'opacity-0'}`}
+            className={`!block `}
             src="https://my.spline.design/untitled-1393c53b4c584c5402f69f7bc1705399/"
             frameBorder="0"
             width="100%"
