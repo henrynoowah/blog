@@ -1,7 +1,7 @@
 import { CubeIcon, DocumentIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import { useState } from 'react'
+import { IframeHTMLAttributes, LegacyRef, RefObject, useEffect, useRef, useState } from 'react'
 
 type NavItem = { name: string; href: string }
 
@@ -59,11 +59,44 @@ const Home: NextPage = () => {
     )
   }
 
+  // const iframeRef: LegacyRef<HTMLIFrameElement> = useRef(null)
+  const iframeRef = useRef<HTMLIFrameElement | null>(null)
+  const [loaded, setLoaded] = useState<boolean>(false)
+
+  useEffect(() => {
+    // const iframe = iframeRef.current
+    if (iframeRef.current) {
+      setLoaded(true)
+    }
+
+    // not sure if we need to check if the iframe already loaded (e.g. readyState)
+
+    // const listener = () => console.log('event listener')
+
+    // iframe.addEventListener('load', listener)
+
+    return () => {
+      setLoaded(false)
+      // iframe.removeEventListener('load', listener)
+    }
+  }, [iframeRef])
+
   return (
-    <div className="w-full h-[100vh] flex justify-center relative">
+    <div className="w-full h-[100vh] flex justify-center relative overflow-hidden">
       {/* Background Component */}
-      <div className="absolute w-full h-full flex justify-center items-center bg-gradient-to-tl from-[#64EbDE80] to-[#B65EBA80]">
-        <h1 className="text-white/80 font-bold">Welcome To My Blog</h1>
+      <div className="relative flex justify-center w-full h-full bg-gradient-to-tl from-[#64EbDE80] to-[#B65EBA80]">
+        <div className="absolute w-full h-full flex justify-center translate-y-[60px]">
+          <iframe
+            ref={iframeRef}
+            id="scaled-frame"
+            className={`!block ${loaded ? 'opacity-100' : 'opacity-0'}`}
+            src="https://my.spline.design/untitled-1393c53b4c584c5402f69f7bc1705399/"
+            frameBorder="0"
+            width="100%"
+            height="100%"
+          />
+          {/* <h1 className="text-white/80 font-bold">Welcome To My Blog</h1> */}
+        </div>
       </div>
 
       {/* Navigatio */}
