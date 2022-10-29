@@ -1,7 +1,7 @@
 import { CubeIcon, DocumentIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import { IframeHTMLAttributes, LegacyRef, RefObject, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type NavItem = { name: string; href: string }
 
@@ -43,7 +43,6 @@ const Home: NextPage = () => {
           {nav.name}
         </span>
         <Link href={nav.href}>
-          <a>
             <div
               onMouseOver={() => setHover(nav.name)}
               onMouseLeave={() => setHover(undefined)}
@@ -53,7 +52,6 @@ const Home: NextPage = () => {
                 <span className="w-[24px] h-[24px] aspect-square">{iconSelection(nav.name)}</span>
               </div>
             </div>
-          </a>
         </Link>
       </div>
     )
