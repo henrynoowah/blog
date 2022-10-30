@@ -5,7 +5,7 @@ import Layouts from '../../layouts/Layouts'
 const index: NextPage = () => {
   return (
     <Layouts header>
-      <div className="w-full h-full flext justify-center items-center bg-dark">
+      <div className="w-full h-full flext justify-center items-center bg-gradient-to-tr from-light to-primary">
         <div className="w-full h-full flex justify-center items-center">
           <h1 className="text-primary text-[36px]">Posts</h1>
         </div>
