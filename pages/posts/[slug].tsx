@@ -2,6 +2,7 @@ import { createClient } from '@supabase/supabase-js'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { remark } from 'remark'
 import html from 'remark-html'
+import Layouts from '../../layouts/Layouts'
 
 interface Params {
   post: any
@@ -10,22 +11,22 @@ interface Params {
 
 const index: NextPage<Params> = ({ post, htmlString }) => {
   return (
-    <div>
-      <article>
-        <h1>{post.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: htmlString }} />
-      </article>
-    </div>
+    <Layouts header>
+      <div className="w-full flex justify-center py-4">
+        <article className="w-full max-w-2xl flex flex-col gap-4">
+          <h1>{post.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: htmlString }} />
+        </article>
+      </div>
+    </Layouts>
   )
 }
 
 export const getStaticPaths: GetStaticPaths = async ({}) => {
   const paths: any[] = []
 
-  console.log('test')
-  const supabasUrl = 'https://wgqvlbpnxinivklwiscj.supabase.co'
-  const supabasKey =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndncXZsYnBueGluaXZrbHdpc2NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgzMzQ3OTUsImV4cCI6MTk4MzkxMDc5NX0.1eGxlPdKYwQzDmEY35Ne1UTHT-UdspkBk1q9CQaS-Ek'
+  const supabasUrl = process.env.SUPABASE_URL as string
+  const supabasKey = process.env.SUPABASE_KEY as string
   const supabase = createClient(supabasUrl, supabasKey)
   const { data } = await supabase.from('posts').select('slug')
 
@@ -40,9 +41,8 @@ export const getStaticPaths: GetStaticPaths = async ({}) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   let post = null
   let htmlString = null
-  const supabasUrl = 'https://wgqvlbpnxinivklwiscj.supabase.co'
-  const supabasKey =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndncXZsYnBueGluaXZrbHdpc2NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgzMzQ3OTUsImV4cCI6MTk4MzkxMDc5NX0.1eGxlPdKYwQzDmEY35Ne1UTHT-UdspkBk1q9CQaS-Ek'
+  const supabasUrl = process.env.SUPABASE_URL as string
+  const supabasKey = process.env.SUPABASE_KEY as string
 
   const supabase = createClient(supabasUrl, supabasKey)
 
