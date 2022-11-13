@@ -3,7 +3,7 @@ import { CSSProperties, FC, MouseEventHandler, useRef, useState } from 'react'
 
 const Header: FC = () => {
   return (
-    <div className="w-full fixed top-0 h-[70px] bg-dark border-b-2 border-solid border-primary flex justify-center items-center px-4 sm:px-10">
+    <div className="w-full h-[60px] border-b-2 border-solid border-primary flex justify-center items-center px-4 sm:px-10">
       <div className="w-full flex justify-between max-w-[1920px]">
         <h1 className="relative">
           <Link href={`/`}>
@@ -11,10 +11,7 @@ const Header: FC = () => {
           </Link>
         </h1>
 
-        <nav className="flex gap-[20px]">
-          {/* Nav Icon Animation */}
-          <NavToggleButton />
-        </nav>
+        <nav className="flex gap-[20px]">{/* Nav Icon Animation */}</nav>
       </div>
     </div>
   )
