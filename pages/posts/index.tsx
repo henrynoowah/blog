@@ -41,8 +41,6 @@ const PostCardItem: FC<{ title: string; tags: string[]; created_at: string; slug
             </li>
           ))}
         </ul>
-
-        <div>{props.content}</div>
       </div>
     </Link>
   )
@@ -55,7 +53,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const supabase = createClient(supabasUrl, supabasKey)
 
-  const { data: posts } = await supabase.from('posts').select('id, title, tags, created_at, slug, content')
+  const { data: posts } = await supabase.from('posts').select('id, title, tags, created_at, slug')
 
   console.log(posts)
   return {
