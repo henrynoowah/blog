@@ -47,15 +47,13 @@ const PostCardItem: FC<{ title: string; tags: string[]; created_at: string; slug
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const supabasUrl = 'https://wgqvlbpnxinivklwiscj.supabase.co'
-  const supabasKey =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndncXZsYnBueGluaXZrbHdpc2NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgzMzQ3OTUsImV4cCI6MTk4MzkxMDc5NX0.1eGxlPdKYwQzDmEY35Ne1UTHT-UdspkBk1q9CQaS-Ek'
+  const supabasUrl = process.env.SUPABASE_URL as string
+  const supabasKey = process.env.SUPABASE_KEY as string
 
   const supabase = createClient(supabasUrl, supabasKey)
 
   const { data: posts } = await supabase.from('posts').select('id, title, tags, created_at, slug')
 
-  console.log(posts)
   return {
     props: {
       posts
