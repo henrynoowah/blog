@@ -22,6 +22,7 @@ const index: NextPage<Params> = ({ post, htmlString }) => {
 export const getStaticPaths: GetStaticPaths = async ({}) => {
   const paths: any[] = []
 
+  console.log('test')
   const supabasUrl = 'https://wgqvlbpnxinivklwiscj.supabase.co'
   const supabasKey =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndncXZsYnBueGluaXZrbHdpc2NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgzMzQ3OTUsImV4cCI6MTk4MzkxMDc5NX0.1eGxlPdKYwQzDmEY35Ne1UTHT-UdspkBk1q9CQaS-Ek'
