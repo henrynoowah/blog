@@ -1,6 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-
 import { remark } from 'remark'
 import html from 'remark-html'
 
