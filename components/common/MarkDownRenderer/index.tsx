@@ -18,13 +18,38 @@ const MarkdowRenderer: FC<Params> = ({ markdown }) => {
         } as CSSProperties
       }
     >
+      {/* <div class="flex items-center mb-4">
+    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default checkbox</label>
+</div>
+<div class="flex items-center">
+    <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Checked state</label>
+</div> */}
+
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
           h2: ({ node, ...props }) => <h2 className="text-primary font-bold text-xl" {...props} />,
-          ul: ({ node, ...props }) => <ul className="my-1 list-disc" {...props} />,
+          ul: ({ node, ...props }) => <ul className="list-disc list-inside" {...props} />,
+          li: ({ node, ...props }) => (
+            <li
+              className="[&>ul]:pl-4 [&>ul>li]:marker:text-primary/50 [&>ul>li>ul>li]:marker:text-primary items-center marker:text-primary"
+              {...props}
+            >
+              {props.children}
+            </li>
+          ),
+          hr: ({ node, ...props }) => <hr className="border-b-2 border-solid border-primary/20" {...props} />,
+          a: ({ node, ...props }) => (
+            <a target="_blank" className="text-secondary hover:underline underline-offset-1" {...props} />
+          ),
           input: ({ node, ...props }) => {
-            return <input className="my-1 list-disc checked:" {...props} />
+            if (props.checked) {
+              return <input className="w-4 h-4" {...props} />
+            } else {
+              return <input className="w-4 h-4" {...props} />
+            }
           },
           blockquote: ({ node, ...props }) => (
             <blockquote
@@ -46,7 +71,10 @@ const MarkdowRenderer: FC<Params> = ({ markdown }) => {
                 </SyntaxHighlighter>
               </div>
             ) : (
-              <code className={className} {...props}>
+              <code
+                className="bg-gray-200 rounded-md overflow-hidden text-sm font-semibold px-2 py-1 text-primary"
+                {...props}
+              >
                 {children}
               </code>
             )

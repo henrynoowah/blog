@@ -14,7 +14,7 @@ const index: NextPage<Params> = ({ post, markdown }) => {
   return (
     <Layouts header>
       <div className="w-full flex justify-center py-4">
-        <article className="w-full max-w-2xl flex flex-col gap-4">
+        <article className="w-full max-w-2xl flex flex-col gap-4 px-4 xl:px-0">
           <MarkdowRenderer markdown={markdown} />
         </article>
       </div>
