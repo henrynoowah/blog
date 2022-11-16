@@ -1,21 +1,21 @@
 import { createClient } from '@supabase/supabase-js'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { remark } from 'remark'
-import html from 'remark-html'
+import dynamic from 'next/dynamic'
+
+const MarkdowRenderer = dynamic(() => import('../../components/common/MarkDownRenderer'), { ssr: false })
 import Layouts from '../../layouts/Layouts'
 
 interface Params {
   post: any
-  htmlString: string
+  markdown: string
 }
 
-const index: NextPage<Params> = ({ post, htmlString }) => {
+const index: NextPage<Params> = ({ post, markdown }) => {
   return (
     <Layouts header>
       <div className="w-full flex justify-center py-4">
         <article className="w-full max-w-2xl flex flex-col gap-4">
-          <h1>{post.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: htmlString }} />
+          <MarkdowRenderer markdown={markdown} />
         </article>
       </div>
     </Layouts>
@@ -40,7 +40,8 @@ export const getStaticPaths: GetStaticPaths = async ({}) => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   let post = null
-  let htmlString = null
+  let markdown = null
+  // let htmlString = null
   const supabasUrl = process.env.SUPABASE_URL as string
   const supabasKey = process.env.SUPABASE_KEY as string
 
@@ -51,8 +52,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (data) {
     post = data.find((x) => x.slug === params?.slug)
 
-    const processedContent = await remark().use(html).process(post.content)
-    htmlString = processedContent.toString()
+    markdown = post.content
+
+    console.log(markdown)
+    // const processedContent = await remark().use(html).process(post.content)
+    // htmlString = processedContent.toString()
   } else {
     return {
       redirect: {
@@ -65,7 +69,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       post,
-      htmlString
+      markdown
     }
   }
 }
