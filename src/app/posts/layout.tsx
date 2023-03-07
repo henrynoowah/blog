@@ -1,3 +1,4 @@
+import Header from '@/components/common/Header'
 import { ReactNode } from 'react'
 
 interface Params {
@@ -5,7 +6,12 @@ interface Params {
 }
 
 const layouts = ({ children }: Params) => {
-  return <div>{children}</div>
+  return (
+    <div className="w-full h-[100vh] min-h-[100vh] flex flex-col">
+      <Header />
+      {children}
+    </div>
+  )
 }
 
 export default layouts
