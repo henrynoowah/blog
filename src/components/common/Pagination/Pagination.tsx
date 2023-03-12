@@ -14,7 +14,6 @@ const Pagination: FC<Params> = ({ pageCount }) => {
     router.push(`/posts?page=${page}`)
   }
 
-  console.log(pageCount)
   return (
     <div className="w-full flex justify-center gap-3">
       {Array.from({ length: pageCount }).map((_, idx) => (
