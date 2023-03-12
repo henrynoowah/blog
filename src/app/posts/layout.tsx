@@ -13,13 +13,15 @@ interface Params {
   children: ReactNode
 }
 
-const layouts = ({ children }: Params) => {
+const PostsLayouts = ({ children }: Params) => {
   return (
     <div className="w-full h-[100vh] min-h-[100vh] flex flex-col">
       <Header />
-      {children}
+      <main className="relative">
+        <div className="w-full flex justify-center py-2">{children}</div>
+      </main>
     </div>
   )
 }
 
-export default layouts
+export default PostsLayouts

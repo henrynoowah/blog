@@ -6,8 +6,8 @@ export const generateMetadata = async ({ params }: any): Promise<Metadata> => {
   }
 }
 
-const page = ({ params }: any) => {
+const PostDetailPage = ({ params }: any) => {
   return <div>{params.slug}</div>
 }
 
-export default page
+export default PostDetailPage
