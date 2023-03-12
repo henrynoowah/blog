@@ -1,6 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 import React from 'react'
-import Button from './Button'
+import Button from '../Button'
+import Nav_mobile from './Nav_mobile'
 
 const Header = () => {
   return (
@@ -45,9 +48,9 @@ const Header = () => {
               </ul>
             </nav>
           </div>
-          {/* <div className="sm:hidden flex items-center">
-            <NavToggleButton />
-          </div> */}
+          <div className="sm:hidden flex items-center">
+            <Nav_mobile />
+          </div>
         </div>
       </div>
       <div className="w-full min-h-[60px]" />

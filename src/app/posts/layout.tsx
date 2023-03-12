@@ -1,4 +1,12 @@
-import Header from '@/components/common/Header'
+export const metadata: Metadata = {
+  title: {
+    default: 'Posts',
+    template: 'Posts | %s',
+  },
+}
+
+import Header from '@/components/common/Header/Header'
+import { Metadata } from 'next'
 import { ReactNode } from 'react'
 
 interface Params {
