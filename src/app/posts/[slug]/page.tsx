@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 import { Metadata } from 'next'
 import { cache } from 'react'
 
-export const dynamic = 'cache'
+export const dynamic = 'force-static'
 
 const supabasUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string
 const supabasKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string
