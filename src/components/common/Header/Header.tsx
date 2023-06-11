@@ -26,21 +26,14 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  {/* {!session ? ( */}
-                  <Link href={'/auth'}>
-                    <Button className="bg-transparent !text-light !text-md">Sign In</Button>
+                  <Link href={'/about'}>
+                    <Button className="bg-transparent !text-light !text-md">About</Button>
                   </Link>
-                  {/* ) : (
-                    <Button
-                      type="button"
-                      className="bg-transparent !text-light !text-md"
-                      onClick={async () => {
-                        await supabase.auth.signOut()
-                      }}
-                    >
-                      Sign Out
-                    </Button>
-                  )} */}
+                </li>
+                <li>
+                  <Link href={'/works'}>
+                    <Button className="bg-transparent !text-light !text-md">Works</Button>
+                  </Link>
                 </li>
               </ul>
             </nav>

@@ -21,10 +21,10 @@ const PostCard = (props: Props) => {
   }
 
   return (
-    <Link href={`/posts/${props.url_slug}`}>
-      <div className="w-full flex flex-col p-4 ring-1 ring-primary/20 hover:ring-primary rounded-md">
-        <div className="flex flex-col sm:flex-row justify-between sm:items-end border-b border-solid border-primary py-2">
-          <p className="text:md sm:text-lg font-semibold text-primary">{props.title}</p>
+    <Link href={`/posts/${props.url_slug}`} prefetch={false}>
+      <div className="w-full flex flex-col ring-1 ring-primary/20 hover:ring-primary rounded-md">
+        <div className="flex flex-col p-4 border-b border-solid border-primary py-2">
+          <p className="text:md sm:text-lg font-semibold text-primary">{props?.title ?? ''}</p>
           <p className="text-sm">
             {new Date(props.released_at).toLocaleDateString('ko', {
               month: '2-digit',
@@ -32,17 +32,17 @@ const PostCard = (props: Props) => {
               year: 'numeric'
             })}
           </p>
+          <div className="py-3 min-h-[2rem]">
+            <p className="truncate text-sm">{props.short_description}</p>
+          </div>
         </div>
 
-        <div className="py-3 min-h-[2rem]">
-          <p className="truncate text-sm">{props.short_description}</p>
-        </div>
-        <ul className="w-full flex justify-start gap-2 text-sm pt-2">
+        <ul className="w-full flex justify-start gap-2 text-sm p-4 overflow-x-auto">
           {props.tags?.map((tag, idx) => (
             <li key={idx}>
               <button
                 type="button"
-                className="w-fit p-1 px-3 ring-1 ring-primary/20 rounded-full text-[12px] hover:ring-primary"
+                className="w-fit p-1 px-3 ring-1 ring-primary/20 rounded-full text-[12px] hover:ring-primary whitespace-nowrap"
                 onClick={(e) => {
                   e.preventDefault()
                   e.stopPropagation()

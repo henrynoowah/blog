@@ -1,8 +1,8 @@
 export const metadata: Metadata = {
   title: {
     default: 'Posts',
-    template: 'Posts | %s',
-  },
+    template: '%s'
+  }
 }
 
 import Header from '@/components/common/Header/Header'
