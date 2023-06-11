@@ -1,9 +1,10 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import React from 'react'
 import Button from '../Button'
-import Nav_mobile from './Nav_mobile'
+const Nav_mobile = dynamic(() => import('./Nav_mobile'))
 
 const Header = () => {
   return (
@@ -21,17 +22,13 @@ const Header = () => {
               <ul className="flex gap-[20px] items-center">
                 <li>
                   <Link href={'/posts'}>
-                    <Button className="bg-transparent !text-light !text-md">
-                      Posts
-                    </Button>
+                    <Button className="bg-transparent !text-light !text-md">Posts</Button>
                   </Link>
                 </li>
                 <li>
                   {/* {!session ? ( */}
                   <Link href={'/auth'}>
-                    <Button className="bg-transparent !text-light !text-md">
-                      Sign In
-                    </Button>
+                    <Button className="bg-transparent !text-light !text-md">Sign In</Button>
                   </Link>
                   {/* ) : (
                     <Button
