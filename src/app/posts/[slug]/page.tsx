@@ -1,5 +1,6 @@
 import { MarkdowRenderer } from '@/components/common/Markdowns'
 import { Metadata } from 'next'
+import Link from 'next/link'
 
 export const dynamic = 'force-static'
 
@@ -32,14 +33,14 @@ const getData = async (slug: string): Promise<any> => {
 export const generateMetadata = async ({ params }: any): Promise<Metadata> => {
   const post = await getData(params.slug)
   return {
-    title: post.title,
-    description: post.decription ?? ''
+    title: post?.title
   }
 }
 
 const PostDetailPage = async ({ params }: any) => {
-  const post = await getData(params.slug)
-  return post ? (
+  const slug = decodeURIComponent(params.slug)
+  const post = await getData(slug)
+  return (
     <div className="w-full max-w-2xl px-4 xl:px-0 py-4">
       <div className="border-b py-2 mb-2 border-solid border-primary">
         <h1 className="text-[2rem] font-semibold text-primary">{post.title}</h1>
@@ -56,7 +57,7 @@ const PostDetailPage = async ({ params }: any) => {
         <MarkdowRenderer markdown={post?.body} />
       </article>
     </div>
-  ) : null
+  )
 }
 
 export default PostDetailPage
