@@ -8,10 +8,9 @@ const inter = Inter({ subsets: ['latin'] })
 
 const navList = [
   { name: 'posts', href: '/posts' },
-  { name: 'velog', href: 'https://velog.io/@henrynoowah' },
   { name: 'portfolios', href: '/portfolios' },
   { name: 'about', href: '/about' },
-  { name: 'github', href: 'https://www.github.com/henrynoowah' },
+  { name: 'github', href: 'https://www.github.com/henrynoowah' }
 ]
 
 const Home = () => {
