@@ -101,7 +101,7 @@ const PostsContainer = () => {
   useEffect(() => {})
 
   return (
-    <ul className="flex flex-col gap-4 ">
+    <ul className="flex flex-col gap-6">
       {posts.map((post, i) =>
         post ? (
           <li key={post.id} ref={i === posts.length - 1 ? setLastRef : undefined}>

@@ -1,4 +1,11 @@
 /** @type {import('tailwindcss').Config} */
+
+
+const COLOR_PRIMARY = "#" + process.env.COLOR_PRIMARY
+const COLOR_SECONDARY = "#" + process.env.COLOR_SECONDARY
+const COLOR_DARK = "#" + process.env.COLOR_DARK
+const COLOR_LIGHT = "#" + process.env.COLOR_LIGHT
+
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
@@ -7,18 +14,31 @@ module.exports = {
         inherit: 'inherit',
         transparent: 'transparent',
         primary: {
-          DEFAULT: '#2D5A60',
-          // DEFAULT: '#6A9286',
+          DEFAULT: COLOR_PRIMARY,
         },
         secondary: {
-          DEFAULT: '#4A6F76'
+          DEFAULT: COLOR_SECONDARY
         },
         dark: {
-          DEFAULT: '#1E1E1E'
-          // DEFAULT: '#090E19'
+          DEFAULT: COLOR_DARK
         },
         light: {
-          DEFAULT: "#E9E6DF"
+          DEFAULT: COLOR_LIGHT
+        },
+        background: {
+          DEFAULT: 'rgb(var(--color-background) / <alpha-value>)'
+        },
+        section: {
+          DEFAULT: 'rgb(var(--color-section) / <alpha-value>)'
+        },
+        card: {
+          DEFAULT: 'rgb(var(--color-card) / <alpha-value>)'
+        },
+        pop: {
+          DEFAULT: 'rgb(var(--color-pop) / <alpha-value>)'
+        },
+        overlay: {
+          DEFAULT: 'rgb(var(--color-overlay) / <alpha-value>)'
         },
       },
       screens: {
@@ -28,3 +48,5 @@ module.exports = {
   },
   plugins: [],
 }
+
+

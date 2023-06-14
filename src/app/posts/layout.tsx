@@ -15,10 +15,10 @@ interface Params {
 
 const PostsLayouts = ({ children }: Params) => {
   return (
-    <div className="w-full h-[100vh] min-h-[100vh] flex flex-col">
+    <div className="w-full min-h-[100vh] min-h-[100vh] flex flex-col bg-background">
       <Header />
       <main className="relative">
-        <div className="w-full flex justify-center py-2">{children}</div>
+        <div className="w-full h-fit flex justify-center py-2">{children}</div>
       </main>
     </div>
   )
