@@ -27,7 +27,7 @@ const ThemeToggle = () => {
       // disabled={!cookieEnabled}
       aria-label="Theme Toggle"
       onClick={handleThemeSwitch}
-      className="!text-primary dark:!text-light relative w-[32px] h-[32px] flex justify-center items-center rounded-full ring-1 ring-secondary dark:ring-dark-80 dark:bg-dark-80"
+      className="!text-light relative w-[32px] h-[32px] flex justify-center items-center rounded-full ring-1 ring-light/60 dark:bg-dark-80"
     >
       {isDarkMode !== null && (
         <>
