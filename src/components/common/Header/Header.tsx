@@ -1,10 +1,7 @@
-'use client'
-
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import React from 'react'
 import Button from '../Button'
-const Nav_mobile = dynamic(() => import('./Nav_mobile'))
+import Nav_mobile from './Nav_mobile'
+import ThemeToggle from '../ThemeToggle/ThemeToggle'
 
 const Header = () => {
   return (
@@ -17,29 +14,32 @@ const Header = () => {
             </Link>
           </h1>
 
-          <div className="hidden sm:block">
-            <nav>
-              <ul className="flex gap-[20px] items-center">
-                <li>
-                  <Link href={'/posts'}>
-                    <Button className="bg-transparent !text-light !text-md">Posts</Button>
-                  </Link>
-                </li>
-                <li>
-                  <Link href={'/about'}>
-                    <Button className="bg-transparent !text-light !text-md">About</Button>
-                  </Link>
-                </li>
-                <li>
-                  <Link href={'/works'}>
-                    <Button className="bg-transparent !text-light !text-md">Works</Button>
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div className="sm:hidden flex items-center">
-            <Nav_mobile />
+          <div className="flex justify-end items-center gap-[16px]">
+            <ThemeToggle />
+            <div className="sm:hidden flex items-center">
+              <Nav_mobile />
+            </div>
+            <div className="hidden sm:block">
+              <nav>
+                <ul className="flex gap-[20px] items-center">
+                  <li>
+                    <Link href={'/posts'}>
+                      <Button className="bg-transparent !text-light !text-md">Posts</Button>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={'/about'}>
+                      <Button className="bg-transparent !text-light !text-md">About</Button>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={'/works'}>
+                      <Button className="bg-transparent !text-light !text-md">Works</Button>
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
       </div>

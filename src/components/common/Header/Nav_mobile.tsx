@@ -1,11 +1,10 @@
+'use client'
+
 import Link from 'next/link'
 import { MouseEventHandler, useRef, useState } from 'react'
 import Button from '../Button'
 
 const Nav_mobile = () => {
-  // const session = useSession()
-  // const supabase = useSupabaseClient()
-
   const ref = useRef<HTMLButtonElement>(null)
 
   const [isNavOpened, setIsNavOpened] = useState<boolean>(false)
@@ -54,9 +53,7 @@ const Nav_mobile = () => {
         <ul className="flex flex-col text-lg font-semibold">
           <li>
             <Link href={'/posts'}>
-              <Button className="w-full bg-transparent !text-light !text-md py-2 text-left">
-                Posts
-              </Button>
+              <Button className="w-full bg-transparent !text-light !text-md py-2 text-left">Posts</Button>
             </Link>
           </li>
           {/* <li>
