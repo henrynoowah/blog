@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 
 
-const COLOR_PRIMARY = "#" + process.env.COLOR_PRIMARY
-const COLOR_SECONDARY = "#" + process.env.COLOR_SECONDARY
-const COLOR_DARK = "#" + process.env.COLOR_DARK
-const COLOR_LIGHT = "#" + process.env.COLOR_LIGHT
+const COLOR_PRIMARY = "#2D5A60"
+const COLOR_SECONDARY = "#2D5A60"
+const COLOR_DARK = "#1E1E1E"
+const COLOR_LIGHT = "#E9E6DF"
 
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
