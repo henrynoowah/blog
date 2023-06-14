@@ -8,6 +8,7 @@ const COLOR_LIGHT = "#E9E6DF"
 
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
