@@ -1,6 +1,5 @@
 import { MarkdowRenderer } from '@/components/common/Markdowns'
 import { Metadata } from 'next'
-import Link from 'next/link'
 
 export const dynamic = 'force-static'
 
@@ -42,9 +41,9 @@ const PostDetailPage = async ({ params }: any) => {
   const post = await getData(slug)
   return (
     <div className="w-full max-w-2xl px-4 xl:px-0 py-4">
-      <div className="border-b py-2 mb-2 border-solid border-primary">
-        <h1 className="text-[2rem] font-semibold text-primary">{post.title}</h1>
-        <span className="w-full flex justify-end">
+      <div className="border-b py-2 mb-2 border-solid border-primary flex flex-col gap-y-2">
+        <h1 className="text-2xl font-semibold text-primary">{post.title}</h1>
+        <span className="w-full flex justify-start text-md">
           {new Date(post.released_at).toLocaleDateString('ko', {
             month: '2-digit',
             day: 'numeric',

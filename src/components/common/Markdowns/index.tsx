@@ -34,12 +34,13 @@ const markdownComponents: MarkDownComponents = {
   ),
   h3: ({ node, ...props }) => <h3 className="text-primary dark:text-light font-bold text-lg" {...props} />,
   h4: ({ node, ...props }) => <h4 className="text-primary dark:text-light font-bold text-md" {...props} />,
-  h5: ({ node, ...props }) => <h5 className="text-primary dark:text-light font-bold text-sm" {...props} />,
-  h6: ({ node, ...props }) => <h5 className="text-primary/60 font-bold text-sm" {...props} />,
+  h5: ({ node, ...props }) => <h5 className="text-primary dark:text-light font-bold text-md" {...props} />,
+  h6: ({ node, ...props }) => <h5 className="text-primary/60 font-bold text-md" {...props} />,
   p: ({ node, ...props }) => (
-    <p className="text-dark dark:text-light text-sm leading-7 whitespace-pre-line" {...props} />
+    <p className="text-dark dark:text-light text-md leading-10 whitespace-pre-line" {...props} />
   ),
-  ul: ({ node, ...props }) => <ul className="list-disc pl-4 text-sm leading-7" {...props} />,
+  ul: ({ node, ...props }) => <ul className="list-disc pl-4 text-md leading-7" {...props} />,
+  ol: ({ node, ...props }) => <ul className="list-decimal pl-4 text-md leading-7" {...props} />,
   li: ({ node, ...props }) => (
     <li
       className="[&>ul]:pl-4 [&>ul>li]:marker:text-primary/50  [&>ul>li>ul>li]:marker:text-primary items-center marker:text-primary text-dark dark:text-light"
@@ -83,14 +84,14 @@ const markdownComponents: MarkDownComponents = {
           style={vscDarkPlus}
           language={match[1]}
           PreTag="div"
-          className="!bg-dark/90 overflow-hidden rounded-md  ring-1 ring-inset dark:ring-light/10"
+          className="!bg-dark/90 overflow-hidden rounded-md ring-1 ring-inset dark:ring-light/10"
         >
           {codeBlock}
         </SyntaxHighlighter>
       </div>
     ) : (
       <code
-        className="bg-gray-200 rounded-md overflow-hidden text-[12px] font-semibold px-2 py-1 mx-1 text-primary ring-1 ring-primary/20"
+        className="bg-gray-200 dark:bg-secondary/20 text-primary dark:text-light/60 rounded-md overflow-hidden text-[12px] font-medium px-2 py-1 mx-1 ring-1 ring-primary/20"
         {...props}
       >
         {children}
@@ -98,21 +99,20 @@ const markdownComponents: MarkDownComponents = {
     )
   },
   table: ({ node, className, children, ...props }) => (
-    <table
-      className="w-full ring-2 ring-light text-dark dark:text-light ring-inset rounded-md overflow-hidden"
-      {...props}
-    >
-      {children}
-    </table>
+    <div className="w-full overflow-auto ring-1 ring-inset dark:ring-light/10">
+      <table className="w-full text-dark dark:text-light ring-inset rounded-md" {...props}>
+        {children}
+      </table>
+    </div>
   ),
   thead: ({ node, className, children, ...props }) => (
-    <thead className="w-full border-b-2 border-solid border-light" {...props}>
+    <thead className="w-full border-b-1 border-solid border-light/10" {...props}>
       {children}
     </thead>
   ),
   tr: ({ node, className, children, isHeader, ...props }) => (
     <tr
-      className="w-fit  [&>*]:text-sm [&>*]:border [&>*]:border-solid [&>*]:border-light [&>*]:border-collapse [&>th]:whitespace-pre-line [&>th]:p-2 [&>td]:whitespace-pre-line [&>td]:p-2"
+      className="w-fit [&>*]:text-md [&>*]:border [&>*]:border-solid [&>*]:border-light [&>*]:border-collapse [&>th]:whitespace-pre-line [&>th]:p-2 [&>td]:whitespace-pre-line [&>td]:p-2"
       {...props}
     >
       {children}
@@ -134,6 +134,7 @@ export const MarkdowRenderer = ({ markdown }: Params) => {
           lineHeight: '2.5rem'
         } as CSSProperties
       }
+      className="[&>*>*]:py-2"
     >
       <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={markdownComponents}>
         {markdown ?? ''}
