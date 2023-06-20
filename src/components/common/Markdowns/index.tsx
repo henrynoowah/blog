@@ -91,7 +91,7 @@ const markdownComponents: MarkDownComponents = {
       </div>
     ) : (
       <code
-        className="bg-gray-200 dark:bg-secondary/20 text-primary dark:text-light/60 rounded-md overflow-hidden text-[12px] font-medium px-2 py-1 mx-1 ring-1 ring-primary/20"
+        className="bg-gray-200 dark:bg-secondary/20 text-primary dark:text-light/60 rounded-md overflow-hidden text-[12px] font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10"
         {...props}
       >
         {children}
