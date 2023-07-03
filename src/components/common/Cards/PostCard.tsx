@@ -42,7 +42,7 @@ const PostCard = (props: Props) => {
             <li key={idx}>
               <button
                 type="button"
-                className="w-fit p-1 px-3 ring-1 ring-primary/20 rounded-full text-[12px] hover:ring-primary whitespace-nowrap"
+                className="bg-gray-200 dark:bg-secondary/20 text-primary dark:text-light/60 rounded-full overflow-hidden text-[12px] font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10"
                 onClick={(e) => {
                   e.preventDefault()
                   e.stopPropagation()

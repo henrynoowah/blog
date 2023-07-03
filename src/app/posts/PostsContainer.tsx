@@ -4,13 +4,15 @@
 import PostCard from '@/components/common/Cards/PostCard'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import SearchBar from './SearchBar'
 
 const LIMIT = 20
 
 const getData = async (searchParams: any): Promise<any[]> => {
-  const { cursor, tag, searchTerm }: { [key: string]: string | undefined } = searchParams
-  const isSearch = searchTerm !== null
+  const { cursor, tag, search }: { [key: string]: string | undefined } = searchParams
+  const isSearch = search !== null && search !== ''
   const username = process.env.NEXT_PUBLIC_VELOG_ID
+  console.log(isSearch)
   const payload = !isSearch
     ? {
         operationName: 'Posts',
@@ -25,7 +27,7 @@ const getData = async (searchParams: any): Promise<any[]> => {
     : {
         operationName: 'SearchPosts',
         variables: {
-          keyword: searchTerm,
+          keyword: search,
           username
         },
         query:
@@ -52,7 +54,7 @@ const PostsContainer = () => {
 
   const tag = searchParams.get('tag')
 
-  const searchTerm = searchParams.get('searchTerm')
+  const search = searchParams.get('search')
 
   const [posts, setPosts] = useState<any[]>([])
 
@@ -60,22 +62,15 @@ const PostsContainer = () => {
 
   const [lastRef, setLastRef] = useState<Element | null>(null)
 
-  const [prevTag, setPrevTag] = useState<string | null>(tag)
-
   useEffect(() => {
     const fetchData = async () => {
       let fetched: any[] = []
-      fetched = await getData({ cursor, tag, searchTerm })
-      if (tag === prevTag) {
-        setPosts((prev) => [...(prev ?? []), ...fetched])
-      } else {
-        setPrevTag(tag)
-        setPosts(fetched)
-        setCursor(null)
-      }
+      fetched = await getData({ cursor, tag, search })
+      setPosts(fetched)
+      setCursor(null)
     }
     fetchData()
-  }, [cursor, tag, searchTerm])
+  }, [cursor, tag, search])
 
   const intersectionObserverCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
     if (entries[0].isIntersecting) {
@@ -101,15 +96,18 @@ const PostsContainer = () => {
   useEffect(() => {})
 
   return (
-    <ul className="flex flex-col gap-6">
-      {posts.map((post, i) =>
-        post ? (
-          <li key={post.id} ref={i === posts.length - 1 ? setLastRef : undefined}>
-            <PostCard {...post} />
-          </li>
-        ) : null
-      )}
-    </ul>
+    <div>
+      <SearchBar value={search} />
+      <ul className="flex flex-col gap-6">
+        {posts.map((post, i) =>
+          post ? (
+            <li key={`${post.id}-${i}`} ref={i === posts.length - 1 ? setLastRef : undefined}>
+              <PostCard {...post} />
+            </li>
+          ) : null
+        )}
+      </ul>
+    </div>
   )
 }
 
