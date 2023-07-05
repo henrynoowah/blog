@@ -12,7 +12,6 @@ const getData = async (searchParams: any): Promise<any[]> => {
   const { cursor, tag, search }: { [key: string]: string | undefined } = searchParams
   const isSearch = search !== null && search !== ''
   const username = process.env.NEXT_PUBLIC_VELOG_ID
-  console.log(isSearch)
   const payload = !isSearch
     ? {
         operationName: 'Posts',
@@ -62,11 +61,20 @@ const PostsContainer = () => {
 
   const [lastRef, setLastRef] = useState<Element | null>(null)
 
+  const [prevTag, setPrevTag] = useState<string | null>(null)
+
   useEffect(() => {
     const fetchData = async () => {
       let fetched: any[] = []
       fetched = await getData({ cursor, tag, search })
-      setPosts(fetched)
+
+      if (tag === prevTag) {
+        setPosts((prev) => [...(prev ?? []), ...fetched])
+      } else {
+        setPrevTag(tag)
+        setPosts(fetched)
+        setCursor(null)
+      }
       setCursor(null)
     }
     fetchData()
@@ -92,8 +100,6 @@ const PostsContainer = () => {
       observer.disconnect()
     }
   }, [intersectionObserverCallback, lastRef])
-
-  useEffect(() => {})
 
   return (
     <div>
