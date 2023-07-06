@@ -1,53 +1,24 @@
-name: Create Release and Tag
-
 on:
   push:
     branches:
       - main
+    tags:
+      - '!*'
 
 jobs:
-  create-release-and-tag:
+  release:
+    name: Setup
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      # - name: Set up Node.js
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: 14
-
-      # - name: Install dependencies
-      #   run: npm install
-
-      # - name: Build Next.js project
-      #   run: npm run build
-
-      - name: Create annotated tag
-        run: git tag -a v${{ github.sha }} -m "Release ${{ github.sha }}"
-
-      - name: Push tag
-        run: git push origin --tags
-
-      - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: setup Node
+        uses: actions/setup-node@v3
+      - name: package-version-to-git-tag
+        uses: pkgdeps/git-tag-action@v2
         with:
-          tag_name: v${{ github.sha }}
-          release_name: Release ${{ github.sha }}
-          draft: false
-          prerelease: false
-
-      - name: Update package.json with release version
-        run: |
-          echo ${{ steps.create_release.outputs.release }} > release_version.txt
-          echo "{\"version\":\"$(cat release_version.txt)\"}" > package.json
-
-      - name: Commit and push updated package.json
-        run: |
-          git add package.json
-          git commit -m "Update package.json with release version"
-          git push origin main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_repo: ${{ github.repository }}
+          git_commit_sha: ${{ github.sha }}
+          version: '0.0.0'
+          git_tag_prefix: 'v'
