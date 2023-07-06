@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/henrynoowah/blog/compare/v0.2.3...v0.3.0) (2023-07-06)
+
+
+### Features
+
+* check actions version change if it changes before deployment ([1a63467](https://github.com/henrynoowah/blog/commit/1a634671e994da7b6ed2dae4a2691a49e745fe10))
+
+
+
 ## [0.2.3](https://github.com/henrynoowah/blog/compare/v0.2.2...v0.2.3) (2023-07-06)
 
 
@@ -31,16 +40,6 @@
 ### Features
 
 * added create-release ([6a593ac](https://github.com/henrynoowah/blog/commit/6a593acfa7e45def43892acfd2d90a71384b6fe0))
-
-
-
-## [0.1.1](https://github.com/henrynoowah/blog/compare/v0.1.0...v0.1.1) (2023-07-06)
-
-
-### Bug Fixes
-
-* release yaml ([e01717e](https://github.com/henrynoowah/blog/commit/e01717e686ebf35592f92cd4ec56672410697921))
-* release yaml ([7c5dcb3](https://github.com/henrynoowah/blog/commit/7c5dcb33b256232fdee10378f4279e61104467ae))
 
 
 
