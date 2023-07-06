@@ -1,3 +1,12 @@
+# [0.2.0](https://github.com/henrynoowah/blog/compare/v0.1.1...v0.2.0) (2023-07-06)
+
+
+### Features
+
+* added create-release ([6a593ac](https://github.com/henrynoowah/blog/commit/6a593acfa7e45def43892acfd2d90a71384b6fe0))
+
+
+
 ## [0.1.1](https://github.com/henrynoowah/blog/compare/v0.1.0...v0.1.1) (2023-07-06)
 
 
