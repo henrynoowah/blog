@@ -63,14 +63,17 @@ const PostsContainer = () => {
 
   const [prevTag, setPrevTag] = useState<string | null>(null)
 
+  const [prevSearch, setPrevSearch] = useState<string | null>(null)
+
   useEffect(() => {
     const fetchData = async () => {
       let fetched: any[] = []
       fetched = await getData({ cursor, tag, search })
 
-      if (tag === prevTag) {
+      if (tag === prevTag && search === prevSearch) {
         setPosts((prev) => [...(prev ?? []), ...fetched])
       } else {
+        setPrevSearch(search)
         setPrevTag(tag)
         setPosts(fetched)
         setCursor(null)
