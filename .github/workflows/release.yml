@@ -12,12 +12,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      # Creates Tag using automated changelogs
+      # conventional commit
+      # - `feat:` -> increments the middle digit  `0.1.0`
+      # - `fix:` -> increments the last digit `0.0.1`
       - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3.19.0
         with:
           github-token: ${{ secrets.github_token }}
 
+      # Create a release after creating tag
+      # - only create a release if there is change of tags
       - name: create release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}

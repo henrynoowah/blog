@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Button from '../Button'
 import Nav_mobile from './Nav_mobile'
 import ThemeToggle from '../ThemeToggle/ThemeToggle'
+import packageData from 'package.json'
 
 const Header = () => {
   return (
@@ -10,7 +11,8 @@ const Header = () => {
         <div className="w-full flex justify-between max-w-[1920px]">
           <h1 className="relative">
             <Link href={`/`}>
-              <p className="font-semibold z-10 text-[18px] text-light ">NWH</p>
+              <p className="font-semibold z-10 text-[18px] text-light ">NWH </p>
+              <p className="font-semibold z-10 text-[8px] text-light ">v{packageData.version}</p>
             </Link>
           </h1>
 
