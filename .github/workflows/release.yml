@@ -14,7 +14,7 @@ jobs:
 
       - name: Conventional Changelog Action
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v3.7.1
+        uses: TriPSs/conventional-changelog-action@v3.19.0
         with:
           github-token: ${{ secrets.github_token }}
 
@@ -26,4 +26,4 @@ jobs:
         with:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
-          body: ${{ steps.changelog.output.clean_changelog }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
