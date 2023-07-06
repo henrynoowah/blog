@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/henrynoowah/blog/compare/v0.2.0...v0.2.1) (2023-07-06)
+
+
+### Bug Fixes
+
+* typo on action tag_namne -> tag_name ([25aa1ae](https://github.com/henrynoowah/blog/commit/25aa1aea7973bf0679d6e520dc67272a967a39c9))
+
+
+
 # [0.2.0](https://github.com/henrynoowah/blog/compare/v0.1.1...v0.2.0) (2023-07-06)
 
 
