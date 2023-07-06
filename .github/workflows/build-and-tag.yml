@@ -1,0 +1,49 @@
+name: Create Release and Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-release-and-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js project
+        run: npm run build
+
+      - name: Create release and tag
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.sha }}
+          release_name: Release ${{ github.sha }}
+          draft: false
+          prerelease: false
+
+      - name: Update package.json with release version
+        run: |
+          echo ${{ steps.create_release.outputs.release }} > release_version.txt
+          echo "{\"version\":\"$(cat release_version.txt)\"}" > package.json
+
+      - name: Commit and push updated package.json
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add package.json
+          git commit -m "Update package.json with release version"
+          git push origin main
