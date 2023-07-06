@@ -27,12 +27,12 @@ const SearchBar = ({ value }: Params) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full py-4">
+    <form onSubmit={handleSubmit} className="w-full py-4 relative">
       <input
         value={inputValue}
-        type="text"
+        type="search"
         onChange={handleOnInputChange}
-        className="w-full text-lg bg-transparent ring-primary border-b border-solid border-primary "
+        className="w-full min-h-[24px] text-lg bg-transparent ring-primary border-b border-solid border-primary focus:outline-none"
       />
     </form>
   )
