@@ -1,0 +1,24 @@
+name: Create Tag
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+
+    COMMIT_MESSAGES=$(git log --format=%B ${GITHUB_SHA}..HEAD)
+
+    steps:
+      - uses: actions/checkout@v2
+      # Creates Tag using automated changelogs
+      # conventional commit
+      # - `feat:` -> increments the middle digit  `0.1.0`
+      # - `fix:` -> increments the last digit `0.0.1`
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3.19.0
+        with:
+          github-token: ${{ secrets.github_token }}
