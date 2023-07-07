@@ -1,3 +1,12 @@
+# [0.9.0](https://github.com/henrynoowah/blog/compare/v0.8.0...v0.9.0) (2023-07-07)
+
+
+### Features
+
+* tag format ([bda1a65](https://github.com/henrynoowah/blog/commit/bda1a653cb011be9067a170ca254ba17e763bf65))
+
+
+
 # [0.8.0](https://github.com/henrynoowah/blog/compare/v0.7.0...v0.8.0) (2023-07-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * try external method to get package version ([28b4aaf](https://github.com/henrynoowah/blog/commit/28b4aaf7854a38c68d98d9d254ce4a0992993850))
-
-
-
-## [0.5.4](https://github.com/henrynoowah/blog/compare/v0.5.3...v0.5.4) (2023-07-07)
-
-
-### Bug Fixes
-
-* version dir update for github environment ([ee9b7dc](https://github.com/henrynoowah/blog/commit/ee9b7dca4e82375dd4227b7f537d8520d565e489))
 
 
 
