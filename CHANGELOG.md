@@ -1,3 +1,12 @@
+## [0.10.3](https://github.com/henrynoowah/blog/compare/v0.10.2...v0.10.3) (2023-07-07)
+
+
+### Bug Fixes
+
+* release-drafter dir path ([b308a50](https://github.com/henrynoowah/blog/commit/b308a506f27ab5954972cbd01a48679465a4cc21))
+
+
+
 ## [0.10.2](https://github.com/henrynoowah/blog/compare/v0.10.1...v0.10.2) (2023-07-07)
 
 
@@ -33,15 +42,6 @@
 ### Features
 
 * tag format ([bda1a65](https://github.com/henrynoowah/blog/commit/bda1a653cb011be9067a170ca254ba17e763bf65))
-
-
-
-# [0.8.0](https://github.com/henrynoowah/blog/compare/v0.7.0...v0.8.0) (2023-07-07)
-
-
-### Features
-
-* tag format ([440ad9c](https://github.com/henrynoowah/blog/commit/440ad9c39e92457c3ab4300e0f5cbbb16711c841))
 
 
 
