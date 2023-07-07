@@ -6,6 +6,8 @@ on:
       - dev
 
 jobs:
+  checkout:
+    uses: actions/checkout@v3
   create-tag:
     runs-on: ubuntu-latest
 
@@ -20,7 +22,6 @@ jobs:
       #   uses: TriPSs/conventional-changelog-action@v3.19.0
       #   with:
       #     github-token: ${{ secrets.github_token }}
-      - uses: actions/checkout@v3
       - name: Get Version
         id: get_version
         run: |
@@ -28,7 +29,6 @@ jobs:
           echo $VERSION
           echo "::set-output name=version::$VERSION"
 
-      - uses: actions/checkout@v3
       - name: Create Draft
         id: release_drafter
         uses: ./.github/release-drafter/release-drafter@v5
