@@ -10,31 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # - uses: actions/checkout@v3
-      # # Creates Tag using automated changelogs
-      # # conventional commit
-      # # - `feat:` -> increments the middle digit  `0.1.0`
-      # # - `fix:` -> increments the last digit `0.0.1`
-      # - name: Conventional Changelog Action
-      #   id: changelog
-      #   uses: TriPSs/conventional-changelog-action@v3.19.0
-      #   with:
-      #     github-token: ${{ secrets.github_token }}
-      # - uses: actions/checkout@v3
-      # - name: Get Version
-      #   id: get_version
-      #   run: |
-      #     VERSION=$(node -p "require('./package.json').version")
-      #     echo $VERSION
-      #     echo "::set-output name=version::$VERSION"
-
-      - name: Release
-        id: release_drafter
-        uses: release-drafter/release-drafter@v5
+      - uses: actions/checkout@v3
+      # Creates Tag using automated changelogs
+      # conventional commit
+      # - `feat:` -> increments the middle digit  `0.1.0`
+      # - `fix:` -> increments the last digit `0.0.1`
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3.19.0
         with:
-          config-name: release-drafter.yml
-          version: ${{ github.ref_name }}
-          publish: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
+          github-token: ${{ secrets.github_token }}
+      - uses: actions/checkout@v3
+      - name: Get Version
+        id: get_version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo $VERSION
+          echo "::set-output name=version::$VERSION"
