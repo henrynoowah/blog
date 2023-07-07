@@ -1,3 +1,12 @@
+# [0.6.0](https://github.com/henrynoowah/blog/compare/v0.5.5...v0.6.0) (2023-07-07)
+
+
+### Features
+
+* updated create-release workflow ([39342c1](https://github.com/henrynoowah/blog/commit/39342c16d25e3e33ec2bd4cb3102744290445033))
+
+
+
 ## [0.5.5](https://github.com/henrynoowah/blog/compare/v0.5.4...v0.5.5) (2023-07-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * package.json root dir ([f27addf](https://github.com/henrynoowah/blog/commit/f27addf0fe98a4430dd07a1b5c7ca9437a3e2b29))
-
-
-
-## [0.5.1](https://github.com/henrynoowah/blog/compare/v0.5.0...v0.5.1) (2023-07-07)
-
-
-### Bug Fixes
-
-* faulty syntac on create-release.yml ([fefa0bc](https://github.com/henrynoowah/blog/commit/fefa0bc54126575c5e30ce0815c5585a97aafc89))
 
 
 
