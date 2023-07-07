@@ -1,3 +1,12 @@
+## [0.5.3](https://github.com/henrynoowah/blog/compare/v0.5.2...v0.5.3) (2023-07-07)
+
+
+### Bug Fixes
+
+* version dir update for github environment ([b6491f3](https://github.com/henrynoowah/blog/commit/b6491f3c132277a2e00078402289c48257479801))
+
+
+
 ## [0.5.2](https://github.com/henrynoowah/blog/compare/v0.5.1...v0.5.2) (2023-07-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * outputfile & input file ([3e99415](https://github.com/henrynoowah/blog/commit/3e9941598cbbe4efb77ad9eb22b3cc6a9cbdd011))
-
-
-
-## [0.4.8](https://github.com/henrynoowah/blog/compare/v0.4.7...v0.4.8) (2023-07-07)
-
-
-### Bug Fixes
-
-* test outputfile & input file ([163ee12](https://github.com/henrynoowah/blog/commit/163ee12a6a84f8faeca9e0590bf5d5294ffa32b8))
 
 
 
