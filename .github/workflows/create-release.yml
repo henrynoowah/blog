@@ -4,23 +4,26 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
-  create-release-draft:
+  release:
     name: Create Release Draft
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+
       - name: Get Version
         id: get_version
-        uses: beaconbrigade/package-json-version@v0.3
-        with:
-          path: .
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo $VERSION
+          echo "::set-output name=version::$VERSION"
+
       - name: Create Draft
         id: release_drafter
         uses: release-drafter/release-drafter@v5
         with:
-          config-name: release-drafter-config.yml
+          config-name: release-drafter.yml
           version: ${{ github.ref_name }}
           publish: false
           prerelease: false
