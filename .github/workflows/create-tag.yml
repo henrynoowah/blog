@@ -6,11 +6,9 @@ on:
       - dev
 
 jobs:
-  checkout:
-    uses: actions/checkout@v3
   create-tag:
     runs-on: ubuntu-latest
-
+    uses: actions/checkout@v3
     steps:
       # - uses: actions/checkout@v3
       # # Creates Tag using automated changelogs
