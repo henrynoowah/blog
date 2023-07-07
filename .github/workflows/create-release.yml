@@ -17,13 +17,14 @@ jobs:
         id: get_version
         run: |
           VERSION=$(node -p "require('./package.json').version")
+          echo $VERSION
           echo "::set-output name=version::$VERSION"
 
       - name: Create Draft
         id: release_drafter
         uses: release-drafter/release-drafter@v5
         with:
-          config-name: .github/release-drafter.yml
+          config-name: release-drafter.yml
           version: ${{ github.ref_name }}
           publish: false
           prerelease: false
