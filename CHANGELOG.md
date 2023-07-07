@@ -1,3 +1,12 @@
+## [0.11.2](https://github.com/henrynoowah/blog/compare/v0.11.1...v0.11.2) (2023-07-07)
+
+
+### Bug Fixes
+
+* action test of minor tag push -> create ([28f5d4c](https://github.com/henrynoowah/blog/commit/28f5d4c9376ec8aaf6704c0249369f459473f721))
+
+
+
 ## [0.11.1](https://github.com/henrynoowah/blog/compare/v0.11.0...v0.11.1) (2023-07-07)
 
 
@@ -40,15 +49,6 @@
 ### Bug Fixes
 
 * release-drafter dir fix ([6ca9714](https://github.com/henrynoowah/blog/commit/6ca9714669cb97f44ece4b9a2de153aec69ca404))
-
-
-
-## [0.10.1](https://github.com/henrynoowah/blog/compare/v0.10.0...v0.10.1) (2023-07-07)
-
-
-### Bug Fixes
-
-* release-drafter dir ([e7a8b51](https://github.com/henrynoowah/blog/commit/e7a8b515409579d845ce633e6502f820e7b0deca))
 
 
 
