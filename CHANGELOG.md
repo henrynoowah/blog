@@ -1,3 +1,12 @@
+## [0.4.5](https://github.com/henrynoowah/blog/compare/v0.4.4...v0.4.5) (2023-07-07)
+
+
+### Bug Fixes
+
+* removed changelog skip check ([eea07bd](https://github.com/henrynoowah/blog/commit/eea07bdc816756eec1bcbb79c628869a0cb0404f))
+
+
+
 ## [0.4.4](https://github.com/henrynoowah/blog/compare/v0.4.3...v0.4.4) (2023-07-07)
 
 
@@ -31,22 +40,6 @@
 ### Bug Fixes
 
 * main workflow ([6edcda3](https://github.com/henrynoowah/blog/commit/6edcda331f79bbc66c1a01ce5da6cc1b9741b3f2))
-
-
-
-# [0.4.0](https://github.com/henrynoowah/blog/compare/v0.3.0...v0.4.0) (2023-07-07)
-
-
-### Bug Fixes
-
-* search query handling ([b672503](https://github.com/henrynoowah/blog/commit/b672503b9540b3fbf3e6111fa514dfd56bfd7e09))
-* search UI default outline disabled ([bd9febc](https://github.com/henrynoowah/blog/commit/bd9febc5d49db10f47484ea9d0e4b44f25300ae7))
-
-
-### Features
-
-* dev workflow ([8d106f1](https://github.com/henrynoowah/blog/commit/8d106f18d2a8d94505778cfb5dbf769062931c28))
-* dev workflow ([38e1970](https://github.com/henrynoowah/blog/commit/38e1970d194f9ab992d2bd191cb94022093c262f))
 
 
 

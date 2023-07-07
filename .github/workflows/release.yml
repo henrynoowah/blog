@@ -18,11 +18,16 @@ jobs:
         with:
           github-token: ${{ secrets.github_token }}
 
+      - name: Display changelog outputs
+        run: |
+          echo ${{ steps.changelog.outputs.tag }}
+          echo ${{ steps.changelog.outputs.clean_changelog }}
+
       # Create a release after creating tag
       # - only create a release if there is change of tags
       - name: create release
         uses: actions/create-release@v1
-        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        # if: ${{ steps.changelog.outputs.skipped == 'false' }}
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
         with:
