@@ -1,3 +1,12 @@
+## [0.5.2](https://github.com/henrynoowah/blog/compare/v0.5.1...v0.5.2) (2023-07-07)
+
+
+### Bug Fixes
+
+* package.json root dir ([f27addf](https://github.com/henrynoowah/blog/commit/f27addf0fe98a4430dd07a1b5c7ca9437a3e2b29))
+
+
+
 ## [0.5.1](https://github.com/henrynoowah/blog/compare/v0.5.0...v0.5.1) (2023-07-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * test outputfile & input file ([163ee12](https://github.com/henrynoowah/blog/commit/163ee12a6a84f8faeca9e0590bf5d5294ffa32b8))
-
-
-
-## [0.4.7](https://github.com/henrynoowah/blog/compare/v0.4.6...v0.4.7) (2023-07-07)
-
-
-### Bug Fixes
-
-* test outputfile false retest ([4e8464f](https://github.com/henrynoowah/blog/commit/4e8464fb9dd08374d2de0d97932b81061969ef21))
 
 
 
