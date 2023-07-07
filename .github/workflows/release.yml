@@ -1,5 +1,7 @@
 name: Release
 
+name: Create Release
+
 on:
   push:
     branches:
@@ -11,18 +13,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      # - name: Get Latest Tag
-      #   id: get_latest_tag
-      #   run: |
-      #     git fetch --tags
-      #     LATEST_TAG=$(git describe --tags --abbrev=0)
-      #     CHANGELOG=$(git log --format=%B ${LATEST_TAG}..HEAD)
-      #     echo "::set-output name=changelog::$CHANGELOG"
-
-      - name: Display Changelog
-        run: |
-          echo "Changelog: ${{ steps.get_changelog.outputs.changelog }}"
 
       - name: Conventional Changelog Action
         id: changelog
