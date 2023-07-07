@@ -20,7 +20,6 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3.19.0
         with:
           github-token: ${{ secrets.github_token }}
-      - uses: actions/checkout@v3
 
       # - name: Get Version
       #   id: get_version
