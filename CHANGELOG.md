@@ -1,3 +1,12 @@
+## [0.5.5](https://github.com/henrynoowah/blog/compare/v0.5.4...v0.5.5) (2023-07-07)
+
+
+### Bug Fixes
+
+* try external method to get package version ([28b4aaf](https://github.com/henrynoowah/blog/commit/28b4aaf7854a38c68d98d9d254ce4a0992993850))
+
+
+
 ## [0.5.4](https://github.com/henrynoowah/blog/compare/v0.5.3...v0.5.4) (2023-07-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * faulty syntac on create-release.yml ([fefa0bc](https://github.com/henrynoowah/blog/commit/fefa0bc54126575c5e30ce0815c5585a97aafc89))
-
-
-
-# [0.5.0](https://github.com/henrynoowah/blog/compare/v0.4.9...v0.5.0) (2023-07-07)
-
-
-### Features
-
-* get version from package.json to sync with tag ([07f4507](https://github.com/henrynoowah/blog/commit/07f450772786acdc8ca6502f2600896717a93770))
 
 
 
