@@ -1,3 +1,12 @@
+## [0.4.1](https://github.com/henrynoowah/blog/compare/v0.4.0...v0.4.1) (2023-07-07)
+
+
+### Bug Fixes
+
+* main workflow ([6edcda3](https://github.com/henrynoowah/blog/commit/6edcda331f79bbc66c1a01ce5da6cc1b9741b3f2))
+
+
+
 # [0.4.0](https://github.com/henrynoowah/blog/compare/v0.3.0...v0.4.0) (2023-07-07)
 
 
@@ -38,15 +47,6 @@
 ### Bug Fixes
 
 * typo for clean_changelog ([d4c5a3d](https://github.com/henrynoowah/blog/commit/d4c5a3dbff98ff032a91816db2b974067120cf1c))
-
-
-
-## [0.2.1](https://github.com/henrynoowah/blog/compare/v0.2.0...v0.2.1) (2023-07-06)
-
-
-### Bug Fixes
-
-* typo on action tag_namne -> tag_name ([25aa1ae](https://github.com/henrynoowah/blog/commit/25aa1aea7973bf0679d6e520dc67272a967a39c9))
 
 
 
