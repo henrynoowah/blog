@@ -1,3 +1,12 @@
+## [0.10.2](https://github.com/henrynoowah/blog/compare/v0.10.1...v0.10.2) (2023-07-07)
+
+
+### Bug Fixes
+
+* release-drafter dir fix ([6ca9714](https://github.com/henrynoowah/blog/commit/6ca9714669cb97f44ece4b9a2de153aec69ca404))
+
+
+
 ## [0.10.1](https://github.com/henrynoowah/blog/compare/v0.10.0...v0.10.1) (2023-07-07)
 
 
@@ -33,15 +42,6 @@
 ### Features
 
 * tag format ([440ad9c](https://github.com/henrynoowah/blog/commit/440ad9c39e92457c3ab4300e0f5cbbb16711c841))
-
-
-
-# [0.7.0](https://github.com/henrynoowah/blog/compare/v0.6.0...v0.7.0) (2023-07-07)
-
-
-### Features
-
-* removed crashing workflow ([6d4063c](https://github.com/henrynoowah/blog/commit/6d4063c382dfd4b6cfc8d5310d9ac36a3977c10f))
 
 
 
