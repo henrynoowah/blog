@@ -14,55 +14,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Get Tags Ahead of Current Branch
-        id: get_tags
-        run: |
-          CURRENT_BRANCH=$(git branch --show-current)
-          git fetch --tags
-          TAGS=$(git tag --merged ${CURRENT_BRANCH})
-          echo "::set-output name=tags::$TAGS"
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3.19.0
+        with:
+          github-token: ${{ secrets.github_token }}
+          # input-file: 'CHANGELOG_INT.md'
 
-      - name: Generate Changelogs
-        id: generate_changelogs
-        run: |
-          TAGS="${{ steps.get_tags.outputs.tags }}"
-          CURRENT_BRANCH=$(git branch --show-current)
-          CHANGELOG=""
-          for TAG in $TAGS; do
-            TAG_CHANGELOG=$(git log --pretty=format:'%s' ${TAG}..${CURRENT_BRANCH})
-            if [ -n "${TAG_CHANGELOG}" ]; then
-              CHANGELOG+="\nChangelog for Tag ${TAG}:\n${TAG_CHANGELOG}\n"
-            fi
-          done
-          echo "::set-output name=changelog::$CHANGELOG"
-
-      - name: Display Tags
-        run: |
-          echo "Tags Ahead of Current Branch: ${{ steps.get_tags.outputs.tags }}"
-
-      - name: Display Changelogs
-        run: |
-          echo "Changelogs:${{ steps.generate_changelogs.outputs.changelog }}"
-
-      # - name: Conventional Changelog Action
-      #   id: changelog
-      #   uses: TriPSs/conventional-changelog-action@v3.19.0
-      #   with:
-      #     github-token: ${{ secrets.github_token }}
-
-      # - name: Display changelog outputs
-      #   run: |
-      #     echo ${{ steps.changelog.outputs.tag }}
-      #     echo ${{ steps.changelog.outputs.clean_changelog }}
-
-      # # Create a release after creating tag
-      # # - only create a release if there is change of tags
-      # - name: create release
-      #   uses: actions/create-release@v1
-      #   # if: ${{ steps.changelog.outputs.skipped == 'false' }}
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.github_token }}
-      #   with:
-      #     tag_name: ${{ steps.changelog.outputs.tag }}
-      #     release_name: ${{ steps.changelog.outputs.tag }}
-      #     body: ${{ steps.changelog.outputs.clean_changelog }}
+      # Create a release after creating tag
+      # - only create a release if there is change of tags
+      - name: create release
+        uses: actions/create-release@v1
+        # if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
