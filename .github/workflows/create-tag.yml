@@ -9,8 +9,6 @@ jobs:
   changelog:
     runs-on: ubuntu-latest
 
-    COMMIT_MESSAGES=$(git log --format=%B ${GITHUB_SHA}..HEAD)
-
     steps:
       - uses: actions/checkout@v2
       # Creates Tag using automated changelogs
