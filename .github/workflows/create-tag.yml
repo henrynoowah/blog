@@ -9,7 +9,6 @@ jobs:
   create-tag:
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v3å
       # - uses: actions/checkout@v3
       # # Creates Tag using automated changelogs
       # # conventional commit
@@ -20,6 +19,7 @@ jobs:
       #   uses: TriPSs/conventional-changelog-action@v3.19.0
       #   with:
       #     github-token: ${{ secrets.github_token }}
+      - uses: actions/checkout@v3å
       - name: Get Version
         id: get_version
         run: |
