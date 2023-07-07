@@ -1,3 +1,12 @@
+## [0.4.2](https://github.com/henrynoowah/blog/compare/v0.4.1...v0.4.2) (2023-07-07)
+
+
+### Bug Fixes
+
+* remove condition checks on main workflow skipped ([1ad2b8e](https://github.com/henrynoowah/blog/commit/1ad2b8ebf0d7d11bcab463e8bd7a3ad4de21c822))
+
+
+
 ## [0.4.1](https://github.com/henrynoowah/blog/compare/v0.4.0...v0.4.1) (2023-07-07)
 
 
@@ -38,15 +47,6 @@
 ### Bug Fixes
 
 * typo for steps.changelog.outputs.clean_changelog ([7bdaec7](https://github.com/henrynoowah/blog/commit/7bdaec7fdb7f893a1fdfd701f66116cd3b596973))
-
-
-
-## [0.2.2](https://github.com/henrynoowah/blog/compare/v0.2.1...v0.2.2) (2023-07-06)
-
-
-### Bug Fixes
-
-* typo for clean_changelog ([d4c5a3d](https://github.com/henrynoowah/blog/commit/d4c5a3dbff98ff032a91816db2b974067120cf1c))
 
 
 
