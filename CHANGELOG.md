@@ -1,3 +1,12 @@
+# [0.12.0](https://github.com/henrynoowah/blog/compare/v0.11.3...v0.12.0) (2023-07-07)
+
+
+### Features
+
+* release drafter update to be made on dev ([1f35cf3](https://github.com/henrynoowah/blog/commit/1f35cf3ed1fed099bf445637049edad728b8b54c))
+
+
+
 ## [0.11.3](https://github.com/henrynoowah/blog/compare/v0.11.2...v0.11.3) (2023-07-07)
 
 
@@ -40,15 +49,6 @@
 ### Features
 
 * sync version ([79de491](https://github.com/henrynoowah/blog/commit/79de491eb67f838afce009df3d552ac33ad94dbb))
-
-
-
-## [0.10.3](https://github.com/henrynoowah/blog/compare/v0.10.2...v0.10.3) (2023-07-07)
-
-
-### Bug Fixes
-
-* release-drafter dir path ([b308a50](https://github.com/henrynoowah/blog/commit/b308a506f27ab5954972cbd01a48679465a4cc21))
 
 
 
