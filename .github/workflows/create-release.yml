@@ -13,9 +13,9 @@ jobs:
     steps:
       - name: Get Version
         id: get_version
-        run: |
-          VERSION=$(node -p "require('${{ github.workspace }}/package.json').version")
-          echo "::set-output name=version::$VERSION"
+        uses: beaconbrigade/package-json-version@v0.3
+        with:
+          path: .
       - name: Create Draft
         id: release_drafter
         uses: release-drafter/release-drafter@v5
