@@ -1,3 +1,12 @@
+## [0.5.4](https://github.com/henrynoowah/blog/compare/v0.5.3...v0.5.4) (2023-07-07)
+
+
+### Bug Fixes
+
+* version dir update for github environment ([ee9b7dc](https://github.com/henrynoowah/blog/commit/ee9b7dca4e82375dd4227b7f537d8520d565e489))
+
+
+
 ## [0.5.3](https://github.com/henrynoowah/blog/compare/v0.5.2...v0.5.3) (2023-07-07)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * get version from package.json to sync with tag ([07f4507](https://github.com/henrynoowah/blog/commit/07f450772786acdc8ca6502f2600896717a93770))
-
-
-
-## [0.4.9](https://github.com/henrynoowah/blog/compare/v0.4.8...v0.4.9) (2023-07-07)
-
-
-### Bug Fixes
-
-* outputfile & input file ([3e99415](https://github.com/henrynoowah/blog/commit/3e9941598cbbe4efb77ad9eb22b3cc6a9cbdd011))
 
 
 
