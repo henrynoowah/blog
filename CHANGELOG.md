@@ -1,3 +1,12 @@
+## [0.11.3](https://github.com/henrynoowah/blog/compare/v0.11.2...v0.11.3) (2023-07-07)
+
+
+### Bug Fixes
+
+* on push condition update ([d01f33f](https://github.com/henrynoowah/blog/commit/d01f33fee3e3b890aa702c218effe34037057b04))
+
+
+
 ## [0.11.2](https://github.com/henrynoowah/blog/compare/v0.11.1...v0.11.2) (2023-07-07)
 
 
@@ -40,15 +49,6 @@
 ### Bug Fixes
 
 * release-drafter dir path ([b308a50](https://github.com/henrynoowah/blog/commit/b308a506f27ab5954972cbd01a48679465a4cc21))
-
-
-
-## [0.10.2](https://github.com/henrynoowah/blog/compare/v0.10.1...v0.10.2) (2023-07-07)
-
-
-### Bug Fixes
-
-* release-drafter dir fix ([6ca9714](https://github.com/henrynoowah/blog/commit/6ca9714669cb97f44ece4b9a2de153aec69ca404))
 
 
 
