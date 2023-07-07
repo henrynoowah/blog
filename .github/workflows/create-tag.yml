@@ -20,13 +20,13 @@ jobs:
       #   uses: TriPSs/conventional-changelog-action@v3.19.0
       #   with:
       #     github-token: ${{ secrets.github_token }}
-      - uses: actions/checkout@v3
-      - name: Get Version
-        id: get_version
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          echo $VERSION
-          echo "::set-output name=version::$VERSION"
+      # - uses: actions/checkout@v3
+      # - name: Get Version
+      #   id: get_version
+      #   run: |
+      #     VERSION=$(node -p "require('./package.json').version")
+      #     echo $VERSION
+      #     echo "::set-output name=version::$VERSION"
 
       - name: Release
         id: release_drafter
