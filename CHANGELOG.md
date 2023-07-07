@@ -1,3 +1,14 @@
+# [0.10.0](https://github.com/henrynoowah/blog/compare/v0.9.0...v0.10.0) (2023-07-07)
+
+
+### Features
+
+* rename release-drafter ([571d848](https://github.com/henrynoowah/blog/commit/571d8486c8c28ca623411684d132b1d4ff0b7bea))
+* rename release-drafter ([539c482](https://github.com/henrynoowah/blog/commit/539c482ba37e5758b7cd667c20d7db80ff14f011))
+* updated release drafter run condition ([c3eb338](https://github.com/henrynoowah/blog/commit/c3eb33826168c812546992031cc3b79e8714d229))
+
+
+
 # [0.9.0](https://github.com/henrynoowah/blog/compare/v0.8.0...v0.9.0) (2023-07-07)
 
 
@@ -31,15 +42,6 @@
 ### Features
 
 * updated create-release workflow ([39342c1](https://github.com/henrynoowah/blog/commit/39342c16d25e3e33ec2bd4cb3102744290445033))
-
-
-
-## [0.5.5](https://github.com/henrynoowah/blog/compare/v0.5.4...v0.5.5) (2023-07-07)
-
-
-### Bug Fixes
-
-* try external method to get package version ([28b4aaf](https://github.com/henrynoowah/blog/commit/28b4aaf7854a38c68d98d9d254ce4a0992993850))
 
 
 
