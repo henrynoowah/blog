@@ -22,19 +22,20 @@ jobs:
           github-token: ${{ secrets.github_token }}
       - uses: actions/checkout@v3
 
-      - name: Get Version
-        id: get_version
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          echo $VERSION
-          echo "::set-output name=version::$VERSION"
+      # - name: Get Version
+      #   id: get_version
+      #   run: |
+      #     VERSION=$(node -p "require('./package.json').version")
+      #     echo $VERSION
+      #     echo "::set-output name=version::$VERSION"
 
       - name: Create Draft
         id: release_drafter
         uses: release-drafter/release-drafter@v5
         with:
           config-name: release-drafter.yml
-          version: ${{ steps.get_version.outputs.version }}
+          version: ${{ steps.changelog.outputs.tag }}
+          tag: ${{ steps.changelog.outputs.tag }}
           publish: false
           prerelease: false
         env:
