@@ -1,3 +1,12 @@
+# [0.8.0](https://github.com/henrynoowah/blog/compare/v0.7.0...v0.8.0) (2023-07-07)
+
+
+### Features
+
+* tag format ([440ad9c](https://github.com/henrynoowah/blog/commit/440ad9c39e92457c3ab4300e0f5cbbb16711c841))
+
+
+
 # [0.7.0](https://github.com/henrynoowah/blog/compare/v0.6.0...v0.7.0) (2023-07-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * version dir update for github environment ([ee9b7dc](https://github.com/henrynoowah/blog/commit/ee9b7dca4e82375dd4227b7f537d8520d565e489))
-
-
-
-## [0.5.3](https://github.com/henrynoowah/blog/compare/v0.5.2...v0.5.3) (2023-07-07)
-
-
-### Bug Fixes
-
-* version dir update for github environment ([b6491f3](https://github.com/henrynoowah/blog/commit/b6491f3c132277a2e00078402289c48257479801))
 
 
 
