@@ -1,3 +1,12 @@
+## [0.4.4](https://github.com/henrynoowah/blog/compare/v0.4.3...v0.4.4) (2023-07-07)
+
+
+### Bug Fixes
+
+* release yml typo fix ([07e7169](https://github.com/henrynoowah/blog/commit/07e71696a45ec1bb4b18b0d069f03ff999142d3e))
+
+
+
 ## [0.4.3](https://github.com/henrynoowah/blog/compare/v0.4.2...v0.4.3) (2023-07-07)
 
 
@@ -38,15 +47,6 @@
 
 * dev workflow ([8d106f1](https://github.com/henrynoowah/blog/commit/8d106f18d2a8d94505778cfb5dbf769062931c28))
 * dev workflow ([38e1970](https://github.com/henrynoowah/blog/commit/38e1970d194f9ab992d2bd191cb94022093c262f))
-
-
-
-# [0.3.0](https://github.com/henrynoowah/blog/compare/v0.2.3...v0.3.0) (2023-07-06)
-
-
-### Features
-
-* check actions version change if it changes before deployment ([1a63467](https://github.com/henrynoowah/blog/commit/1a634671e994da7b6ed2dae4a2691a49e745fe10))
 
 
 
