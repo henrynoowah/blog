@@ -1,3 +1,12 @@
+## [0.4.3](https://github.com/henrynoowah/blog/compare/v0.4.2...v0.4.3) (2023-07-07)
+
+
+### Bug Fixes
+
+* release tag update test ([f9f2ef5](https://github.com/henrynoowah/blog/commit/f9f2ef57702bb0170920061f308e52d56a0535f2))
+
+
+
 ## [0.4.2](https://github.com/henrynoowah/blog/compare/v0.4.1...v0.4.2) (2023-07-07)
 
 
@@ -38,15 +47,6 @@
 ### Features
 
 * check actions version change if it changes before deployment ([1a63467](https://github.com/henrynoowah/blog/commit/1a634671e994da7b6ed2dae4a2691a49e745fe10))
-
-
-
-## [0.2.3](https://github.com/henrynoowah/blog/compare/v0.2.2...v0.2.3) (2023-07-06)
-
-
-### Bug Fixes
-
-* typo for steps.changelog.outputs.clean_changelog ([7bdaec7](https://github.com/henrynoowah/blog/commit/7bdaec7fdb7f893a1fdfd701f66116cd3b596973))
 
 
 
