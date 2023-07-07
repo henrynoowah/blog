@@ -14,7 +14,7 @@ jobs:
       - name: Get Version
         id: get_version
         run: |
-          VERSION=$(node -p "require('../../package.json').version")   
+          VERSION=$(node -p "require('${{ github.workspace }}/path/to/package.json').version")
           echo "::set-output name=version::$VERSION"
       - name: Create Draft
         id: release_drafter
