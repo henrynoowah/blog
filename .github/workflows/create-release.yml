@@ -8,16 +8,15 @@ on:
 
 jobs:
   create-release-draft:
-    name: Get Version
-      id: get_version
-      run: |
-        VERSION=$(node -p "require('./package.json').version")
-        echo "::set-output name=version::$VERSION"
-
-    name: Create Release Drafter
+    name: Create Release Draft
     runs-on: ubuntu-latest
     steps:
-      - name: Release
+      - name: Get Version
+        id: get_version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "::set-output name=version::$VERSION"
+      - name: Create Draft
         id: release_drafter
         uses: release-drafter/release-drafter@v5
         with:

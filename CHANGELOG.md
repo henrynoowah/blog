@@ -1,3 +1,12 @@
+## [0.5.1](https://github.com/henrynoowah/blog/compare/v0.5.0...v0.5.1) (2023-07-07)
+
+
+### Bug Fixes
+
+* faulty syntac on create-release.yml ([fefa0bc](https://github.com/henrynoowah/blog/commit/fefa0bc54126575c5e30ce0815c5585a97aafc89))
+
+
+
 # [0.5.0](https://github.com/henrynoowah/blog/compare/v0.4.9...v0.5.0) (2023-07-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * test outputfile false retest ([4e8464f](https://github.com/henrynoowah/blog/commit/4e8464fb9dd08374d2de0d97932b81061969ef21))
-
-
-
-## [0.4.6](https://github.com/henrynoowah/blog/compare/v0.4.5...v0.4.6) (2023-07-07)
-
-
-### Bug Fixes
-
-* test outputfile false ([fd0e5b5](https://github.com/henrynoowah/blog/commit/fd0e5b59803e1ced7e84f6eaeb729f7af896c7a1))
 
 
 
