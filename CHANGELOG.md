@@ -1,3 +1,12 @@
+# [0.7.0](https://github.com/henrynoowah/blog/compare/v0.6.0...v0.7.0) (2023-07-07)
+
+
+### Features
+
+* removed crashing workflow ([6d4063c](https://github.com/henrynoowah/blog/commit/6d4063c382dfd4b6cfc8d5310d9ac36a3977c10f))
+
+
+
 # [0.6.0](https://github.com/henrynoowah/blog/compare/v0.5.5...v0.6.0) (2023-07-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * version dir update for github environment ([b6491f3](https://github.com/henrynoowah/blog/commit/b6491f3c132277a2e00078402289c48257479801))
-
-
-
-## [0.5.2](https://github.com/henrynoowah/blog/compare/v0.5.1...v0.5.2) (2023-07-07)
-
-
-### Bug Fixes
-
-* package.json root dir ([f27addf](https://github.com/henrynoowah/blog/commit/f27addf0fe98a4430dd07a1b5c7ca9437a3e2b29))
 
 
 
