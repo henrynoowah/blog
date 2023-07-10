@@ -19,14 +19,7 @@ jobs:
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3.19.0
         with:
-          github-token: ${{ secrets.github_token }}
-
-      # - name: Get Version
-      #   id: get_version
-      #   run: |
-      #     VERSION=$(node -p "require('./package.json').version")
-      #     echo $VERSION
-      #     echo "::set-output name=version::$VERSION"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Draft
         id: release_drafter
@@ -38,4 +31,4 @@ jobs:
           publish: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
