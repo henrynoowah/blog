@@ -29,5 +29,4 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3.19.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          skip-git-pull: true
           git-branch: ${{ github.event.pull_request.head.ref }}
