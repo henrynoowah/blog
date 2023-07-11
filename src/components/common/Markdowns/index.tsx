@@ -39,26 +39,33 @@ const markdownComponents: MarkDownComponents = {
   p: ({ node, ...props }) => (
     <p className="text-dark dark:text-light text-md leading-10 whitespace-pre-line" {...props} />
   ),
-  ul: ({ node, ...props }) => <ul className="list-disc pl-4 text-md leading-7" {...props} />,
+  ul: ({ node, ...props }) => {
+    const { ordered: _, ...rest } = props
+    return <ul className="list-disc pl-4 text-md leading-7" {...rest} />
+  },
   ol: ({ node, ...props }) => <ul className="list-decimal pl-4 text-md leading-7" {...props} />,
-  li: ({ node, ...props }) => (
-    <li
-      className="[&>ul]:pl-4 [&>ul>li]:marker:text-primary/50  [&>ul>li>ul>li]:marker:text-primary items-center marker:text-primary text-dark dark:text-light"
-      {...props}
-    >
-      {props.children}
-    </li>
-  ),
+  li: ({ node, ...props }) => {
+    const { ordered: _, ...rest } = props
+    return (
+      <li
+        className="[&>ul]:pl-4 [&>ul>li]:marker:text-primary/50  [&>ul>li>ul>li]:marker:text-primary items-center marker:text-primary text-dark dark:text-light"
+        {...rest}
+      >
+        {props.children}
+      </li>
+    )
+  },
   hr: ({ node, ...props }) => <div className="border-b-2 border-spild border-primary/20 mb-3" {...props} />,
   a: ({ node, ...props }) => (
     <a target="_blank" className="text-secondary hover:underline underline-offset-1" {...props} />
   ),
   input: ({ node, ...props }) => {
     if (props.type === 'checkbox') {
+      const { checked: _, ...rest } = props
       return (
         <input
           type="checkbox"
-          {...props}
+          {...rest}
           disabled={false}
           className="w-4 h-4 translate-y-[0.2rem] rounded-sm accent-primary pointer-events-none"
         />
