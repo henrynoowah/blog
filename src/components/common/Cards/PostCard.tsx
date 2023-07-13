@@ -37,7 +37,7 @@ const PostCard = (props: Props) => {
           </div>
         </div>
 
-        <ul className="w-full flex justify-start gap-2 text-sm p-4 overflow-x-auto">
+        <ul className="w-full flex justify-start gap-2 text-sm p-4 overflow-x-auto scrollbar-hide">
           {props.tags?.map((tag, idx) => (
             <li key={idx}>
               <button
@@ -49,7 +49,7 @@ const PostCard = (props: Props) => {
                   handleTagSelect(tag)
                 }}
               >
-                <p className="text-primary italic">{`#${tag}`}</p>
+                <p className="text-primary italic whitespace-nowrap">{`#${tag}`}</p>
               </button>
             </li>
           ))}
