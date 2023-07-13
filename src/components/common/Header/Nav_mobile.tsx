@@ -20,12 +20,12 @@ const Nav_mobile = () => {
         type="button"
         onClick={onClickhandler}
         ref={ref}
-        className={`w-[18px] h-[18px] ${
+        className={`w-[36px] h-[36px] flex justify-center items-center rounded-full ring-1 ring-light/60 ${
           isNavOpened ? 'rotate-[225deg]' : 'rotate-0'
         }  transition duration-300 ease-out`}
       >
         <div
-          className={`w-full h-full relative flex flex-col justify-center group cursor-pointer transition duration-300 ease-linear hover:`}
+          className={`w-[18px] h-[18px] relative flex flex-col justify-center group cursor-pointer transition duration-300 ease-linear hover:`}
         >
           <span
             className={`absolute w-full h-[2px] top-0 bg-light transition duration-300 ease-linear ${
@@ -56,25 +56,6 @@ const Nav_mobile = () => {
               <Button className="w-full bg-transparent !text-light !text-md py-2 text-left">Posts</Button>
             </Link>
           </li>
-          {/* <li>
-            {!session ? (
-            <Link href={'/auth'}>
-              <Button className="w-full bg-transparent !text-light !text-md py-2 text-left">
-                Sign In
-              </Button>
-            </Link>
-            ) : (
-              <Button
-                type="button"
-                className="w-full bg-transparent !text-light !text-md py-2 text-left"
-                onClick={async () => {
-                  await supabase.auth.signOut()
-                }}
-              >
-                Sign Out
-              </Button>
-            )}
-          </li> */}
         </ul>
       </nav>
     </>
