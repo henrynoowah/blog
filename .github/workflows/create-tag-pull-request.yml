@@ -1,34 +1,35 @@
 name: Create Tag
 
 on:
-  push:
+  pull_request:
     branches:
       - dev
+    types:
+      - synchronize
+      - opened
 
 jobs:
   create-tag:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Pull Request Branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
       # Creates Tag using automated changelogs
       # conventional commit
       # - `feat:` -> increments the middle digit  `0.1.0`
       # - `fix:` -> increments the last digit `0.0.1`
+
+      - name: Display Branch Information
+        run: |
+          echo "From Branch: ${{ github.event.pull_request.head.ref }}"
+          echo "To Branch: ${{ github.event.pull_request.base.ref }}"
+
       - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3.19.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create Draft
-        id: release_drafter
-        uses: release-drafter/release-drafter@v5
-        with:
-          config-name: release-drafter.yml
-          version: ${{ steps.changelog.outputs.tag }}
-          tag: ${{ steps.changelog.outputs.tag }}
-          publish: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git-branch: ${{ github.event.pull_request.head.ref }}

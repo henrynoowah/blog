@@ -4,7 +4,6 @@
 import PostCard from '@/components/common/Cards/PostCard'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import SearchBar from './SearchBar'
 
 const LIMIT = 20
 
@@ -70,15 +69,23 @@ const PostsContainer = () => {
       let fetched: any[] = []
       fetched = await getData({ cursor, tag, search })
 
-      if (tag === prevTag && search === prevSearch) {
-        setPosts((prev) => [...(prev ?? []), ...fetched])
+      if (search) {
+        if (search !== prevSearch) {
+          setPrevTag(null)
+          setPosts(fetched)
+        }
+        setCursor(null)
       } else {
-        setPrevSearch(search)
-        setPrevTag(tag)
-        setPosts(fetched)
+        if (tag === prevTag) {
+          setPosts((prev) => [...(prev ?? []), ...fetched])
+        } else {
+          setPrevTag(tag)
+          setPosts(fetched)
+          setCursor(null)
+        }
+        setPrevSearch(null)
         setCursor(null)
       }
-      setCursor(null)
     }
     fetchData()
   }, [cursor, tag, search])
@@ -105,18 +112,15 @@ const PostsContainer = () => {
   }, [intersectionObserverCallback, lastRef])
 
   return (
-    <div>
-      <SearchBar value={search} />
-      <ul className="flex flex-col gap-6">
-        {posts.map((post, i) =>
-          post ? (
-            <li key={`${post.id}-${i}`} ref={i === posts.length - 1 ? setLastRef : undefined}>
-              <PostCard {...post} />
-            </li>
-          ) : null
-        )}
-      </ul>
-    </div>
+    <ul className="flex flex-col gap-6">
+      {posts.map((post, i) =>
+        post ? (
+          <li key={`${post.id}-${i}`} ref={i === posts.length - 1 ? setLastRef : undefined}>
+            <PostCard {...post} />
+          </li>
+        ) : null
+      )}
+    </ul>
   )
 }
 

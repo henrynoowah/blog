@@ -24,10 +24,9 @@ const ThemeToggle = () => {
 
   return (
     <button
-      // disabled={!cookieEnabled}
       aria-label="Theme Toggle"
       onClick={handleThemeSwitch}
-      className="!text-light relative w-[32px] h-[32px] flex justify-center items-center rounded-full ring-1 ring-light/60 dark:bg-dark-80"
+      className="!text-light relative w-[36px] h-[36px] flex justify-center items-center rounded-full ring-1 ring-light/60 dark:bg-dark-80"
     >
       {isDarkMode !== null && (
         <>

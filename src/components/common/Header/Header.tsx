@@ -3,11 +3,17 @@ import Button from '../Button'
 import Nav_mobile from './Nav_mobile'
 import ThemeToggle from '../ThemeToggle/ThemeToggle'
 import packageData from 'package.json'
+import ShowSearchButton from './ShowSearchButton'
+
+const HEADER_HEIGHT = 72
 
 const Header = () => {
   return (
     <>
-      <div className="w-full min-h-[60px] fixed top-0 border-b-2 border-solid border-primary bg-primary flex justify-center items-center px-4 sm:px-10 z-20">
+      <div
+        style={{ minHeight: HEADER_HEIGHT }}
+        className="w-full fixed top-0 border-b-2 border-solid border-primary bg-primary flex justify-center items-center px-4 sm:px-10 z-20"
+      >
         <div className="w-full flex justify-between max-w-[1920px]">
           <h1 className="relative">
             <Link href={`/`}>
@@ -17,10 +23,12 @@ const Header = () => {
           </h1>
 
           <div className="flex justify-end items-center gap-[16px]">
+            <ShowSearchButton />
             <ThemeToggle />
             <div className="sm:hidden flex items-center">
               <Nav_mobile />
             </div>
+
             <div className="hidden sm:block">
               <nav>
                 <ul className="flex gap-[20px] items-center">
@@ -45,7 +53,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="w-full min-h-[60px]" />
+      <div style={{ minHeight: HEADER_HEIGHT }} className="w-full" />
     </>
   )
 }
