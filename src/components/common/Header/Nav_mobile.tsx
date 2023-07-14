@@ -20,16 +20,16 @@ const Nav_mobile = () => {
         type="button"
         onClick={onClickhandler}
         ref={ref}
-        className={`w-[36px] h-[36px] flex justify-center items-center rounded-full ring-1 ring-light/60 ${
+        className={`w-[36px] h-[36px] flex justify-center items-center rounded-full ring-1 ring-light ${
           isNavOpened ? 'rotate-[225deg]' : 'rotate-0'
         }  transition duration-300 ease-out`}
       >
         <div
-          className={`w-[18px] h-[18px] relative flex flex-col justify-center group cursor-pointer transition duration-300 ease-linear hover:`}
+          className={`w-[14px] h-[14px] relative flex flex-col justify-center group cursor-pointer transition duration-300 ease-linear hover:`}
         >
           <span
             className={`absolute w-full h-[2px] top-0 bg-light transition duration-300 ease-linear ${
-              isNavOpened ? 'translate-y-[8px]' : ''
+              isNavOpened ? 'translate-y-[6px]' : ''
             }`}
           />
           <span
@@ -39,7 +39,7 @@ const Nav_mobile = () => {
           />
           <span
             className={`absolute w-full h-[2px] bottom-0 bg-light transition duration-300 ease-linear ${
-              isNavOpened ? '-translate-y-[8px]' : ''
+              isNavOpened ? '-translate-y-[6px]' : ''
             }`}
           />
         </div>

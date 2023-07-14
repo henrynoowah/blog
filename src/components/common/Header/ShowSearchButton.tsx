@@ -27,7 +27,7 @@ const ShowSearchButton = () => {
   return (
     <form onSubmit={handleSubmit} className="flex justify-between relative group transition duration-300 ease-in-out">
       <div
-        className={`h-[36px] relative duration-300 ease-in-out ring-1 ring-inset ring-light/60 rounded-full overflow-hidden ${
+        className={`h-[36px] relative duration-300 ease-in-out ring-1 ring-inset ring-light rounded-full overflow-hidden ${
           showInput ? 'w-[160px] md:w-[240px]' : 'w-[36px]'
         }`}
       >
@@ -46,7 +46,7 @@ const ShowSearchButton = () => {
 
         <button
           type="button"
-          className={`absolute right-0 w-[36px] h-[36px] flex justify-center items-center ring-inset ring-light/60 rounded-full`}
+          className={`absolute right-0 w-[36px] h-[36px] flex justify-center items-center ring-inset ring-light rounded-full`}
           onClick={() => {
             console.log(showInput)
             if (!showInput) {
@@ -54,7 +54,7 @@ const ShowSearchButton = () => {
             }
           }}
         >
-          <MagnifyingGlassIcon width={18} height={18} className="text-light/60 z-20" />
+          <MagnifyingGlassIcon width={18} height={18} className="text-light z-20" />
         </button>
       </div>
     </form>
