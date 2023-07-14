@@ -2,7 +2,7 @@
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { FormEventHandler, useEffect, useRef, useState } from 'react'
+import { FormEventHandler, useRef, useState } from 'react'
 
 const ShowSearchButton = () => {
   const pathname = usePathname()
