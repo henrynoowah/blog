@@ -12,6 +12,7 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 import '@uiw/react-markdown-preview/markdown.css'
 import '@uiw/react-md-editor/markdown-editor.css'
+import Image from 'next/image'
 
 interface Params {
   markdown?: string
@@ -21,43 +22,46 @@ type MarkDownComponents = Partial<Omit<NormalComponents, keyof SpecialComponents
 
 const markdownComponents: MarkDownComponents = {
   h1: ({ node, ...props }) => (
-    <h1 className="text-primary dark:text-light font-bold text-2xl pb-2 " {...props}>
+    <h1 className="text-primary dark:text-light font-bold text-2xl py-6" {...props}>
       {props.children}
-      {props.children ? <hr className="border-b-2 border-spild border-primary/20" /> : ''}
+      {/* {props.children ? <hr className="border-b-2 border-spild border-primary/20" /> : ''} */}
     </h1>
   ),
   h2: ({ node, ...props }) => (
-    <h2 className="text-primary dark:text-light font-bold text-xl pb-2" {...props}>
+    <h2 className="text-primary dark:text-light font-bold text-xl py-6" {...props}>
       {props.children}
-      {props.children ? <hr className="border-b-2 border-spild border-primary/20" /> : ''}
+      {/* {props.children ? <hr className="border-b-2 border-spild border-primary/20" /> : ''} */}
     </h2>
   ),
-  h3: ({ node, ...props }) => <h3 className="text-primary dark:text-light font-bold text-lg" {...props} />,
+  h3: ({ node, ...props }) => <h3 className="text-primary dark:text-light font-bold text-lg py-6" {...props} />,
   h4: ({ node, ...props }) => <h4 className="text-primary dark:text-light font-bold text-md" {...props} />,
   h5: ({ node, ...props }) => <h5 className="text-primary dark:text-light font-bold text-md" {...props} />,
   h6: ({ node, ...props }) => <h5 className="text-primary/60 font-bold text-md" {...props} />,
   p: ({ node, ...props }) => (
-    <p className="text-dark dark:text-light text-md leading-10 whitespace-pre-line" {...props} />
+    <p className="text-dark dark:text-light text-md leading-[1.7rem] whitespace-pre-line py-1" {...props} />
   ),
   ul: ({ node, ...props }) => {
     const { ordered: _, ...rest } = props
-    return <ul className="list-disc pl-4 text-md leading-7" {...rest} />
+    return <ul className="list-disc text-md leading-6 ps-4 md:ps-10" {...rest} />
   },
-  ol: ({ node, ...props }) => <ul className="list-decimal pl-4 text-md leading-7" {...props} />,
+  ol: ({ node, ...props }) => <ul className="list-decimal pl-4 text-md leading-8" {...props} />,
   li: ({ node, ...props }) => {
     const { ordered: _, ...rest } = props
     return (
       <li
-        className="[&>ul]:pl-4 [&>ul>li]:marker:text-primary/50  [&>ul>li>ul>li]:marker:text-primary items-center marker:text-primary text-dark dark:text-light"
+        className={[
+          `[&>ul]:pl-4 [&>ul>li]:marker:text-primary/50 [&>ul>li>ul>li]:marker:text-primary`,
+          `items-center marker:text-primary text-dark dark:text-light leading-8 !py-0`
+        ].join(' ')}
         {...rest}
       >
         {props.children}
       </li>
     )
   },
-  hr: ({ node, ...props }) => <div className="border-b-2 border-spild border-primary/20 mb-3" {...props} />,
+  hr: ({ node, ...props }) => <hr className="my-6" {...props} />,
   a: ({ node, ...props }) => (
-    <a target="_blank" className="text-secondary hover:underline underline-offset-1" {...props} />
+    <a target="_blank" className="text-secondary dark:text-light/60 underline underline-offset-1" {...props} />
   ),
   input: ({ node, ...props }) => {
     if (props.type === 'checkbox') {
@@ -98,7 +102,7 @@ const markdownComponents: MarkDownComponents = {
       </div>
     ) : (
       <code
-        className="bg-gray-200 dark:bg-secondary/20 text-primary dark:text-light/60 rounded-md overflow-hidden text-[12px] font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10"
+        className="bg-gray-200 dark:bg-secondary rounded-md overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10"
         {...props}
       >
         {children}
@@ -129,6 +133,13 @@ const markdownComponents: MarkDownComponents = {
     <tbody className="w-full [&>*]:border [&>*]:border-solid [&>*]:border-light [&>*]:border-collapse" {...props}>
       {children}
     </tbody>
+  ),
+  img: ({ node, className, children, ...props }) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img {...props} alt="" className="w-full overflow-hidden rounded-md ring-1 ring-light  shadow-md my-4" />
+    // <div className="relative">
+    //   {/* {typeof src !== 'undefined' ? <Image width={width } height={height} alt="" {...props} src={src} /> : <></>} */}
+    // </div>
   )
 }
 
