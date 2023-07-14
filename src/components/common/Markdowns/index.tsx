@@ -1,18 +1,16 @@
 'use client'
 
 import '@uiw/react-markdown-preview/markdown.css'
-import { CSSProperties } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { SpecialComponents } from 'react-markdown/lib/ast-to-react'
 import { NormalComponents } from 'react-markdown/lib/complex-types'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 import '@uiw/react-markdown-preview/markdown.css'
 import '@uiw/react-md-editor/markdown-editor.css'
-import Image from 'next/image'
 
 interface Params {
   markdown?: string
@@ -24,13 +22,11 @@ const markdownComponents: MarkDownComponents = {
   h1: ({ node, ...props }) => (
     <h1 className="text-primary dark:text-light font-bold text-2xl py-6" {...props}>
       {props.children}
-      {/* {props.children ? <hr className="border-b-2 border-spild border-primary/20" /> : ''} */}
     </h1>
   ),
   h2: ({ node, ...props }) => (
     <h2 className="text-primary dark:text-light font-bold text-xl py-6" {...props}>
       {props.children}
-      {/* {props.children ? <hr className="border-b-2 border-spild border-primary/20" /> : ''} */}
     </h2>
   ),
   h3: ({ node, ...props }) => <h3 className="text-primary dark:text-light font-bold text-lg py-6" {...props} />,
@@ -38,7 +34,7 @@ const markdownComponents: MarkDownComponents = {
   h5: ({ node, ...props }) => <h5 className="text-primary dark:text-light font-bold text-md" {...props} />,
   h6: ({ node, ...props }) => <h5 className="text-primary/60 font-bold text-md" {...props} />,
   p: ({ node, ...props }) => (
-    <p className="text-dark dark:text-light text-md leading-[1.7rem] whitespace-pre-line py-1" {...props} />
+    <p className="text-dark dark:text-light text-md leading-[1.7rem] whitespace-pre-line py-2" {...props} />
   ),
   ul: ({ node, ...props }) => {
     const { ordered: _, ...rest } = props
@@ -137,22 +133,15 @@ const markdownComponents: MarkDownComponents = {
   img: ({ node, className, children, ...props }) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img {...props} alt="" className="w-full overflow-hidden rounded-md ring-1 ring-light  shadow-md my-4" />
-    // <div className="relative">
-    //   {/* {typeof src !== 'undefined' ? <Image width={width } height={height} alt="" {...props} src={src} /> : <></>} */}
-    // </div>
   )
 }
 
 export const MarkdowRenderer = ({ markdown }: Params) => {
   return (
     <div
-      style={
-        {
-          fontSize: '1rem',
-          lineHeight: '2.5rem'
-        } as CSSProperties
-      }
-      className="[&>*>*]:py-2"
+      style={{
+        fontSize: '1rem'
+      }}
     >
       <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={markdownComponents}>
         {markdown ?? ''}
