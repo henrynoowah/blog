@@ -2,7 +2,7 @@
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { FormEventHandler, useState } from 'react'
+import { FormEventHandler, useEffect, useRef, useState } from 'react'
 
 const ShowSearchButton = () => {
   const pathname = usePathname()
@@ -14,6 +14,10 @@ const ShowSearchButton = () => {
   const [inputValue, setInputValue] = useState<string>(search ?? '')
 
   const [showInput, setShowInput] = useState<boolean>(false)
+
+  const [isFocused, setIsFocused] = useState<boolean>(false)
+
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault()
@@ -32,9 +36,16 @@ const ShowSearchButton = () => {
         }`}
       >
         <input
+          ref={inputRef}
           placeholder="Search Post"
           onChange={(e) => setInputValue(e.target.value)}
-          onBlur={() => setShowInput(false)}
+          onMouseDown={() => setIsFocused(true)}
+          onBlur={() => {
+            if (!inputValue) {
+              setIsFocused(false)
+              setShowInput(false)
+            }
+          }}
           type="search"
           className={[
             `absolute w-full h-full items-center placeholder:italic placeholder:text-sm`,
@@ -48,9 +59,13 @@ const ShowSearchButton = () => {
           type="button"
           className={`absolute right-0 w-[36px] h-[36px] flex justify-center items-center ring-inset ring-light rounded-full`}
           onClick={() => {
-            console.log(showInput)
             if (!showInput) {
               setShowInput(true)
+            }
+          }}
+          onBlur={() => {
+            if (!isFocused && !inputValue) {
+              setShowInput(false)
             }
           }}
         >
