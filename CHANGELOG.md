@@ -1,3 +1,22 @@
+# [0.14.0](https://github.com/henrynoowah/blog/compare/v0.13.1...v0.14.0) (2023-07-13)
+
+
+### Bug Fixes
+
+* check out with ref to fix pull in changelog action ([f2f3c1a](https://github.com/henrynoowah/blog/commit/f2f3c1a79385c8e974e375116029597f816e91af))
+* markdown parser error ([f08c919](https://github.com/henrynoowah/blog/commit/f08c919813f15a1cc58e6ae4e213e14b7618cacf))
+* removed skip-git-pull ([66bfa79](https://github.com/henrynoowah/blog/commit/66bfa799b3902c8f80102c4f88fa57fb23167b08))
+* search & tag query conflict issue fix ([5cc45a8](https://github.com/henrynoowah/blog/commit/5cc45a80f9498de2c5ddd29733c66fe5d0ee02a6))
+* test git pull ([d3556c7](https://github.com/henrynoowah/blog/commit/d3556c7d72ef97165185e8cb4d38296ffaa7620e))
+
+
+### Features
+
+* header update with new search bar UI ([3d0a36b](https://github.com/henrynoowah/blog/commit/3d0a36b85e29f283a4f756ac71ae3159449176f5))
+* test tag update ([c8d4c18](https://github.com/henrynoowah/blog/commit/c8d4c180f3a3e318a01a2614d2e759aa68cfa85e))
+
+
+
 ## [0.13.1](https://github.com/henrynoowah/blog/compare/v0.13.0...v0.13.1) (2023-07-07)
 
 
@@ -31,15 +50,6 @@
 ### Bug Fixes
 
 * on push condition update ([d01f33f](https://github.com/henrynoowah/blog/commit/d01f33fee3e3b890aa702c218effe34037057b04))
-
-
-
-## [0.11.2](https://github.com/henrynoowah/blog/compare/v0.11.1...v0.11.2) (2023-07-07)
-
-
-### Bug Fixes
-
-* action test of minor tag push -> create ([28f5d4c](https://github.com/henrynoowah/blog/commit/28f5d4c9376ec8aaf6704c0249369f459473f721))
 
 
 
