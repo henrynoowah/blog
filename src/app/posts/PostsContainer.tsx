@@ -2,7 +2,8 @@
 'use client'
 
 import PostCard from '@/components/common/Cards/PostCard'
-import { useSearchParams } from 'next/navigation'
+import { XMarkIcon } from '@heroicons/react/24/solid'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 const LIMIT = 20
@@ -49,6 +50,8 @@ const getData = async (searchParams: any): Promise<any[]> => {
 
 const PostsContainer = () => {
   const searchParams = useSearchParams()
+
+  const router = useRouter()
 
   const tag = searchParams.get('tag')
 
@@ -112,15 +115,44 @@ const PostsContainer = () => {
   }, [intersectionObserverCallback, lastRef])
 
   return (
-    <ul className="flex flex-col gap-6">
-      {posts.map((post, i) =>
-        post ? (
-          <li key={`${post.id}-${i}`} ref={i === posts.length - 1 ? setLastRef : undefined}>
-            <PostCard {...post} />
-          </li>
-        ) : null
+    <div className="flex flex-col justify-start gap-6">
+      {tag && (
+        <div
+          className={[
+            `bg-gray-200 dark:bg-secondary rounded-full overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10`,
+            `flex gap-2 items-center whitespace-nowrap w-fit`
+          ].join(' ')}
+        >
+          {tag}
+          <XMarkIcon width={14} height={14} onClick={() => router.replace('/posts')} />
+        </div>
       )}
-    </ul>
+      {search && (
+        <div
+          className={[
+            `bg-gray-200 dark:bg-secondary rounded-full overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10`,
+            `flex gap-2 items-center whitespace-nowrap w-fit`
+          ].join(' ')}
+        >
+          {search}
+          <XMarkIcon width={14} height={14} onClick={() => router.replace('/posts')} />
+        </div>
+      )}
+
+      <ul className="flex flex-col gap-6">
+        {posts.length > 0 ? (
+          posts.map((post, i) =>
+            post ? (
+              <li key={`${post.id}-${i}`} ref={i === posts.length - 1 ? setLastRef : undefined}>
+                <PostCard {...post} />
+              </li>
+            ) : null
+          )
+        ) : (
+          <>Not Found</>
+        )}
+      </ul>
+    </div>
   )
 }
 
