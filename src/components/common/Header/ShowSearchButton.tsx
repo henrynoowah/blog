@@ -28,7 +28,7 @@ const ShowSearchButton = () => {
     }
   }
 
-  return pathname === '/posts' ? (
+  return pathname.startsWith('/posts') ? (
     <form onSubmit={handleSubmit} className="flex justify-between relative group transition duration-300 ease-in-out">
       <div
         className={`h-[36px] relative duration-300 ease-in-out ring-1 ring-inset ring-light rounded-full overflow-hidden ${
