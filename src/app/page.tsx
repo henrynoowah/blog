@@ -4,18 +4,18 @@ import dynamic from 'next/dynamic'
 import { Inter } from 'next/font/google'
 const NavItem = dynamic(() => import('@/components/main/NavItem'))
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
 
 const navList = [
   { name: 'posts', href: '/posts' },
-  { name: 'portfolios', href: '/portfolios' },
+  { name: 'works', href: '/works' },
   { name: 'about', href: '/about' },
   { name: 'github', href: 'https://www.github.com/henrynoowah' }
 ]
 
 const Home = () => {
   return (
-    <main>
+    <main className={inter.variable}>
       <div className="w-full h-[100vh] flex justify-center relative overflow-hidden">
         {/* Background Component */}
         <div className="relative flex justify-center w-full h-full bg-gradient-to-tl from-[#64EbDE80] to-[#B65EBA80]">

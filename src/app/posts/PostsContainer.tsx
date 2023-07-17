@@ -3,8 +3,10 @@
 
 import PostCard from '@/components/common/Cards/PostCard'
 import { XMarkIcon } from '@heroicons/react/24/solid'
+import dynamic from 'next/dynamic'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+const SearchNotFound = dynamic(() => import('./SearchNotFound'))
 
 const LIMIT = 20
 
@@ -67,8 +69,12 @@ const PostsContainer = () => {
 
   const [prevSearch, setPrevSearch] = useState<string | null>(null)
 
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true)
+
       let fetched: any[] = []
       fetched = await getData({ cursor, tag, search })
 
@@ -89,7 +95,9 @@ const PostsContainer = () => {
         setPrevSearch(null)
         setCursor(null)
       }
+      setIsLoading(false)
     }
+
     fetchData()
   }, [cursor, tag, search])
 
@@ -116,25 +124,14 @@ const PostsContainer = () => {
 
   return (
     <div className="flex flex-col justify-start gap-6">
-      {tag && (
+      {(tag || search) && (
         <div
           className={[
             `bg-gray-200 dark:bg-secondary rounded-full overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10`,
             `flex gap-2 items-center whitespace-nowrap w-fit`
           ].join(' ')}
         >
-          {tag}
-          <XMarkIcon width={14} height={14} onClick={() => router.replace('/posts')} />
-        </div>
-      )}
-      {search && (
-        <div
-          className={[
-            `bg-gray-200 dark:bg-secondary rounded-full overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10`,
-            `flex gap-2 items-center whitespace-nowrap w-fit`
-          ].join(' ')}
-        >
-          {search}
+          {tag || search}
           <XMarkIcon width={14} height={14} onClick={() => router.replace('/posts')} />
         </div>
       )}
@@ -148,8 +145,10 @@ const PostsContainer = () => {
               </li>
             ) : null
           )
+        ) : !isLoading ? (
+          <SearchNotFound className="min-h-[320px]" />
         ) : (
-          <>Not Found</>
+          <></>
         )}
       </ul>
     </div>
