@@ -2,6 +2,7 @@
 'use client'
 
 import PostCard from '@/components/common/Cards/PostCard'
+import PostCard_skeleton from '@/components/common/Cards/PostCard_skeleton'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import dynamic from 'next/dynamic'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -149,7 +150,7 @@ const PostsContainer = () => {
         ) : !isLoading ? (
           <SearchNotFound className="min-h-[320px]" />
         ) : (
-          <></>
+          Array.from({ length: 10 }).map((_, i) => <PostCard_skeleton key={i} />)
         )}
       </ul>
     </div>
