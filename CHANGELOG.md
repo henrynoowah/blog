@@ -1,3 +1,17 @@
+# [0.15.0](https://github.com/henrynoowah/blog/compare/v0.14.0...v0.15.0) (2023-07-17)
+
+
+### Features
+
+* search & tag history tag ([9e04d95](https://github.com/henrynoowah/blog/commit/9e04d95806ac6e96da8518a1451a86749d5d0056))
+
+
+### Performance Improvements
+
+* updated search button open state ([f2f3ad1](https://github.com/henrynoowah/blog/commit/f2f3ad12d15defd182d13509345347d767776b20))
+
+
+
 # [0.14.0](https://github.com/henrynoowah/blog/compare/v0.13.1...v0.14.0) (2023-07-13)
 
 
@@ -41,15 +55,6 @@
 ### Features
 
 * release drafter update to be made on dev ([1f35cf3](https://github.com/henrynoowah/blog/commit/1f35cf3ed1fed099bf445637049edad728b8b54c))
-
-
-
-## [0.11.3](https://github.com/henrynoowah/blog/compare/v0.11.2...v0.11.3) (2023-07-07)
-
-
-### Bug Fixes
-
-* on push condition update ([d01f33f](https://github.com/henrynoowah/blog/commit/d01f33fee3e3b890aa702c218effe34037057b04))
 
 
 
