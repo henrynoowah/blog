@@ -4,6 +4,7 @@ import Nav_mobile from './Nav_mobile'
 import ThemeToggle from '../ThemeToggle/ThemeToggle'
 import packageData from 'package.json'
 import ShowSearchButton from './ShowSearchButton'
+import { usePathname } from 'next/navigation'
 
 const HEADER_HEIGHT = 72
 

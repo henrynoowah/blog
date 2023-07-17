@@ -51,9 +51,19 @@ const Nav_mobile = () => {
         `}
       >
         <ul className="flex flex-col text-lg font-semibold">
-          <li>
+          <li className={`transition duration-500 ${isNavOpened ? 'translate-x-0' : 'translate-x-[200%] duration-0'}`}>
             <Link href={'/posts'}>
               <Button className="w-full bg-transparent !text-light !text-md py-2 text-left">Posts</Button>
+            </Link>
+          </li>
+          <li className={`transition duration-700 ${isNavOpened ? 'translate-x-0' : 'translate-x-[200%] duration-0'}`}>
+            <Link href={'/about'}>
+              <Button className="w-full bg-transparent !text-light !text-md py-2 text-left">About</Button>
+            </Link>
+          </li>
+          <li className={`transition duration-1000 ${isNavOpened ? 'translate-x-0' : 'translate-x-[200%] duration-0'}`}>
+            <Link href={'/works'}>
+              <Button className="w-full bg-transparent !text-light !text-md py-2 text-left">Works</Button>
             </Link>
           </li>
         </ul>
