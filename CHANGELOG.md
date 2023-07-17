@@ -1,3 +1,12 @@
+## [0.15.1](https://github.com/henrynoowah/blog/compare/v0.15.0...v0.15.1) (2023-07-17)
+
+
+### Bug Fixes
+
+* search bar condition checks for posts pages ([ee6f474](https://github.com/henrynoowah/blog/commit/ee6f4747a5bce7562bf8bc8cac0c67b3a669c06d))
+
+
+
 # [0.15.0](https://github.com/henrynoowah/blog/compare/v0.14.0...v0.15.0) (2023-07-17)
 
 
@@ -46,15 +55,6 @@
 ### Features
 
 * release drafter update to be made on dev after tag is created ([ba52351](https://github.com/henrynoowah/blog/commit/ba52351ff1ab11b6c7708246a768b62d393af0aa))
-
-
-
-# [0.12.0](https://github.com/henrynoowah/blog/compare/v0.11.3...v0.12.0) (2023-07-07)
-
-
-### Features
-
-* release drafter update to be made on dev ([1f35cf3](https://github.com/henrynoowah/blog/commit/1f35cf3ed1fed099bf445637049edad728b8b54c))
 
 
 
