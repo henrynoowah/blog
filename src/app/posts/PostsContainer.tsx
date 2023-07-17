@@ -128,7 +128,8 @@ const PostsContainer = () => {
         <div
           className={[
             `bg-gray-200 dark:bg-secondary rounded-full overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10`,
-            `flex gap-2 items-center whitespace-nowrap w-fit`
+            `flex gap-2 items-center whitespace-nowrap w-fit`,
+            `text-primary dark:text-light`
           ].join(' ')}
         >
           {tag || search}
