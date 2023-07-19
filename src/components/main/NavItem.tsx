@@ -17,7 +17,7 @@ const NavItem = ({ name, href }: Params) => {
     switch (name) {
       case 'posts':
         return <DocumentIcon color="white" />
-      case 'portfolios':
+      case 'works':
         return <CubeIcon color="white" />
       case 'about':
         return <FaceSmileIcon color="white" />
@@ -34,7 +34,7 @@ const NavItem = ({ name, href }: Params) => {
   return (
     <div className="flex flex-col justify-end items-center relative">
       <span
-        className={`absolute top-0 -translate-y-[24px] z-10 text-[12px] font-bold text-[#8A64EB] capitalize px-[8px] py-[4px] bg-white rounded-full transition duration-200 shadow-sm ${
+        className={`absolute top-0 -translate-y-[24px] z-10 text-[12px] font-bold text-[#2D5A60] capitalize px-[8px] py-[4px] bg-white rounded-full transition duration-200 shadow-sm ${
           hover === name ? 'opacity-0 md:opacity-100' : 'opacity-0'
         }`}
       >
@@ -44,7 +44,7 @@ const NavItem = ({ name, href }: Params) => {
         <div
           onMouseOver={() => setHover(name)}
           onMouseLeave={() => setHover(undefined)}
-          className="w-[50px] h-[50px] aspect-square overflow-hidden rounded-full flex justify-center items-center transition duration-200 hover:shadow-lg bg-gradient-to-br from-[#64EbDE] to-[#8A64EB]"
+          className="w-[50px] h-[50px] aspect-square overflow-hidden rounded-full flex justify-center items-center transition duration-200 hover:shadow-lg bg-gradient-to-br from-[#64EbDE] to-[#2D5A60]"
         >
           <div className="w-full h-full hover:scale-125 opacity-80 transition duration-200 relative flex justify-center items-center">
             <span className="w-[24px] h-[24px] aspect-square">{iconSelection(name)}</span>
