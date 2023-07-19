@@ -1,7 +1,5 @@
 import { MarkdowRenderer } from '@/components/common/Markdowns'
 import { Metadata } from 'next'
-import { Suspense } from 'react'
-import Loading from './loading'
 
 export const dynamic = 'force-static'
 
