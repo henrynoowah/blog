@@ -21,7 +21,7 @@ const PostCard = (props: Props) => {
   }
 
   return (
-    <Link href={`/posts/${props.url_slug}`} prefetch={false}>
+    <Link href={`/posts/${props.url_slug}`} prefetch={true}>
       <div className="w-full flex flex-col ring-1 ring-primary/20 hover:ring-primary rounded-md bg-card text-dark dark:text-light">
         <div className="flex flex-col p-4 border-b border-solid border-primary py-2">
           <p className="text:md sm:text-lg font-semibold text-primary dark:text-light">{props?.title ?? ''}</p>
