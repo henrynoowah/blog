@@ -8,7 +8,7 @@ on:
       - main
 jobs:
   create-tag:
-    uses: '_create-tag.yml'
+    uses: _create-tag.yml
 
   deploy-preview:
     runs-on: ubuntu-latest
