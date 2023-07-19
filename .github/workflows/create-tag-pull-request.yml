@@ -2,7 +2,7 @@ name: Create Tag
 
 on:
   pull_request:
-    branches:
+    branches-ignore:
       - dev
     types:
       - synchronize

@@ -1,10 +1,7 @@
 name: Create Tag on Push Dev
 
 on:
-  push:
-    branches-ignore:
-      - dev
-      - main
+  workflow_call:
 
 jobs:
   create-tag:
