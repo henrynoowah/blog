@@ -1,16 +1,13 @@
 import { CubeIcon, DocumentIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-
-type NavItem = { name: string; href: string }
 
 interface Params {
   name: string
   href: string
 }
 
-const NavItem = ({ name, href }: Params) => {
+export const NavItem = ({ name, href }: Params) => {
   const [hover, setHover] = useState<string>()
 
   const iconSelection = (name: string) => {
@@ -54,5 +51,3 @@ const NavItem = ({ name, href }: Params) => {
     </div>
   )
 }
-
-export default NavItem
