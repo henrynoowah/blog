@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 import Header from '@/components/common/Header/Header'
 import { Metadata } from 'next'
-import { ReactNode, Suspense } from 'react'
+import { ReactNode } from 'react'
 
 interface Params {
   children: ReactNode
