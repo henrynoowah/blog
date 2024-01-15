@@ -1,8 +1,7 @@
 'use client'
 
-import dynamic from 'next/dynamic'
+import { NavItem } from '@/components/main/NavItem'
 import { Inter } from 'next/font/google'
-const NavItem = dynamic(() => import('@/components/main/NavItem'))
 
 const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
 
