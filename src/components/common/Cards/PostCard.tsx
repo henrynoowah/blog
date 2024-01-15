@@ -38,21 +38,27 @@ const PostCard = (props: Props) => {
         </div>
 
         <ul className="w-full flex justify-start gap-2 text-sm p-4 overflow-x-auto scrollbar-hide">
-          {props.tags?.map((tag, idx) => (
-            <li key={idx}>
-              <button
-                type="button"
-                className="bg-gray-200 dark:bg-secondary rounded-full overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10"
-                onClick={(e) => {
-                  e.preventDefault()
-                  e.stopPropagation()
-                  handleTagSelect(tag)
-                }}
-              >
-                <p className="text-primary dark:!text-light italic whitespace-nowrap">{`#${tag}`}</p>
-              </button>
-            </li>
-          ))}
+          {props.tags && props.tags.length > 0 ? (
+            props.tags?.map((tag, idx) => (
+              <li key={idx}>
+                <button
+                  type="button"
+                  className="bg-gray-200 dark:bg-secondary rounded-full overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    handleTagSelect(tag)
+                  }}
+                >
+                  <p className="text-primary dark:!text-light italic whitespace-nowrap">{`#${tag}`}</p>
+                </button>
+              </li>
+            ))
+          ) : (
+            <span className="bg-gray-200 dark:bg-secondary rounded-full overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10">
+              <p className="text-primary dark:!text-light whitespace-nowrap">{`:(`}</p>
+            </span>
+          )}
         </ul>
       </div>
     </Link>

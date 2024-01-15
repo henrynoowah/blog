@@ -85,11 +85,11 @@ const markdownComponents: MarkDownComponents = {
   code: ({ node, inline, className, children, ...props }) => {
     const match = /language-(\w+)/.exec(className || '')
     const codeBlock = String(children).replace(/\n$/, ' ')
-    return !inline && match ? (
+    return !inline ? (
       <div className="rounded-md overflow-hidden">
         <SyntaxHighlighter
           style={vscDarkPlus}
-          language={match[1]}
+          language={match ? match[1] : undefined}
           PreTag="div"
           className="!bg-dark/90 overflow-hidden rounded-md ring-1 ring-inset dark:ring-light/10"
         >
@@ -98,7 +98,7 @@ const markdownComponents: MarkDownComponents = {
       </div>
     ) : (
       <code
-        className="bg-gray-200 dark:bg-secondary rounded-md overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10"
+        className="bg-gray-200 dark:bg-secondary rounded-md overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10 whitespace-normal"
         {...props}
       >
         {children}

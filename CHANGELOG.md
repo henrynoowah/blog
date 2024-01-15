@@ -1,3 +1,12 @@
+## [0.15.3](https://github.com/henrynoowah/blog/compare/v0.15.2...v0.15.3) (2024-01-15)
+
+
+### Bug Fixes
+
+* faulty velog query when clicking tag & minor style updates ([1c94d67](https://github.com/henrynoowah/blog/commit/1c94d67029dea4f35072c0b48f8ba41a7747a6d1))
+
+
+
 ## [0.15.2](https://github.com/henrynoowah/blog/compare/v0.15.1...v0.15.2) (2023-07-19)
 
 
@@ -46,15 +55,6 @@
 
 * header update with new search bar UI ([3d0a36b](https://github.com/henrynoowah/blog/commit/3d0a36b85e29f283a4f756ac71ae3159449176f5))
 * test tag update ([c8d4c18](https://github.com/henrynoowah/blog/commit/c8d4c180f3a3e318a01a2614d2e759aa68cfa85e))
-
-
-
-## [0.13.1](https://github.com/henrynoowah/blog/compare/v0.13.0...v0.13.1) (2023-07-07)
-
-
-### Bug Fixes
-
-* removed duplicated checkout action ([47a4a07](https://github.com/henrynoowah/blog/commit/47a4a07665fc013345694c51e933f5ee4ac983cd))
 
 
 
