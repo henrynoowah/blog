@@ -1,8 +1,4 @@
-type Payload = {
-  [key: string]: string | number | null
-}
-
-export const getPosts = async (searchParams: Payload): Promise<any[]> => {
+export const getPosts = async (searchParams: GetPostsPayload): Promise<any[]> => {
   const { cursor, tag, search, limit } = searchParams
   const isSearch = !!search || !!tag
   const username = process.env.NEXT_PUBLIC_VELOG_ID

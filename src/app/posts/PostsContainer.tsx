@@ -8,6 +8,7 @@ import { XMarkIcon } from '@heroicons/react/24/solid'
 import dynamic from 'next/dynamic'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import useSWR from 'swr'
 const SearchNotFound = dynamic(() => import('./SearchNotFound'))
 
 const LIMIT = 20
@@ -21,49 +22,20 @@ const PostsContainer = () => {
 
   const search = searchParams.get('search')
 
-  const [posts, setPosts] = useState<any[]>([])
-
   const [cursor, setCursor] = useState<string | null>(null)
 
   const [lastRef, setLastRef] = useState<Element | null>(null)
 
-  const [prevTag, setPrevTag] = useState<string | null>(null)
+  const [posts, setPosts] = useState<any[]>()
 
-  const [prevSearch, setPrevSearch] = useState<string | null>(null)
-
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true)
-
-      let fetched: any[] = []
-      fetched = await getPosts({ cursor, tag, search, limit: LIMIT })
-
-      if (search) {
-        if (search !== prevSearch) {
-          setPrevTag(null)
-          setPosts(fetched)
-        }
-        setCursor(null)
-      } else {
-        if (tag === prevTag) {
-          setPosts((prev) => [...(prev ?? []), ...fetched])
-        } else {
-          setPrevTag(tag)
-          setPosts(fetched)
-          setCursor(null)
-        }
-        setPrevSearch(null)
-        setCursor(null)
-      }
-      setIsLoading(false)
+  const { isLoading } = useSWR({ cursor, tag, search, limit: LIMIT }, getPosts, {
+    keepPreviousData: true,
+    onSuccess: (data) => {
+      !!search || !!tag ? setPosts(data) : setPosts((prev) => (prev ? [...prev, ...data] : data))
     }
+  })
 
-    fetchData()
-  }, [cursor, tag, search])
-
-  const intersectionObserverCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+  const intersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
     if (entries[0].isIntersecting) {
       if (posts && posts.slice(-LIMIT).length === LIMIT) {
         setCursor(posts[posts.length - 1].id)
@@ -101,7 +73,7 @@ const PostsContainer = () => {
       )}
 
       <ul className="flex flex-col gap-6">
-        {posts.length > 0 ? (
+        {posts && posts.length > 0 ? (
           posts.map((post, i) =>
             post ? (
               <li key={`${post.id}-${i}`} ref={i === posts.length - 1 ? setLastRef : undefined}>
