@@ -3,6 +3,7 @@
 
 import PostCard from '@/components/common/Cards/PostCard'
 import PostCard_skeleton from '@/components/common/Cards/PostCard_skeleton'
+import { getPosts } from '@/services/posts'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import dynamic from 'next/dynamic'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -10,90 +11,6 @@ import { useEffect, useState } from 'react'
 const SearchNotFound = dynamic(() => import('./SearchNotFound'))
 
 const LIMIT = 20
-
-const getData = async (searchParams: any): Promise<any[]> => {
-  const { cursor, tag, search }: { [key: string]: string | undefined } = searchParams
-  const isSearch = !!search || !!tag
-  const username = process.env.NEXT_PUBLIC_VELOG_ID
-  const payload = !isSearch
-    ? {
-        operationName: 'Posts',
-        variables: {
-          username,
-          limit: LIMIT,
-          cursor,
-          tag: tag ?? null
-        },
-        query: `query Posts($cursor: ID, $username: String, $limit: Int, $tag: String) {
-          posts(cursor: $cursor, username: $username, limit: $limit, tag: $tag) {
-            id
-            title
-            short_description
-            thumbnail
-            user {
-              id
-              username
-              profile {
-                id
-                thumbnail
-              }
-            }
-            url_slug
-            released_at
-            updated_at
-            comments_count
-            tags
-            is_private
-            likes
-          }
-        }`
-      }
-    : {
-        operationName: 'SearchPosts',
-        variables: {
-          keyword: search ?? tag,
-          username
-        },
-        query: `query SearchPosts($keyword: String!, $offset: Int, $username: String) {
-            searchPosts(keyword: $keyword, offset: $offset, username: $username) {
-              count
-              posts {
-                id
-                title
-                short_description
-                thumbnail
-                user {
-                  id
-                  username
-                  profile {
-                    id
-                    thumbnail
-                  }
-                }
-                url_slug
-                released_at
-                tags
-                is_private
-                comments_count
-              }
-            }
-          }`
-      }
-
-  try {
-    const response = await fetch('https://v2cdn.velog.io/graphql', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then((res) => res.json())
-
-    return !isSearch ? response.data.posts : response.data.searchPosts.posts
-  } catch (e) {
-    return []
-  }
-}
 
 const PostsContainer = () => {
   const searchParams = useSearchParams()
@@ -121,7 +38,7 @@ const PostsContainer = () => {
       setIsLoading(true)
 
       let fetched: any[] = []
-      fetched = await getData({ cursor, tag, search })
+      fetched = await getPosts({ cursor, tag, search, limit: LIMIT })
 
       if (search) {
         if (search !== prevSearch) {
