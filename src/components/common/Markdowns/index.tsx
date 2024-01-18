@@ -40,7 +40,7 @@ const markdownComponents: MarkDownComponents = {
     const { ordered: _, ...rest } = props
     return <ul className="list-disc text-md leading-6 ps-4 md:ps-10" {...rest} />
   },
-  ol: ({ node, ...props }) => <ul className="list-decimal pl-4 text-md leading-8" {...props} />,
+  ol: ({ node, ...props }) => <ol className="list-decimal pl-4 text-md leading-8" {...props} />,
   li: ({ node, ...props }) => {
     const { ordered: _, ...rest } = props
     return (
@@ -98,7 +98,7 @@ const markdownComponents: MarkDownComponents = {
       </div>
     ) : (
       <code
-        className="bg-gray-200 dark:bg-secondary rounded-md overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10 whitespace-normal"
+        className="bg-secondary/10 dark:bg-secondary/40 rounded-sm overflow-hidden text-sm font-medium px-[4px] py-[2px] mx-1 ring-1 ring-primary/20 dark:ring-light/10 whitespace-normal"
         {...props}
       >
         {children}
