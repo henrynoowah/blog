@@ -1,3 +1,12 @@
+# [0.16.0](https://github.com/henrynoowah/blog/compare/v0.15.4...v0.16.0) (2024-01-22)
+
+
+### Features
+
+* updated useSWR -> useSWRInfinite for smoother infinite scroll pagination ([3594072](https://github.com/henrynoowah/blog/commit/359407225f5e5dbb6b6274f9dd76fec50416e3e8))
+
+
+
 ## [0.15.4](https://github.com/henrynoowah/blog/compare/v0.15.3...v0.15.4) (2024-01-18)
 
 
@@ -31,20 +40,6 @@
 ### Bug Fixes
 
 * search bar condition checks for posts pages ([ee6f474](https://github.com/henrynoowah/blog/commit/ee6f4747a5bce7562bf8bc8cac0c67b3a669c06d))
-
-
-
-# [0.15.0](https://github.com/henrynoowah/blog/compare/v0.14.0...v0.15.0) (2023-07-17)
-
-
-### Features
-
-* search & tag history tag ([9e04d95](https://github.com/henrynoowah/blog/commit/9e04d95806ac6e96da8518a1451a86749d5d0056))
-
-
-### Performance Improvements
-
-* updated search button open state ([f2f3ad1](https://github.com/henrynoowah/blog/commit/f2f3ad12d15defd182d13509345347d767776b20))
 
 
 
