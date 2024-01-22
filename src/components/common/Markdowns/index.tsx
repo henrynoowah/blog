@@ -1,5 +1,3 @@
-'use client'
-
 import '@uiw/react-markdown-preview/markdown.css'
 import ReactMarkdown from 'react-markdown'
 import { SpecialComponents } from 'react-markdown/lib/ast-to-react'

@@ -8,7 +8,8 @@ import { XMarkIcon } from '@heroicons/react/24/solid'
 import dynamic from 'next/dynamic'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import useSWR from 'swr'
+import useSWRInfinite from 'swr/infinite'
+
 const SearchNotFound = dynamic(() => import('./SearchNotFound'))
 
 const LIMIT = 20
@@ -22,23 +23,30 @@ const PostsContainer = () => {
 
   const search = searchParams.get('search')
 
-  const [cursor, setCursor] = useState<string | null>(null)
-
   const [lastRef, setLastRef] = useState<Element | null>(null)
 
-  const [posts, setPosts] = useState<any[]>()
+  const getKey = (pageIndex: number, previousPageData: any[]) => {
+    if (previousPageData && !previousPageData.length) return null //
+    if (pageIndex === 0) return [pageIndex, { tag, search, limit: LIMIT }]
+    return { cursor: previousPageData[previousPageData.length - 1].id, limit: LIMIT }
+  }
 
-  const { isLoading } = useSWR({ cursor, tag, search, limit: LIMIT }, getPosts, {
-    keepPreviousData: true,
-    onSuccess: (data) => {
-      !!search || !!tag ? setPosts(data) : setPosts((prev) => (prev ? [...prev, ...data] : data))
-    }
+  const {
+    data: page,
+    isLoading,
+    isValidating,
+    setSize
+  } = useSWRInfinite(getKey, (key) => getPosts({ ...key, tag, search }), {
+    keepPreviousData: true
   })
 
   const intersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
     if (entries[0].isIntersecting) {
-      if (posts && posts.slice(-LIMIT).length === LIMIT) {
-        setCursor(posts[posts.length - 1].id)
+      if (page && page.length > 0) {
+        const lastPage = page[page.length - 1]
+        if (!isValidating && !isLoading && lastPage.length === LIMIT) {
+          setSize((page) => page + 1)
+        }
       }
     }
   }
@@ -73,18 +81,18 @@ const PostsContainer = () => {
       )}
 
       <ul className="flex flex-col gap-6">
-        {posts && posts.length > 0 ? (
-          posts.map((post, i) =>
-            post ? (
+        {page && page?.length > 0 ? (
+          page?.map((posts) =>
+            posts.map((post, i) => (
               <li key={`${post.id}-${i}`} ref={i === posts.length - 1 ? setLastRef : undefined}>
                 <PostCard {...post} />
               </li>
-            ) : null
+            ))
           )
         ) : !isLoading ? (
           <SearchNotFound className="min-h-[320px]" />
         ) : (
-          Array.from({ length: 10 }).map((_, i) => <PostCard_skeleton key={i} />)
+          Array.from({ length: 10 }).map((_, i) => <PostCard_skeleton key={`card-skeleton-${i}`} />)
         )}
       </ul>
     </div>
