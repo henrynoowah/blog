@@ -2,9 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-input[type='search']::-webkit-search-decoration,
-input[type='search']::-webkit-search-cancel-button,
-input[type='search']::-webkit-search-results-button,
-input[type='search']::-webkit-search-results-decoration {
-  -webkit-appearance: none;
+
+@layer base {
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+  
+  /* width height */
+  ::-webkit-scrollbar {
+    opacity: 0;
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f100;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: #88888880;
+    border-radius: 4px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-transparent
+  }
+  
 }

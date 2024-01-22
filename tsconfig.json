@@ -19,6 +19,7 @@
         "name": "next"
       }
     ],
+    "typeRoots": ["./types"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
