@@ -1,3 +1,12 @@
+# [0.17.0](https://github.com/henrynoowah/blog/compare/v0.16.0...v0.17.0) (2024-01-22)
+
+
+### Features
+
+* custom favicon added ([ee11662](https://github.com/henrynoowah/blog/commit/ee116629c4d7f48530396e61bfa1443f57d5176d))
+
+
+
 # [0.16.0](https://github.com/henrynoowah/blog/compare/v0.15.4...v0.16.0) (2024-01-22)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * Loading UI suspense error ([3212f67](https://github.com/henrynoowah/blog/commit/3212f674797652b6d19140a1917dc3e472e864e3))
-
-
-
-## [0.15.1](https://github.com/henrynoowah/blog/compare/v0.15.0...v0.15.1) (2023-07-17)
-
-
-### Bug Fixes
-
-* search bar condition checks for posts pages ([ee6f474](https://github.com/henrynoowah/blog/commit/ee6f4747a5bce7562bf8bc8cac0c67b3a669c06d))
 
 
 
