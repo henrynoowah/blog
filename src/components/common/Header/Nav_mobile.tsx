@@ -4,7 +4,11 @@ import Link from 'next/link'
 import { MouseEventHandler, useRef, useState } from 'react'
 import Button from '../Button'
 
-const Nav_mobile = () => {
+interface Params {
+  navOption: Array<{ label: string; href: string }>
+}
+
+const Nav_mobile = ({ navOption }: Params) => {
   const ref = useRef<HTMLButtonElement>(null)
 
   const [isNavOpened, setIsNavOpened] = useState<boolean>(false)
@@ -51,21 +55,19 @@ const Nav_mobile = () => {
         `}
       >
         <ul className="flex flex-col text-lg font-semibold">
-          <li className={`transition duration-500 ${isNavOpened ? 'translate-x-0' : 'translate-x-[200%] duration-0'}`}>
-            <Link href={'/posts'}>
-              <Button className="w-full bg-transparent !text-light !text-md py-2 text-left">Posts</Button>
-            </Link>
-          </li>
-          <li className={`transition duration-700 ${isNavOpened ? 'translate-x-0' : 'translate-x-[200%] duration-0'}`}>
-            <Link href={'/about'}>
-              <Button className="w-full bg-transparent !text-light !text-md py-2 text-left">About</Button>
-            </Link>
-          </li>
-          <li className={`transition duration-1000 ${isNavOpened ? 'translate-x-0' : 'translate-x-[200%] duration-0'}`}>
-            <Link href={'/works'}>
-              <Button className="w-full bg-transparent !text-light !text-md py-2 text-left">Works</Button>
-            </Link>
-          </li>
+          {navOption.map((nav, index) => (
+            <li
+              key={`mobile-nav-${nav.label}`}
+              style={{
+                transitionDuration: `${index * 500}ms`
+              }}
+              className={`transition ${isNavOpened ? 'translate-x-0' : 'translate-x-[200%] duration-0'}`}
+            >
+              <Link href={nav.href}>
+                <Button className="w-full bg-transparent !text-light !text-md py-2 text-left">{nav.label}</Button>
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </>

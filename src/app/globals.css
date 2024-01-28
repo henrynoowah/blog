@@ -17,23 +17,22 @@
     width: 10px;
     height: 10px;
   }
-  
+
   /* Track */
   ::-webkit-scrollbar-track {
     background: #f1f1f100;
   }
-  
+
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background-color: #88888880;
-    border-radius: 4px;
+    border-radius: 24px;
     background-clip: padding-box;
     border: 2px solid transparent;
   }
-  
+
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-transparent
+    background: #88888890;
   }
-  
 }

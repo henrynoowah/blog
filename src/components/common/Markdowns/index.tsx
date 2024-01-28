@@ -36,15 +36,15 @@ const markdownComponents: MarkDownComponents = {
   ),
   ul: ({ node, ...props }) => {
     const { ordered: _, ...rest } = props
-    return <ul className="list-disc text-md leading-6 ps-4 md:ps-10" {...rest} />
+    return <ul className="list-disc text-md leading-6 ps-4 md:ps-8" {...rest} />
   },
-  ol: ({ node, ...props }) => <ol className="list-decimal pl-4 text-md leading-8" {...props} />,
+  ol: ({ node, ...props }) => <ol className="list-decimal ps-4 text-md leading-8" {...props} />,
   li: ({ node, ...props }) => {
     const { ordered: _, ...rest } = props
     return (
       <li
         className={[
-          `[&>ul]:pl-4 [&>ul>li]:marker:text-primary/50 [&>ul>li>ul>li]:marker:text-primary`,
+          `[&>ul]:ps-4 [&>ul>li]:marker:text-primary/50 [&>ul>li>ul>li]:marker:text-primary`,
           `items-center marker:text-primary text-dark dark:text-light leading-8 !py-0`
         ].join(' ')}
         {...rest}
@@ -74,7 +74,7 @@ const markdownComponents: MarkDownComponents = {
   },
   blockquote: ({ node, ...props }) => (
     <blockquote
-      className="bg-primary/10 text-primary pl-4 py-1 border-l-[0.2rem] border-primary border-solid [&>p]:leading-8"
+      className="bg-primary/10 text-primary ps-4 py-1 border-l-[0.2rem] border-primary border-solid [&>p]:leading-8"
       {...props}
     >
       {props.children}
