@@ -1,3 +1,12 @@
+## [0.17.1](https://github.com/henrynoowah/blog/compare/v0.17.0...v0.17.1) (2024-01-28)
+
+
+### Bug Fixes
+
+* fauly mobile nav UI ([9c068ec](https://github.com/henrynoowah/blog/commit/9c068ec56baf65bb6157964837329ca0785579d1))
+
+
+
 # [0.17.0](https://github.com/henrynoowah/blog/compare/v0.16.0...v0.17.0) (2024-01-22)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * faulty velog query when clicking tag & minor style updates ([1c94d67](https://github.com/henrynoowah/blog/commit/1c94d67029dea4f35072c0b48f8ba41a7747a6d1))
-
-
-
-## [0.15.2](https://github.com/henrynoowah/blog/compare/v0.15.1...v0.15.2) (2023-07-19)
-
-
-### Bug Fixes
-
-* Loading UI suspense error ([3212f67](https://github.com/henrynoowah/blog/commit/3212f674797652b6d19140a1917dc3e472e864e3))
 
 
 
