@@ -15,7 +15,7 @@ interface Params {
 
 const PostsLayouts = ({ children }: Params) => {
   return (
-    <div className="w-full min-h-[100vh] flex flex-col bg-background transition-colors duration-200 ease-linear">
+    <div className="w-full min-h-[100vh] flex flex-col bg-background transition-colors duration-200 ease-linear overflow-x-hidden">
       <Header />
       <main className="relative">
         <div className="w-full h-fit flex justify-center py-2">{children}</div>

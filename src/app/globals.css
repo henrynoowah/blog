@@ -14,25 +14,26 @@
   /* width height */
   ::-webkit-scrollbar {
     opacity: 0;
-    width: 10px;
+    width: 8px;
     height: 10px;
   }
-
+  
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #f1f1f100;
+    @apply bg-light/0
   }
-
+  
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background-color: #88888880;
-    border-radius: 24px;
+    @apply bg-primary;
+    border-radius: 4px;
     background-clip: padding-box;
     border: 2px solid transparent;
   }
-
+  
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #88888890;
+    @apply bg-primary;
   }
+
 }

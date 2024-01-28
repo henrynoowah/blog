@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import Button from '../Button'
-import Nav_mobile from './Nav_mobile'
-import ThemeToggle from '../ThemeToggle/ThemeToggle'
 import packageData from 'package.json'
+import Button from '../Button'
+import ThemeToggle from '../ThemeToggle/ThemeToggle'
+import Nav_mobile from './Nav_mobile'
 import ShowSearchButton from './ShowSearchButton'
 
 const HEADER_HEIGHT = 72
@@ -18,7 +18,7 @@ const Header = () => {
     <>
       <div
         style={{ minHeight: HEADER_HEIGHT }}
-        className="w-full sticky top-0 border-b-[1px] border-solid border-primary bg-primary flex justify-center items-center px-4 sm:px-10 z-20"
+        className="w-full fixed top-0 border-b-[1px] border-solid border-primary bg-primary flex justify-center items-center px-4 sm:px-10 z-20"
       >
         <div className="w-full flex justify-between max-w-[1920px]">
           <h1 className="relative">
