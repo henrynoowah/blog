@@ -43,7 +43,7 @@ const PostDetailPage = async ({ params }: any) => {
     <div className="w-full max-w-2xl px-4 xl:px-0 py-4">
       <div className="border-b py-2 mb-2 border-solid border-primary/60 flex flex-col gap-y-2">
         <h1 className="text-2xl font-semibold text-primary dark:text-light">{post.title}</h1>
-        <span className="w-full flex justify-start text-base text-secondary dark:text-gray-400">
+        <span className="w-full flex justify-start text-base text-primary dark:text-gray-400">
           {new Date(post.released_at).toLocaleDateString('ko', {
             month: '2-digit',
             day: 'numeric',

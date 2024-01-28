@@ -18,7 +18,7 @@ const Header = () => {
     <>
       <div
         style={{ minHeight: HEADER_HEIGHT }}
-        className="w-full fixed top-0 border-b-2 border-solid border-primary bg-primary flex justify-center items-center px-4 sm:px-10 z-20"
+        className="w-full sticky top-0 border-b-[1px] border-solid border-primary bg-primary flex justify-center items-center px-4 sm:px-10 z-20"
       >
         <div className="w-full flex justify-between max-w-[1920px]">
           <h1 className="relative">
@@ -51,7 +51,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div style={{ minHeight: HEADER_HEIGHT }} className="w-full" />
+      {/* <div style={{ minHeight: HEADER_HEIGHT }} className="w-full" /> */}
     </>
   )
 }

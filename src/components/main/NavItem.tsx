@@ -13,11 +13,11 @@ export const NavItem = ({ name, href }: Params) => {
   const iconSelection = (name: string) => {
     switch (name) {
       case 'posts':
-        return <DocumentIcon color="white" />
+        return <DocumentIcon className="text-white" />
       case 'works':
-        return <CubeIcon color="white" />
+        return <CubeIcon className="text-white" />
       case 'about':
-        return <FaceSmileIcon color="white" />
+        return <FaceSmileIcon className="text-white" />
       case 'github':
         return (
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
@@ -25,14 +25,14 @@ export const NavItem = ({ name, href }: Params) => {
           </svg>
         )
       default:
-        return <DocumentIcon color="white" />
+        return <DocumentIcon className="text-light" />
     }
   }
   return (
     <div className="flex flex-col justify-end items-center relative">
       <span
-        className={`absolute top-0 -translate-y-[24px] z-10 text-[12px] font-bold text-[#2D5A60] capitalize px-[8px] py-[4px] bg-white rounded-full transition duration-200 shadow-sm ${
-          hover === name ? 'opacity-0 md:opacity-100' : 'opacity-0'
+        className={`absolute top-0 -translate-y-[24px] z-10 text-[12px] font-bold text-primary capitalize px-[8px] py-[4px] bg-white rounded-full transition duration-200 shadow-sm ${
+          hover === name ? 'opacity-0 sm:opacity-100' : 'opacity-0'
         }`}
       >
         {name}
@@ -41,9 +41,21 @@ export const NavItem = ({ name, href }: Params) => {
         <div
           onMouseOver={() => setHover(name)}
           onMouseLeave={() => setHover(undefined)}
-          className="w-[50px] h-[50px] aspect-square overflow-hidden rounded-full flex justify-center items-center transition duration-200 hover:shadow-lg bg-gradient-to-br from-[#64EbDE] to-[#2D5A60]"
+          className={[
+            `w-[50px] h-[50px] aspect-square overflow-hidden rounded-full flex justify-center items-center transition duration-200`,
+            // `bg-gradient-to-br from-[#64EbDE] to-[#2D5A60]`,
+            `hover:shadow-lg relative group`
+          ].join(' ')}
         >
-          <div className="w-full h-full hover:scale-125 opacity-80 transition duration-200 relative flex justify-center items-center">
+          <span
+            className={[
+              `absolute w-full h-full transition duration-300`,
+              `bg-gradient-to-br from-secondary to-primary`,
+              `group-hover:rotate-180 group-hover:from-primary group-hover:to-secondary`,
+              `opacity-100 group-hover:opacity-100`
+            ].join(' ')}
+          />
+          <div className="w-full h-full opacity-80 transition duration-200 relative flex justify-center items-center">
             <span className="w-[24px] h-[24px] aspect-square">{iconSelection(name)}</span>
           </div>
         </div>

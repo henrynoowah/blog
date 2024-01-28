@@ -55,7 +55,7 @@ const markdownComponents: MarkDownComponents = {
   },
   hr: ({ node, ...props }) => <hr className="my-6" {...props} />,
   a: ({ node, ...props }) => (
-    <a target="_blank" className="text-secondary dark:text-light/60 underline underline-offset-1" {...props} />
+    <a target="_blank" className="text-primary dark:text-secondary underline underline-offset-1" {...props} />
   ),
   input: ({ node, ...props }) => {
     if (props.type === 'checkbox') {
@@ -96,7 +96,7 @@ const markdownComponents: MarkDownComponents = {
       </div>
     ) : (
       <code
-        className="bg-secondary/10 dark:bg-secondary/40 rounded-sm overflow-hidden text-sm font-medium px-[4px] py-[2px] mx-1 ring-1 ring-primary/20 dark:ring-light/10 whitespace-normal"
+        className="bg-primary/10 dark:bg-primary/40 rounded-sm overflow-hidden text-sm font-medium px-[4px] py-[2px] mx-1 ring-1 ring-primary/20 dark:ring-light/10 whitespace-normal"
         {...props}
       >
         {children}
