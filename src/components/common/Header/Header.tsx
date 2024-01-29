@@ -51,7 +51,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {/* <div style={{ minHeight: HEADER_HEIGHT }} className="w-full" /> */}
+      <div style={{ minHeight: HEADER_HEIGHT }} className="w-full" />
     </>
   )
 }
