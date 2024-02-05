@@ -14,11 +14,7 @@ const SearchNotFound = dynamic(() => import('./SearchNotFound'))
 
 const LIMIT = 20
 
-interface Params {
-  fallbackData?: any[]
-}
-
-const PostsContainer = ({ fallbackData }: Params) => {
+const PostsContainer = () => {
   const searchParams = useSearchParams()
 
   const router = useRouter()
@@ -41,8 +37,7 @@ const PostsContainer = ({ fallbackData }: Params) => {
     isValidating,
     setSize
   } = useSWRInfinite(getKey, (key) => getPosts({ ...key, tag, search }), {
-    keepPreviousData: true,
-    fallbackData
+    keepPreviousData: true
   })
 
   const intersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
