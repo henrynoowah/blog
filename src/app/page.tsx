@@ -2,6 +2,8 @@
 
 import { NavItem } from '@/components/main/NavItem'
 import { Inter } from 'next/font/google'
+import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
 
@@ -12,7 +14,10 @@ const navList = [
   { name: 'github', href: 'https://www.github.com/henrynoowah' }
 ]
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
+
 const Home = () => {
+  const [navReady, setNavReady] = useState<boolean>(false)
   return (
     <main className={inter.variable}>
       <div className="w-full h-[100vh] flex justify-center relative overflow-hidden">
@@ -32,20 +37,25 @@ const Home = () => {
               width="100%"
               height="100%"
               loading="eager"
-              onLoad={() => console.log('test')}
+              onLoad={() => setNavReady(true)}
             />
           </div>
         </div>
-
         {/* Navigation */}
         <div className="fixed bottom-[30px] md:bottom-[60px] w-full max-w-[900px] h-full justify-start items-end z-50">
           <div className="w-full h-full flex flex-col-reverse bottom-[200px]">
             <nav className="flex justify-center gap-[16px]">
-              {navList.map((nav, idx) => (
-                <div key={idx}>
-                  <NavItem {...nav} />
-                </div>
-              ))}
+              {navReady &&
+                navList.map((nav, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 100 }}
+                    transition={{ ease: 'easeInOut', duration: 0.25 * i }}
+                  >
+                    <NavItem {...nav} />
+                  </motion.div>
+                ))}
             </nav>
           </div>
         </div>
