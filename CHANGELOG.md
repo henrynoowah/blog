@@ -1,3 +1,12 @@
+## [0.17.2](https://github.com/henrynoowah/blog/compare/v0.17.1...v0.17.2) (2024-01-29)
+
+
+### Bug Fixes
+
+* header UI height issue due to display fixed attribute ([1ad6fb6](https://github.com/henrynoowah/blog/commit/1ad6fb6628be7b25bc33a12c02eb3c64dd4be184))
+
+
+
 ## [0.17.1](https://github.com/henrynoowah/blog/compare/v0.17.0...v0.17.1) (2024-01-28)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * fix markdown parsing error due to ordered props on ul element ([a9d4237](https://github.com/henrynoowah/blog/commit/a9d4237d06b99940451f7b1547cb084ea1148d6f))
-
-
-
-## [0.15.3](https://github.com/henrynoowah/blog/compare/v0.15.2...v0.15.3) (2024-01-15)
-
-
-### Bug Fixes
-
-* faulty velog query when clicking tag & minor style updates ([1c94d67](https://github.com/henrynoowah/blog/commit/1c94d67029dea4f35072c0b48f8ba41a7747a6d1))
 
 
 
