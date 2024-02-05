@@ -1,3 +1,12 @@
+## [0.18.1](https://github.com/henrynoowah/blog/compare/v0.18.0...v0.18.1) (2024-02-05)
+
+
+### Bug Fixes
+
+* removed onload iframe event ([61a99f0](https://github.com/henrynoowah/blog/commit/61a99f0440732fd92cf7cb841678515e7d4ef52f))
+
+
+
 # [0.18.0](https://github.com/henrynoowah/blog/compare/v0.17.2...v0.18.0) (2024-02-05)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * custom favicon added ([ee11662](https://github.com/henrynoowah/blog/commit/ee116629c4d7f48530396e61bfa1443f57d5176d))
-
-
-
-# [0.16.0](https://github.com/henrynoowah/blog/compare/v0.15.4...v0.16.0) (2024-01-22)
-
-
-### Features
-
-* updated useSWR -> useSWRInfinite for smoother infinite scroll pagination ([3594072](https://github.com/henrynoowah/blog/commit/359407225f5e5dbb6b6274f9dd76fec50416e3e8))
 
 
 
