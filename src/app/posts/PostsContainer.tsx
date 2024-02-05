@@ -14,7 +14,11 @@ const SearchNotFound = dynamic(() => import('./SearchNotFound'))
 
 const LIMIT = 20
 
-const PostsContainer = () => {
+interface Params {
+  fallbackData?: any[]
+}
+
+const PostsContainer = ({ fallbackData }: Params) => {
   const searchParams = useSearchParams()
 
   const router = useRouter()
@@ -37,7 +41,8 @@ const PostsContainer = () => {
     isValidating,
     setSize
   } = useSWRInfinite(getKey, (key) => getPosts({ ...key, tag, search }), {
-    keepPreviousData: true
+    keepPreviousData: true,
+    fallbackData
   })
 
   const intersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
@@ -69,7 +74,7 @@ const PostsContainer = () => {
       {(tag || search) && (
         <div
           className={[
-            `bg-gray-200 dark:bg-secondary rounded-full overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10`,
+            `bg-gray-200 dark:bg-primary rounded-full overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10`,
             `flex gap-2 items-center whitespace-nowrap w-fit`,
             `text-primary dark:text-light`
           ].join(' ')}
@@ -83,7 +88,7 @@ const PostsContainer = () => {
       <ul className="flex flex-col gap-6">
         {page && page?.length > 0 ? (
           page?.map((posts) =>
-            posts.map((post, i) => (
+            posts.map((post: any, i: number) => (
               <li key={`${post.id}-${i}`} ref={i === posts.length - 1 ? setLastRef : undefined}>
                 <PostCard {...post} />
               </li>
