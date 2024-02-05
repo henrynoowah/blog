@@ -1,3 +1,12 @@
+# [0.18.0](https://github.com/henrynoowah/blog/compare/v0.17.2...v0.18.0) (2024-02-05)
+
+
+### Features
+
+* basic framer motion added for main nav buttons ([abdc0dd](https://github.com/henrynoowah/blog/commit/abdc0dd302261c37ffa924e9b75690fae742521d))
+
+
+
 ## [0.17.2](https://github.com/henrynoowah/blog/compare/v0.17.1...v0.17.2) (2024-01-29)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * updated useSWR -> useSWRInfinite for smoother infinite scroll pagination ([3594072](https://github.com/henrynoowah/blog/commit/359407225f5e5dbb6b6274f9dd76fec50416e3e8))
-
-
-
-## [0.15.4](https://github.com/henrynoowah/blog/compare/v0.15.3...v0.15.4) (2024-01-18)
-
-
-### Bug Fixes
-
-* fix markdown parsing error due to ordered props on ul element ([a9d4237](https://github.com/henrynoowah/blog/commit/a9d4237d06b99940451f7b1547cb084ea1148d6f))
 
 
 
