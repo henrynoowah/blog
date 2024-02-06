@@ -1,3 +1,12 @@
+## [0.18.3](https://github.com/henrynoowah/blog/compare/v0.18.2...v0.18.3) (2024-02-06)
+
+
+### Bug Fixes
+
+* overflow on framer template ([38776ae](https://github.com/henrynoowah/blog/commit/38776ae0274a666a8a6b2b8de326c30acdc7d4ce))
+
+
+
 ## [0.18.2](https://github.com/henrynoowah/blog/compare/v0.18.1...v0.18.2) (2024-02-06)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * header UI height issue due to display fixed attribute ([1ad6fb6](https://github.com/henrynoowah/blog/commit/1ad6fb6628be7b25bc33a12c02eb3c64dd4be184))
-
-
-
-## [0.17.1](https://github.com/henrynoowah/blog/compare/v0.17.0...v0.17.1) (2024-01-28)
-
-
-### Bug Fixes
-
-* fauly mobile nav UI ([9c068ec](https://github.com/henrynoowah/blog/commit/9c068ec56baf65bb6157964837329ca0785579d1))
 
 
 
