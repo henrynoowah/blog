@@ -1,9 +1,8 @@
 'use client'
 
 import { NavItem } from '@/components/main/NavItem'
-import { Inter } from 'next/font/google'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { Inter } from 'next/font/google'
 
 const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
 
