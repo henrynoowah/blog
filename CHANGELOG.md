@@ -1,3 +1,12 @@
+## [0.18.2](https://github.com/henrynoowah/blog/compare/v0.18.1...v0.18.2) (2024-02-06)
+
+
+### Bug Fixes
+
+* removed fallbackData as it increases blocking time ([37c2e19](https://github.com/henrynoowah/blog/commit/37c2e194654c4c567ee858ec101d2dd4999075d4))
+
+
+
 ## [0.18.1](https://github.com/henrynoowah/blog/compare/v0.18.0...v0.18.1) (2024-02-05)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * fauly mobile nav UI ([9c068ec](https://github.com/henrynoowah/blog/commit/9c068ec56baf65bb6157964837329ca0785579d1))
-
-
-
-# [0.17.0](https://github.com/henrynoowah/blog/compare/v0.16.0...v0.17.0) (2024-01-22)
-
-
-### Features
-
-* custom favicon added ([ee11662](https://github.com/henrynoowah/blog/commit/ee116629c4d7f48530396e61bfa1443f57d5176d))
 
 
 
