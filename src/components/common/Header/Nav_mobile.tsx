@@ -18,7 +18,7 @@ const Nav_mobile = ({ navOption }: Params) => {
       <Button_nav onChange={setIsNavOpened} />
 
       <nav
-        className={`absolute left-0 top-[72px] ${
+        className={`absolute left-0 top-[72px] border-t border-t-1 border-light/20 border-solid ${
           isNavOpened ? 'translate-x-0' : 'translate-x-[100%]'
         } transition duration-300 ease-out bg-primary text-light w-full h-[100vh] p-4 
         `}
@@ -28,7 +28,7 @@ const Nav_mobile = ({ navOption }: Params) => {
             <li
               key={`mobile-nav-${nav.label}`}
               style={{
-                transitionDuration: `${index * 500}ms`
+                transitionDuration: `${index * 350}ms`
               }}
               className={`transition ${isNavOpened ? 'translate-x-0' : 'translate-x-[200%] !duration-0'}`}
             >

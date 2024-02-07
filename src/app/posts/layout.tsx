@@ -17,7 +17,7 @@ const PostsLayouts = ({ children }: Params) => {
   return (
     <div className="w-full h-screen flex flex-col bg-background transition-colors duration-200 ease-linear overflow-hidden">
       <Header />
-      <main className="relative w-full overflow-scroll">
+      <main className="relative w-full overflow-y-auto">
         <div className="w-full h-fit flex justify-center">{children}</div>
       </main>
     </div>
