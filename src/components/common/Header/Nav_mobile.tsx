@@ -1,7 +1,8 @@
 'use client'
 
+import { ChevronRightIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
-import { MouseEventHandler, useRef, useState } from 'react'
+import { useState } from 'react'
 import Button from '../Button'
 import Button_nav from './Button_nav'
 
@@ -29,10 +30,13 @@ const Nav_mobile = ({ navOption }: Params) => {
               style={{
                 transitionDuration: `${index * 500}ms`
               }}
-              className={`transition ${isNavOpened ? 'translate-x-0' : 'translate-x-[200%] duration-0'}`}
+              className={`transition ${isNavOpened ? 'translate-x-0' : 'translate-x-[200%] !duration-0'}`}
             >
               <Link href={nav.href}>
-                <Button className="w-full bg-transparent !text-light !text-md py-2 text-left">{nav.label}</Button>
+                <Button className="w-full flex justify-between items-center bg-transparent !text-light !text-md py-2 text-left">
+                  <p>{nav.label}</p>
+                  <ChevronRightIcon width={16} height={16} />
+                </Button>
               </Link>
             </li>
           ))}
