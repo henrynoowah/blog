@@ -1,3 +1,13 @@
+## [0.18.4](https://github.com/henrynoowah/blog/compare/v0.18.3...v0.18.4) (2024-02-07)
+
+
+### Bug Fixes
+
+* README.md ([b58fb1c](https://github.com/henrynoowah/blog/commit/b58fb1ca4208fd16e2f4508e0f42f6c54df6f095))
+* README.md ([e794138](https://github.com/henrynoowah/blog/commit/e79413832a340a819aa04ba3d9738fc559b98cbe))
+
+
+
 ## [0.18.3](https://github.com/henrynoowah/blog/compare/v0.18.2...v0.18.3) (2024-02-06)
 
 
@@ -31,15 +41,6 @@
 ### Features
 
 * basic framer motion added for main nav buttons ([abdc0dd](https://github.com/henrynoowah/blog/commit/abdc0dd302261c37ffa924e9b75690fae742521d))
-
-
-
-## [0.17.2](https://github.com/henrynoowah/blog/compare/v0.17.1...v0.17.2) (2024-01-29)
-
-
-### Bug Fixes
-
-* header UI height issue due to display fixed attribute ([1ad6fb6](https://github.com/henrynoowah/blog/commit/1ad6fb6628be7b25bc33a12c02eb3c64dd4be184))
 
 
 
