@@ -53,7 +53,7 @@ const markdownComponents: MarkDownComponents = {
       </li>
     )
   },
-  hr: ({ node, ...props }) => <hr className="my-6" {...props} />,
+  hr: ({ node, ...props }) => <hr className="my-6 border-primary/60" {...props} />,
   a: ({ node, ...props }) => (
     <a target="_blank" className="text-primary dark:text-secondary underline underline-offset-1" {...props} />
   ),
@@ -130,7 +130,7 @@ const markdownComponents: MarkDownComponents = {
   ),
   img: ({ node, className, children, ...props }) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img {...props} alt="" className="w-full overflow-hidden rounded-md ring-1 ring-light  shadow-md my-4" />
+    <img {...props} alt="" className="w-full overflow-hidden rounded-md ring-1 ring-light shadow-md my-4" />
   )
 }
 
