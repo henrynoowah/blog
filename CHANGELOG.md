@@ -1,3 +1,12 @@
+## [0.18.6](https://github.com/henrynoowah/blog/compare/v0.18.5...v0.18.6) (2024-02-07)
+
+
+### Bug Fixes
+
+* removed faulty template transition ([1401814](https://github.com/henrynoowah/blog/commit/140181404a5656376c7f5835145d2e9c13389798))
+
+
+
 ## [0.18.5](https://github.com/henrynoowah/blog/compare/v0.18.4...v0.18.5) (2024-02-07)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * removed fallbackData as it increases blocking time ([37c2e19](https://github.com/henrynoowah/blog/commit/37c2e194654c4c567ee858ec101d2dd4999075d4))
-
-
-
-## [0.18.1](https://github.com/henrynoowah/blog/compare/v0.18.0...v0.18.1) (2024-02-05)
-
-
-### Bug Fixes
-
-* removed onload iframe event ([61a99f0](https://github.com/henrynoowah/blog/commit/61a99f0440732fd92cf7cb841678515e7d4ef52f))
 
 
 
