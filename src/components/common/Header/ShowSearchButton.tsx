@@ -22,7 +22,7 @@ const ShowSearchButton = () => {
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault()
     if (inputValue !== null && inputValue !== '') {
-      router.push(`${pathname}?search=${inputValue}`)
+      router.push(`/posts?search=${inputValue}`)
     } else {
       router.push(`${pathname}`)
     }
