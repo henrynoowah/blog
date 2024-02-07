@@ -1,3 +1,12 @@
+## [0.18.5](https://github.com/henrynoowah/blog/compare/v0.18.4...v0.18.5) (2024-02-07)
+
+
+### Bug Fixes
+
+* redirect to /posts when searching from post detail page ([54e8e30](https://github.com/henrynoowah/blog/commit/54e8e30f32ddf5b9164418a7b1a912885855ccab))
+
+
+
 ## [0.18.4](https://github.com/henrynoowah/blog/compare/v0.18.3...v0.18.4) (2024-02-07)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * removed onload iframe event ([61a99f0](https://github.com/henrynoowah/blog/commit/61a99f0440732fd92cf7cb841678515e7d4ef52f))
-
-
-
-# [0.18.0](https://github.com/henrynoowah/blog/compare/v0.17.2...v0.18.0) (2024-02-05)
-
-
-### Features
-
-* basic framer motion added for main nav buttons ([abdc0dd](https://github.com/henrynoowah/blog/commit/abdc0dd302261c37ffa924e9b75690fae742521d))
 
 
 
