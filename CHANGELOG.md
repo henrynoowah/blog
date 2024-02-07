@@ -1,3 +1,12 @@
+## [0.18.7](https://github.com/henrynoowah/blog/compare/v0.18.6...v0.18.7) (2024-02-07)
+
+
+### Bug Fixes
+
+* added loading.tsx from /posts ([30672e2](https://github.com/henrynoowah/blog/commit/30672e24b8ee3aa195147129a6a3870059d46b7b))
+
+
+
 ## [0.18.6](https://github.com/henrynoowah/blog/compare/v0.18.5...v0.18.6) (2024-02-07)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * overflow on framer template ([38776ae](https://github.com/henrynoowah/blog/commit/38776ae0274a666a8a6b2b8de326c30acdc7d4ce))
-
-
-
-## [0.18.2](https://github.com/henrynoowah/blog/compare/v0.18.1...v0.18.2) (2024-02-06)
-
-
-### Bug Fixes
-
-* removed fallbackData as it increases blocking time ([37c2e19](https://github.com/henrynoowah/blog/commit/37c2e194654c4c567ee858ec101d2dd4999075d4))
 
 
 
