@@ -14,7 +14,11 @@ const SearchNotFound = dynamic(() => import('./SearchNotFound'))
 
 const LIMIT = 20
 
-const PostsContainer = () => {
+interface Params {
+  fallbackData?: any[]
+}
+
+const PostsContainer = ({ fallbackData }: Params) => {
   const searchParams = useSearchParams()
 
   const router = useRouter()
@@ -37,14 +41,15 @@ const PostsContainer = () => {
     isValidating,
     setSize
   } = useSWRInfinite(getKey, (key) => getPosts({ ...key, tag, search }), {
-    keepPreviousData: true
+    keepPreviousData: true,
+    fallbackData: [fallbackData]
   })
 
   const intersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
     if (entries[0].isIntersecting) {
       if (page && page.length > 0) {
         const lastPage = page[page.length - 1]
-        if (!isValidating && !isLoading && lastPage.length === LIMIT) {
+        if (!isValidating && !isLoading && lastPage && lastPage.length === LIMIT) {
           setSize((page) => page + 1)
         }
       }
@@ -82,17 +87,20 @@ const PostsContainer = () => {
 
       <ul className="flex flex-col gap-6">
         {page && page?.length > 0 ? (
-          page?.map((posts) =>
-            posts.map((post: any, i: number) => (
-              <li key={`${post.id}-${i}`} ref={i === posts.length - 1 ? setLastRef : undefined}>
-                <PostCard {...post} />
-              </li>
-            ))
+          page?.map(
+            (posts) =>
+              posts &&
+              posts.map((post: any, i: number) => (
+                <li key={`${post.id}-${i}`} ref={i === posts.length - 1 ? setLastRef : undefined}>
+                  <PostCard {...post} />
+                </li>
+              ))
           )
         ) : !isLoading ? (
           <SearchNotFound className="min-h-[320px]" />
         ) : (
-          Array.from({ length: 10 }).map((_, i) => <PostCard_skeleton key={`card-skeleton-${i}`} />)
+          <></>
+          // Array.from({ length: 10 }).map((_, i) => <PostCard_skeleton key={`card-skeleton-${i}`} />)
         )}
       </ul>
     </div>

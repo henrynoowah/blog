@@ -13,8 +13,6 @@ const navList = [
   { name: 'github', href: 'https://www.github.com/henrynoowah' }
 ]
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-
 const Home = () => {
   return (
     <main className={inter.variable}>
@@ -30,7 +28,7 @@ const Home = () => {
           <div className="absolute w-full h-full flex justify-center translate-y-[60px]">
             <iframe
               id="scaled-frame"
-              className={`!block `}
+              className={`!block`}
               src="https://my.spline.design/untitled-1393c53b4c584c5402f69f7bc1705399/"
               width="100%"
               height="100%"
