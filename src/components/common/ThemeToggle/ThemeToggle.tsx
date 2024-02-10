@@ -20,7 +20,7 @@ const ThemeToggle = () => {
       themeColorSwitch(!isDarkMode)
       setIconToggle(false)
     }
-  }, [iconToggle])
+  }, [iconToggle, isDarkMode])
 
   return (
     <button

@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 const COLOR_DARK = "#1E1E1E"
-const COLOR_LIGHT = "#E9E6DF"
+const COLOR_LIGHT = "#FFFFFF"
 const COLOR_PRIMARY = "#2D5A60"
 const COLOR_SECONDARY = "#64EbDE"
 

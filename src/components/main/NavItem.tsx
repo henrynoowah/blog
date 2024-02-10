@@ -1,23 +1,23 @@
 import { CubeIcon, DocumentIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
-import Link from 'next/link'
-import { useState } from 'react'
+import { HTMLAttributes, useState } from 'react'
 
-interface Params {
+interface Params extends HTMLAttributes<HTMLButtonElement> {
   name: string
   href: string
+  selected?: boolean
 }
 
-export const NavItem = ({ name, href }: Params) => {
+export const NavItem = ({ name, href, onClick, selected }: Params) => {
   const [hover, setHover] = useState<string>()
 
   const iconSelection = (name: string) => {
     switch (name) {
       case 'posts':
-        return <DocumentIcon className="text-white" />
+        return <DocumentIcon className="text-light" />
       case 'works':
-        return <CubeIcon className="text-white" />
+        return <CubeIcon className="text-light" />
       case 'about':
-        return <FaceSmileIcon className="text-white" />
+        return <FaceSmileIcon className="text-light" />
       case 'github':
         return (
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
@@ -28,30 +28,32 @@ export const NavItem = ({ name, href }: Params) => {
         return <DocumentIcon className="text-light" />
     }
   }
+
   return (
     <div className="flex flex-col justify-end items-center relative">
       <span
-        className={`absolute top-0 -translate-y-[24px] z-10 text-[12px] font-bold text-primary capitalize px-[8px] py-[4px] bg-white rounded-full transition duration-200 shadow-sm ${
-          hover === name ? 'opacity-0 sm:opacity-100' : 'opacity-0'
-        }`}
+        className={[
+          `absolute top-0 -translate-y-[24px] z-10 text-[12px] font-bold text-primary capitalize px-[8px] py-[4px] bg-light rounded-full transition duration-200`,
+          hover === name ? 'opacity-0 sm:opacity-100 ' : 'opacity-0'
+        ].join(' ')}
       >
         {name}
       </span>
-      <Link href={href} target={name === 'github' || name === 'velog' ? '_blank' : undefined}>
+      <button onClick={onClick}>
+        {/* <Link href={href} target={name === 'github' || name === 'velog' ? '_blank' : undefined}> */}
         <div
           onMouseOver={() => setHover(name)}
           onMouseLeave={() => setHover(undefined)}
           className={[
             `w-[50px] h-[50px] aspect-square overflow-hidden rounded-full flex justify-center items-center transition duration-200`,
-            // `bg-gradient-to-br from-[#64EbDE] to-[#2D5A60]`,
             `hover:shadow-lg relative group`
           ].join(' ')}
         >
           <span
             className={[
-              `absolute w-full h-full transition duration-300`,
-              `bg-gradient-to-br from-secondary to-primary`,
-              `group-hover:rotate-180 group-hover:from-primary group-hover:to-secondary`,
+              `bg-primary`,
+              `absolute w-full h-full transition duration-300 rounded-full `,
+              selected ? ' border border-dotted' : '',
               `opacity-100 group-hover:opacity-100`
             ].join(' ')}
           />
@@ -59,7 +61,8 @@ export const NavItem = ({ name, href }: Params) => {
             <span className="w-[24px] h-[24px] aspect-square">{iconSelection(name)}</span>
           </div>
         </div>
-      </Link>
+        {/* </Link> */}
+      </button>
     </div>
   )
 }

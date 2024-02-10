@@ -11,11 +11,11 @@ export const NavItem = ({ name, onClick }: Params) => {
   const iconSelection = (name: string) => {
     switch (name) {
       case 'posts':
-        return <DocumentIcon className="text-white" />
+        return <DocumentIcon className="text-light" />
       case 'works':
-        return <CubeIcon className="text-white" />
+        return <CubeIcon className="text-light" />
       case 'about':
-        return <FaceSmileIcon className="text-white" />
+        return <FaceSmileIcon className="text-light" />
       case 'github':
         return (
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
@@ -35,7 +35,7 @@ export const NavItem = ({ name, onClick }: Params) => {
       className="flex flex-col justify-end items-center relative"
     >
       <span
-        className={`absolute top-0 -translate-y-[24px] z-10 text-[12px] font-bold text-primary capitalize px-[8px] py-[4px] bg-white rounded-full transition duration-200 shadow-sm ${
+        className={`absolute top-0 -translate-y-[24px] z-10 text-[12px] font-bold text-primary capitalize px-[8px] py-[4px] bg-light rounded-full transition duration-200 shadow-sm ${
           hover === name ? 'opacity-0 sm:opacity-100' : 'opacity-0'
         }`}
       >
