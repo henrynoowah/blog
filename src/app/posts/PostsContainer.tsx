@@ -99,8 +99,7 @@ const PostsContainer = ({ fallbackData }: Params) => {
         ) : !isLoading ? (
           <SearchNotFound className="min-h-[320px]" />
         ) : (
-          <></>
-          // Array.from({ length: 10 }).map((_, i) => <PostCard_skeleton key={`card-skeleton-${i}`} />)
+          Array.from({ length: 10 }).map((_, i) => <PostCard_skeleton key={`card-skeleton-${i}`} />)
         )}
       </ul>
     </div>

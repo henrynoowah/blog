@@ -1,36 +1,15 @@
 import { MarkdowRenderer } from '@/components/common/Markdowns'
+import { getPost } from '@/services/posts'
 import { Metadata } from 'next/types'
 
 export const dynamic = 'force-static'
 
 const getData = async (slug: string): Promise<any> => {
-  let post = null
-
-  const payload = {
-    operationName: 'ReadPost',
-    variables: {
-      username: process.env.NEXT_PUBLIC_VELOG_ID,
-      url_slug: slug
-    },
-    query: `query ReadPost($username: String, $url_slug: String) {\npost(username: $username, url_slug: $url_slug) {\nid\n    title\n    released_at\n    updated_at\n    tags\n    body\n    short_description\n    is_markdown\n    is_private\n    is_temp\n    thumbnail\n    comments_count\n    url_slug\n    likes\n    liked\n    user {\n      id\n      username\n      profile {\n        id\n        display_name\n        thumbnail\n        short_bio\n        profile_links\n        __typename\n      }\n      velog_config {\n        title\n        __typename\n      }\n      __typename\n    }\n    comments {\n      id\n      user {\n        id\n        username\n        profile {\n          id\n          thumbnail\n          __typename\n        }\n        __typename\n      }\n      text\n      replies_count\n      level\n      created_at\n      level\n      deleted\n      __typename\n    }\n    series {\n      id\n      name\n      url_slug\n      series_posts {\n        id\n        post {\n          id\n          title\n          url_slug\n          user {\n            id\n            username\n            __typename\n          }\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    linked_posts {\n      previous {\n        id\n        title\n        url_slug\n        user {\n          id\n          username\n          __typename\n        }\n        __typename\n      }\n      next {\n        id\n        title\n        url_slug\n        user {\n          id\n          username\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n`
-  }
-
-  try {
-    const response = await fetch('https://v2cdn.velog.io/graphql', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then((res) => res.json())
-
-    post = response.data.post
-    return post
-  } catch (e) {}
+  return await getPost(slug)
 }
 
 export const generateMetadata = async ({ params }: any): Promise<Metadata> => {
-  const post = await getData(params.slug)
+  const post = await getPost(params.slug)
   return {
     title: post?.title
   }

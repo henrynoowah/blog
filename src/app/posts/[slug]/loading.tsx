@@ -1,4 +1,4 @@
-const loading = () => {
+const LoadingPost = () => {
   return (
     <div className="w-full max-w-2xl px-4 xl:px-0 py-4">
       <div className="border-b py-2 mb-2 border-solid border-gray-400/20 flex flex-col gap-y-2 animate-pulse">
@@ -16,4 +16,4 @@ const loading = () => {
   )
 }
 
-export default loading
+export default LoadingPost
