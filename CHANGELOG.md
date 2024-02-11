@@ -1,3 +1,12 @@
+## [0.19.2](https://github.com/henrynoowah/blog/compare/v0.19.1...v0.19.2) (2024-02-11)
+
+
+### Bug Fixes
+
+* icon not showing on NavModal ([5f22b3f](https://github.com/henrynoowah/blog/commit/5f22b3f3b92c4dc6804aa524054ab30bc38acc20))
+
+
+
 ## [0.19.1](https://github.com/henrynoowah/blog/compare/v0.19.0...v0.19.1) (2024-02-11)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * removed faulty template transition ([1401814](https://github.com/henrynoowah/blog/commit/140181404a5656376c7f5835145d2e9c13389798))
-
-
-
-## [0.18.5](https://github.com/henrynoowah/blog/compare/v0.18.4...v0.18.5) (2024-02-07)
-
-
-### Bug Fixes
-
-* redirect to /posts when searching from post detail page ([54e8e30](https://github.com/henrynoowah/blog/commit/54e8e30f32ddf5b9164418a7b1a912885855ccab))
 
 
 
