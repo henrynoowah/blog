@@ -69,14 +69,16 @@ export const NavModal = ({ onClick, selected, ...nav }: Params) => {
           }
         })
       }}
-      className="absolute w-full h-full flex flex-col gap-2 justify-center items-center backdrop-filter backdrop-blur-xl bg-primary z-40"
+      className="fixed w-full h-full flex flex-col gap-2 justify-center items-center backdrop-filter backdrop-blur-xl bg-primary z-40"
     >
       <motion.div variants={variants} className="flex justify-center items-center gap-2">
         <div
-          style={{ width: 50, height: 50 }}
-          className="relative flex justify-center items-center border-dotted border border-light rounded-full"
+          className={[
+            `w-[50px] h-[50px] aspect-square overflow-hidden rounded-full flex justify-center items-center transition duration-200`,
+            `hover:shadow-lg relative group border border-dotted border-light`
+          ].join(' ')}
         >
-          <span className="w-[24px] h-[24px] flex justify-center items-center relative text-light">{nav.icon}</span>
+          <span className="w-[24px] h-[24px] aspect-square">{nav.icon}</span>
         </div>
         <Link
           href={nav.href}
