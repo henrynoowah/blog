@@ -1,3 +1,12 @@
+## [0.19.3](https://github.com/henrynoowah/blog/compare/v0.19.2...v0.19.3) (2024-02-11)
+
+
+### Bug Fixes
+
+* icon not showing on NavModal ([0cf6641](https://github.com/henrynoowah/blog/commit/0cf664188ba64a77facadf775c264ddcc8023e06))
+
+
+
 ## [0.19.2](https://github.com/henrynoowah/blog/compare/v0.19.1...v0.19.2) (2024-02-11)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * added loading.tsx from /posts ([30672e2](https://github.com/henrynoowah/blog/commit/30672e24b8ee3aa195147129a6a3870059d46b7b))
-
-
-
-## [0.18.6](https://github.com/henrynoowah/blog/compare/v0.18.5...v0.18.6) (2024-02-07)
-
-
-### Bug Fixes
-
-* removed faulty template transition ([1401814](https://github.com/henrynoowah/blog/commit/140181404a5656376c7f5835145d2e9c13389798))
 
 
 
