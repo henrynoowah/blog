@@ -76,7 +76,7 @@ export const NavModal = ({ onClick, selected, ...nav }: Params) => {
           style={{ width: 50, height: 50 }}
           className="relative flex justify-center items-center border-dotted border border-light rounded-full"
         >
-          <span className="w-[24px] h-[24px] flex justify-center items-center relative">{nav.icon}</span>
+          <span className="w-[24px] h-[24px] flex justify-center items-center relative text-light">{nav.icon}</span>
         </div>
         <Link
           href={nav.href}
