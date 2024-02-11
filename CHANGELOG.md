@@ -1,3 +1,12 @@
+## [0.19.1](https://github.com/henrynoowah/blog/compare/v0.19.0...v0.19.1) (2024-02-11)
+
+
+### Bug Fixes
+
+* main page motion fix ([362b359](https://github.com/henrynoowah/blog/commit/362b35948923c1e761ea875d1d652a0cc078a166))
+
+
+
 # [0.19.0](https://github.com/henrynoowah/blog/compare/v0.18.7...v0.19.0) (2024-02-10)
 
 
@@ -31,16 +40,6 @@
 ### Bug Fixes
 
 * redirect to /posts when searching from post detail page ([54e8e30](https://github.com/henrynoowah/blog/commit/54e8e30f32ddf5b9164418a7b1a912885855ccab))
-
-
-
-## [0.18.4](https://github.com/henrynoowah/blog/compare/v0.18.3...v0.18.4) (2024-02-07)
-
-
-### Bug Fixes
-
-* README.md ([b58fb1c](https://github.com/henrynoowah/blog/commit/b58fb1ca4208fd16e2f4508e0f42f6c54df6f095))
-* README.md ([e794138](https://github.com/henrynoowah/blog/commit/e79413832a340a819aa04ba3d9738fc559b98cbe))
 
 
 
