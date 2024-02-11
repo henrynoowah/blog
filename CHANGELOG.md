@@ -1,3 +1,12 @@
+## [0.19.4](https://github.com/henrynoowah/blog/compare/v0.19.3...v0.19.4) (2024-02-11)
+
+
+### Bug Fixes
+
+* icon not showing on NavModal ([2c790f2](https://github.com/henrynoowah/blog/commit/2c790f2fc94fbf3b460c0637ff7eac79226ede28))
+
+
+
 ## [0.19.3](https://github.com/henrynoowah/blog/compare/v0.19.2...v0.19.3) (2024-02-11)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * new main page UX ([de17078](https://github.com/henrynoowah/blog/commit/de17078a969b6769750082c3d96d75b8b02df104))
-
-
-
-## [0.18.7](https://github.com/henrynoowah/blog/compare/v0.18.6...v0.18.7) (2024-02-07)
-
-
-### Bug Fixes
-
-* added loading.tsx from /posts ([30672e2](https://github.com/henrynoowah/blog/commit/30672e24b8ee3aa195147129a6a3870059d46b7b))
 
 
 
