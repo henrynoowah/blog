@@ -1,13 +1,14 @@
 import { CubeIcon, DocumentIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
-import { HTMLAttributes, useState } from 'react'
+import { HTMLAttributes, ReactNode, useState } from 'react'
 
 interface Params extends HTMLAttributes<HTMLButtonElement> {
   name: string
   href: string
+  icon: ReactNode
   selected?: boolean
 }
 
-export const NavItem = ({ name, href, onClick, selected }: Params) => {
+export const NavItem = ({ name, href, icon, onClick, selected }: Params) => {
   const [hover, setHover] = useState<string>()
 
   const iconSelection = (name: string) => {
@@ -58,7 +59,7 @@ export const NavItem = ({ name, href, onClick, selected }: Params) => {
             ].join(' ')}
           />
           <div className="w-full h-full opacity-80 transition duration-200 relative flex justify-center items-center">
-            <span className="w-[24px] h-[24px] aspect-square">{iconSelection(name)}</span>
+            <span className="w-[24px] h-[24px] aspect-square">{icon}</span>
           </div>
         </div>
         {/* </Link> */}
