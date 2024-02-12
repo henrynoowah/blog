@@ -130,7 +130,7 @@ const markdownComponents: MarkDownComponents = {
   ),
   img: ({ node, className, children, ...props }) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img {...props} alt="" className="w-full overflow-hidden rounded-md ring-1 ring-light shadow-md my-4" />
+    <img {...props} alt="" className="w-full overflow-hidden rounded-md ring-1 ring-primary/60 shadow-md my-4" />
   )
 }
 

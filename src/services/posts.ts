@@ -69,6 +69,7 @@ export const getPosts = async (searchParams: GetPostsPayload): Promise<any[]> =>
 
   try {
     const response = await fetch('https://v2cdn.velog.io/graphql', {
+      // cache: 'no-cache',
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {

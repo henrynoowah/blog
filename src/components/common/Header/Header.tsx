@@ -4,6 +4,7 @@ import Button from '../Button'
 import ThemeToggle from '../ThemeToggle/ThemeToggle'
 import Nav_mobile from './Nav_mobile'
 import ShowSearchButton from './ShowSearchButton'
+import { Suspense } from 'react'
 
 const HEADER_HEIGHT = 72
 
@@ -29,12 +30,13 @@ const Header = () => {
           </h1>
 
           <div className="flex justify-end items-center gap-[16px]">
-            <ShowSearchButton />
+            <Suspense>
+              <ShowSearchButton />
+            </Suspense>
             <ThemeToggle />
             <div className="sm:hidden flex items-center">
               <Nav_mobile navOption={navOption} />
             </div>
-
             <div className="hidden sm:block">
               <nav>
                 <ul className="flex gap-[20px] items-center">
