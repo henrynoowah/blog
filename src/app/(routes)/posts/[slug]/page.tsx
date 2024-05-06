@@ -1,4 +1,4 @@
-import { MarkdowRenderer } from '@/components/common/Markdowns'
+import { MarkdowRenderer } from '@/components/common/markdowns'
 import { getPost } from '@/services/posts'
 import { Metadata } from 'next/types'
 

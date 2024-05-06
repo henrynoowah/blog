@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   }
 }
 
-import Header from '@/components/common/Header/Header'
+import Header from '@/components/common/layouts/header/Header'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
 

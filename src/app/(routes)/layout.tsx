@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import './globals.css'
+import 'src/app/styles/globals.css'
 
 export const metadata: Metadata = {
   title: 'NoowaH Blog',

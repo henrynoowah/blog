@@ -1,4 +1,4 @@
-import PostCard_skeleton from '@/components/common/Cards/PostCard_skeleton'
+import PostCard_skeleton from '@/components/common/cards/PostCard_skeleton'
 
 const LoadingPosts = () => {
   return (

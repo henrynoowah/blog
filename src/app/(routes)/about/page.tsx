@@ -1,4 +1,4 @@
-import { MarkdowRenderer } from '@/components/common/Markdowns'
+import { MarkdowRenderer } from '@/components/common/markdowns'
 import React from 'react'
 
 const about = `**👋 Hi, I’m @henrynoowah**

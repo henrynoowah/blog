@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import packageData from 'package.json'
-import Button from '../Button'
-import ThemeToggle from '../ThemeToggle/ThemeToggle'
+import Button from '../../Button'
 import Nav_mobile from './Nav_mobile'
 import ShowSearchButton from './ShowSearchButton'
 import { Suspense } from 'react'
+import ThemeToggle from '../../themeToggle/ThemeToggle'
 
 const HEADER_HEIGHT = 72
 

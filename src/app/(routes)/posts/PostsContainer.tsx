@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
-import PostCard from '@/components/common/Cards/PostCard'
-import PostCard_skeleton from '@/components/common/Cards/PostCard_skeleton'
+import PostCard from '@/components/common/cards/PostCard'
+import PostCard_skeleton from '@/components/common/cards/PostCard_skeleton'
 import { getPosts } from '@/services/posts'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import dynamic from 'next/dynamic'
