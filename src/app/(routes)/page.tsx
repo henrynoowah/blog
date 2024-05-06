@@ -77,14 +77,24 @@ const Home = () => {
       <div className="w-full h-[100vh] flex justify-center relative overflow-hidden">
         {/* Background Component */}
         <div className="relative flex justify-center w-full h-full bg-gradient-to-tl bg-primary/80">
-          <div
+          {/* <div
             className="absolute w-full h-full
           flex justify-center items-center z-30"
           >
             <h1 className="text-[42px] font-semibold opacity whitespace-nowrap z-20 text-light">NoowaH</h1>
-          </div>
+          </div> */}
         </div>
 
+        <div
+          className="absolute w-full h-full
+          flex justify-center items-center z-30 top-[120px]"
+        >
+          <script async type="module" src="https://unpkg.com/@splinetool/viewer@1.2.5/build/spline-viewer.js"></script>
+          <spline-viewer
+            loading-anim-type="spinner-small-dark"
+            url="https://prod.spline.design/rcSs4mw7jnwh5xZG/scene.splinecode"
+          />
+        </div>
         {navList.map((nav, i) => (
           <NavModal selected={selected === nav.name} {...nav} key={`nav-modal-${nav}-${i}`} />
         ))}
