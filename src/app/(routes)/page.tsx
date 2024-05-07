@@ -42,7 +42,7 @@ const navList = [
   }
 ]
 
-const SPLINE_SCENE = 'https://prod.spline.design/rcSs4mw7jnwh5xZG/scene.splinecode'
+const SPLINE_SCENE = 'https://prod.spline.design/W83XdmrQbaQnPMlJ/scene.splinecode'
 
 const Home = () => {
   const [selected, setSelected] = useState<string | null>(null)
