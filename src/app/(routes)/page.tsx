@@ -3,9 +3,11 @@
 import { NavItem } from '@/components/main/NavItem'
 import { NavModal } from '@/components/main/NavModal'
 import { CubeIcon, DocumentIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
+import Spline from '@splinetool/react-spline'
+import { Application, SPEObject } from '@splinetool/runtime'
 import { motion } from 'framer-motion'
 import { Inter } from 'next/font/google'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
 
@@ -40,6 +42,8 @@ const navList = [
   }
 ]
 
+const SPLINE_SCENE = 'https://prod.spline.design/rcSs4mw7jnwh5xZG/scene.splinecode'
+
 const Home = () => {
   const [selected, setSelected] = useState<string | null>(null)
 
@@ -72,29 +76,36 @@ const Home = () => {
     }
   }
 
+  const botRef = useRef<SPEObject>()
+  const splineRef = useRef<Application>()
+
+  const onLoad = (spline: Application) => {
+    splineRef.current = spline
+    const botObj = spline.findObjectByName('Character')
+    botRef.current = botObj
+  }
+
+  const triggerAnimation = () => {
+    console.log(botRef)
+    if (botRef.current) {
+      botRef.current.scale
+      console.log(botRef.current)
+    }
+  }
+
   return (
     <main className={inter.variable}>
       <div className="w-full h-[100vh] flex justify-center relative overflow-hidden">
         {/* Background Component */}
-        <div className="relative flex justify-center w-full h-full bg-gradient-to-tl bg-primary/80">
-          {/* <div
-            className="absolute w-full h-full
-          flex justify-center items-center z-30"
-          >
-            <h1 className="text-[42px] font-semibold opacity whitespace-nowrap z-20 text-light">NoowaH</h1>
-          </div> */}
-        </div>
+        <div className="relative flex justify-center w-full h-full bg-gradient-to-tl bg-primary/80"></div>
 
         <div
           className="absolute w-full h-full
-          flex justify-center items-center z-30 top-[120px]"
+          flex justify-center items-center z-30"
         >
-          <script async type="module" src="https://unpkg.com/@splinetool/viewer@1.2.5/build/spline-viewer.js"></script>
-          <spline-viewer
-            loading-anim-type="spinner-small-dark"
-            url="https://prod.spline.design/rcSs4mw7jnwh5xZG/scene.splinecode"
-          />
+          <Spline scene={SPLINE_SCENE} onLoad={onLoad} />
         </div>
+
         {navList.map((nav, i) => (
           <NavModal selected={selected === nav.name} {...nav} key={`nav-modal-${nav}-${i}`} />
         ))}
