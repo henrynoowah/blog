@@ -8,8 +8,6 @@ interface Params {
 const ChatBox = ({ isOpen, onClose }: Params) => {
   return (
     <motion.div
-      className={`absolute w-full h-full md:max-h-[80vh] bottom-0 end-0 px-[24px] py-[100px] md:pb-[160px]
-            flex justify-end items-center z-50 pointer-events-auto`}
       initial={{ opacity: 0 }}
       animate={!!isOpen ? 'open' : 'closed'}
       variants={{
@@ -27,7 +25,7 @@ const ChatBox = ({ isOpen, onClose }: Params) => {
     >
       <div
         style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
-        className={`w-full h-full max-w-full md:max-w-[400px] bg-primary/20 end-0 rounded-[24px] p-4 shadow-xl backdrop-filter backdrop-blur-lg`}
+        className={`w-[400px] max-w-full h-[480px] bg-primary/20 end-0 rounded-[24px] p-4 shadow-xl backdrop-filter backdrop-blur-lg`}
         onClick={() => {}}
       >
         <div className="w-full h-full flex justify-center items-center text-light/60 font-semibold">

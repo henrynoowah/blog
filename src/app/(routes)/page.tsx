@@ -9,7 +9,9 @@ import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import { Inter } from 'next/font/google'
 import { useRef, useState } from 'react'
-const Spline = dynamic(() => import('@splinetool/react-spline'))
+
+const Spline = dynamic(() => import('@splinetool/react-spline'), { ssr: false, loading: () => <>Loading</> })
+
 const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
 
 const navList = [
@@ -55,7 +57,7 @@ const SPLINE_BOT_ID = '7a1937ee-e0ec-4da1-bca9-10b1ff105490'
 
 const Home = () => {
   const [selected, setSelected] = useState<string | null>(null)
-  const [isBotChangeOpened, setIsBotChangeOpened] = useState<boolean>(false)
+  const [isBotChatOpened, setIsBotChatOpened] = useState<boolean>(false)
 
   const handleNavSelect = (name: string) => {
     if (selected === name) {
@@ -77,16 +79,17 @@ const Home = () => {
   }
 
   const toggleChat = () => {
-    !!isBotChangeOpened
+    !!isBotChatOpened
       ? splineRef.current?.emitEventReverse('mouseDown', SPLINE_BOT_ID)
       : splineRef.current?.emitEvent('mouseDown', SPLINE_BOT_ID)
-    setIsBotChangeOpened(!isBotChangeOpened)
+    setIsBotChatOpened(!isBotChatOpened)
   }
+
   return (
     <main className={inter.variable}>
       <div className="w-full h-[100vh] flex justify-center relative overflow-hidden">
         {/* Background Component */}
-        <div className="relative flex justify-center w-full h-full bg-gradient-to-tl from-primary to-primary/60"></div>
+        <div className="relative flex justify-center w-full h-full bg-gradient-to-tl from-primary to-primary/60 pointer-events-none"></div>
 
         <div
           className="absolute w-full h-full
@@ -95,7 +98,12 @@ const Home = () => {
           <Spline scene={SPLINE_SCENE} onLoad={onLoad} />
         </div>
 
-        <ChatBox isOpen={isBotChangeOpened} />
+        <div
+          className={`absolute w-full h-full max-w-[1020px] px-[24px] py-[100px] md:pb-[160px]
+            flex justify-end items-center z-30 pointer-events-auto`}
+        >
+          <ChatBox isOpen={isBotChatOpened} />
+        </div>
 
         {navList.map((nav, i) => (
           <NavModal selected={selected === nav.name} {...nav} key={`nav-modal-${nav}-${i}`} />
@@ -116,7 +124,7 @@ const Home = () => {
                       {...nav}
                       selected={selected === nav.name}
                       onClick={() => {
-                        if (!!isBotChangeOpened) {
+                        if (!!isBotChatOpened) {
                           toggleChat()
                         }
                         handleNavSelect(nav.name)
@@ -132,7 +140,7 @@ const Home = () => {
                   transition={{ ease: 'easeInOut', duration: 0.25 * navList.length }}
                 >
                   <NavItem
-                    selected={!!isBotChangeOpened}
+                    selected={!!isBotChatOpened}
                     {...chat}
                     onClick={() => {
                       setSelected(null)
