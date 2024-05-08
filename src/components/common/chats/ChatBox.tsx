@@ -5,7 +5,7 @@ interface Params {
   onClose?: (close: boolean) => void
 }
 
-const ChatBox = ({ isOpen, onClose }: Params) => {
+const ChatBox = ({ isOpen }: Params) => {
   return (
     <motion.div
       className={`w-[400px] max-w-full h-[480px] max-h-full bg-primary/20 end-0 rounded-[24px] p-4 shadow-xl backdrop-filter backdrop-blur-lg`}
