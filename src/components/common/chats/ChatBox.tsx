@@ -9,7 +9,7 @@ const ChatBox = ({ isOpen, onClose }: Params) => {
   return (
     <motion.div
       className={`absolute w-full h-full md:max-h-[80vh] bottom-0 end-0 px-[24px] py-[100px] md:pb-[160px]
-            flex justify-end items-center z-50 pointer-events-none`}
+            flex justify-end items-center z-50 pointer-events-auto`}
       initial={{ opacity: 0 }}
       animate={!!isOpen ? 'open' : 'closed'}
       variants={{
@@ -19,9 +19,9 @@ const ChatBox = ({ isOpen, onClose }: Params) => {
           transition: { ease: 'easeInOut', duration: 0.5 }
         }),
         closed: () => ({
-          y: 40,
+          y: 80,
           opacity: 0,
-          transition: { ease: 'backInOut', duration: 0.2 }
+          transition: { ease: 'easeOut', duration: 0.5 }
         })
       }}
     >
