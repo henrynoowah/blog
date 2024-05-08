@@ -110,13 +110,12 @@ const Home = () => {
 
   return (
     <main className={inter.variable}>
-      <div className="w-full h-[100vh] flex justify-center relative overflow-hidden">
+      <div className="w-full h-[100vh] flex justify-center relative overflow-hidden touch-none">
         {/* Background Component */}
-        <div className="relative flex justify-center w-full h-full bg-gradient-to-tl from-primary to-primary/60 pointer-events-none"></div>
 
         <div
-          className="absolute w-full h-full
-          flex justify-center items-center z-30 pointer-events-auto"
+          className="fixed w-full h-full
+          flex justify-center items-center z-30 pointer-events-auto bg-gradient-to-tl from-primary to-primary/60"
         >
           <Spline scene={SPLINE_SCENE} onLoad={onLoad} />
         </div>
