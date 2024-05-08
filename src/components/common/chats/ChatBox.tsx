@@ -8,6 +8,7 @@ interface Params {
 const ChatBox = ({ isOpen, onClose }: Params) => {
   return (
     <motion.div
+      className={`w-[400px] max-w-full h-[480px] max-h-full bg-primary/20 end-0 rounded-[24px] p-4 shadow-xl backdrop-filter backdrop-blur-lg`}
       initial={{ opacity: 0 }}
       animate={!!isOpen ? 'open' : 'closed'}
       variants={{
@@ -23,14 +24,8 @@ const ChatBox = ({ isOpen, onClose }: Params) => {
         })
       }}
     >
-      <div
-        style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
-        className={`w-[400px] max-w-full h-[480px] bg-primary/20 end-0 rounded-[24px] p-4 shadow-xl backdrop-filter backdrop-blur-lg`}
-        onClick={() => {}}
-      >
-        <div className="w-full h-full flex justify-center items-center text-light/60 font-semibold">
-          Bot Chat Coming Soon...!
-        </div>
+      <div className="w-full h-full flex justify-center items-center text-light/60 font-semibold">
+        Bot Chat Coming Soon...!
       </div>
       {/* </div> */}
     </motion.div>
