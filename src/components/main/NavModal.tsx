@@ -42,7 +42,7 @@ export const NavModal = ({ onClick, selected, ...nav }: Params) => {
   return isReady && document.getElementById(nav.name) ? (
     <motion.div
       key={`modal-${nav.name}-${windowWidth}`}
-      initial={false}
+      initial={'closed'}
       animate={!!selected ? 'open' : 'closed'}
       variants={{
         open: (height = 1000) => ({
@@ -69,7 +69,7 @@ export const NavModal = ({ onClick, selected, ...nav }: Params) => {
           }
         })
       }}
-      className="fixed w-full h-full flex flex-col gap-2 justify-center items-center backdrop-filter backdrop-blur-xl bg-primary z-40"
+      className="fixed w-full h-full flex flex-col gap-2 justify-center items-center backdrop-filter backdrop-blur-xl bg-primary/40 z-40"
     >
       <motion.div variants={variants} className="flex justify-center items-center gap-2">
         <div
@@ -92,5 +92,7 @@ export const NavModal = ({ onClick, selected, ...nav }: Params) => {
         <p className="text-light">{nav.desc}</p>
       </motion.div>
     </motion.div>
-  ) : null
+  ) : (
+    <></>
+  )
 }

@@ -1,14 +1,16 @@
 'use client'
 
+import ChatBox from '@/components/common/chats/ChatBox'
 import { NavItem } from '@/components/main/NavItem'
 import { NavModal } from '@/components/main/NavModal'
-import { CubeIcon, DocumentIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
-import Spline from '@splinetool/react-spline'
+import { ChatBubbleLeftEllipsisIcon, DocumentIcon } from '@heroicons/react/24/solid'
 import { Application, SPEObject } from '@splinetool/runtime'
 import { motion } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { Inter } from 'next/font/google'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
+const Spline = dynamic(() => import('@splinetool/react-spline'))
 const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
 
 const navList = [
@@ -18,18 +20,18 @@ const navList = [
     icon: <DocumentIcon className="text-light" />,
     desc: 'Check out my dev blog posts'
   },
-  {
-    name: 'works',
-    href: '/works',
-    icon: <CubeIcon className="text-light" />,
-    desc: 'Check out my works'
-  },
-  {
-    name: 'about',
-    href: '/about',
-    icon: <FaceSmileIcon className="text-light" />,
-    desc: 'Get to know more about me'
-  },
+  // {
+  //   name: 'works',
+  //   href: '/works',
+  //   icon: <CubeIcon className="text-light" />,
+  //   desc: 'Check out my works'
+  // },
+  // {
+  //   name: 'about',
+  //   href: '/about',
+  //   icon: <FaceSmileIcon className="text-light" />,
+  //   desc: 'Get to know more about me'
+  // },
   {
     name: 'github',
     href: 'https://www.github.com/henrynoowah',
@@ -42,36 +44,24 @@ const navList = [
   }
 ]
 
+const chat = {
+  name: 'chat',
+  href: 'https://www.github.com/henrynoowah',
+  icon: <ChatBubbleLeftEllipsisIcon className="text-light" />,
+  desc: 'Chat bot!'
+}
+
 const SPLINE_SCENE = 'https://prod.spline.design/W83XdmrQbaQnPMlJ/scene.splinecode'
 
 const Home = () => {
   const [selected, setSelected] = useState<string | null>(null)
-
-  const sidebar = {
-    open: (height = 1000) => ({
-      clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-      transition: {
-        type: 'spring',
-        stiffness: 20,
-        restDelta: 2
-      }
-    }),
-    closed: {
-      clipPath: `circle(30px at 40px 40px)`,
-      transition: {
-        delay: 0.5,
-        type: 'spring',
-        stiffness: 400,
-        damping: 40
-      }
-    }
-  }
+  const [chatToggle, setChatToggle] = useState<boolean>(false)
 
   const handleNavSelect = (name: string) => {
     if (selected === name) {
       setSelected(null)
     } else {
-      const ref = document.getElementById(name)
+      // const ref = document.getElementById(name)
       setSelected(name)
     }
   }
@@ -82,18 +72,9 @@ const Home = () => {
   const onLoad = (spline: Application) => {
     splineRef.current = spline
     const botObj = spline.findObjectByName('Character')
+    botObj?.emitEvent('mouseDown')
     botRef.current = botObj
   }
-
-  const [toggle, setToggle] = useState<boolean>(false)
-
-  function triggerAnimation() {
-    splineRef.current?.emitEvent('mouseHover', 'Camera')
-  }
-
-  useEffect(() => {
-    console.log(toggle)
-  }, [toggle])
 
   return (
     <main className={inter.variable}>
@@ -109,29 +90,13 @@ const Home = () => {
             scene={SPLINE_SCENE}
             onLoad={onLoad}
             onMouseDown={(e) => {
-              console.log(e.target)
-              console.log(toggle)
-              setToggle(!toggle)
+              botRef.current?.emitEvent('mouseDown')
+              setChatToggle(!chatToggle)
             }}
           />
         </div>
 
-        {/* {!!toggle && (
-          <div
-            className="absolute w-full h-full
-        flex justify-end items-center z-50 pointer-events-none] pt-[10%] pb-[22%] px-[16px] md:px-[10%] pointer-events-none"
-          >
-            <div
-              className="w-full h-full max-w-full md:max-w-[400px] bg-light end-0 rounded p-4 shadow-xl backdrop-filter backdrop-blur-lg bg-opacity-40"
-              onClick={() => {}}
-            >
-              Test
-            </div>
-          </div>
-        )} */}
-        {/* <button className="z-40 pointer-events-auto" type="button" onClick={triggerAnimation}>
-          Trigger Spline Animation
-        </button> */}
+        <ChatBox isOpen={chatToggle} />
 
         {navList.map((nav, i) => (
           <NavModal selected={selected === nav.name} {...nav} key={`nav-modal-${nav}-${i}`} />
@@ -148,10 +113,33 @@ const Home = () => {
                     animate={{ y: 0, opacity: 100 }}
                     transition={{ ease: 'easeInOut', duration: 0.25 * i }}
                   >
-                    <NavItem {...nav} selected={selected === nav.name} onClick={() => handleNavSelect(nav.name)} />
+                    <NavItem
+                      {...nav}
+                      selected={selected === nav.name}
+                      onClick={() => {
+                        setChatToggle(false)
+                        handleNavSelect(nav.name)
+                      }}
+                    />
                   </motion.div>
                 </div>
               ))}
+              <div id={chat.name} className="pointer-events-auto">
+                <motion.div
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 100 }}
+                  transition={{ ease: 'easeInOut', duration: 0.25 * navList.length }}
+                >
+                  <NavItem
+                    {...chat}
+                    onClick={() => {
+                      setSelected(null)
+                      botRef.current?.emitEventReverse('mouseDown')
+                      setChatToggle(!chatToggle)
+                    }}
+                  />
+                </motion.div>
+              </div>
             </nav>
           </div>
         </div>

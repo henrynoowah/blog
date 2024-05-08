@@ -52,7 +52,8 @@ export const NavItem = ({ name, href, icon, onClick, selected }: Params) => {
         >
           <span
             className={[
-              `bg-primary`,
+              // `bg-primary`,
+              // 'backdrop-filter backdrop-blur-xl bg-primary/40',
               `absolute w-full h-full transition duration-300 rounded-full `,
               selected ? ' border border-dotted' : '',
               `opacity-100 group-hover:opacity-100`
