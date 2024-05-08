@@ -7,7 +7,7 @@ import Spline from '@splinetool/react-spline'
 import { Application, SPEObject } from '@splinetool/runtime'
 import { motion } from 'framer-motion'
 import { Inter } from 'next/font/google'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
 
@@ -85,26 +85,53 @@ const Home = () => {
     botRef.current = botObj
   }
 
-  const triggerAnimation = () => {
-    console.log(botRef)
-    if (botRef.current) {
-      botRef.current.scale
-      console.log(botRef.current)
-    }
+  const [toggle, setToggle] = useState<boolean>(false)
+
+  function triggerAnimation() {
+    splineRef.current?.emitEvent('mouseHover', 'Camera')
   }
+
+  useEffect(() => {
+    console.log(toggle)
+  }, [toggle])
 
   return (
     <main className={inter.variable}>
       <div className="w-full h-[100vh] flex justify-center relative overflow-hidden">
         {/* Background Component */}
-        <div className="relative flex justify-center w-full h-full bg-gradient-to-tl bg-primary/80"></div>
+        <div className="relative flex justify-center w-full h-full bg-gradient-to-tl from-primary to-primary/60"></div>
 
         <div
           className="absolute w-full h-full
-          flex justify-center items-center z-30"
+          flex justify-center items-center z-30 pointer-events-auto"
         >
-          <Spline scene={SPLINE_SCENE} onLoad={onLoad} />
+          <Spline
+            scene={SPLINE_SCENE}
+            onLoad={onLoad}
+            onMouseDown={(e) => {
+              console.log(e.target)
+              console.log(toggle)
+              setToggle(!toggle)
+            }}
+          />
         </div>
+
+        {/* {!!toggle && (
+          <div
+            className="absolute w-full h-full
+        flex justify-end items-center z-50 pointer-events-none] pt-[10%] pb-[22%] px-[16px] md:px-[10%] pointer-events-none"
+          >
+            <div
+              className="w-full h-full max-w-full md:max-w-[400px] bg-light end-0 rounded p-4 shadow-xl backdrop-filter backdrop-blur-lg bg-opacity-40"
+              onClick={() => {}}
+            >
+              Test
+            </div>
+          </div>
+        )} */}
+        {/* <button className="z-40 pointer-events-auto" type="button" onClick={triggerAnimation}>
+          Trigger Spline Animation
+        </button> */}
 
         {navList.map((nav, i) => (
           <NavModal selected={selected === nav.name} {...nav} key={`nav-modal-${nav}-${i}`} />
