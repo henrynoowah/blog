@@ -1,5 +1,5 @@
 import { getPosts } from '@/services/posts'
-import PostsContainer from './PostsContainer'
+import PostsContainer from './_components/PostsContainer'
 
 export const dynamic = 'force-dynamic'
 

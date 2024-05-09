@@ -1,6 +1,6 @@
 export const metadata: Metadata = {
   title: {
-    default: 'Posts',
+    default: 'About | Hawoon Joh',
     template: '%s'
   }
 }
@@ -16,7 +16,6 @@ interface Params {
 const PostsLayouts = ({ children }: Params) => {
   return (
     <div className="w-full h-screen flex flex-col bg-background transition-colors duration-200 ease-linear overflow-hidden">
-      <Header />
       <main className="relative w-full overflow-y-auto">
         <div className="w-full h-fit flex justify-center">{children}</div>
       </main>
