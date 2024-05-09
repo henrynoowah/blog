@@ -1,3 +1,12 @@
+# [0.22.0](https://github.com/henrynoowah/blog/compare/v0.21.0...v0.22.0) (2024-05-09)
+
+
+### Features
+
+* added vercel.json ([f3627e4](https://github.com/henrynoowah/blog/commit/f3627e4c37fe4c6af1a5c29a01a2520761704736))
+
+
+
 # [0.21.0](https://github.com/henrynoowah/blog/compare/v0.20.0...v0.21.0) (2024-05-09)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * icon not showing on NavModal ([0cf6641](https://github.com/henrynoowah/blog/commit/0cf664188ba64a77facadf775c264ddcc8023e06))
-
-
-
-## [0.19.2](https://github.com/henrynoowah/blog/compare/v0.19.1...v0.19.2) (2024-02-11)
-
-
-### Bug Fixes
-
-* icon not showing on NavModal ([5f22b3f](https://github.com/henrynoowah/blog/commit/5f22b3f3b92c4dc6804aa524054ab30bc38acc20))
 
 
 
