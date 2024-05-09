@@ -1,3 +1,12 @@
+# [0.21.0](https://github.com/henrynoowah/blog/compare/v0.20.0...v0.21.0) (2024-05-09)
+
+
+### Features
+
+* initial i18n configuration added ([225995d](https://github.com/henrynoowah/blog/commit/225995d2f80a6229e6ac7357763e2101fb9c5958))
+
+
+
 # [0.20.0](https://github.com/henrynoowah/blog/compare/v0.19.4...v0.20.0) (2024-05-06)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * icon not showing on NavModal ([5f22b3f](https://github.com/henrynoowah/blog/commit/5f22b3f3b92c4dc6804aa524054ab30bc38acc20))
-
-
-
-## [0.19.1](https://github.com/henrynoowah/blog/compare/v0.19.0...v0.19.1) (2024-02-11)
-
-
-### Bug Fixes
-
-* main page motion fix ([362b359](https://github.com/henrynoowah/blog/commit/362b35948923c1e761ea875d1d652a0cc078a166))
 
 
 
