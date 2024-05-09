@@ -1,0 +1,8 @@
+{
+  "navigation": {
+    "home": "홈",
+    "posts": "포스트",
+    "about": "소개",
+    "github": "깃허브"
+  }
+}

@@ -1,8 +1,9 @@
 'use client'
 
+import { NavItem } from '@/app/[locale]/_components/NavItem'
+import { NavModal } from '@/app/[locale]/_components/NavModal'
 import ChatBox from '@/components/common/chats/ChatBox'
-import { NavItem } from '@/components/main/NavItem'
-import { NavModal } from '@/components/main/NavModal'
+import LoadingCircle from '@/components/common/loadings/LoadingCircle'
 import { ChatBubbleLeftEllipsisIcon, DocumentIcon } from '@heroicons/react/24/solid'
 import { Application, SPEObject } from '@splinetool/runtime'
 import { motion } from 'framer-motion'
@@ -12,27 +13,7 @@ import { useRef, useState } from 'react'
 
 const Spline = dynamic(() => import('@splinetool/react-spline'), {
   ssr: false,
-  loading: () => (
-    <div role="status">
-      <svg
-        aria-hidden="true"
-        className="w-8 h-8 text-light/40 animate-spin fill-primary"
-        viewBox="0 0 100 101"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-          fill="currentColor"
-        />
-        <path
-          d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-          fill="currentFill"
-        />
-      </svg>
-      <span className="sr-only">Loading...</span>
-    </div>
-  )
+  loading: () => <LoadingCircle />
 })
 
 const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
@@ -78,7 +59,7 @@ const chat = {
 const SPLINE_SCENE = 'https://prod.spline.design/W83XdmrQbaQnPMlJ/scene.splinecode'
 const SPLINE_BOT_ID = '7a1937ee-e0ec-4da1-bca9-10b1ff105490'
 
-const Home = () => {
+const MainContainer = () => {
   const [selected, setSelected] = useState<string | null>(null)
   const [isBotChatOpened, setIsBotChatOpened] = useState<boolean>(false)
 
@@ -109,74 +90,72 @@ const Home = () => {
   }
 
   return (
-    <main className={inter.variable}>
-      <div className="w-full h-[100vh] flex justify-center relative overflow-hidden touch-none">
-        {/* Background Component */}
+    <div className="w-full h-[100vh] flex justify-center relative overflow-hidden touch-none">
+      {/* Background Component */}
 
-        <div
-          className="fixed w-full h-full
+      <div
+        className="fixed w-full h-full
           flex justify-center items-center z-30 pointer-events-auto bg-gradient-to-tl from-primary to-primary/60"
-        >
-          <Spline scene={SPLINE_SCENE} onLoad={onLoad} />
-        </div>
+      >
+        <Spline scene={SPLINE_SCENE} onLoad={onLoad} />
+      </div>
 
-        <div
-          className={`fixed w-full h-full max-w-[1020px] px-[24px] pt-4 pb-[40px] md:pb-[100px]
+      <div
+        className={`fixed w-full h-full max-w-[1020px] px-[24px] pt-4 pb-[40px] md:pb-[100px]
             flex justify-end items-center z-30 pointer-events-auto`}
-        >
-          <ChatBox isOpen={isBotChatOpened} />
-        </div>
+      >
+        <ChatBox isOpen={isBotChatOpened} />
+      </div>
 
-        {navList.map((nav, i) => (
-          <NavModal selected={selected === nav.name} {...nav} key={`nav-modal-${nav}-${i}`} />
-        ))}
+      {navList.map((nav, i) => (
+        <NavModal selected={selected === nav.name} {...nav} key={`nav-modal-${nav}-${i}`} />
+      ))}
 
-        {/* Navigation */}
-        <div className="fixed bottom-[30px] md:bottom-[60px] w-full max-w-[900px] h-full justify-start items-end z-50 pointer-events-none">
-          <div className="w-full h-full flex flex-col-reverse bottom-[200px]">
-            <nav className="flex justify-center gap-[16px]">
-              {navList.map((nav, i) => (
-                <div id={nav.name} key={`${nav.name}-${i}`} className="pointer-events-auto">
-                  <motion.div
-                    initial={{ y: 40, opacity: 0 }}
-                    animate={{ y: 0, opacity: 100 }}
-                    transition={{ ease: 'easeInOut', duration: 0.25 * i }}
-                  >
-                    <NavItem
-                      {...nav}
-                      selected={selected === nav.name}
-                      onClick={() => {
-                        if (!!isBotChatOpened) {
-                          toggleChat()
-                        }
-                        handleNavSelect(nav.name)
-                      }}
-                    />
-                  </motion.div>
-                </div>
-              ))}
-              <div id={chat.name} className="pointer-events-auto">
+      {/* Navigation */}
+      <div className="fixed bottom-[30px] md:bottom-[60px] w-full max-w-[900px] h-full justify-start items-end z-50 pointer-events-none">
+        <div className="w-full h-full flex flex-col-reverse bottom-[200px]">
+          <nav className="flex justify-center gap-[16px]">
+            {navList.map((nav, i) => (
+              <div id={nav.name} key={`${nav.name}-${i}`} className="pointer-events-auto">
                 <motion.div
                   initial={{ y: 40, opacity: 0 }}
                   animate={{ y: 0, opacity: 100 }}
-                  transition={{ ease: 'easeInOut', duration: 0.25 * navList.length }}
+                  transition={{ ease: 'easeInOut', duration: 0.25 * i }}
                 >
                   <NavItem
-                    selected={!!isBotChatOpened}
-                    {...chat}
+                    {...nav}
+                    selected={selected === nav.name}
                     onClick={() => {
-                      setSelected(null)
-                      toggleChat()
+                      if (!!isBotChatOpened) {
+                        toggleChat()
+                      }
+                      handleNavSelect(nav.name)
                     }}
                   />
                 </motion.div>
               </div>
-            </nav>
-          </div>
+            ))}
+            <div id={chat.name} className="pointer-events-auto">
+              <motion.div
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 100 }}
+                transition={{ ease: 'easeInOut', duration: 0.25 * navList.length }}
+              >
+                <NavItem
+                  selected={!!isBotChatOpened}
+                  {...chat}
+                  onClick={() => {
+                    setSelected(null)
+                    toggleChat()
+                  }}
+                />
+              </motion.div>
+            </div>
+          </nav>
         </div>
       </div>
-    </main>
+    </div>
   )
 }
 
-export default Home
+export default MainContainer

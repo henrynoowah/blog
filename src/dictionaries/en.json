@@ -1,0 +1,8 @@
+{
+  "navigation": {
+    "home": "Home",
+    "posts": "Posts",
+    "about": "About",
+    "github": "Github"
+  }
+}

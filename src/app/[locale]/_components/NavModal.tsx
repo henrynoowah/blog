@@ -4,7 +4,7 @@ import { HTMLAttributes, ReactNode, useEffect, useState } from 'react'
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import useResizeHandler from '../hooks/useResizeHandler'
+import useResizeHandler from '../../../components/hooks/useResizeHandler'
 interface Params extends HTMLAttributes<HTMLButtonElement> {
   name: string
   href: string

@@ -1,20 +1,19 @@
+import { Locale } from '@/i18n.config'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import packageData from 'package.json'
+import { Suspense } from 'react'
 import Button from '../../Button'
 import Nav_mobile from './Nav_mobile'
 import ShowSearchButton from './ShowSearchButton'
-import { Suspense } from 'react'
-import ThemeToggle from '../../themeToggle/ThemeToggle'
+const ThemeToggle = dynamic(() => import('../../themeToggle/ThemeToggle'))
 
 const HEADER_HEIGHT = 72
 
-const navOption: Array<{ label: string; href: string }> = [
-  { label: 'Posts', href: '/posts' },
-  { label: 'About', href: '/about' },
-  { label: 'Works', href: '/works' }
-]
-
-const Header = () => {
+interface Params {
+  navOption: Array<{ label: string; href: string; locale: Locale; external?: boolean }>
+}
+const Header = ({ navOption }: Params) => {
   return (
     <>
       <div
@@ -42,7 +41,10 @@ const Header = () => {
                 <ul className="flex gap-[20px] items-center">
                   {navOption.map((nav) => (
                     <li key={nav.label}>
-                      <Link href={nav.href}>
+                      <Link
+                        href={!nav.external && nav.locale ? `/${nav.locale}/${nav.href}` : nav.href}
+                        target={nav.external ? '_blank' : undefined}
+                      >
                         <Button className="bg-transparent !text-light !text-md">{nav.label}</Button>
                       </Link>
                     </li>
