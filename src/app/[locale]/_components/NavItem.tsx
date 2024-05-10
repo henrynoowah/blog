@@ -34,7 +34,7 @@ export const NavItem = ({ name, href, icon, onClick, selected }: Params) => {
     <div className="flex flex-col justify-end items-center relative">
       <span
         className={[
-          `absolute top-0 -translate-y-[24px] z-10 text-[12px] font-bold text-primary capitalize px-[8px] py-[4px] bg-light rounded-full transition duration-200`,
+          `absolute top-0 -translate-y-[24px] z-10 text-[12px] font-bold text-primary capitalize px-[8px] py-[4px] bg-light rounded-full transition duration-200 whitespace-nowrap`,
           hover === name ? 'opacity-0 sm:opacity-100 ' : 'opacity-0'
         ].join(' ')}
       >
