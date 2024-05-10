@@ -1,3 +1,12 @@
+## [0.22.1](https://github.com/henrynoowah/blog/compare/v0.22.0...v0.22.1) (2024-05-10)
+
+
+### Bug Fixes
+
+* updated middleware matcher to prevent matching public directory ([c4ba54e](https://github.com/henrynoowah/blog/commit/c4ba54ec1d891f50a81efca103bcecbd35d70b46))
+
+
+
 # [0.22.0](https://github.com/henrynoowah/blog/compare/v0.21.0...v0.22.0) (2024-05-09)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * icon not showing on NavModal ([2c790f2](https://github.com/henrynoowah/blog/commit/2c790f2fc94fbf3b460c0637ff7eac79226ede28))
-
-
-
-## [0.19.3](https://github.com/henrynoowah/blog/compare/v0.19.2...v0.19.3) (2024-02-11)
-
-
-### Bug Fixes
-
-* icon not showing on NavModal ([0cf6641](https://github.com/henrynoowah/blog/commit/0cf664188ba64a77facadf775c264ddcc8023e06))
 
 
 
