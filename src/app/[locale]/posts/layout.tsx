@@ -17,12 +17,12 @@ interface Params {
 }
 
 const PostsLayouts = async ({ children, params }: Params) => {
-  const { navigation } = await getDictionary(params.locale)
+  const t = await getDictionary(params.locale, 'navigation')
 
   const navOption: Array<{ label: string; href: string; locale: Locale; external?: boolean }> = [
-    { label: navigation.home, href: '/', locale: params.locale },
-    { label: navigation.posts, href: '/posts', locale: params.locale },
-    { label: navigation.github, href: 'https://www.github.com/henrynoowah', locale: params.locale, external: true }
+    { label: t.navigation.home, href: '/', locale: params.locale },
+    { label: t.navigation.posts, href: '/posts', locale: params.locale },
+    { label: t.navigation.github, href: 'https://www.github.com/henrynoowah', locale: params.locale, external: true }
   ]
 
   return (
