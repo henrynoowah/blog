@@ -10,7 +10,9 @@ interface Params extends HTMLAttributes<HTMLButtonElement> {
   href: string
   icon: ReactNode
   desc: string
+  locale?: string
   selected?: boolean
+  external?: boolean
 }
 
 export const NavModal = ({ onClick, selected, ...nav }: Params) => {
@@ -81,8 +83,8 @@ export const NavModal = ({ onClick, selected, ...nav }: Params) => {
           <span className="w-[24px] h-[24px] aspect-square">{nav.icon}</span>
         </div>
         <Link
-          href={nav.href}
-          target={nav.name === 'github' || nav.name === 'velog' ? '_blank' : undefined}
+          href={!nav.external && nav.locale ? `/${nav.locale}${nav.href}` : nav.href}
+          target={nav.external ? '_blank' : undefined}
           className="text-light text-[36px] font-medium capitalize z-40 flex justify-center gap-4 items-center hover:underline pointer-events-auto"
         >
           <p>{nav.name}</p>

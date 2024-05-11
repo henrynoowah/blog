@@ -1,3 +1,4 @@
+import { useDictionary } from '@/context/dictionary-provider'
 import { motion } from 'framer-motion'
 
 interface Params {
@@ -6,6 +7,7 @@ interface Params {
 }
 
 const ChatBox = ({ isOpen }: Params) => {
+  const t = useDictionary()
   return (
     <motion.div
       className={`w-[400px] max-w-full h-[480px] max-h-full bg-primary/20 end-0 rounded-[24px] p-4 shadow-xl backdrop-filter backdrop-blur-lg`}
@@ -25,7 +27,7 @@ const ChatBox = ({ isOpen }: Params) => {
       }}
     >
       <div className="w-full h-full flex justify-center items-center text-light/60 font-semibold">
-        Chat Bot Coming Soon...!
+        {t.navigation.chat.description}
       </div>
     </motion.div>
   )

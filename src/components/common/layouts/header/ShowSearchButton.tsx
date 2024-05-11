@@ -1,10 +1,11 @@
 'use client'
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { FormEventHandler, useRef, useState } from 'react'
 
 const ShowSearchButton = () => {
+  const { locale } = useParams<{ locale?: string }>()
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -28,7 +29,7 @@ const ShowSearchButton = () => {
     }
   }
 
-  return pathname.startsWith('/posts') ? (
+  return pathname.startsWith('/posts') || pathname.startsWith(`/${locale}/posts`) ? (
     <form onSubmit={handleSubmit} className="flex justify-between relative group transition duration-300 ease-in-out">
       <div
         className={`h-[36px] relative duration-300 ease-in-out ring-1 ring-inset ring-light rounded-full overflow-hidden ${

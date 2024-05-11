@@ -1,9 +1,24 @@
 {
   "navigation": {
-    "home": "Home",
-    "posts": "Posts",
-    "about": "About",
-    "github": "Github",
-    "chat": "Chat Bot"
+    "home": {
+      "title":"Home",
+      "description": ""
+    },
+    "posts":{
+      "title":"Posts",
+      "description": "Check out my dev blog posts"
+    },
+    "about": {
+      "title":"About",
+      "description":""
+    },
+    "github": {
+      "title":"Github",
+      "description":"Head over to my github!"
+    },
+    "chat":{
+      "title":"Chat Bot",
+      "description":"Chat Bot Coming Soon...!"
+    }
   }
 }
