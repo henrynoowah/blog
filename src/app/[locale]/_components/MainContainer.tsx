@@ -9,9 +9,9 @@ import { ChatBubbleLeftEllipsisIcon, DocumentIcon } from '@heroicons/react/24/so
 import { Application, SPEObject } from '@splinetool/runtime'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
-import { Inter } from 'next/font/google'
-import { useParams, usePathname, useSearchParams } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { useRef, useState } from 'react'
+import LocaleToggle from './LocaleToggle'
 
 const Spline = dynamic(() => import('@splinetool/react-spline'), {
   ssr: false,
@@ -112,6 +112,9 @@ const MainContainer = () => {
             flex justify-end items-center z-30 pointer-events-auto`}
       >
         <ChatBox isOpen={isBotChatOpened} />
+      </div>
+      <div className={`fixed w-full max-w-[1020px] flex justify-end z-30 pointer-events-auto top-4 end-4`}>
+        <LocaleToggle />
       </div>
 
       {navList.map((nav, i) => (

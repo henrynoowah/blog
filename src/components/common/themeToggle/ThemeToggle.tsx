@@ -24,6 +24,7 @@ const ThemeToggle = () => {
 
   return (
     <button
+      type="button"
       aria-label="Theme Toggle"
       onClick={handleThemeSwitch}
       className="!text-light relative w-[36px] h-[36px] flex justify-center items-center rounded-full ring-1 ring-light dark:bg-dark-80"

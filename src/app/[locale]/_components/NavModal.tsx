@@ -41,13 +41,14 @@ export const NavModal = ({ onClick, selected, ...nav }: Params) => {
   }
 
   const windowWidth = useResizeHandler()
+
   return isReady && document.getElementById(nav.name) ? (
     <motion.div
       key={`modal-${nav.name}-${windowWidth}`}
       initial={'closed'}
       animate={!!selected ? 'open' : 'closed'}
       variants={{
-        open: (height = 1000) => ({
+        open: (height = 500) => ({
           clipPath: `circle(${height * 2 + 200}px at ${
             (document.getElementById(nav.name)?.getBoundingClientRect().x as number) + 25
           }px ${(document.getElementById(nav.name)?.getBoundingClientRect().y as number) + 25}px)`,
@@ -83,7 +84,7 @@ export const NavModal = ({ onClick, selected, ...nav }: Params) => {
           <span className="w-[24px] h-[24px] aspect-square">{nav.icon}</span>
         </div>
         <Link
-          href={!nav.external && nav.locale ? `/${nav.locale}${nav.href}` : nav.href}
+          href={!nav.external ? `${nav.locale !== 'en' ? `/${nav.locale}` : ''}${nav.href}` : nav.href}
           target={nav.external ? '_blank' : undefined}
           className="text-light text-[36px] font-medium capitalize z-40 flex justify-center gap-4 items-center hover:underline pointer-events-auto"
         >

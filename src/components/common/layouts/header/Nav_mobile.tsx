@@ -36,7 +36,7 @@ const Nav_mobile = ({ navOption }: Params) => {
               }`}
             >
               <Link
-                href={!nav.external && nav.locale ? `/${nav.locale}/${nav.href}` : nav.href}
+                href={!nav.external ? `${nav.locale !== 'en' ? `/${nav.locale}` : ''}${nav.href}` : nav.href}
                 target={nav.external ? '_blank' : undefined}
               >
                 <Button className="w-full px-4 sm:px-10 flex justify-between items-center bg-transparent !text-light !text-md py-2 text-left">
