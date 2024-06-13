@@ -1,3 +1,12 @@
+## [0.22.2](https://github.com/henrynoowah/blog/compare/v0.22.1...v0.22.2) (2024-06-13)
+
+
+### Bug Fixes
+
+* updated i18n handling ([464b4fd](https://github.com/henrynoowah/blog/commit/464b4fdf4cfc0ec12f910b2423c2c500d5387617))
+
+
+
 ## [0.22.1](https://github.com/henrynoowah/blog/compare/v0.22.0...v0.22.1) (2024-05-10)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * added new spline 3d bot with look at animation ([6e80d06](https://github.com/henrynoowah/blog/commit/6e80d064f487a5431609fe7d75f7f8fd2438480d))
-
-
-
-## [0.19.4](https://github.com/henrynoowah/blog/compare/v0.19.3...v0.19.4) (2024-02-11)
-
-
-### Bug Fixes
-
-* icon not showing on NavModal ([2c790f2](https://github.com/henrynoowah/blog/commit/2c790f2fc94fbf3b460c0637ff7eac79226ede28))
 
 
 
