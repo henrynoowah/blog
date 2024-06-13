@@ -1,0 +1,24 @@
+{
+  "navigation": {
+    "home": {
+      "title": "홈",
+      "description": ""
+    },
+    "posts": {
+      "title": "포스트",
+      "description": "기술 블로그 포스트 보러가기"
+    },
+    "about": {
+      "title": "소개",
+      "description": ""
+    },
+    "github": {
+      "title": "Github",
+      "description": "깃허브 페이지로 이동"
+    },
+    "chat": {
+      "title": "챗봇",
+      "description": "준비중입니다...!"
+    }
+  }
+}

@@ -23,8 +23,6 @@ const LocaleToggle = () => {
     }
   }, [iconToggle])
 
-  console.log(locale === 'ko')
-
   return (
     <button
       aria-label="Theme Toggle"

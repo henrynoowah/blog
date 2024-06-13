@@ -13,7 +13,7 @@ interface Params {
 }
 
 const Home = async ({ params }: Params) => {
-  const dictionary = await getDictionary(params.locale, 'navigation')
+  const dictionary = await getDictionary(params.locale)
   return (
     <main className={inter.variable}>
       <DictionaryProvider dictionary={dictionary}>
