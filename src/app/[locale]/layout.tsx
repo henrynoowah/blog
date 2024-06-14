@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     title,
     type: 'website',
     description,
-    images: { url: `/andrpid-chrome-512-512.png`, width: 1200, height: 630, type: 'image/png' }
+    images: { url: `/twitter-card.png`, width: 1200, height: 630, type: 'image/png' }
   },
   twitter: {
     title,
     card: 'summary_large_image',
     description,
-    images: { url: `/andrpid-chrome-512-512.png`, width: 1200, height: 630, type: 'image/png' }
+    images: { url: `/twitter-card.png`, width: 1200, height: 630, type: 'image/png' }
   }
 }
 
