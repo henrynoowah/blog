@@ -5,6 +5,8 @@ import 'src/app/styles/globals.css'
 const title = 'NoowaH Blog'
 const description = "Welcome to NoowaH's blog"
 
+const url = process.env.NEXTAUTH_URL
+
 export const metadata: Metadata = {
   title,
   description,
@@ -15,13 +17,13 @@ export const metadata: Metadata = {
     title,
     type: 'website',
     description,
-    images: { url: `/twitter-card.png`, width: 1200, height: 630, type: 'image/png' }
+    images: { url: `${url}/twitter-card.png`, width: 1200, height: 630, type: 'image/png' }
   },
   twitter: {
     title,
     card: 'summary_large_image',
     description,
-    images: { url: `/twitter-card.png`, width: 1200, height: 630, type: 'image/png' }
+    images: { url: `${url}/twitter-card.png`, width: 1200, height: 630, type: 'image/png' }
   }
 }
 

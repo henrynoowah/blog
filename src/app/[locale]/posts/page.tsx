@@ -1,14 +1,47 @@
 import { getPosts } from '@/services/posts'
 import PostsContainer from './_components/PostsContainer'
 
+import matter from 'gray-matter'
+import { Locale } from '@/i18n.config'
+
 export const dynamic = 'force-dynamic'
 
-const getData = async (): Promise<any> => {
+const getData = async ({ locale }: { locale: Locale }): Promise<any> => {
+  const token = process.env.GH_TOKEN
+  const owner = 'henrynoowah'
+  const repo = 'posts-dev'
+  const path = ``
+  // const path = `posts/${locale}`
+
+  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
+
+  const response = await fetch(apiUrl, {
+    headers: {
+      Authorization: `token ${token}`
+    }
+  })
+  const files = await response.json()
+
+  const posts = await Promise.all(
+    files.map(async (file: any) => {
+      const fileResponse = await fetch(file.download_url)
+      const fileContent = await fileResponse.text()
+      const { data } = matter(fileContent)
+
+      return {
+        filename: file.name,
+        metadata: data
+      }
+    })
+  )
+
+  console.log(posts)
+
   return await getPosts({})
 }
 
 const Posts = async () => {
-  const posts = await getData()
+  const posts = await getData({ locale: 'en' })
 
   return (
     <div className="w-full max-w-2xl px-4 xl:px-0 py-4">

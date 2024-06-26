@@ -18,7 +18,6 @@ interface Params {
 
 const PostsLayouts = async ({ children, params }: Params) => {
   const t = await getDictionary(params.locale)
-  console.log(t)
 
   const navOption: Array<{ label: string; href: string; locale: Locale; external?: boolean }> = [
     { label: t.navigation.home.title, href: '/', locale: params.locale },
