@@ -38,7 +38,10 @@ const markdownComponents: MarkDownComponents = {
     const { ordered: _, ...rest } = props
     return <ul className="list-disc text-md leading-6 ps-4 md:ps-8" {...rest} />
   },
-  ol: ({ node, ...props }) => <ol className="list-decimal ps-4 text-md leading-8" {...props} />,
+  ol: ({ node, ...props }) => {
+    const { ordered: _, ...rest } = props
+    return <ol className="list-decimal ps-4 text-md leading-8" {...rest} />
+  },
   li: ({ node, ...props }) => {
     const { ordered: _, ...rest } = props
     return (

@@ -1,19 +1,20 @@
 'use client'
 
 import { themeCheck } from '@/utils/themeCheck'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 import { MouseEventHandler, useEffect, useState } from 'react'
 
 const LocaleToggle = () => {
   const router = useRouter()
   const params = useParams()
+  const pathname = usePathname()
   const locale = params.locale as string
 
   const [iconToggle, setIconToggle] = useState<boolean>(themeCheck())
 
   const handleLocaleSwitch: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault()
-    router.replace(locale === 'ko' ? '/' : '/ko')
+    router.replace(locale === 'ko' ? '/' : '/ko' + pathname)
     setIconToggle(true)
   }
 
@@ -27,7 +28,7 @@ const LocaleToggle = () => {
     <button
       aria-label="Theme Toggle"
       onClick={handleLocaleSwitch}
-      className="!text-light relative w-[36px] h-[36px] flex justify-center items-center rounded-full ring-1 ring-light/60 dark:bg-dark-80"
+      className="!text-light relative w-[36px] h-[36px] flex justify-center items-center rounded-full ring-1 ring-light dark:bg-dark-80"
     >
       <span
         className={`absolute ${

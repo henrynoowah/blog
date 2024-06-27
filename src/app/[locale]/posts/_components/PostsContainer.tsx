@@ -3,10 +3,11 @@
 
 import PostCard from '@/components/common/cards/PostCard'
 import PostCard_skeleton from '@/components/common/cards/PostCard_skeleton'
-import { getPosts } from '@/services/posts'
+import { Locale } from '@/i18n.config'
+import { getGithubIssues } from '@/services/gh-issues'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import dynamic from 'next/dynamic'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import useSWRInfinite from 'swr/infinite'
 
@@ -21,9 +22,14 @@ interface Params {
 const PostsContainer = ({ fallbackData }: Params) => {
   const searchParams = useSearchParams()
 
+  const params = useParams()
+
+  const locale = params.locale as Locale
+
   const router = useRouter()
 
   const tag = searchParams.get('tag')
+  const label = searchParams.get('label')
 
   const search = searchParams.get('search')
 
@@ -32,23 +38,23 @@ const PostsContainer = ({ fallbackData }: Params) => {
   const getKey = (pageIndex: number, previousPageData: any[]) => {
     if (previousPageData && !previousPageData.length) return null //
     if (pageIndex === 0) return [pageIndex, { tag, search, limit: LIMIT }]
-    return { cursor: previousPageData[previousPageData.length - 1].id, limit: LIMIT }
+    return { page: pageIndex + 1 }
   }
 
   const {
-    data: page,
+    data: pages,
     isLoading,
     isValidating,
     setSize
-  } = useSWRInfinite(getKey, (key) => getPosts({ ...key, tag, search }), {
+  } = useSWRInfinite(getKey, (key) => getGithubIssues({ ...key, locale, labels: label ? [label] : [], search }), {
     keepPreviousData: true,
     fallbackData: [fallbackData]
   })
 
   const intersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
     if (entries[0].isIntersecting) {
-      if (page && page.length > 0) {
-        const lastPage = page[page.length - 1]
+      if (pages && pages.length > 0) {
+        const lastPage = pages[pages.length - 1]
         if (!isValidating && !isLoading && lastPage && lastPage.length === LIMIT) {
           setSize((page) => page + 1)
         }
@@ -86,11 +92,11 @@ const PostsContainer = ({ fallbackData }: Params) => {
       )}
 
       <ul className="flex flex-col gap-6">
-        {page && page?.length > 0 ? (
-          page?.map(
+        {pages && pages?.length > 0 ? (
+          pages?.map(
             (posts) =>
               posts &&
-              posts.map((post: any, i: number) => (
+              posts?.map((post: any, i: number) => (
                 <li key={`${post.id}-${i}`} ref={i === posts.length - 1 ? setLastRef : undefined}>
                   <PostCard {...post} />
                 </li>

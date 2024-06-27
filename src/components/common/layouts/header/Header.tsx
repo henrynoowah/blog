@@ -6,6 +6,7 @@ import { Suspense } from 'react'
 import Nav_mobile from './Nav_mobile'
 import ShowSearchButton from './ShowSearchButton'
 import { useParams } from 'next/navigation'
+import LocaleToggle from '@/app/[locale]/_components/LocaleToggle'
 const ThemeToggle = dynamic(() => import('../../themeToggle/ThemeToggle'))
 
 const HEADER_HEIGHT = 72
@@ -34,6 +35,7 @@ const Header = ({ navOption, locale }: Params) => {
               <ShowSearchButton />
             </Suspense>
             <ThemeToggle />
+            <LocaleToggle />
             <div className="flex items-center">
               <Nav_mobile navOption={navOption} />
             </div>

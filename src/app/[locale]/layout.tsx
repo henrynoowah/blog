@@ -38,7 +38,7 @@ interface Params {
 
 const RootLayout = ({ children, params }: Params) => {
   return (
-    <html lang={params.locale}>
+    <html lang={params.locale} suppressHydrationWarning>
       <head>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -46,7 +46,7 @@ const RootLayout = ({ children, params }: Params) => {
         <link rel="shortcut icon" href="#" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body suppressHydrationWarning={true}>{children}</body>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   )
 }
