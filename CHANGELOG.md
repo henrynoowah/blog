@@ -1,3 +1,12 @@
+# [0.24.0](https://github.com/henrynoowah/blog/compare/v0.23.0...v0.24.0) (2024-10-22)
+
+
+### Features
+
+* langchain bot database update ([9a30bfd](https://github.com/henrynoowah/blog/commit/9a30bfd807cffee8a1ee512fe952b72aace29c32))
+
+
+
 # [0.23.0](https://github.com/henrynoowah/blog/compare/v0.22.2...v0.23.0) (2024-10-22)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * added vercel.json ([f3627e4](https://github.com/henrynoowah/blog/commit/f3627e4c37fe4c6af1a5c29a01a2520761704736))
-
-
-
-# [0.21.0](https://github.com/henrynoowah/blog/compare/v0.20.0...v0.21.0) (2024-05-09)
-
-
-### Features
-
-* initial i18n configuration added ([225995d](https://github.com/henrynoowah/blog/commit/225995d2f80a6229e6ac7357763e2101fb9c5958))
 
 
 
