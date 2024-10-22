@@ -13,10 +13,14 @@ import { ReactNode } from 'react'
 
 interface Params {
   children: ReactNode
-  params: { locale: Locale }
+  params: Promise<{ locale: Locale }>
 }
 
-const PostsLayouts = async ({ children, params }: Params) => {
+const PostsLayouts = async (props: Params) => {
+  const params = await props.params
+
+  const { children } = props
+
   const t = await getDictionary(params.locale)
   console.log(t)
 
@@ -24,8 +28,9 @@ const PostsLayouts = async ({ children, params }: Params) => {
     { label: t.navigation.home.title, href: '/', locale: params.locale },
     {
       label: t.navigation.posts.title,
-      href: '/posts',
-      locale: params.locale
+      href: 'https://velog.io/@henrynoowah/posts',
+      locale: params.locale,
+      external: true
     },
     {
       label: t.navigation.github.title,

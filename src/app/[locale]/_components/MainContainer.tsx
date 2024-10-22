@@ -3,20 +3,21 @@
 import { NavItem } from '@/app/[locale]/_components/NavItem'
 import { NavModal } from '@/app/[locale]/_components/NavModal'
 import ChatBox from '@/components/common/chats/ChatBox'
-import LoadingCircle from '@/components/common/loadings/LoadingCircle'
+// import LoadingCircle from '@/components/common/loadings/LoadingCircle'
 import { useDictionary } from '@/context/dictionary-provider'
 import { ChatBubbleLeftEllipsisIcon, DocumentIcon } from '@heroicons/react/24/solid'
 import { Application, SPEObject } from '@splinetool/runtime'
 import { motion } from 'framer-motion'
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 import { useParams } from 'next/navigation'
 import { useRef, useState } from 'react'
 import LocaleToggle from './LocaleToggle'
+import Spline from '@splinetool/react-spline'
 
-const Spline = dynamic(() => import('@splinetool/react-spline'), {
-  ssr: false,
-  loading: () => <LoadingCircle />
-})
+// const Spline = dynamic(() => import('@splinetool/react-spline'), {
+//   ssr: false,
+//   loading: () => <LoadingCircle />
+// })
 
 const SPLINE_SCENE = 'https://prod.spline.design/W83XdmrQbaQnPMlJ/scene.splinecode'
 const SPLINE_BOT_ID = '7a1937ee-e0ec-4da1-bca9-10b1ff105490'
@@ -29,10 +30,11 @@ const MainContainer = () => {
   const navList = [
     {
       name: t.navigation.posts.title,
-      href: '/posts',
+      href: 'https://velog.io/@henrynoowah/posts',
       icon: <DocumentIcon className="text-light" />,
       desc: t.navigation.posts.description,
-      locale: params.locale as string
+      locale: params.locale as string,
+      external: true
     },
     // {
     //   name: 'works',
@@ -79,14 +81,14 @@ const MainContainer = () => {
     }
   }
 
-  const botRef = useRef<SPEObject>()
-  const splineRef = useRef<Application>()
+  const botRef = useRef<SPEObject>(null)
+  const splineRef = useRef<Application>(null)
 
   const onLoad = (spline: Application) => {
     splineRef.current = spline
     const botObj = spline.findObjectByName(SPLINE_BOT_ID)
     botObj?.emitEvent('mouseDown')
-    botRef.current = botObj
+    if (botObj) botRef.current = botObj
   }
 
   const toggleChat = () => {
