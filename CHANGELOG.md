@@ -1,3 +1,12 @@
+# [0.23.0](https://github.com/henrynoowah/blog/compare/v0.22.2...v0.23.0) (2024-10-22)
+
+
+### Features
+
+* next 15 version update ([209f3dc](https://github.com/henrynoowah/blog/commit/209f3dc921f0f621c69795048335d845666c30fa))
+
+
+
 ## [0.22.2](https://github.com/henrynoowah/blog/compare/v0.22.1...v0.22.2) (2024-06-13)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * initial i18n configuration added ([225995d](https://github.com/henrynoowah/blog/commit/225995d2f80a6229e6ac7357763e2101fb9c5958))
-
-
-
-# [0.20.0](https://github.com/henrynoowah/blog/compare/v0.19.4...v0.20.0) (2024-05-06)
-
-
-### Features
-
-* added new spline 3d bot with look at animation ([6e80d06](https://github.com/henrynoowah/blog/commit/6e80d064f487a5431609fe7d75f7f8fd2438480d))
 
 
 

@@ -31,10 +31,16 @@ export async function generateStaticParams() {
 
 interface Params {
   children: React.ReactNode
-  params: { locale: Locale }
+  params: Promise<{ locale: Locale }>
 }
 
-const RootLayout = ({ children, params }: Params) => {
+const RootLayout = async (props: Params) => {
+  const params = await props.params;
+
+  const {
+    children
+  } = props;
+
   return (
     <html lang={params.locale}>
       <head>

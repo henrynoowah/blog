@@ -8,14 +8,16 @@ const getData = async (slug: string): Promise<any> => {
   return await getPost(slug)
 }
 
-export const generateMetadata = async ({ params }: any): Promise<Metadata> => {
+export const generateMetadata = async (props: any): Promise<Metadata> => {
+  const params = await props.params;
   const post = await getPost(params.slug)
   return {
     title: post?.title
   }
 }
 
-const PostDetailPage = async ({ params }: any) => {
+const PostDetailPage = async (props: any) => {
+  const params = await props.params;
   const slug = decodeURIComponent(params.slug)
   const post = await getData(slug)
   return (

@@ -7,12 +7,13 @@ import MainContainer from './_components/MainContainer'
 const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
 
 interface Params {
-  params: {
+  params: Promise<{
     locale: Locale
-  }
+  }>
 }
 
-const Home = async ({ params }: Params) => {
+const Home = async (props: Params) => {
+  const params = await props.params
   const dictionary = await getDictionary(params.locale)
   return (
     <main className={inter.variable}>
