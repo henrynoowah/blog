@@ -19,8 +19,8 @@ import Spline from '@splinetool/react-spline'
 //   loading: () => <LoadingCircle />
 // })
 
-const SPLINE_SCENE = 'https://prod.spline.design/W83XdmrQbaQnPMlJ/scene.splinecode'
-const SPLINE_BOT_ID = '7a1937ee-e0ec-4da1-bca9-10b1ff105490'
+const scene = process.env.NEXT_PUBLIC_SPLINE_SCENE!
+const splitBotId = process.env.NEXT_PUBLIC_SPLINE_BOT_ID!
 
 const MainContainer = () => {
   const params = useParams()
@@ -86,15 +86,15 @@ const MainContainer = () => {
 
   const onLoad = (spline: Application) => {
     splineRef.current = spline
-    const botObj = spline.findObjectByName(SPLINE_BOT_ID)
+    const botObj = spline.findObjectByName(splitBotId)
     botObj?.emitEvent('mouseDown')
     if (botObj) botRef.current = botObj
   }
 
   const toggleChat = () => {
     !!isBotChatOpened
-      ? splineRef.current?.emitEventReverse('mouseDown', SPLINE_BOT_ID)
-      : splineRef.current?.emitEvent('mouseDown', SPLINE_BOT_ID)
+      ? splineRef.current?.emitEventReverse('mouseDown', splitBotId)
+      : splineRef.current?.emitEvent('mouseDown', splitBotId)
     setIsBotChatOpened(!isBotChatOpened)
   }
 
@@ -106,7 +106,7 @@ const MainContainer = () => {
         className="fixed w-full h-full
           flex justify-center items-center z-30 pointer-events-auto bg-gradient-to-tl from-primary to-primary/60"
       >
-        <Spline scene={SPLINE_SCENE} onLoad={onLoad} />
+        <Spline scene={scene} onLoad={onLoad} />
       </div>
 
       <div
