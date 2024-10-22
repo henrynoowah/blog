@@ -5,7 +5,6 @@ import packageData from 'package.json'
 import { Suspense } from 'react'
 import Nav_mobile from './Nav_mobile'
 import ShowSearchButton from './ShowSearchButton'
-import { useParams } from 'next/navigation'
 const ThemeToggle = dynamic(() => import('../../themeToggle/ThemeToggle'))
 
 const HEADER_HEIGHT = 72

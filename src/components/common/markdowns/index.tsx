@@ -1,45 +1,41 @@
 import '@uiw/react-markdown-preview/markdown.css'
 import ReactMarkdown from 'react-markdown'
-import { SpecialComponents } from 'react-markdown/lib/ast-to-react'
-import { NormalComponents } from 'react-markdown/lib/complex-types'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import rehypeRaw from 'rehype-raw'
-import remarkGfm from 'remark-gfm'
 
 import '@uiw/react-markdown-preview/markdown.css'
 import '@uiw/react-md-editor/markdown-editor.css'
+import remarkGfm from 'remark-gfm'
 
 interface Params {
   markdown?: string
 }
 
-type MarkDownComponents = Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents>
-
-const markdownComponents: MarkDownComponents = {
-  h1: ({ node, ...props }) => (
+const markdownComponents = {
+  h1: ({ node, ...props }: any) => (
     <h1 className="text-primary dark:text-light font-bold text-2xl py-6" {...props}>
       {props.children}
     </h1>
   ),
-  h2: ({ node, ...props }) => (
+  h2: ({ node, ...props }: any) => (
     <h2 className="text-primary dark:text-light font-bold text-xl py-6" {...props}>
       {props.children}
     </h2>
   ),
-  h3: ({ node, ...props }) => <h3 className="text-primary dark:text-light font-bold text-lg py-6" {...props} />,
-  h4: ({ node, ...props }) => <h4 className="text-primary dark:text-light font-bold text-md" {...props} />,
-  h5: ({ node, ...props }) => <h5 className="text-primary dark:text-light font-bold text-md" {...props} />,
-  h6: ({ node, ...props }) => <h5 className="text-primary/60 font-bold text-md" {...props} />,
-  p: ({ node, ...props }) => (
+  h3: ({ node, ...props }: any) => <h3 className="text-primary dark:text-light font-bold text-lg py-6" {...props} />,
+  h4: ({ node, ...props }: any) => <h4 className="text-primary dark:text-light font-bold text-md" {...props} />,
+  h5: ({ node, ...props }: any) => <h5 className="text-primary dark:text-light font-bold text-md" {...props} />,
+  h6: ({ node, ...props }: any) => <h5 className="text-primary/60 font-bold text-md" {...props} />,
+  p: ({ node, ...props }: any) => (
     <p className="text-dark dark:text-light text-md leading-[1.7rem] whitespace-pre-line py-2" {...props} />
   ),
-  ul: ({ node, ...props }) => {
+  ul: ({ node, ...props }: any) => {
     const { ordered: _, ...rest } = props
     return <ul className="list-disc text-md leading-6 ps-4 md:ps-8" {...rest} />
   },
-  ol: ({ node, ...props }) => <ol className="list-decimal ps-4 text-md leading-8" {...props} />,
-  li: ({ node, ...props }) => {
+  ol: ({ node, ...props }: any) => <ol className="list-decimal ps-4 text-md leading-8" {...props} />,
+  li: ({ node, ...props }: any) => {
     const { ordered: _, ...rest } = props
     return (
       <li
@@ -53,11 +49,11 @@ const markdownComponents: MarkDownComponents = {
       </li>
     )
   },
-  hr: ({ node, ...props }) => <hr className="my-6 border-primary/60" {...props} />,
-  a: ({ node, ...props }) => (
+  hr: ({ node, ...props }: any) => <hr className="my-6 border-primary/60" {...props} />,
+  a: ({ node, ...props }: any) => (
     <a target="_blank" className="text-primary dark:text-secondary underline underline-offset-1" {...props} />
   ),
-  input: ({ node, ...props }) => {
+  input: ({ node, ...props }: any) => {
     if (props.type === 'checkbox') {
       const { checked: _, ...rest } = props
       return (
@@ -72,7 +68,7 @@ const markdownComponents: MarkDownComponents = {
       return <input {...props} />
     }
   },
-  blockquote: ({ node, ...props }) => (
+  blockquote: ({ node, ...props }: any) => (
     <blockquote
       className="bg-primary/10 text-primary ps-4 py-1 border-l-[0.2rem] border-primary border-solid [&>p]:leading-8"
       {...props}
@@ -80,7 +76,7 @@ const markdownComponents: MarkDownComponents = {
       {props.children}
     </blockquote>
   ),
-  code: ({ node, inline, className, children, ...props }) => {
+  code: ({ node, inline, className, children, ...props }: any) => {
     const match = /language-(\w+)/.exec(className || '')
     const codeBlock = String(children).replace(/\n$/, ' ')
     return !inline ? (
@@ -103,19 +99,19 @@ const markdownComponents: MarkDownComponents = {
       </code>
     )
   },
-  table: ({ node, className, children, ...props }) => (
+  table: ({ node, className, children, ...props }: any) => (
     <div className="w-full overflow-auto ring-1 ring-inset dark:ring-light/10">
       <table className="w-full text-dark dark:text-light ring-inset rounded-md" {...props}>
         {children}
       </table>
     </div>
   ),
-  thead: ({ node, className, children, ...props }) => (
+  thead: ({ node, className, children, ...props }: any) => (
     <thead className="w-full border-b-1 border-solid border-light/10" {...props}>
       {children}
     </thead>
   ),
-  tr: ({ node, className, children, isHeader, ...props }) => (
+  tr: ({ node, className, children, isHeader, ...props }: any) => (
     <tr
       className="w-fit [&>*]:text-md [&>*]:border [&>*]:border-solid [&>*]:border-light [&>*]:border-collapse [&>th]:whitespace-pre-line [&>th]:p-2 [&>td]:whitespace-pre-line [&>td]:p-2"
       {...props}
@@ -123,12 +119,12 @@ const markdownComponents: MarkDownComponents = {
       {children}
     </tr>
   ),
-  tbody: ({ node, className, children, ...props }) => (
+  tbody: ({ node, className, children, ...props }: any) => (
     <tbody className="w-full [&>*]:border [&>*]:border-solid [&>*]:border-light [&>*]:border-collapse" {...props}>
       {children}
     </tbody>
   ),
-  img: ({ node, className, children, ...props }) => (
+  img: ({ node, className, children, ...props }: any) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img {...props} alt="" className="w-full overflow-hidden rounded-md ring-1 ring-primary/60 shadow-md my-4" />
   )
@@ -141,7 +137,7 @@ export const MarkdowRenderer = ({ markdown }: Params) => {
         fontSize: '1rem'
       }}
     >
-      <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={markdownComponents}>
+      <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={markdownComponents as any}>
         {markdown ?? ''}
       </ReactMarkdown>
     </div>
