@@ -4,7 +4,7 @@ import { HTMLAttributes, ReactNode, useEffect, useState } from 'react'
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import useResizeHandler from '../../../components/hooks/useResizeHandler'
+import { useResizeHandler } from '@/components/hooks'
 interface Params extends HTMLAttributes<HTMLButtonElement> {
   name: string
   href: string
@@ -15,7 +15,7 @@ interface Params extends HTMLAttributes<HTMLButtonElement> {
   external?: boolean
 }
 
-export const NavModal = ({ onClick, selected, ...nav }: Params) => {
+const NavModal = ({ onClick, selected, ...nav }: Params) => {
   const [isReady, setIsReady] = useState<boolean>(false)
   useEffect(() => {
     if (!!nav && !!window && !!document) {
@@ -99,3 +99,5 @@ export const NavModal = ({ onClick, selected, ...nav }: Params) => {
     <></>
   )
 }
+
+export { NavModal }

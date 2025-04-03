@@ -7,8 +7,8 @@ export const metadata: Metadata = {
 
 import Header from '@/components/common/layouts/header/Header'
 import { Locale } from '@/i18n.config'
-import { getDictionary } from '@/lib/dictionaries'
 import { Metadata } from 'next'
+import { useTranslations } from 'next-intl'
 import { ReactNode } from 'react'
 
 interface Params {
@@ -21,19 +21,19 @@ const PostsLayouts = async (props: Params) => {
 
   const { children } = props
 
-  const t = await getDictionary(params.locale)
+  const t = useTranslations('navigation')
   console.log(t)
 
   const navOption: Array<{ label: string; href: string; locale: Locale; external?: boolean }> = [
-    { label: t.navigation.home.title, href: '/', locale: params.locale },
+    { label: t('home.title'), href: '/', locale: params.locale },
     {
-      label: t.navigation.posts.title,
+      label: t('posts.title'),
       href: 'https://velog.io/@henrynoowah/posts',
       locale: params.locale,
       external: true
     },
     {
-      label: t.navigation.github.title,
+      label: t('github.title'),
       href: 'https://www.github.com/henrynoowah',
       locale: params.locale,
       external: true

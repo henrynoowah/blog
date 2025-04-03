@@ -47,4 +47,4 @@ const LocaleToggle = () => {
   )
 }
 
-export default LocaleToggle
+export { LocaleToggle }
