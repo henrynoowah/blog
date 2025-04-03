@@ -1,17 +1,17 @@
 'use client'
 
-import { NavItem } from '@/app/[locale]/_components/NavItem'
-import { NavModal } from '@/app/[locale]/_components/NavModal'
+import { NavItem } from '@/app/[locale]/_components/nav-item'
+import { NavModal } from '@/app/[locale]/_components/nav-modal'
 import ChatBox from '@/components/common/chats/ChatBox'
 // import LoadingCircle from '@/components/common/loadings/LoadingCircle'
 import { useDictionary } from '@/context/dictionary-provider'
-import { ChatBubbleLeftEllipsisIcon, DocumentIcon } from '@heroicons/react/24/solid'
+import { ChatBubbleLeftEllipsisIcon, CubeIcon, DocumentIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
 import { Application, SPEObject } from '@splinetool/runtime'
 import { motion } from 'framer-motion'
 // import dynamic from 'next/dynamic'
 import { useParams } from 'next/navigation'
 import { useRef, useState } from 'react'
-import LocaleToggle from './LocaleToggle'
+import { LocaleToggle } from './locale-toggle'
 import Spline from '@splinetool/react-spline'
 
 // const Spline = dynamic(() => import('@splinetool/react-spline'), {
@@ -42,12 +42,12 @@ const MainContainer = () => {
     //   icon: <CubeIcon className="text-light" />,
     //   desc: 'Check out my works'
     // },
-    // {
-    //   name: 'about',
-    //   href: '/about',
-    //   icon: <FaceSmileIcon className="text-light" />,
-    //   desc: 'Get to know more about me'
-    // },
+    {
+      name: t.navigation.about.title,
+      href: '/about',
+      icon: <FaceSmileIcon className="text-light" />,
+      desc: 'Get to know more about me'
+    },
     {
       name: t.navigation.github.title,
       href: 'https://www.github.com/henrynoowah',
@@ -170,4 +170,4 @@ const MainContainer = () => {
   )
 }
 
-export default MainContainer
+export { MainContainer }

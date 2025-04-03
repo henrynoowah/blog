@@ -29,4 +29,4 @@ const useResizeHandler = (interval = 250) => {
   return windowWidth
 }
 
-export default useResizeHandler
+export { useResizeHandler }
