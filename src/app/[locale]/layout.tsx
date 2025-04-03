@@ -1,5 +1,6 @@
 import { i18n, Locale } from '@/i18n.config'
 import { Metadata } from 'next'
+import { NextIntlClientProvider } from 'next-intl'
 import 'src/app/styles/globals.css'
 
 const title = 'NoowaH Blog'
@@ -35,11 +36,9 @@ interface Params {
 }
 
 const RootLayout = async (props: Params) => {
-  const params = await props.params;
+  const params = await props.params
 
-  const {
-    children
-  } = props;
+  const { children } = props
 
   return (
     <html lang={params.locale}>
@@ -50,7 +49,9 @@ const RootLayout = async (props: Params) => {
         <link rel="shortcut icon" href="#" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body suppressHydrationWarning={true}>{children}</body>
+      <body suppressHydrationWarning={true}>
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+      </body>
     </html>
   )
 }
