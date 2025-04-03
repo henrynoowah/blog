@@ -2,9 +2,10 @@
 
 import { HTMLAttributes, ReactNode, useEffect, useState } from 'react'
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
+import { m, motion } from 'framer-motion'
 import { useResizeHandler } from '@/components/hooks'
+import { Link } from '@/i18n/navigation'
+import { useTransitionRouter } from 'next-view-transitions'
 interface Params extends HTMLAttributes<HTMLButtonElement> {
   name: string
   href: string
@@ -17,6 +18,7 @@ interface Params extends HTMLAttributes<HTMLButtonElement> {
 
 const NavModal = ({ onClick, selected, ...nav }: Params) => {
   const [isReady, setIsReady] = useState<boolean>(false)
+  const router = useTransitionRouter()
   useEffect(() => {
     if (!!nav && !!window && !!document) {
       setIsReady(true)
@@ -84,9 +86,15 @@ const NavModal = ({ onClick, selected, ...nav }: Params) => {
           <span className="w-[24px] h-[24px] aspect-square">{nav.icon}</span>
         </div>
         <Link
-          href={!nav.external ? `${nav.locale !== 'en' ? `/${nav.locale}` : ''}${nav.href}` : nav.href}
+          href={nav.href}
           target={nav.external ? '_blank' : undefined}
           className="text-light text-[36px] font-medium capitalize z-40 flex justify-center gap-4 items-center hover:underline pointer-events-auto"
+          onClick={(e) => {
+            e.preventDefault()
+            router.push(nav.href, {
+              onTransitionReady: pageAnimation
+            })
+          }}
         >
           <p>{nav.name}</p>
         </Link>
@@ -97,6 +105,46 @@ const NavModal = ({ onClick, selected, ...nav }: Params) => {
     </motion.div>
   ) : (
     <></>
+  )
+}
+
+const pageAnimation = () => {
+  document.documentElement.animate(
+    [
+      {
+        opacity: 1,
+        scale: 1,
+        transform: 'translateY(0)'
+      },
+      {
+        opacity: 0,
+        scale: 0.9,
+        transform: 'translateY(-100px)'
+      }
+    ],
+    {
+      duration: 0.3,
+      easing: 'cubic-bezier(0.76, 0, 0.24, 1)',
+      fill: 'forwards',
+      pseudoElement: '::view-transition-old(root)'
+    }
+  )
+
+  document.documentElement.animate(
+    [
+      {
+        transform: 'translateY(100%)'
+      },
+      {
+        transform: 'translateY(0)'
+      }
+    ],
+    {
+      duration: 0.3,
+      easing: 'cubic-bezier(0.76, 0, 0.24, 1)',
+      fill: 'forwards',
+      pseudoElement: '::view-transition-new(root)'
+    }
   )
 }
 

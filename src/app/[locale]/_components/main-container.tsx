@@ -30,7 +30,8 @@ const MainContainer = () => {
   const navList = [
     {
       name: t('posts.title'),
-      href: 'https://velog.io/@henrynoowah/posts',
+      href: '/posts',
+      // href: 'https://velog.io/@henrynoowah/posts',
       icon: <DocumentIcon className="text-light" />,
       desc: t('posts.description'),
       locale: params.locale as string,

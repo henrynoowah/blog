@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   input[type='search']::-webkit-search-decoration,
   input[type='search']::-webkit-search-cancel-button,
@@ -10,19 +9,19 @@
   input[type='search']::-webkit-search-results-decoration {
     -webkit-appearance: none;
   }
-  
+
   /* width height */
   ::-webkit-scrollbar {
     opacity: 0;
     width: 8px;
     height: 10px;
   }
-  
+
   /* Track */
   ::-webkit-scrollbar-track {
-    @apply bg-light/0
+    @apply bg-light/0;
   }
-  
+
   /* Handle */
   ::-webkit-scrollbar-thumb {
     @apply bg-primary;
@@ -30,10 +29,29 @@
     background-clip: padding-box;
     border: 2px solid transparent;
   }
-  
+
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-primary;
   }
+}
 
+::view-transition-group(root) {
+  z-index: auto !important;
+}
+
+::view-transition-image-pair(root) {
+  isolation: isolate;
+  will-change: transform, opacity, scale;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+  animation: none !important;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+  animation: none !important;
 }
