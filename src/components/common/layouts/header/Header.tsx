@@ -5,6 +5,7 @@ import packageData from 'package.json'
 import { Suspense } from 'react'
 import Nav_mobile from './Nav_mobile'
 import ShowSearchButton from './ShowSearchButton'
+import { LocaleToggle } from '@/app/[locale]/_components/locale-toggle'
 const ThemeToggle = dynamic(() => import('../../themeToggle/ThemeToggle'))
 
 const HEADER_HEIGHT = 72
@@ -32,6 +33,7 @@ const Header = ({ navOption, locale }: Params) => {
             <Suspense>
               <ShowSearchButton />
             </Suspense>
+            <LocaleToggle />
             <ThemeToggle />
             <div className="flex items-center">
               <Nav_mobile navOption={navOption} />
