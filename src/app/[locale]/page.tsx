@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl'
 import { Inter } from 'next/font/google'
 import { MainContainer } from './_components/main-container'
 
