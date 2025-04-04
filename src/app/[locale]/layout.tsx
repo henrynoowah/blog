@@ -1,6 +1,7 @@
 import { i18n, Locale } from '@/i18n.config'
 import { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
+import { ViewTransitions } from 'next-view-transitions'
 import 'src/app/styles/globals.css'
 
 const title = 'NoowaH Blog'
@@ -41,18 +42,20 @@ const RootLayout = async (props: Params) => {
   const { children } = props
 
   return (
-    <html lang={params.locale}>
-      <head>
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="shortcut icon" href="#" />
-        <link rel="manifest" href="/site.webmanifest" />
-      </head>
-      <body suppressHydrationWarning={true}>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang={params.locale}>
+        <head>
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+          <link rel="shortcut icon" href="#" />
+          <link rel="manifest" href="/site.webmanifest" />
+        </head>
+        <body suppressHydrationWarning={true}>
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        </body>
+      </html>
+    </ViewTransitions>
   )
 }
 

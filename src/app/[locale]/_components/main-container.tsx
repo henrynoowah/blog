@@ -1,23 +1,15 @@
 'use client'
 
 import { NavItem } from '@/app/[locale]/_components/nav-item'
-import { NavModal } from '@/app/[locale]/_components/nav-modal'
 import ChatBox from '@/components/common/chats/ChatBox'
-// import LoadingCircle from '@/components/common/loadings/LoadingCircle'
 import { ChatBubbleLeftEllipsisIcon, DocumentIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
+import Spline from '@splinetool/react-spline'
 import { Application, SPEObject } from '@splinetool/runtime'
 import { motion } from 'framer-motion'
-// import dynamic from 'next/dynamic'
-import Spline from '@splinetool/react-spline'
 import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
 import { useRef, useState } from 'react'
 import { LocaleToggle } from './locale-toggle'
-
-// const Spline = dynamic(() => import('@splinetool/react-spline'), {
-//   ssr: false,
-//   loading: () => <LoadingCircle />
-// })
 
 const scene = process.env.NEXT_PUBLIC_SPLINE_SCENE!
 const splitBotId = process.env.NEXT_PUBLIC_SPLINE_BOT_ID!
@@ -30,18 +22,13 @@ const MainContainer = () => {
   const navList = [
     {
       name: t('posts.title'),
+      // href: '/posts',
       href: 'https://velog.io/@henrynoowah/posts',
       icon: <DocumentIcon className="text-light" />,
       desc: t('posts.description'),
       locale: params.locale as string,
       external: true
     },
-    // {
-    //   name: 'works',
-    //   href: '/works',
-    //   icon: <CubeIcon className="text-light" />,
-    //   desc: 'Check out my works'
-    // },
     {
       name: t('about.title'),
       href: '/about',
@@ -64,22 +51,12 @@ const MainContainer = () => {
 
   const chat = {
     name: t('chat.title'),
-    href: 'https://www.github.com/henrynoowah',
     icon: <ChatBubbleLeftEllipsisIcon className="text-light" />,
     desc: t('chat.description')
   }
 
   const [selected, setSelected] = useState<string | null>(null)
   const [isBotChatOpened, setIsBotChatOpened] = useState<boolean>(false)
-
-  const handleNavSelect = (name: string) => {
-    if (selected === name) {
-      setSelected(null)
-    } else {
-      // const ref = document.getElementById(name)
-      setSelected(name)
-    }
-  }
 
   const botRef = useRef<SPEObject>(null)
   const splineRef = useRef<Application>(null)
@@ -119,10 +96,6 @@ const MainContainer = () => {
         <LocaleToggle />
       </div>
 
-      {navList.map((nav, i) => (
-        <NavModal selected={selected === nav.name} {...nav} key={`nav-modal-${nav}-${i}`} />
-      ))}
-
       {/* Navigation */}
       <div className="fixed bottom-[30px] md:bottom-[60px] w-full max-w-[900px] h-full justify-start items-end z-50 pointer-events-none">
         <div className="w-full h-full flex flex-col-reverse bottom-[200px]">
@@ -141,7 +114,6 @@ const MainContainer = () => {
                       if (!!isBotChatOpened) {
                         toggleChat()
                       }
-                      handleNavSelect(nav.name)
                     }}
                   />
                 </motion.div>
