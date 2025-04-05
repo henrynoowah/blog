@@ -12,14 +12,12 @@ interface Params {
   children: ReactNode
 }
 
-const PostsLayouts = ({ children }: Params) => {
+const WorksLayout = ({ children }: Params) => {
   return (
     <div className="w-full min-h-[100vh] flex flex-col bg-background transition-colors duration-200 ease-linear">
-      <main className="relative">
-        <div className="w-full h-fit flex justify-center py-2">{children}</div>
-      </main>
+      <main className="relative">{children}</main>
     </div>
   )
 }
 
-export default PostsLayouts
+export default WorksLayout

@@ -9,6 +9,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   return {
     locale,
-    messages: (await import(`../dictionaries/${locale}.json`)).default
+    messages: (await import(`../dictionaries/${locale}.json`)).default,
+    timeZone: 'Asia/Seoul'
   }
 })

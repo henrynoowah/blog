@@ -2,7 +2,7 @@
 
 import { NavItem } from '@/app/[locale]/_components/nav-item'
 import ChatBox from '@/components/common/chats/ChatBox'
-import { ChatBubbleLeftEllipsisIcon, DocumentIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
+import { ChatBubbleLeftEllipsisIcon, DocumentIcon, FaceSmileIcon, PhotoIcon } from '@heroicons/react/24/solid'
 import Spline from '@splinetool/react-spline'
 import { Application, SPEObject } from '@splinetool/runtime'
 import { motion } from 'framer-motion'
@@ -33,6 +33,12 @@ const MainContainer = () => {
       name: t('about.title'),
       href: '/about',
       icon: <FaceSmileIcon className="text-light" />,
+      desc: 'Get to know more about me'
+    },
+    {
+      name: t('works.title'),
+      href: '/works',
+      icon: <PhotoIcon className="text-light" />,
       desc: 'Get to know more about me'
     },
     {

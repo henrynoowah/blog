@@ -1,12 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 
-const COLOR_DARK = "#1E1E1E"
-const COLOR_LIGHT = "#FFFFFF"
-const COLOR_PRIMARY = "#2D5A60"
-const COLOR_SECONDARY = "#64EbDE"
+const COLOR_DARK = '#1E1E1E'
+const COLOR_LIGHT = '#FFFFFF'
+const COLOR_PRIMARY = '#2D5A60'
+const COLOR_SECONDARY = '#64EbDE'
+
 
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -14,7 +15,7 @@ module.exports = {
         inherit: 'inherit',
         transparent: 'transparent',
         primary: {
-          DEFAULT: COLOR_PRIMARY,
+          DEFAULT: COLOR_PRIMARY
         },
         secondary: {
           DEFAULT: COLOR_SECONDARY
@@ -39,16 +40,12 @@ module.exports = {
         },
         overlay: {
           DEFAULT: 'rgb(var(--color-overlay) / <alpha-value>)'
-        },
+        }
       },
       screens: {
-        'mouse_hover': { 'raw': '(hover: hover)' }
-      },
-    },
+        mouse_hover: { raw: '(hover: hover)' }
+      }
+    }
   },
-  plugins: [
-    require('tailwind-scrollbar-hide'),
-  ],
+  plugins: [require('tailwind-scrollbar-hide')]
 }
-
-
