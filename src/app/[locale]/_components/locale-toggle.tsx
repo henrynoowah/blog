@@ -27,7 +27,7 @@ const LocaleToggle = () => {
     <button
       aria-label="Theme Toggle"
       onClick={handleLocaleSwitch}
-      className="!text-light relative w-[36px] h-[36px] flex justify-center items-center rounded-full ring-1 ring-light/60 dark:bg-dark-80"
+      className="text-light! relative w-[36px] h-[36px] flex justify-center items-center rounded-full ring-1 ring-light/60 dark:bg-dark-80"
     >
       <span
         className={`absolute ${

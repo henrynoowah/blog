@@ -81,7 +81,7 @@ const MainContainer = () => {
 
       <div
         className="fixed w-full h-full
-          flex justify-center items-center z-30 pointer-events-auto bg-gradient-to-tl from-primary to-primary/60"
+          flex justify-center items-center z-30 pointer-events-auto bg-linear-to-tl from-primary to-primary/60"
       >
         <Spline scene={scene} onLoad={onLoad} />
       </div>

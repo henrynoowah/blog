@@ -41,7 +41,7 @@ const markdownComponents = {
       <li
         className={[
           `[&>ul]:ps-4 [&>ul>li]:marker:text-primary/50 [&>ul>li>ul>li]:marker:text-primary`,
-          `items-center marker:text-primary text-dark dark:text-light leading-8 !py-0`
+          `items-center marker:text-primary text-dark dark:text-light leading-8 py-0!`
         ].join(' ')}
         {...rest}
       >
@@ -61,7 +61,7 @@ const markdownComponents = {
           type="checkbox"
           {...rest}
           disabled={false}
-          className="w-4 h-4 translate-y-[0.2rem] rounded-sm accent-primary pointer-events-none"
+          className="w-4 h-4 translate-y-[0.2rem] rounded-xs accent-primary pointer-events-none"
         />
       )
     } else {
@@ -85,14 +85,14 @@ const markdownComponents = {
           style={vscDarkPlus}
           language={match ? match[1] : undefined}
           PreTag="div"
-          className="!bg-dark/90 overflow-hidden rounded-md ring-1 ring-inset dark:ring-light/10"
+          className="bg-dark/90! overflow-hidden rounded-md ring-1 ring-inset dark:ring-light/10"
         >
           {codeBlock}
         </SyntaxHighlighter>
       </div>
     ) : (
       <code
-        className="bg-primary/10 dark:bg-primary/40 rounded-sm overflow-hidden text-sm font-medium px-[4px] py-[2px] mx-1 ring-1 ring-primary/20 dark:ring-light/10 whitespace-normal"
+        className="bg-primary/10 dark:bg-primary/40 rounded-xs overflow-hidden text-sm font-medium px-[4px] py-[2px] mx-1 ring-1 ring-primary/20 dark:ring-light/10 whitespace-normal"
         {...props}
       >
         {children}
@@ -113,14 +113,14 @@ const markdownComponents = {
   ),
   tr: ({ node, className, children, isHeader, ...props }: any) => (
     <tr
-      className="w-fit [&>*]:text-md [&>*]:border [&>*]:border-solid [&>*]:border-light [&>*]:border-collapse [&>th]:whitespace-pre-line [&>th]:p-2 [&>td]:whitespace-pre-line [&>td]:p-2"
+      className="w-fit *:text-md *:border *:border-solid *:border-light *:border-collapse [&>th]:whitespace-pre-line [&>th]:p-2 [&>td]:whitespace-pre-line [&>td]:p-2"
       {...props}
     >
       {children}
     </tr>
   ),
   tbody: ({ node, className, children, ...props }: any) => (
-    <tbody className="w-full [&>*]:border [&>*]:border-solid [&>*]:border-light [&>*]:border-collapse" {...props}>
+    <tbody className="w-full *:border *:border-solid *:border-light *:border-collapse" {...props}>
       {children}
     </tbody>
   ),

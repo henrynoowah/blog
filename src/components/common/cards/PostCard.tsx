@@ -50,13 +50,13 @@ const PostCard = (props: Props) => {
                     handleTagSelect(tag)
                   }}
                 >
-                  <p className="text-primary dark:!text-light italic whitespace-nowrap">{`#${tag}`}</p>
+                  <p className="text-primary dark:text-light! italic whitespace-nowrap">{`#${tag}`}</p>
                 </button>
               </li>
             ))
           ) : (
             <span className="bg-gray-200 dark:bg-primary rounded-full overflow-hidden text-xs font-medium px-2 py-1 mx-1 ring-1 ring-primary/20 dark:ring-light/10">
-              <p className="text-primary dark:!text-light whitespace-nowrap">{`:(`}</p>
+              <p className="text-primary dark:text-light! whitespace-nowrap">{`:(`}</p>
             </span>
           )}
         </ul>

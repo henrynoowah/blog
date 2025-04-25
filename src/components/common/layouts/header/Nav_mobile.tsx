@@ -31,7 +31,7 @@ const Nav_mobile = ({ navOption }: Params) => {
               style={{
                 transitionDuration: `${index * 350}ms`
               }}
-              className={`w-full transition bg-primary py-1 first:xl:pt-4 first:border-t border-t-1 border-light/20 border-solid last:pb-2 last:rounded-bl-xl ${
+              className={`w-full transition bg-primary py-1 xl:first:pt-4 first:border-t border-t-1 border-light/20 border-solid last:pb-2 last:rounded-bl-xl ${
                 isNavOpened ? 'translate-x-0' : 'translate-x-[200%]'
               }`}
             >
@@ -39,7 +39,7 @@ const Nav_mobile = ({ navOption }: Params) => {
                 href={!nav.external ? `${nav.locale !== 'en' ? `/${nav.locale}` : ''}${nav.href}` : nav.href}
                 target={nav.external ? '_blank' : undefined}
               >
-                <Button className="w-full px-4 sm:px-10 flex justify-between items-center bg-transparent !text-light !text-md py-2 text-left">
+                <Button className="w-full px-4 sm:px-10 flex justify-between items-center bg-transparent text-light! text-md! py-2 text-left">
                   <p>{nav.label}</p>
                   <ChevronRightIcon width={16} height={16} />
                 </Button>

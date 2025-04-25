@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import '@noowah/content-builder/styles.css'
+// import '@noowah/content-builder/styles.css'
 // import { EditorProvider, Canvas, Toolbar, Sidebar } from '@noowah/content-builder/editor'
 
 const Page = () => {
