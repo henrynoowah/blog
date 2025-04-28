@@ -1,11 +1,10 @@
 'use client'
 
+import { EditorProvider, Toolbar, useEditor, Canvas } from '@noowah/content-builder/editor'
 import '@noowah/content-builder/styles.css'
-import { EditorProvider, Toolbar, useEditor } from '@noowah/content-builder/editor'
-const Canvas = dynamic(() => import('@noowah/content-builder/editor').then((mod) => mod.Canvas), { ssr: false })
 import { Sidebar } from '@noowah/content-builder/editor/plugins'
 import { defaultElementTemplates } from '@noowah/content-builder/editor/templates'
-import dynamic from 'next/dynamic'
+import { useEffect } from 'react'
 
 const Page = () => {
   return (
@@ -16,9 +15,12 @@ const Page = () => {
           slug: 'content-builder',
           id: 'content-builder'
         }}
+        liveMode={true}
         elementTemplates={defaultElementTemplates}
+        onSave={({ state }) => {
+          console.log('save', state.editor.elements)
+        }}
       >
-        <></>
         <Toolbar />
         <ContainerElement>
           <Canvas />
@@ -32,8 +34,17 @@ const Page = () => {
 export default Page
 
 const ContainerElement = ({ children }: { children: React.ReactNode }) => {
-  const { state } = useEditor()
-  const { liveMode } = state.editor
+  const { state, actions } = useEditor()
+  const { liveMode, previewMode } = state.editor
+
+  console.log('liveMode', state.editor.elements)
+  useEffect(() => {
+    setTimeout(() => {
+      actions.toggleLiveMode(!liveMode)
+      actions.togglePreviewMode(!previewMode)
+    }, 1000)
+  }, [])
+
   return (
     <div
       style={{

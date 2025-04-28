@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@config '../../../tailwind.config.js';
+@config '../../../tailwind.config.ts';
 
 @layer base {
   input[type='search']::-webkit-search-decoration,
