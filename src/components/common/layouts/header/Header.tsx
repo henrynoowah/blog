@@ -19,7 +19,7 @@ const Header = ({ navOption, locale }: Params) => {
     <>
       <div
         style={{ minHeight: HEADER_HEIGHT }}
-        className="w-full fixed top-0 border-b-[1px] border-solid border-primary bg-primary flex justify-center items-center px-4 sm:px-10 z-20"
+        className="w-full fixed top-0 border-b border-solid border-primary bg-primary flex justify-center items-center px-4 sm:px-10 z-20"
       >
         <div className="w-full flex justify-between max-w-[1920px]">
           <h1 className="relative">

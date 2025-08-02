@@ -49,9 +49,9 @@ const SearchButton = () => {
           type="search"
           className={[
             `absolute w-full h-full items-center placeholder:italic placeholder:text-sm`,
-            `outline-none focus:outline-none transform`,
+            `outline-hidden focus:outline-hidden transform`,
             `px-4 text-light/60 bg-transparent`,
-            showInput ? `translate-x-0 pointer-events-auto ` : `translate-x-[100%] pointer-events-none hidden`
+            showInput ? `translate-x-0 pointer-events-auto ` : `translate-x-full pointer-events-none hidden`
           ].join(' ')}
         />
 

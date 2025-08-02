@@ -21,7 +21,7 @@ const Button_nav = ({ onChange }: Params) => {
       onClick={onClickhandler}
       ref={ref}
       className={`w-[36px] h-[36px] flex justify-center items-center rounded-full ring-1 ring-light ${
-        isNavOpened ? 'rotate-[225deg]' : 'rotate-0'
+        isNavOpened ? 'rotate-225' : 'rotate-0'
       }  transition duration-300 ease-out`}
     >
       <div
