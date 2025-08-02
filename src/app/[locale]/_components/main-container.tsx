@@ -67,6 +67,7 @@ const MainContainer = () => {
         <div
           className="absolute w-full h-full
             flex justify-center items-center z-30 pointer-events-none"
+            style={{ filter: 'grayscale(1) contrast(1.75)' }}
         >
           <Spline scene={scene} onLoad={onLoad} />
         </div>
