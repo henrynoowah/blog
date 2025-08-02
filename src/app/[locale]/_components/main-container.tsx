@@ -5,11 +5,11 @@ import ChatBox from '@/components/common/chats/ChatBox'
 import { ChatBubbleLeftEllipsisIcon, DocumentIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
 import Spline from '@splinetool/react-spline'
 import { Application, SPEObject } from '@splinetool/runtime'
-import { motion } from 'framer-motion'
 import { useParams } from 'next/navigation'
 import { useRef, useState } from 'react'
 import { LocaleToggle } from './locale-toggle'
 import { useIntlayer } from 'next-intlayer'
+import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation'
 
 const scene = process.env.NEXT_PUBLIC_SPLINE_SCENE!
 const splitBotId = process.env.NEXT_PUBLIC_SPLINE_BOT_ID!
@@ -73,37 +73,32 @@ const MainContainer = () => {
   }
 
   return (
-    <div className="w-full h-screen flex justify-center relative overflow-hidden touch-none">
-      {/* Background Component */}
+    <BackgroundGradientAnimation className="pointer-events-auto">
+        <div
+          className="absolute w-full h-full
+            flex justify-center items-center z-30 pointer-events-none"
+        >
+          <Spline scene={scene} onLoad={onLoad} />
+        </div>
 
-      <div
-        className="fixed w-full h-full
-          flex justify-center items-center z-30 pointer-events-auto bg-linear-to-tl from-primary to-primary/60"
-      >
-        <Spline scene={scene} onLoad={onLoad} />
-      </div>
 
-      <div
-        className={`fixed w-full h-full max-w-[1020px] px-[24px] pt-4 pb-[40px] md:pb-[100px]
-            flex justify-end items-center z-30 pointer-events-auto`}
-      >
-        <ChatBox isOpen={isBotChatOpened} />
-      </div>
-      <div className={`fixed w-full max-w-[1020px] flex justify-end z-30 pointer-events-auto top-4 end-4`}>
-        <LocaleToggle />
-      </div>
+        <div className={`fixed flex justify-end z-30 pointer-events-auto top-4 end-4`}>
+          <LocaleToggle />
+        </div>
 
-      {/* Navigation */}
-      <div className="fixed bottom-[30px] md:bottom-[60px] w-full max-w-[900px] h-full justify-start items-end z-50 pointer-events-none">
-        <div className="w-full h-full flex flex-col-reverse bottom-[200px]">
-          <nav className="flex justify-center gap-[16px]">
-            {navList.map((nav, i) => (
-              <div id={nav.name} key={`${nav.name}-${i}`} className="pointer-events-auto">
-                <motion.div
-                  initial={{ y: 40, opacity: 0 }}
-                  animate={{ y: 0, opacity: 100 }}
-                  transition={{ ease: 'easeInOut', duration: 0.25 * i }}
-                >
+        <div
+          className={`absolute pointer-events-none w-full h-full max-w-[1020px] px-[24px] pt-4 pb-[40px] md:pb-[100px]
+              flex justify-end items-center z-30`}
+        >
+          <ChatBox isOpen={isBotChatOpened} />
+        </div>
+      
+
+        <div className="absolute w-full pointer-events-none-none: bottom-[30px] md:bottom-[60px] mx-auto max-w-[900px] h-full justify-ceter items-end z-50 pointer-events-none">
+          <div className="w-full h-full flex items-center flex-col-reverse bottom-[200px]">
+            <nav className="flex justify-center gap-[16px]">
+              {navList.map((nav, i) => (
+                <div id={nav.name} key={`${nav.name}-${i}`} className="pointer-events-auto">
                   <NavItem
                     {...nav}
                     selected={selected === nav.name}
@@ -113,15 +108,9 @@ const MainContainer = () => {
                       }
                     }}
                   />
-                </motion.div>
-              </div>
-            ))}
-            <div id={chat.name} className="pointer-events-auto">
-              <motion.div
-                initial={{ y: 40, opacity: 0 }}
-                animate={{ y: 0, opacity: 100 }}
-                transition={{ ease: 'easeInOut', duration: 0.25 * navList.length }}
-              >
+                </div>
+              ))}
+              <div id={chat.name} className="pointer-events-auto">
                 <NavItem
                   selected={!!isBotChatOpened}
                   {...chat}
@@ -130,12 +119,11 @@ const MainContainer = () => {
                     toggleChat()
                   }}
                 />
-              </motion.div>
-            </div>
-          </nav>
+              </div>
+            </nav>
+          </div>
         </div>
-      </div>
-    </div>
+    </BackgroundGradientAnimation>
   )
 }
 
