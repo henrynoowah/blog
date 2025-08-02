@@ -10,9 +10,6 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
-    "@intlayer/cli": "5.7.5",
-    "@intlayer/config": "5.7.5",
-    "@intlayer/core": "5.7.5",
     "@splinetool/react-spline": "^4.1.0",
     "@splinetool/runtime": "^1.10.39",
     "@supabase/supabase-js": "^2.43.1",
@@ -32,7 +29,6 @@
     "remark": "^14.0.2",
     "remark-gfm": "^4.0.0",
     "remark-html": "^15.0.2",
-    "swr": "^2.2.4",
     "typescript": "^5.9.2"
   },
   "devDependencies": {
