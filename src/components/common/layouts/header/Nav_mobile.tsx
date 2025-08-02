@@ -1,11 +1,11 @@
 'use client'
 
 import { Locale } from '@/i18n.config'
-import { ChevronRightIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import { useState } from 'react'
 import Button from '../../Button'
 import Button_nav from './Button_nav'
+import { IconChevronDown } from '@tabler/icons-react'
 
 interface Params {
   navOption: Array<{ label: string; href: string; locale: Locale; external?: boolean }>
@@ -41,7 +41,7 @@ const Nav_mobile = ({ navOption }: Params) => {
               >
                 <Button className="w-full px-4 sm:px-10 flex justify-between items-center bg-transparent text-light! !text-md py-2 text-left">
                   <p>{nav.label}</p>
-                  <ChevronRightIcon width={16} height={16} />
+                  <IconChevronDown width={16} height={16} />
                 </Button>
               </Link>
             </li>

@@ -1,6 +1,6 @@
 'use client'
 
-import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
+import { IconSearch } from '@tabler/icons-react'
 import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { FormEventHandler, useRef, useState } from 'react'
 
@@ -70,7 +70,7 @@ const ShowSearchButton = () => {
             }
           }}
         >
-          <MagnifyingGlassIcon width={18} height={18} className="text-light z-20" />
+          <IconSearch width={18} height={18} className="text-light z-20" />
         </button>
       </div>
     </form>

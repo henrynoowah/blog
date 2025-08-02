@@ -1,7 +1,7 @@
 'use client'
 
 import { themeCheck, themeColorSwitch, themeSwitch } from '@/utils/themeCheck'
-import { MoonIcon, SunIcon } from '@heroicons/react/24/solid'
+import { IconMoon, IconSun } from '@tabler/icons-react'
 import { MouseEventHandler, useEffect, useState } from 'react'
 
 const ThemeToggle = () => {
@@ -31,14 +31,14 @@ const ThemeToggle = () => {
     >
       {isDarkMode !== null && (
         <>
-          <MoonIcon
+          <IconMoon
             width={18}
             height={18}
             className={`absolute ${
               isDarkMode ? 'rotate-0 opacity-100' : 'rotate-180 opacity-0'
             }  transform transition duration-500 ease-in-out`}
           />
-          <SunIcon
+          <IconSun
             width={18}
             height={18}
             className={`${
