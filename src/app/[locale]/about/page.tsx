@@ -1,5 +1,4 @@
 import { MarkdowRenderer } from '@/components/common/markdowns'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 const about = `**👋 Hi, I’m @henrynoowah**

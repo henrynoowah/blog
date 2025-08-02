@@ -4,7 +4,7 @@ import { HTMLAttributes, ReactNode, useEffect, useState } from 'react'
 
 import { m, motion } from 'framer-motion'
 import { useResizeHandler } from '@/components/hooks'
-import { Link } from '@/i18n/navigation'
+import Link from 'next/link'
 import { useTransitionRouter } from 'next-view-transitions'
 interface Params extends HTMLAttributes<HTMLButtonElement> {
   name: string

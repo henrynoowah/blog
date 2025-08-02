@@ -1,0 +1,51 @@
+/* eslint-disable */
+export default {
+  key: "page",
+  content: {
+    home: {
+      title: {
+        nodeType: "translation",
+        translation: {
+          en: "Home",
+          ko: "홈"
+        }
+      }
+    },
+    posts: {
+      title: {
+        nodeType: "translation",
+        translation: {
+          en: "Posts",
+          ko: "글"
+        }
+      }
+    },
+    about: {
+      title: {
+        nodeType: "translation",
+        translation: {
+          en: "About",
+          ko: "소개"
+        }
+      }
+    },
+    github: {
+      title: {
+        nodeType: "translation",
+        translation: {
+          en: "GitHub",
+          ko: "깃허브"
+        }
+      }
+    },
+    chat: {
+      title: {
+        nodeType: "translation",
+        translation: {
+          en: "Chat",
+          ko: "채팅"
+        }
+      }
+    }
+  }
+} as const;

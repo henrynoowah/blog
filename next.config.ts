@@ -1,5 +1,5 @@
 import { NextConfig } from 'next'
-import createNextIntlPlugin from 'next-intl/plugin'
+import { withIntlayer } from 'next-intlayer/server'
 
 const nextConfig: NextConfig = {
   experimental: {
@@ -7,5 +7,4 @@ const nextConfig: NextConfig = {
   }
 }
 
-const withNextIntl = createNextIntlPlugin()
-export default withNextIntl(nextConfig)
+export default withIntlayer(nextConfig)

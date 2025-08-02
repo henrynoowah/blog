@@ -1,0 +1,35 @@
+[
+  {
+    "key": "nagivation",
+    "content": {
+      "home": {
+        "title": {
+          "nodeType": "translation",
+          "translation": {
+            "en": "Home",
+            "ko": "홈"
+          }
+        }
+      },
+      "posts": {
+        "title": {
+          "nodeType": "translation",
+          "translation": {
+            "en": "Posts",
+            "ko": "글"
+          }
+        }
+      },
+      "about": {
+        "title": {
+          "nodeType": "translation",
+          "translation": {
+            "en": "About",
+            "ko": "소개"
+          }
+        }
+      }
+    },
+    "filePath": "/home/noowah/repo_personal/blog/src/app/[locale]/page.content.ts"
+  }
+]

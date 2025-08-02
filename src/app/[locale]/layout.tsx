@@ -1,8 +1,7 @@
-import { i18n, Locale } from '@/i18n.config'
+import { getHTMLTextDir } from 'intlayer'
 import { Metadata } from 'next'
-import { NextIntlClientProvider } from 'next-intl'
+import type { NextLayoutIntlayer } from 'next-intlayer'
 import { ViewTransitions } from 'next-view-transitions'
-import 'src/app/styles/globals.css'
 
 const title = 'NoowaH Blog'
 const description = "Welcome to NoowaH's blog"
@@ -27,23 +26,12 @@ export const metadata: Metadata = {
   }
 }
 
-export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ locale }))
-}
-
-interface Params {
-  children: React.ReactNode
-  params: Promise<{ locale: Locale }>
-}
-
-const RootLayout = async (props: Params) => {
-  const params = await props.params
-
-  const { children } = props
+const LocaleLayout: NextLayoutIntlayer = async ({ children, params }) => {
+  const { locale } = await params
 
   return (
     <ViewTransitions>
-      <html lang={params.locale}>
+      <html lang={locale} dir={getHTMLTextDir(locale)}>
         <head>
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -52,11 +40,11 @@ const RootLayout = async (props: Params) => {
           <link rel="manifest" href="/site.webmanifest" />
         </head>
         <body suppressHydrationWarning={true}>
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          {children}
         </body>
       </html>
     </ViewTransitions>
   )
 }
 
-export default RootLayout
+export default LocaleLayout

@@ -1,0 +1,21 @@
+{
+  "key": "page",
+  "content": {
+    "home": {
+      "title": "Home"
+    },
+    "posts": {
+      "title": "Posts"
+    },
+    "about": {
+      "title": "About"
+    },
+    "github": {
+      "title": "GitHub"
+    },
+    "chat": {
+      "title": "Chat"
+    }
+  },
+  "locale": "en"
+}

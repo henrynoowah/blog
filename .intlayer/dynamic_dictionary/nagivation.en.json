@@ -1,0 +1,15 @@
+{
+  "key": "nagivation",
+  "content": {
+    "home": {
+      "title": "Home"
+    },
+    "posts": {
+      "title": "Posts"
+    },
+    "about": {
+      "title": "About"
+    }
+  },
+  "locale": "en"
+}

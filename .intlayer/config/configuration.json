@@ -1,0 +1,107 @@
+{
+  "internationalization": {
+    "locales": [
+      "en",
+      "ko"
+    ],
+    "requiredLocales": [
+      "en",
+      "ko"
+    ],
+    "strictMode": "inclusive",
+    "defaultLocale": "en"
+  },
+  "middleware": {
+    "headerName": "x-intlayer-locale",
+    "cookieName": "INTLAYER_LOCALE",
+    "prefixDefault": false,
+    "basePath": "",
+    "serverSetCookie": "always",
+    "noPrefix": false,
+    "detectLocaleOnPrefetchNoPrefix": false
+  },
+  "content": {
+    "fileExtensions": [
+      ".content.ts",
+      ".content.js",
+      ".content.cjs",
+      ".content.cjx",
+      ".content.mjs",
+      ".content.mjx",
+      ".content.json",
+      ".content.tsx",
+      ".content.jsx"
+    ],
+    "baseDir": "/home/noowah/repo_personal/blog",
+    "excludedPath": [
+      "node_modules",
+      ".intlayer",
+      ".next",
+      ".nuxt",
+      ".expo",
+      "dist"
+    ],
+    "watch": true,
+    "contentDir": [
+      "/home/noowah/repo_personal/blog"
+    ],
+    "dictionariesDir": "/home/noowah/repo_personal/blog/.intlayer/dictionary",
+    "moduleAugmentationDir": "/home/noowah/repo_personal/blog/.intlayer/types",
+    "dictionaryOutput": [
+      "intlayer"
+    ],
+    "unmergedDictionariesDir": "/home/noowah/repo_personal/blog/.intlayer/unmerged_dictionary",
+    "dynamicDictionariesDir": "/home/noowah/repo_personal/blog/.intlayer/dynamic_dictionary",
+    "i18nextResourcesDir": "/home/noowah/repo_personal/blog/i18next_resources",
+    "reactIntlMessagesDir": "/home/noowah/repo_personal/blog/intl_messages",
+    "typesDir": "/home/noowah/repo_personal/blog/.intlayer/types",
+    "mainDir": "/home/noowah/repo_personal/blog/.intlayer/main",
+    "configDir": "/home/noowah/repo_personal/blog/.intlayer/config",
+    "watchedFilesPattern": [
+      "/**/*.content.ts",
+      "/**/*.content.js",
+      "/**/*.content.cjs",
+      "/**/*.content.cjx",
+      "/**/*.content.mjs",
+      "/**/*.content.mjx",
+      "/**/*.content.json",
+      "/**/*.content.tsx",
+      "/**/*.content.jsx"
+    ],
+    "watchedFilesPatternWithPath": [
+      "/home/noowah/repo_personal/blog/**/*.content.ts",
+      "/home/noowah/repo_personal/blog/**/*.content.js",
+      "/home/noowah/repo_personal/blog/**/*.content.cjs",
+      "/home/noowah/repo_personal/blog/**/*.content.cjx",
+      "/home/noowah/repo_personal/blog/**/*.content.mjs",
+      "/home/noowah/repo_personal/blog/**/*.content.mjx",
+      "/home/noowah/repo_personal/blog/**/*.content.json",
+      "/home/noowah/repo_personal/blog/**/*.content.tsx",
+      "/home/noowah/repo_personal/blog/**/*.content.jsx"
+    ],
+    "outputFilesPatternWithPath": "/home/noowah/repo_personal/blog/.intlayer/dictionary/**/*.json"
+  },
+  "editor": {
+    "applicationURL": "",
+    "editorURL": "http://localhost:8000",
+    "cmsURL": "https://intlayer.org",
+    "backendURL": "https://back.intlayer.org",
+    "port": 8000,
+    "enabled": true,
+    "dictionaryPriorityStrategy": "local_first",
+    "hotReload": false
+  },
+  "log": {
+    "mode": "default",
+    "prefix": "\u001b[90m[intlayer] \u001b[0m"
+  },
+  "ai": {},
+  "build": {
+    "optimize": false,
+    "importMode": "static",
+    "traversePattern": [
+      "**/*.{js,ts,mjs,cjs,jsx,tsx,mjx,cjx,vue,svelte,svte}",
+      "!**/node_modules/**"
+    ]
+  }
+}

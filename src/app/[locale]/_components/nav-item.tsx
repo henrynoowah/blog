@@ -1,4 +1,4 @@
-import { Link } from '@/i18n/navigation'
+import  Link  from 'next/link'
 import { useTransitionRouter } from 'next-view-transitions'
 import { HTMLAttributes, ReactNode, useState } from 'react'
 

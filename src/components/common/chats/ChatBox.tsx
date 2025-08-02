@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { useTranslations } from 'next-intl'
 
 interface Params {
   isOpen: boolean
@@ -7,7 +6,6 @@ interface Params {
 }
 
 const ChatBox = ({ isOpen }: Params) => {
-  const t = useTranslations('navigation')
   return (
     <motion.div
       className={`w-[400px] max-w-full h-[480px] max-h-full bg-primary/20 end-0 rounded-[24px] p-4 shadow-xl backdrop-filter backdrop-blur-lg`}
@@ -27,7 +25,7 @@ const ChatBox = ({ isOpen }: Params) => {
       }}
     >
       <div className="w-full h-full flex justify-center items-center text-light/60 font-semibold">
-        {t('chat.description')}
+        {('chat.description')}
       </div>
     </motion.div>
   )

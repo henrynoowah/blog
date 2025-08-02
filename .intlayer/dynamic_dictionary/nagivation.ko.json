@@ -1,0 +1,15 @@
+{
+  "key": "nagivation",
+  "content": {
+    "home": {
+      "title": "홈"
+    },
+    "posts": {
+      "title": "글"
+    },
+    "about": {
+      "title": "소개"
+    }
+  },
+  "locale": "ko"
+}
