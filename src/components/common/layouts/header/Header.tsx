@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 import Nav_mobile from './Nav_mobile';
 import ShowSearchButton from './ShowSearchButton';
 import { LocaleToggle } from '@/app/[locale]/_components/locale-toggle';
-const ThemeToggle = dynamic(() => import('../../themeToggle/ThemeToggle'));
+import { ThemeToggle } from '../../themeToggle';
 
 const HEADER_HEIGHT = 72;
 
@@ -29,8 +29,8 @@ const Header = ({ navOption, locale }: Params) => {
         <div className="w-full flex justify-between max-w-[1920px]">
           <h1 className="relative">
             <Link href={locale ? `/${locale}` : `/`}>
-              <p className="font-semibold z-10 text-[18px] text-light ">NWH</p>
-              <p className="font-semibold z-10 text-[8px] text-light ">
+              <p className="font-semibold z-10 text-[18px] text-accent ">NWH</p>
+              <p className="font-semibold z-10 text-[8px] text-accent ">
                 v{packageData.version}
               </p>
             </Link>

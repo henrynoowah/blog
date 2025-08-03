@@ -1,7 +1,7 @@
 'use client';
 
 import ChatBox from '@/components/common/chats/ChatBox';
-import ThemeToggle from '@/components/common/themeToggle/ThemeToggle';
+import { ThemeToggle } from '@/components/common/themeToggle';
 import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
 import { FloatingDock } from '@/components/ui/floating-dock';
 import Spline from '@splinetool/react-spline';
@@ -22,10 +22,18 @@ const splitBotId = process.env.NEXT_PUBLIC_SPLINE_BOT_ID!;
 const MainContainer = () => {
   const content = useIntlayer('page');
 
+  const toggleChat = () => {
+    !!isBotChatOpened
+      ? splineRef.current?.emitEventReverse('mouseDown', splitBotId)
+      : splineRef.current?.emitEvent('mouseDown', splitBotId);
+    setIsBotChatOpened(!isBotChatOpened);
+  };
+
   const navList = [
     {
       title: content.posts.title,
       href: 'https://velog.io/@henrynoowah/posts',
+      target: '_blank',
       icon: <IconBlockquote className="size-full" />,
     },
     {
@@ -36,12 +44,22 @@ const MainContainer = () => {
     {
       title: content.github.title,
       href: 'https://www.github.com/henrynoowah',
+      target: '_blank',
       icon: <IconBrandGithub className="size-full" />,
     },
     {
-      href: `#chat`,
+      href: '',
       title: content.chat.title,
-      icon: <IconMessageCircle className="size-full" />,
+      icon: (
+        <IconMessageCircle
+          className="size-full"
+          onClick={e => {
+            e.stopPropagation();
+            e.preventDefault();
+            toggleChat();
+          }}
+        />
+      ),
     },
   ];
 
@@ -57,13 +75,6 @@ const MainContainer = () => {
     if (botObj) botRef.current = botObj;
   };
 
-  const toggleChat = () => {
-    !!isBotChatOpened
-      ? splineRef.current?.emitEventReverse('mouseDown', splitBotId)
-      : splineRef.current?.emitEvent('mouseDown', splitBotId);
-    setIsBotChatOpened(!isBotChatOpened);
-  };
-
   return (
     <BackgroundGradientAnimation
       className="pointer-events-auto"
@@ -72,7 +83,7 @@ const MainContainer = () => {
       <div
         className="absolute w-full h-full
             flex justify-center items-center z-30 pointer-events-none"
-        style={{ filter: 'grayscale(1) contrast(2)' }}
+        style={{ filter: 'grayscale(0.5) contrast(1.75)' }}
       >
         <Spline scene={scene} onLoad={onLoad} />
       </div>

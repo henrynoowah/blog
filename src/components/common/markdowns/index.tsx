@@ -46,7 +46,7 @@ const markdownComponents = {
   ),
   p: ({ node, ...props }: any) => (
     <p
-      className="text-dark dark:text-light text-md leading-[1.7rem] whitespace-pre-line py-2"
+      className="text-md leading-[1.7rem] whitespace-pre-line py-2"
       {...props}
     />
   ),
@@ -65,7 +65,7 @@ const markdownComponents = {
       <li
         className={[
           `[&>ul]:ps-4 [&>ul>li]:marker:text-primary/50 [&>ul>li>ul>li]:marker:text-primary`,
-          `items-center marker:text-primary text-dark dark:text-light leading-8 py-0!`,
+          `items-center marker:text-primary leading-8 py-0!`,
         ].join(' ')}
         {...rest}
       >
@@ -131,10 +131,7 @@ const markdownComponents = {
   },
   table: ({ node, className, children, ...props }: any) => (
     <div className="w-full overflow-auto ring-1 ring-inset dark:ring-light/10">
-      <table
-        className="w-full text-dark dark:text-light ring-inset rounded-md"
-        {...props}
-      >
+      <table className="w-full ring-inset rounded-md" {...props}>
         {children}
       </table>
     </div>

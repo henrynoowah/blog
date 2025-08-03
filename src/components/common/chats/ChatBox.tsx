@@ -24,7 +24,7 @@ const ChatBox = ({ isOpen }: Params) => {
         }),
       }}
     >
-      <div className="w-full h-full flex justify-center items-center text-light/60 font-semibold">
+      <div className="w-full h-full flex justify-center items-center font-semibold">
         {'chat.description'}
       </div>
     </motion.div>

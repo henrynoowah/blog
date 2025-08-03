@@ -27,7 +27,7 @@ const ThemeToggle = () => {
       type="button"
       aria-label="Theme Toggle"
       onClick={handleThemeSwitch}
-      className="text-light! relative w-[36px] h-[36px] flex justify-center items-center rounded-full ring-1 ring-light dark:bg-dark-80"
+      className="relative size-9 flex justify-center items-center rounded-full text-xs bg-accent text-accent-foreground"
     >
       {isDarkMode !== null && (
         <>
@@ -51,4 +51,4 @@ const ThemeToggle = () => {
   );
 };
 
-export default ThemeToggle;
+export { ThemeToggle };

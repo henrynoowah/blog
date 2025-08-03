@@ -3,14 +3,14 @@ import { cn } from '@/lib/utils';
 import { useEffect, useRef, useState } from 'react';
 
 export const BackgroundGradientAnimation = ({
-  gradientBackgroundStart = 'rgb(30, 30, 30)', // Darker gray
-  gradientBackgroundEnd = 'rgb(220, 220, 220)', // Brighter gray
-  firstColor = '50, 50, 50', // Dark gray
-  secondColor = '180, 180, 180', // Light gray
-  thirdColor = '100, 100, 100', // Medium gray
-  fourthColor = '200, 200, 200', // Brighter gray
-  fifthColor = '20, 20, 20', // Almost black
-  pointerColor = '240, 240, 240', // Almost white
+  gradientBackgroundStart = 'rgb(15, 25, 30)', // Very dark teal-tinted
+  gradientBackgroundEnd = 'rgb(45, 70, 80)', // Dark teal
+  firstColor = '45, 89, 96', // Your accent color #2d5960
+  secondColor = '120, 160, 170', // Light teal
+  thirdColor = '80, 120, 130', // Medium teal
+  fourthColor = '160, 190, 200', // Very light teal
+  fifthColor = '25, 45, 50', // Very dark teal
+  pointerColor = '200, 220, 225', // Almost white with teal tint
   size = '80%',
   blendingValue = 'hard-light',
   children,

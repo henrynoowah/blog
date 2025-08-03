@@ -27,7 +27,7 @@ const LocaleToggle = () => {
     <button
       aria-label="Theme Toggle"
       onClick={handleLocaleSwitch}
-      className="text-light! relative w-[36px] h-[36px] flex justify-center items-center rounded-full ring-1 ring-light/60 dark:bg-dark-80"
+      className="relative size-9 flex justify-center items-center rounded-full text-xs bg-accent text-accent-foreground"
     >
       <span
         className={`absolute ${
@@ -36,14 +36,14 @@ const LocaleToggle = () => {
             : 'rotate-180 opacity-0'
         }  transform transition duration-500 ease-in-out`}
       >
-        <p className="text-sm font-semibold">EN</p>
+        EN
       </span>
       <span
         className={`absolute ${
           locale === 'ko' ? 'rotate-0 opacity-100' : 'rotate-180 opacity-0'
         }  transform transition duration-500 ease-in-out`}
       >
-        <p className="text-sm font-semibold">KO</p>
+        KO
       </span>
     </button>
   );
