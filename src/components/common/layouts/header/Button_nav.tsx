@@ -20,7 +20,7 @@ const Button_nav = ({ onChange }: Params) => {
       type="button"
       onClick={onClickhandler}
       ref={ref}
-      className={`size-9 flex justify-center items-center rounded-full bg-accent text-accent-foreground ${
+      className={`size-9 flex justify-center items-center rounded-full bg-primary text-primary-foreground ${
         isNavOpened ? 'rotate-225' : 'rotate-0'
       }  transition duration-300 ease-out`}
     >
@@ -28,17 +28,17 @@ const Button_nav = ({ onChange }: Params) => {
         className={`size-3.5 relative flex flex-col justify-center group cursor-pointer transition duration-300 ease-linear hover:`}
       >
         <span
-          className={`absolute w-full h-0.5 top-0 bg-accent-foreground transition duration-300 ease-linear ${
+          className={`absolute w-full h-0.5 top-0 bg-primary-foreground transition duration-300 ease-linear ${
             isNavOpened ? 'translate-y-1.5' : ''
           }`}
         />
         <span
-          className={`absolute w-full h-0.5 bg-accent-foreground transition duration-300 ease-linear opacity-100 ${
+          className={`absolute w-full h-0.5 bg-primary-foreground transition duration-300 ease-linear opacity-100 ${
             isNavOpened ? 'rotate-90' : ''
           }`}
         />
         <span
-          className={`absolute w-full h-0.5 bottom-0 bg-accent-foreground transition duration-300 ease-linear ${
+          className={`absolute w-full h-0.5 bottom-0 bg-primary-foreground transition duration-300 ease-linear ${
             isNavOpened ? '-translate-y-1.5' : ''
           }`}
         />

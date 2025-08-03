@@ -23,7 +23,7 @@ const Nav_mobile = ({ navOption }: Params) => {
       <Button_nav onChange={setIsNavOpened} />
 
       <nav
-        className={`absolute end-0 top-[72px] bg-foreground/80 xl:bg-primary text-primary-foreground ${
+        className={`absolute end-0 top-[72px] bg-black/60 xl:bg-primary text-primary-foreground ${
           isNavOpened
             ? 'translate-x-0 opacity-100 pointer-events-auto'
             : 'translate-x-0 opacity-0 pointer-events-none'
@@ -37,7 +37,7 @@ const Nav_mobile = ({ navOption }: Params) => {
               style={{
                 transitionDuration: `${index * 350}ms`,
               }}
-              className={`w-full transition py-1 xl:first:pt-4 first:border-t border-t border-primary-foreground border-solid last:pb-2 last:rounded-bl-xl ${
+              className={`w-full transition bg-primary py-1 xl:first:pt-4 first:border-t border-t border-primary-foreground/10 border-solid last:pb-2 last:rounded-bl-xl ${
                 isNavOpened ? 'translate-x-0' : 'translate-x-[200%]'
               }`}
             >
@@ -51,7 +51,7 @@ const Nav_mobile = ({ navOption }: Params) => {
                 }
                 target={nav.external ? '_blank' : undefined}
               >
-                <button className="w-full px-4 sm:px-10 flex justify-between items-center !text-md py-2 text-left">
+                <button className="w-full px-4 sm:px-10 flex justify-between items-center bg-transparent text-primary-foreground !text-md py-2 text-left">
                   <p>{nav.label}</p>
                   <IconChevronDown width={16} height={16} />
                 </button>

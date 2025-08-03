@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 import Nav_mobile from './Nav_mobile';
 import ShowSearchButton from './ShowSearchButton';
 import { LocaleToggle } from '@/app/[locale]/_components/locale-toggle';
-import { ThemeToggle } from '../../themeToggle';
+import { ThemeToggle } from '../../theme-toggle';
 
 const HEADER_HEIGHT = 72;
 
@@ -24,13 +24,13 @@ const Header = ({ navOption, locale }: Params) => {
     <>
       <div
         style={{ minHeight: HEADER_HEIGHT }}
-        className="w-full fixed top-0 border-b border-solid border-primary bg-primary flex justify-center items-center px-4 sm:px-10 z-20"
+        className="w-full fixed top-0 border-b border-solid border-primary text-primary-foreground bg-primary flex justify-center items-center px-4 sm:px-10 z-20"
       >
         <div className="w-full flex justify-between max-w-[1920px]">
           <h1 className="relative">
             <Link href={locale ? `/${locale}` : `/`}>
-              <p className="font-semibold z-10 text-[18px] text-accent ">NWH</p>
-              <p className="font-semibold z-10 text-[8px] text-accent ">
+              <p className="font-semibold z-10 text-[18px]">NWH</p>
+              <p className="font-semibold z-10 text-[8px]">
                 v{packageData.version}
               </p>
             </Link>

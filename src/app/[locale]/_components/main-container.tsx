@@ -1,7 +1,7 @@
 'use client';
 
 import ChatBox from '@/components/common/chats/ChatBox';
-import { ThemeToggle } from '@/components/common/themeToggle';
+import { ThemeToggle } from '@/components/common/theme-toggle';
 import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
 import { FloatingDock } from '@/components/ui/floating-dock';
 import Spline from '@splinetool/react-spline';
@@ -48,7 +48,7 @@ const MainContainer = () => {
       icon: <IconBrandGithub className="size-full" />,
     },
     {
-      href: '',
+      href: '#',
       title: content.chat.title,
       icon: (
         <IconMessageCircle
