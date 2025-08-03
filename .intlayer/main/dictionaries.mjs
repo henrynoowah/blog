@@ -1,7 +1,7 @@
-import _qPoqoyyhOOMt2BPtpZmL from '../dictionary/nagivation.json' with { type: 'json' };
-import _wXuo1vBfgFv8FL7QleA1 from '../dictionary/page.json' with { type: 'json' };
+import _HCyvfqD8x2oDzQDjGTYa from '../dictionary/nagivation.json' with { type: 'json' };
+import _9REuakLlQvSGS9eu2DLQ from '../dictionary/page.json' with { type: 'json' };
 
 export default {
-  "nagivation": _qPoqoyyhOOMt2BPtpZmL,
-  "page": _wXuo1vBfgFv8FL7QleA1
+  "nagivation": _HCyvfqD8x2oDzQDjGTYa,
+  "page": _9REuakLlQvSGS9eu2DLQ
 };

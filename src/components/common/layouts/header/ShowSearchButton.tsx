@@ -1,36 +1,45 @@
-'use client'
+'use client';
 
-import { IconSearch } from '@tabler/icons-react'
-import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { FormEventHandler, useRef, useState } from 'react'
+import { IconSearch } from '@tabler/icons-react';
+import {
+  useParams,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from 'next/navigation';
+import { FormEventHandler, useRef, useState } from 'react';
 
 const ShowSearchButton = () => {
-  const { locale } = useParams<{ locale?: string }>()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const router = useRouter()
+  const { locale } = useParams<{ locale?: string }>();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-  const search = searchParams.get('search')
+  const search = searchParams.get('search');
 
-  const [inputValue, setInputValue] = useState<string>(search ?? '')
+  const [inputValue, setInputValue] = useState<string>(search ?? '');
 
-  const [showInput, setShowInput] = useState<boolean>(false)
+  const [showInput, setShowInput] = useState<boolean>(false);
 
-  const [isFocused, setIsFocused] = useState<boolean>(false)
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit: FormEventHandler = (e) => {
-    e.preventDefault()
+  const handleSubmit: FormEventHandler = e => {
+    e.preventDefault();
     if (inputValue !== null && inputValue !== '') {
-      router.push(`/posts?search=${inputValue}`)
+      router.push(`/posts?search=${inputValue}`);
     } else {
-      router.push(`${pathname}`)
+      router.push(`${pathname}`);
     }
-  }
+  };
 
-  return pathname.startsWith('/posts') || pathname.startsWith(`/${locale}/posts`) ? (
-    <form onSubmit={handleSubmit} className="flex justify-between relative group transition duration-300 ease-in-out">
+  return pathname.startsWith('/posts') ||
+    pathname.startsWith(`/${locale}/posts`) ? (
+    <form
+      onSubmit={handleSubmit}
+      className="flex justify-between relative group transition duration-300 ease-in-out"
+    >
       <div
         className={`h-[36px] relative duration-300 ease-in-out ring-1 ring-inset ring-light rounded-full overflow-hidden ${
           showInput ? 'w-[160px] md:w-[240px]' : 'w-[36px]'
@@ -39,12 +48,12 @@ const ShowSearchButton = () => {
         <input
           ref={inputRef}
           placeholder="Search Post"
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={e => setInputValue(e.target.value)}
           onMouseDown={() => setIsFocused(true)}
           onBlur={() => {
             if (!inputValue) {
-              setIsFocused(false)
-              setShowInput(false)
+              setIsFocused(false);
+              setShowInput(false);
             }
           }}
           type="search"
@@ -52,7 +61,9 @@ const ShowSearchButton = () => {
             `absolute w-full h-full items-center placeholder:italic placeholder:text-sm`,
             `outline-hidden focus:outline-hidden transform`,
             `px-4 text-light/60 bg-transparent`,
-            showInput ? `translate-x-0 pointer-events-auto ` : `translate-x-full pointer-events-none hidden`
+            showInput
+              ? `translate-x-0 pointer-events-auto `
+              : `translate-x-full pointer-events-none hidden`,
           ].join(' ')}
         />
 
@@ -61,12 +72,12 @@ const ShowSearchButton = () => {
           className={`absolute right-0 w-[36px] h-[36px] flex justify-center items-center ring-inset ring-light rounded-full`}
           onClick={() => {
             if (!showInput) {
-              setShowInput(true)
+              setShowInput(true);
             }
           }}
           onBlur={() => {
             if (!isFocused && !inputValue) {
-              setShowInput(false)
+              setShowInput(false);
             }
           }}
         >
@@ -74,7 +85,7 @@ const ShowSearchButton = () => {
         </button>
       </div>
     </form>
-  ) : null
-}
+  ) : null;
+};
 
-export default ShowSearchButton
+export default ShowSearchButton;

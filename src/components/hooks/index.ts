@@ -1,3 +1,3 @@
-import { useResizeHandler } from './use-resize-handler'
+import { useResizeHandler } from './use-resize-handler';
 
-export { useResizeHandler }
+export { useResizeHandler };

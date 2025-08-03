@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 interface Params {
-  isOpen: boolean
-  onClose?: (close: boolean) => void
+  isOpen: boolean;
+  onClose?: (close: boolean) => void;
 }
 
 const ChatBox = ({ isOpen }: Params) => {
@@ -15,20 +15,20 @@ const ChatBox = ({ isOpen }: Params) => {
         open: () => ({
           y: 0,
           opacity: 100,
-          transition: { ease: 'easeInOut', duration: 0.5 }
+          transition: { ease: 'easeInOut', duration: 0.5 },
         }),
         closed: () => ({
           y: 80,
           opacity: 0,
-          transition: { ease: 'easeOut', duration: 0.5 }
-        })
+          transition: { ease: 'easeOut', duration: 0.5 },
+        }),
       }}
     >
       <div className="w-full h-full flex justify-center items-center text-light/60 font-semibold">
-        {('chat.description')}
+        {'chat.description'}
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default ChatBox
+export default ChatBox;

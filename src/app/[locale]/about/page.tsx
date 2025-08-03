@@ -1,5 +1,5 @@
-import { MarkdowRenderer } from '@/components/common/markdowns'
-import React from 'react'
+import { MarkdowRenderer } from '@/components/common/markdowns';
+import React from 'react';
 
 const about = `**👋 Hi, I’m @henrynoowah**
 
@@ -17,7 +17,7 @@ const about = `**👋 Hi, I’m @henrynoowah**
 
 ![noowah's solved.ac stats](https://github-readme-solvedac.hyp3rflow.vercel.app/api/?handle=noowah)
 
-`
+`;
 const page = () => {
   return (
     <div className="w-full max-w-2xl px-4 xl:px-0">
@@ -29,7 +29,7 @@ const page = () => {
         <MarkdowRenderer markdown={about} />
       </article>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

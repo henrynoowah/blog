@@ -1,7 +1,7 @@
-const _bvEB3bYkNWCfH28sBETE = require('../dynamic_dictionary/nagivation.cjs');
-const _XXUVrwgs4YkQBU2j5WGe = require('../dynamic_dictionary/page.cjs');
+const _o140UgPaWx2CyGlWH8gc = require('../dynamic_dictionary/nagivation.cjs');
+const _nRbxkIZtsAMSlIy5NrYA = require('../dynamic_dictionary/page.cjs');
 
 module.exports = {
-  "nagivation": _bvEB3bYkNWCfH28sBETE,
-  "page": _XXUVrwgs4YkQBU2j5WGe
+  "nagivation": _o140UgPaWx2CyGlWH8gc,
+  "page": _nRbxkIZtsAMSlIy5NrYA
 };

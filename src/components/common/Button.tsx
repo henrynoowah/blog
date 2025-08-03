@@ -1,6 +1,10 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react'
+import { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react';
 
-interface Params extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {}
+interface Params
+  extends DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {}
 
 const Button: FC<Params> = ({ children, ...props }) => {
   return (
@@ -10,7 +14,7 @@ const Button: FC<Params> = ({ children, ...props }) => {
     >
       {children}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

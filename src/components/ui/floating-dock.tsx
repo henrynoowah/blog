@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
-import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
+import { cn } from '@/lib/utils';
+import { IconLayoutNavbarCollapse } from '@tabler/icons-react';
 import {
   AnimatePresence,
   MotionValue,
@@ -7,9 +7,9 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
-} from "motion/react";
+} from 'motion/react';
 
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react';
 
 export const FloatingDock = ({
   items,
@@ -37,7 +37,7 @@ const FloatingDockMobile = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={cn("relative block md:hidden", className)}>
+    <div className={cn('relative block md:hidden', className)}>
       <AnimatePresence>
         {open && (
           <motion.div
@@ -93,14 +93,14 @@ const FloatingDockDesktop = ({
   let mouseX = useMotionValue(Infinity);
   return (
     <motion.div
-      onMouseMove={(e) => mouseX.set(e.pageX)}
+      onMouseMove={e => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-gray-50 px-4 pb-3 md:flex dark:bg-neutral-900",
-        className,
+        'mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-gray-50 px-4 pb-3 md:flex dark:bg-neutral-900',
+        className
       )}
     >
-      {items.map((item) => (
+      {items.map(item => (
         <IconContainer mouseX={mouseX} key={item.title} {...item} />
       ))}
     </motion.div>
@@ -120,7 +120,7 @@ function IconContainer({
 }) {
   let ref = useRef<HTMLDivElement>(null);
 
-  let distance = useTransform(mouseX, (val) => {
+  let distance = useTransform(mouseX, val => {
     let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
 
     return val - bounds.x - bounds.width / 2;
@@ -133,7 +133,7 @@ function IconContainer({
   let heightTransformIcon = useTransform(
     distance,
     [-150, 0, 150],
-    [20, 40, 20],
+    [20, 40, 20]
   );
 
   let width = useSpring(widthTransform, {
@@ -172,9 +172,9 @@ function IconContainer({
         <AnimatePresence>
           {hovered && (
             <motion.div
-              initial={{ opacity: 0, y: 10, x: "-50%" }}
-              animate={{ opacity: 1, y: 0, x: "-50%" }}
-              exit={{ opacity: 0, y: 2, x: "-50%" }}
+              initial={{ opacity: 0, y: 10, x: '-50%' }}
+              animate={{ opacity: 1, y: 0, x: '-50%' }}
+              exit={{ opacity: 0, y: 2, x: '-50%' }}
               className="absolute -top-8 left-1/2 w-fit rounded-md border border-gray-200 bg-gray-100 px-2 py-0.5 text-xs whitespace-pre text-neutral-700 dark:border-neutral-900 dark:bg-neutral-800 dark:text-white"
             >
               {title}

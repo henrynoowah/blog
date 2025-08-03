@@ -32,7 +32,7 @@
       ".content.tsx",
       ".content.jsx"
     ],
-    "baseDir": "/home/noowah/repo_personal/blog",
+    "baseDir": "/Users/henrycho/repo_personal/blog",
     "excludedPath": [
       "node_modules",
       ".intlayer",
@@ -41,22 +41,22 @@
       ".expo",
       "dist"
     ],
-    "watch": true,
+    "watch": false,
     "contentDir": [
-      "/home/noowah/repo_personal/blog"
+      "/Users/henrycho/repo_personal/blog"
     ],
-    "dictionariesDir": "/home/noowah/repo_personal/blog/.intlayer/dictionary",
-    "moduleAugmentationDir": "/home/noowah/repo_personal/blog/.intlayer/types",
+    "dictionariesDir": "/Users/henrycho/repo_personal/blog/.intlayer/dictionary",
+    "moduleAugmentationDir": "/Users/henrycho/repo_personal/blog/.intlayer/types",
     "dictionaryOutput": [
       "intlayer"
     ],
-    "unmergedDictionariesDir": "/home/noowah/repo_personal/blog/.intlayer/unmerged_dictionary",
-    "dynamicDictionariesDir": "/home/noowah/repo_personal/blog/.intlayer/dynamic_dictionary",
-    "i18nextResourcesDir": "/home/noowah/repo_personal/blog/i18next_resources",
-    "reactIntlMessagesDir": "/home/noowah/repo_personal/blog/intl_messages",
-    "typesDir": "/home/noowah/repo_personal/blog/.intlayer/types",
-    "mainDir": "/home/noowah/repo_personal/blog/.intlayer/main",
-    "configDir": "/home/noowah/repo_personal/blog/.intlayer/config",
+    "unmergedDictionariesDir": "/Users/henrycho/repo_personal/blog/.intlayer/unmerged_dictionary",
+    "dynamicDictionariesDir": "/Users/henrycho/repo_personal/blog/.intlayer/dynamic_dictionary",
+    "i18nextResourcesDir": "/Users/henrycho/repo_personal/blog/i18next_resources",
+    "reactIntlMessagesDir": "/Users/henrycho/repo_personal/blog/intl_messages",
+    "typesDir": "/Users/henrycho/repo_personal/blog/.intlayer/types",
+    "mainDir": "/Users/henrycho/repo_personal/blog/.intlayer/main",
+    "configDir": "/Users/henrycho/repo_personal/blog/.intlayer/config",
     "watchedFilesPattern": [
       "/**/*.content.ts",
       "/**/*.content.js",
@@ -69,17 +69,17 @@
       "/**/*.content.jsx"
     ],
     "watchedFilesPatternWithPath": [
-      "/home/noowah/repo_personal/blog/**/*.content.ts",
-      "/home/noowah/repo_personal/blog/**/*.content.js",
-      "/home/noowah/repo_personal/blog/**/*.content.cjs",
-      "/home/noowah/repo_personal/blog/**/*.content.cjx",
-      "/home/noowah/repo_personal/blog/**/*.content.mjs",
-      "/home/noowah/repo_personal/blog/**/*.content.mjx",
-      "/home/noowah/repo_personal/blog/**/*.content.json",
-      "/home/noowah/repo_personal/blog/**/*.content.tsx",
-      "/home/noowah/repo_personal/blog/**/*.content.jsx"
+      "/Users/henrycho/repo_personal/blog/**/*.content.ts",
+      "/Users/henrycho/repo_personal/blog/**/*.content.js",
+      "/Users/henrycho/repo_personal/blog/**/*.content.cjs",
+      "/Users/henrycho/repo_personal/blog/**/*.content.cjx",
+      "/Users/henrycho/repo_personal/blog/**/*.content.mjs",
+      "/Users/henrycho/repo_personal/blog/**/*.content.mjx",
+      "/Users/henrycho/repo_personal/blog/**/*.content.json",
+      "/Users/henrycho/repo_personal/blog/**/*.content.tsx",
+      "/Users/henrycho/repo_personal/blog/**/*.content.jsx"
     ],
-    "outputFilesPatternWithPath": "/home/noowah/repo_personal/blog/.intlayer/dictionary/**/*.json"
+    "outputFilesPatternWithPath": "/Users/henrycho/repo_personal/blog/.intlayer/dictionary/**/*.json"
   },
   "editor": {
     "applicationURL": "",
@@ -97,7 +97,7 @@
   },
   "ai": {},
   "build": {
-    "optimize": false,
+    "optimize": true,
     "importMode": "static",
     "traversePattern": [
       "**/*.{js,ts,mjs,cjs,jsx,tsx,mjx,cjx,vue,svelte,svte}",

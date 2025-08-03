@@ -1,18 +1,23 @@
-'use client'
+'use client';
 
-import { Locale } from '@/i18n.config'
-import Link from 'next/link'
-import { useState } from 'react'
-import Button from '../../Button'
-import Button_nav from './Button_nav'
-import { IconChevronDown } from '@tabler/icons-react'
+import { Locale } from '@/i18n.config';
+import Link from 'next/link';
+import { useState } from 'react';
+import Button from '../../Button';
+import Button_nav from './Button_nav';
+import { IconChevronDown } from '@tabler/icons-react';
 
 interface Params {
-  navOption: Array<{ label: string; href: string; locale: Locale; external?: boolean }>
+  navOption: Array<{
+    label: string;
+    href: string;
+    locale: Locale;
+    external?: boolean;
+  }>;
 }
 
 const Nav_mobile = ({ navOption }: Params) => {
-  const [isNavOpened, setIsNavOpened] = useState<boolean>(false)
+  const [isNavOpened, setIsNavOpened] = useState<boolean>(false);
 
   return (
     <>
@@ -20,7 +25,9 @@ const Nav_mobile = ({ navOption }: Params) => {
 
       <nav
         className={`absolute end-0 top-[72px] bg-dark/80 xl:bg-primary ${
-          isNavOpened ? 'translate-x-0 opacity-100 pointer-events-auto' : 'translate-x-0 opacity-0 pointer-events-none'
+          isNavOpened
+            ? 'translate-x-0 opacity-100 pointer-events-auto'
+            : 'translate-x-0 opacity-0 pointer-events-none'
         } transition duration-300 ease-out text-light w-full xl:max-w-[360px] h-screen 
         `}
       >
@@ -29,14 +36,18 @@ const Nav_mobile = ({ navOption }: Params) => {
             <li
               key={`mobile-nav-${nav.label}`}
               style={{
-                transitionDuration: `${index * 350}ms`
+                transitionDuration: `${index * 350}ms`,
               }}
               className={`w-full transition bg-primary py-1 xl:first:pt-4 first:border-t border-t border-light/20 border-solid last:pb-2 last:rounded-bl-xl ${
                 isNavOpened ? 'translate-x-0' : 'translate-x-[200%]'
               }`}
             >
               <Link
-                href={!nav.external ? `${nav.locale !== 'en' ? `/${nav.locale}` : ''}${nav.href}` : nav.href}
+                href={
+                  !nav.external
+                    ? `${nav.locale !== 'en' ? `/${nav.locale}` : ''}${nav.href}`
+                    : nav.href
+                }
                 target={nav.external ? '_blank' : undefined}
               >
                 <Button className="w-full px-4 sm:px-10 flex justify-between items-center bg-transparent text-light! !text-md py-2 text-left">
@@ -49,7 +60,7 @@ const Nav_mobile = ({ navOption }: Params) => {
         </ul>
       </nav>
     </>
-  )
-}
+  );
+};
 
-export default Nav_mobile
+export default Nav_mobile;

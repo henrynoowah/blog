@@ -1,15 +1,15 @@
 export const metadata: Metadata = {
   title: {
     default: 'Works',
-    template: '%s'
-  }
-}
+    template: '%s',
+  },
+};
 
-import { Metadata } from 'next'
-import { ReactNode } from 'react'
+import { Metadata } from 'next';
+import { ReactNode } from 'react';
 
 interface Params {
-  children: ReactNode
+  children: ReactNode;
 }
 
 const PostsLayouts = ({ children }: Params) => {
@@ -19,7 +19,7 @@ const PostsLayouts = ({ children }: Params) => {
         <div className="w-full h-fit flex justify-center py-2">{children}</div>
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default PostsLayouts
+export default PostsLayouts;

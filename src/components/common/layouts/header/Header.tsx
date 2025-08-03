@@ -1,18 +1,23 @@
-import { Locale } from '@/i18n.config'
-import dynamic from 'next/dynamic'
-import Link from 'next/link'
-import packageData from 'package.json'
-import { Suspense } from 'react'
-import Nav_mobile from './Nav_mobile'
-import ShowSearchButton from './ShowSearchButton'
-import { LocaleToggle } from '@/app/[locale]/_components/locale-toggle'
-const ThemeToggle = dynamic(() => import('../../themeToggle/ThemeToggle'))
+import { Locale } from '@/i18n.config';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import packageData from 'package.json';
+import { Suspense } from 'react';
+import Nav_mobile from './Nav_mobile';
+import ShowSearchButton from './ShowSearchButton';
+import { LocaleToggle } from '@/app/[locale]/_components/locale-toggle';
+const ThemeToggle = dynamic(() => import('../../themeToggle/ThemeToggle'));
 
-const HEADER_HEIGHT = 72
+const HEADER_HEIGHT = 72;
 
 interface Params {
-  navOption: Array<{ label: string; href: string; locale: Locale; external?: boolean }>
-  locale?: string
+  navOption: Array<{
+    label: string;
+    href: string;
+    locale: Locale;
+    external?: boolean;
+  }>;
+  locale?: string;
 }
 const Header = ({ navOption, locale }: Params) => {
   return (
@@ -25,7 +30,9 @@ const Header = ({ navOption, locale }: Params) => {
           <h1 className="relative">
             <Link href={locale ? `/${locale}` : `/`}>
               <p className="font-semibold z-10 text-[18px] text-light ">NWH</p>
-              <p className="font-semibold z-10 text-[8px] text-light ">v{packageData.version}</p>
+              <p className="font-semibold z-10 text-[8px] text-light ">
+                v{packageData.version}
+              </p>
             </Link>
           </h1>
 
@@ -43,7 +50,7 @@ const Header = ({ navOption, locale }: Params) => {
       </div>
       <div style={{ minHeight: HEADER_HEIGHT }} className="w-full" />
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

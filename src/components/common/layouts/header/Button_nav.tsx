@@ -1,19 +1,19 @@
-import { MouseEventHandler, useRef, useState } from 'react'
+import { MouseEventHandler, useRef, useState } from 'react';
 
 interface Params {
-  onChange: (isNaOpened: boolean) => void
+  onChange: (isNaOpened: boolean) => void;
 }
 
 const Button_nav = ({ onChange }: Params) => {
-  const ref = useRef<HTMLButtonElement>(null)
+  const ref = useRef<HTMLButtonElement>(null);
 
-  const [isNavOpened, setIsNavOpened] = useState<boolean>(false)
+  const [isNavOpened, setIsNavOpened] = useState<boolean>(false);
 
-  const onClickhandler: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.stopPropagation()
-    setIsNavOpened(!isNavOpened)
-    onChange && onChange(!isNavOpened)
-  }
+  const onClickhandler: MouseEventHandler<HTMLButtonElement> = e => {
+    e.stopPropagation();
+    setIsNavOpened(!isNavOpened);
+    onChange && onChange(!isNavOpened);
+  };
 
   return (
     <button
@@ -44,7 +44,7 @@ const Button_nav = ({ onChange }: Params) => {
         />
       </div>
     </button>
-  )
-}
+  );
+};
 
-export default Button_nav
+export default Button_nav;

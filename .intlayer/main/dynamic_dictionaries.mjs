@@ -1,7 +1,7 @@
-import _U3Wv40FCoM5pRy1DIMOw from '../dynamic_dictionary/nagivation.mjs' with { type: 'json' };
-import _Q6gOicjIx7BEkkWxP0oa from '../dynamic_dictionary/page.mjs' with { type: 'json' };
+import _Q0GkCZZ2q71Gs48CAObG from '../dynamic_dictionary/nagivation.mjs' with { type: 'json' };
+import _zV9K1WnZT3kGX2Ch4K4j from '../dynamic_dictionary/page.mjs' with { type: 'json' };
 
 export default {
-  "nagivation": _U3Wv40FCoM5pRy1DIMOw,
-  "page": _Q6gOicjIx7BEkkWxP0oa
+  "nagivation": _Q0GkCZZ2q71Gs48CAObG,
+  "page": _zV9K1WnZT3kGX2Ch4K4j
 };

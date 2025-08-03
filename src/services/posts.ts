@@ -1,7 +1,9 @@
-export const getPosts = async (searchParams: GetPostsPayload): Promise<any[]> => {
-  const { cursor, tag, search, limit } = searchParams
-  const isSearch = !!search || !!tag
-  const username = process.env.NEXT_PUBLIC_VELOG_ID
+export const getPosts = async (
+  searchParams: GetPostsPayload
+): Promise<any[]> => {
+  const { cursor, tag, search, limit } = searchParams;
+  const isSearch = !!search || !!tag;
+  const username = process.env.NEXT_PUBLIC_VELOG_ID;
   const payload = !isSearch
     ? {
         operationName: 'Posts',
@@ -9,7 +11,7 @@ export const getPosts = async (searchParams: GetPostsPayload): Promise<any[]> =>
           username,
           limit,
           cursor,
-          tag: tag ?? null
+          tag: tag ?? null,
         },
         query: `query Posts($cursor: ID, $username: String, $limit: Int, $tag: String) {
           posts(cursor: $cursor, username: $username, limit: $limit, tag: $tag) {
@@ -33,13 +35,13 @@ export const getPosts = async (searchParams: GetPostsPayload): Promise<any[]> =>
             is_private
             likes
           }
-        }`
+        }`,
       }
     : {
         operationName: 'SearchPosts',
         variables: {
           keyword: search ?? tag,
-          username
+          username,
         },
         query: `query SearchPosts($keyword: String!, $offset: Int, $username: String) {
             searchPosts(keyword: $keyword, offset: $offset, username: $username) {
@@ -64,8 +66,8 @@ export const getPosts = async (searchParams: GetPostsPayload): Promise<any[]> =>
                 comments_count
               }
             }
-          }`
-      }
+          }`,
+      };
 
   try {
     const response = await fetch('https://v2cdn.velog.io/graphql', {
@@ -73,24 +75,24 @@ export const getPosts = async (searchParams: GetPostsPayload): Promise<any[]> =>
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then((res) => res.json())
+        'Content-Type': 'application/json',
+      },
+    }).then(res => res.json());
 
-    return !isSearch ? response.data.posts : response.data.searchPosts.posts
+    return !isSearch ? response.data.posts : response.data.searchPosts.posts;
   } catch (e) {
-    return []
+    return [];
   }
-}
+};
 
 export const getPost = async (slug: string): Promise<any> => {
-  let post = null
+  let post = null;
 
   const payload = {
     operationName: 'ReadPost',
     variables: {
       username: process.env.NEXT_PUBLIC_VELOG_ID,
-      url_slug: slug
+      url_slug: slug,
     },
     query: `query ReadPost($username: String, $url_slug: String) {
       post(username: $username, url_slug: $url_slug) {
@@ -177,19 +179,19 @@ export const getPost = async (slug: string): Promise<any> => {
           }
         }
       }
-    }`
-  }
+    }`,
+  };
 
   try {
     const response = await fetch('https://v2cdn.velog.io/graphql', {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then((res) => res.json())
+        'Content-Type': 'application/json',
+      },
+    }).then(res => res.json());
 
-    post = response.data.post
-    return post
+    post = response.data.post;
+    return post;
   } catch (e) {}
-}
+};

@@ -1,27 +1,27 @@
-'use client'
+'use client';
 
-import { themeCheck } from '@/utils/themeCheck'
-import { useParams, useRouter } from 'next/navigation'
-import { MouseEventHandler, useEffect, useState } from 'react'
+import { themeCheck } from '@/utils/themeCheck';
+import { useParams, useRouter } from 'next/navigation';
+import { MouseEventHandler, useEffect, useState } from 'react';
 
 const LocaleToggle = () => {
-  const router = useRouter()
-  const params = useParams()
-  const locale = params.locale as string
+  const router = useRouter();
+  const params = useParams();
+  const locale = params.locale as string;
 
-  const [iconToggle, setIconToggle] = useState<boolean>(themeCheck())
+  const [iconToggle, setIconToggle] = useState<boolean>(themeCheck());
 
-  const handleLocaleSwitch: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.preventDefault()
-    router.replace(locale === 'ko' ? '/' : '/ko')
-    setIconToggle(true)
-  }
+  const handleLocaleSwitch: MouseEventHandler<HTMLButtonElement> = e => {
+    e.preventDefault();
+    router.replace(locale === 'ko' ? '/' : '/ko');
+    setIconToggle(true);
+  };
 
   useEffect(() => {
     if (iconToggle === true) {
-      setIconToggle(false)
+      setIconToggle(false);
     }
-  }, [iconToggle])
+  }, [iconToggle]);
 
   return (
     <button
@@ -31,7 +31,9 @@ const LocaleToggle = () => {
     >
       <span
         className={`absolute ${
-          locale === 'en' || !locale ? 'rotate-0 opacity-100' : 'rotate-180 opacity-0'
+          locale === 'en' || !locale
+            ? 'rotate-0 opacity-100'
+            : 'rotate-180 opacity-0'
         }  transform transition duration-500 ease-in-out`}
       >
         <p className="text-sm font-semibold">EN</p>
@@ -44,7 +46,7 @@ const LocaleToggle = () => {
         <p className="text-sm font-semibold">KO</p>
       </span>
     </button>
-  )
-}
+  );
+};
 
-export { LocaleToggle }
+export { LocaleToggle };

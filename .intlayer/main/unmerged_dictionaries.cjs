@@ -1,7 +1,7 @@
-const _aLz6c0zhGH0f7NYqhfgm = require('../unmerged_dictionary/nagivation.json');
-const _IJgnp7zPjLdVUWjIzS01 = require('../unmerged_dictionary/page.json');
+const _W1lkHDjJo989Gur19nsn = require('../unmerged_dictionary/nagivation.json');
+const _zJSpgmx5ySKV0qp5SKK1 = require('../unmerged_dictionary/page.json');
 
 module.exports = {
-  "nagivation": _aLz6c0zhGH0f7NYqhfgm,
-  "page": _IJgnp7zPjLdVUWjIzS01
+  "nagivation": _W1lkHDjJo989Gur19nsn,
+  "page": _zJSpgmx5ySKV0qp5SKK1
 };

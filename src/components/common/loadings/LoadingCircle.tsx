@@ -19,7 +19,7 @@ const loadingCircle = () => {
       </svg>
       <span className="sr-only">Loading...</span>
     </div>
-  )
-}
+  );
+};
 
-export default loadingCircle
+export default loadingCircle;

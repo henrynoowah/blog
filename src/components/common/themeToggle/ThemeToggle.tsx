@@ -1,26 +1,26 @@
-'use client'
+'use client';
 
-import { themeCheck, themeColorSwitch, themeSwitch } from '@/utils/themeCheck'
-import { IconMoon, IconSun } from '@tabler/icons-react'
-import { MouseEventHandler, useEffect, useState } from 'react'
+import { themeCheck, themeColorSwitch, themeSwitch } from '@/utils/themeCheck';
+import { IconMoon, IconSun } from '@tabler/icons-react';
+import { MouseEventHandler, useEffect, useState } from 'react';
 
 const ThemeToggle = () => {
-  const [iconToggle, setIconToggle] = useState<boolean>(themeCheck())
-  const [isDarkMode, setIsDarkMode] = useState<boolean | null>()
+  const [iconToggle, setIconToggle] = useState<boolean>(themeCheck());
+  const [isDarkMode, setIsDarkMode] = useState<boolean | null>();
 
-  const handleThemeSwitch: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.preventDefault()
-    themeSwitch()
-    setIconToggle(true)
-  }
+  const handleThemeSwitch: MouseEventHandler<HTMLButtonElement> = e => {
+    e.preventDefault();
+    themeSwitch();
+    setIconToggle(true);
+  };
 
   useEffect(() => {
     if (iconToggle === true) {
-      setIsDarkMode(!isDarkMode)
-      themeColorSwitch(!isDarkMode)
-      setIconToggle(false)
+      setIsDarkMode(!isDarkMode);
+      themeColorSwitch(!isDarkMode);
+      setIconToggle(false);
     }
-  }, [iconToggle, isDarkMode])
+  }, [iconToggle, isDarkMode]);
 
   return (
     <button
@@ -48,7 +48,7 @@ const ThemeToggle = () => {
         </>
       )}
     </button>
-  )
-}
+  );
+};
 
-export default ThemeToggle
+export default ThemeToggle;

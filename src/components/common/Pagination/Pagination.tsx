@@ -1,18 +1,18 @@
-'use client'
+'use client';
 
-import { useRouter } from 'next/navigation'
-import { FC } from 'react'
-import Button from '../Button'
+import { useRouter } from 'next/navigation';
+import { FC } from 'react';
+import Button from '../Button';
 
 interface Params {
-  pageCount: number
+  pageCount: number;
 }
 
 const Pagination: FC<Params> = ({ pageCount }) => {
-  const router = useRouter()
+  const router = useRouter();
   const onClickHandler = (page: number) => {
-    router.push(`/posts?page=${page}`)
-  }
+    router.push(`/posts?page=${page}`);
+  };
 
   return (
     <div className="w-full flex justify-center gap-3">
@@ -22,7 +22,7 @@ const Pagination: FC<Params> = ({ pageCount }) => {
         </Button>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Pagination
+export default Pagination;

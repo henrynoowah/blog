@@ -1,5 +1,5 @@
-import { t, type Dictionary } from 'intlayer'
-import { github } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { t, type Dictionary } from 'intlayer';
+import { github } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const pageContent: Dictionary = {
   key: 'page',
@@ -9,7 +9,7 @@ const pageContent: Dictionary = {
         en: 'Home',
         ko: '홈',
       }),
-    },      
+    },
     posts: {
       title: t({
         en: 'Posts',
@@ -34,7 +34,7 @@ const pageContent: Dictionary = {
         ko: '채팅',
       }),
     },
-  }
-} satisfies Dictionary
+  },
+} satisfies Dictionary;
 
-export default pageContent
+export default pageContent;
