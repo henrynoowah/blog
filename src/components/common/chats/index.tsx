@@ -31,4 +31,4 @@ const ChatBox = ({ isOpen }: Params) => {
   );
 };
 
-export default ChatBox;
+export { ChatBox };

@@ -29,6 +29,15 @@ export default {
         }
       }
     },
+    projects: {
+      title: {
+        nodeType: "translation",
+        translation: {
+          en: "Projects",
+          ko: "프로젝트"
+        }
+      }
+    },
     github: {
       title: {
         nodeType: "translation",

@@ -1,6 +1,6 @@
 'use client';
 
-import ChatBox from '@/components/common/chats/ChatBox';
+import { ChatBox } from '@/components/common/chats';
 import { ThemeToggle } from '@/components/common/theme-toggle';
 import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
 import { FloatingDock } from '@/components/ui/floating-dock';
@@ -9,6 +9,7 @@ import { Application, SPEObject } from '@splinetool/runtime';
 import {
   IconBlockquote,
   IconBrandGithub,
+  IconLayoutCollage,
   IconMessageCircle,
   IconUserBitcoin,
 } from '@tabler/icons-react';
@@ -40,6 +41,11 @@ const MainContainer = () => {
       title: content.about.title,
       href: '/about',
       icon: <IconUserBitcoin className="size-full" />,
+    },
+    {
+      title: content.projects.title,
+      href: '/about#projects',
+      icon: <IconLayoutCollage className="size-full" />,
     },
     {
       title: content.github.title,

@@ -22,6 +22,12 @@ const pageContent: Dictionary = {
         ko: '소개',
       }),
     },
+    projects: {
+      title: t({
+        en: 'Projects',
+        ko: '프로젝트',
+      }),
+    },
     github: {
       title: t({
         en: 'GitHub',
