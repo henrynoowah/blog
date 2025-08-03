@@ -26,22 +26,22 @@ const MainContainer = () => {
     {
       title: content.posts.title,
       href: 'https://velog.io/@henrynoowah/posts',
-      icon: <IconBlockquote />,
+      icon: <IconBlockquote className="size-full" />,
     },
     {
       title: content.about.title,
       href: '/about',
-      icon: <IconUserBitcoin />,
+      icon: <IconUserBitcoin className="size-full" />,
     },
     {
       title: content.github.title,
       href: 'https://www.github.com/henrynoowah',
-      icon: <IconBrandGithub />,
+      icon: <IconBrandGithub className="size-full" />,
     },
     {
       href: `#chat`,
       title: content.chat.title,
-      icon: <IconMessageCircle />,
+      icon: <IconMessageCircle className="size-full" />,
     },
   ];
 
@@ -65,11 +65,14 @@ const MainContainer = () => {
   };
 
   return (
-    <BackgroundGradientAnimation className="pointer-events-auto">
+    <BackgroundGradientAnimation
+      className="pointer-events-auto"
+      containerClassName="h-dvh"
+    >
       <div
         className="absolute w-full h-full
             flex justify-center items-center z-30 pointer-events-none"
-        style={{ filter: 'grayscale(1) contrast(1.75)' }}
+        style={{ filter: 'grayscale(1) contrast(2)' }}
       >
         <Spline scene={scene} onLoad={onLoad} />
       </div>
@@ -88,7 +91,7 @@ const MainContainer = () => {
         <ChatBox isOpen={isBotChatOpened} />
       </div>
 
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+      <div className="absolute bottom-4 right-4 md:right-1/2 transform md:translate-x-1/2 z-50">
         <FloatingDock items={navList} />
       </div>
     </BackgroundGradientAnimation>
