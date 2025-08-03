@@ -9,6 +9,7 @@ const getWidth = () =>
 const useResizeHandler = (interval = 250) => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [isMounted, setIsMounted] = useState<boolean>(false);
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsMounted(true);
