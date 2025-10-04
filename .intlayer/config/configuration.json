@@ -41,7 +41,7 @@
       ".expo",
       "dist"
     ],
-    "watch": false,
+    "watch": true,
     "contentDir": [
       "/Users/henrycho/repo_personal/blog"
     ],
@@ -82,7 +82,7 @@
     "outputFilesPatternWithPath": "/Users/henrycho/repo_personal/blog/.intlayer/dictionary/**/*.json"
   },
   "editor": {
-    "applicationURL": "",
+    "applicationURL": "http://localhost:3000",
     "editorURL": "http://localhost:8000",
     "cmsURL": "https://intlayer.org",
     "backendURL": "https://back.intlayer.org",
@@ -97,7 +97,7 @@
   },
   "ai": {},
   "build": {
-    "optimize": true,
+    "optimize": false,
     "importMode": "static",
     "traversePattern": [
       "**/*.{js,ts,mjs,cjs,jsx,tsx,mjx,cjx,vue,svelte,svte}",

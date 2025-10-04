@@ -1,1 +1,24 @@
-{"key":"page","content":{"home":{"title":"홈"},"posts":{"title":"글"},"about":{"title":"소개"},"projects":{"title":"프로젝트"},"github":{"title":"깃허브"},"chat":{"title":"채팅"}},"locale":"ko"}
+{
+  "key": "page",
+  "content": {
+    "home": {
+      "title": "홈"
+    },
+    "posts": {
+      "title": "글"
+    },
+    "about": {
+      "title": "소개"
+    },
+    "projects": {
+      "title": "프로젝트"
+    },
+    "github": {
+      "title": "깃허브"
+    },
+    "chat": {
+      "title": "채팅"
+    }
+  },
+  "locale": "ko"
+}

@@ -1,5 +1,4 @@
 import { t, type Dictionary } from 'intlayer';
-import { github } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const pageContent: Dictionary = {
   key: 'page',

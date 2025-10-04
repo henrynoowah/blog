@@ -6,16 +6,12 @@ export const metadata: Metadata = {
 };
 
 import Header from '@/components/common/layouts/header/Header';
-import { Locale } from '@/i18n.config';
 import { Metadata } from 'next';
-import { ReactNode, use } from 'react';
+import { NextLayoutIntlayer } from 'next-intlayer';
+import { Locales } from 'intlayer';
+import { use } from 'react';
 
-interface Params {
-  children: ReactNode;
-  params: Promise<{ locale: Locale }>;
-}
-
-const AboutsLayouts = ({ children, params }: Params) => {
+const AboutsLayouts: NextLayoutIntlayer = ({ children, params }) => {
   const { locale } = use(params);
 
   // console.log(t)
@@ -23,7 +19,7 @@ const AboutsLayouts = ({ children, params }: Params) => {
   const navOption: Array<{
     label: string;
     href: string;
-    locale: Locale;
+    locale: Locales;
     external?: boolean;
   }> = [
     { label: 'home.title', href: '/', locale },

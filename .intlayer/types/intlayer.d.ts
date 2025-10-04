@@ -1,11 +1,11 @@
 /* eslint-disable */
 import { Locales } from 'intlayer';
-import _Z6nQKov227BmG1aL104v from './nagivation.ts';
+import _LiPwECrBJf0UArwPWFp9 from './about.ts';
 import _a8YHGh9OBafkbzSEZEot from './page.ts';
 
 declare module 'intlayer' {
   interface IntlayerDictionaryTypesConnector {
-    "nagivation": typeof _Z6nQKov227BmG1aL104v;
+    "about": typeof _LiPwECrBJf0UArwPWFp9;
     "page": typeof _a8YHGh9OBafkbzSEZEot;
   }
 

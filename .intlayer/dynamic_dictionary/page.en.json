@@ -1,1 +1,24 @@
-{"key":"page","content":{"home":{"title":"Home"},"posts":{"title":"Posts"},"about":{"title":"About"},"projects":{"title":"Projects"},"github":{"title":"GitHub"},"chat":{"title":"Chat"}},"locale":"en"}
+{
+  "key": "page",
+  "content": {
+    "home": {
+      "title": "Home"
+    },
+    "posts": {
+      "title": "Posts"
+    },
+    "about": {
+      "title": "About"
+    },
+    "projects": {
+      "title": "Projects"
+    },
+    "github": {
+      "title": "GitHub"
+    },
+    "chat": {
+      "title": "Chat"
+    }
+  },
+  "locale": "en"
+}
