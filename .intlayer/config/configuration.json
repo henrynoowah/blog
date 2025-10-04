@@ -41,7 +41,7 @@
       ".expo",
       "dist"
     ],
-    "watch": true,
+    "watch": false,
     "contentDir": [
       "/Users/henrycho/repo_personal/blog"
     ],
@@ -97,7 +97,7 @@
   },
   "ai": {},
   "build": {
-    "optimize": false,
+    "optimize": true,
     "importMode": "static",
     "traversePattern": [
       "**/*.{js,ts,mjs,cjs,jsx,tsx,mjx,cjx,vue,svelte,svte}",

@@ -1,5 +1,3 @@
-import { Locale } from '@/i18n.config';
-import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import packageData from 'package.json';
 import { Suspense } from 'react';
@@ -7,6 +5,7 @@ import Nav_mobile from './Nav_mobile';
 import ShowSearchButton from './ShowSearchButton';
 import { LocaleToggle } from '@/app/[locale]/_components/locale-toggle';
 import { ThemeToggle } from '../../theme-toggle';
+import { Locales } from 'intlayer';
 
 const HEADER_HEIGHT = 72;
 
@@ -14,7 +13,7 @@ interface Params {
   navOption: Array<{
     label: string;
     href: string;
-    locale: Locale;
+    locale: Locales;
     external?: boolean;
   }>;
   locale?: string;
