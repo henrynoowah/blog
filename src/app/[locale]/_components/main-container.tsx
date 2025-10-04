@@ -2,8 +2,7 @@
 
 import { ChatBox } from '@/components/common/chats';
 import { ThemeToggle } from '@/components/common/theme-toggle';
-import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
-import { FloatingDock } from '@/components/ui/floating-dock';
+import { Dock, DockIcon } from '@/components/ui/dock';
 import Spline from '@splinetool/react-spline';
 import { Application, SPEObject } from '@splinetool/runtime';
 import {
@@ -16,6 +15,13 @@ import {
 import { useIntlayer } from 'next-intlayer';
 import { useRef, useState } from 'react';
 import { LocaleToggle } from './locale-toggle';
+import Link from 'next/link';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+import { FlickeringGrid } from '@/components/ui/flickering-grid';
 
 const scene = process.env.NEXT_PUBLIC_SPLINE_SCENE!;
 const splitBotId = process.env.NEXT_PUBLIC_SPLINE_BOT_ID!;
@@ -30,45 +36,6 @@ const MainContainer = () => {
     setIsBotChatOpened(!isBotChatOpened);
   };
 
-  const navList = [
-    {
-      title: content.posts.title,
-      href: 'https://velog.io/@henrynoowah/posts',
-      target: '_blank',
-      icon: <IconBlockquote className="size-full" />,
-    },
-    {
-      title: content.about.title,
-      href: '/about',
-      icon: <IconUserBitcoin className="size-full" />,
-    },
-    {
-      title: content.projects.title,
-      href: '/about#projects',
-      icon: <IconLayoutCollage className="size-full" />,
-    },
-    {
-      title: content.github.title,
-      href: 'https://www.github.com/henrynoowah',
-      target: '_blank',
-      icon: <IconBrandGithub className="size-full" />,
-    },
-    {
-      href: '#',
-      title: content.chat.title,
-      icon: (
-        <IconMessageCircle
-          className="size-full"
-          onClick={e => {
-            e.stopPropagation();
-            e.preventDefault();
-            toggleChat();
-          }}
-        />
-      ),
-    },
-  ];
-
   const [isBotChatOpened, setIsBotChatOpened] = useState<boolean>(false);
 
   const botRef = useRef<SPEObject>(null);
@@ -82,10 +49,18 @@ const MainContainer = () => {
   };
 
   return (
-    <BackgroundGradientAnimation
-      className="pointer-events-auto"
-      containerClassName="h-dvh"
-    >
+    <div className="pointer-events-auto h-dvh">
+      <div className="absolute w-full h-full">
+        <FlickeringGrid
+          className="relative inset-0 z-0 [mask-image:radial-gradient(640px_circle_at_center,white,transparent)]"
+          squareSize={6}
+          gridGap={6}
+          color="oklch(0.4355 0.0499 208.8718)"
+          maxOpacity={1}
+          flickerChance={0.1}
+        />
+      </div>
+
       <div
         className="absolute w-full h-full
             flex justify-center items-center z-30 pointer-events-none"
@@ -109,9 +84,78 @@ const MainContainer = () => {
       </div>
 
       <div className="absolute bottom-4 right-4 md:right-1/2 transform md:translate-x-1/2 z-50">
-        <FloatingDock items={navList} />
+        <Dock>
+          <DockIcon title="Posts">
+            <Tooltip>
+              <TooltipTrigger>
+                <Link
+                  href="https://velog.io/@henrynoowah/posts"
+                  target="_blank"
+                >
+                  <IconBlockquote className="size-full" />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{content.posts.title}</p>
+              </TooltipContent>
+            </Tooltip>
+          </DockIcon>
+          <DockIcon title="About">
+            <Tooltip>
+              <TooltipTrigger>
+                <Link href="/about">
+                  <IconUserBitcoin className="size-full" />{' '}
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{content.about.title}</p>
+              </TooltipContent>
+            </Tooltip>
+          </DockIcon>
+          <DockIcon title="Projects">
+            <Tooltip>
+              <TooltipTrigger>
+                <Link href="/about#projects">
+                  <IconLayoutCollage className="size-full" />{' '}
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{content.projects.title}</p>
+              </TooltipContent>
+            </Tooltip>
+          </DockIcon>
+          <DockIcon title="Github">
+            <Tooltip>
+              <TooltipTrigger>
+                <Link href="https://www.github.com/henrynoowah">
+                  <IconBrandGithub className="size-full" />{' '}
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{content.github.title}</p>
+              </TooltipContent>
+            </Tooltip>
+          </DockIcon>
+          <DockIcon
+            title="Chat"
+            onClick={e => {
+              e.stopPropagation();
+              e.preventDefault();
+              toggleChat();
+            }}
+          >
+            <Tooltip>
+              <TooltipTrigger>
+                <IconMessageCircle className="size-full" />{' '}
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{content.chat.title}</p>
+              </TooltipContent>
+            </Tooltip>
+          </DockIcon>
+        </Dock>
       </div>
-    </BackgroundGradientAnimation>
+    </div>
   );
 };
 
