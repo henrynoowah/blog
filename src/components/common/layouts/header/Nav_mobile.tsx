@@ -1,16 +1,16 @@
 'use client';
 
-import { Locales } from 'intlayer';
+import { IconChevronDown } from '@tabler/icons-react';
+import { LocalesValues } from 'intlayer';
 import Link from 'next/link';
 import { useState } from 'react';
 import Button_nav from './Button_nav';
-import { IconChevronDown } from '@tabler/icons-react';
 
 interface Params {
   navOption: Array<{
     label: string;
     href: string;
-    locale: Locales;
+    locale: LocalesValues;
     external?: boolean;
   }>;
 }

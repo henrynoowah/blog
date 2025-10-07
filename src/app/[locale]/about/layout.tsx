@@ -6,20 +6,19 @@ export const metadata: Metadata = {
 };
 
 import Header from '@/components/common/layouts/header/Header';
+import { LocalesValues } from 'intlayer';
 import { Metadata } from 'next';
 import { NextLayoutIntlayer } from 'next-intlayer';
-import { Locales } from 'intlayer';
-import { use } from 'react';
 
-const AboutsLayouts: NextLayoutIntlayer = ({ children, params }) => {
-  const { locale } = use(params);
+const AboutsLayouts: NextLayoutIntlayer = async ({ children, params }) => {
+  const { locale } = await params;
 
   // console.log(t)
 
   const navOption: Array<{
     label: string;
     href: string;
-    locale: Locales;
+    locale: LocalesValues;
     external?: boolean;
   }> = [
     { label: 'home.title', href: '/', locale },

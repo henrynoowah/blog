@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import Nav_mobile from './Nav_mobile';
 import ShowSearchButton from './ShowSearchButton';
 import { LocaleToggle } from '@/app/[locale]/_components/locale-toggle';
-import { getLocalizedUrl, Locales } from 'intlayer';
+import { getLocalizedUrl, Locales, LocalesValues } from 'intlayer';
 import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';
 
 const HEADER_HEIGHT = 72;
@@ -13,10 +13,10 @@ interface Params {
   navOption: Array<{
     label: string;
     href: string;
-    locale: Locales;
+    locale: LocalesValues;
     external?: boolean;
   }>;
-  locale?: Locales;
+  locale?: LocalesValues;
 }
 const Header = ({ navOption, locale }: Params) => {
   return (
