@@ -53,7 +53,7 @@ const MainContainer = () => {
 
   return (
     <div className="pointer-events-auto h-dvh">
-      <div className="absolute w-full h-full">
+      <div className="absolute w-full h-full bg-accent/20! dark:bg-accent/10!">
         <FlickeringGrid
           className="relative inset-0 z-0 [mask-image:radial-gradient(640px_circle_at_center,white,transparent)]"
           squareSize={6}
@@ -75,95 +75,98 @@ const MainContainer = () => {
       <div
         className={`fixed flex gap-2 justify-end z-30 pointer-events-auto top-4 end-4`}
       >
-        <AnimatedThemeToggler />
-        <LocaleToggle />
+        <div className="rounded-full bg-primary text-primary-foreground flex items-center justify-center p-2">
+          <AnimatedThemeToggler />
+        </div>
+        <div className="rounded-full bg-primary text-primary-foreground flex items-center justify-center p-2">
+          <LocaleToggle />
+        </div>
       </div>
 
       <div
-        className={`absolute pointer-events-none w-full h-full max-w-[1020px] px-[24px] pt-4 pb-[40px] md:pb-[100px]
-              flex justify-end items-center z-30`}
+        className={`absolute pointer-events-none w-full h-full max-w-[1020px] px-[24px] pt-4 pb-[40px] md:pb-[100px] flex justify-end items-center z-30`}
       >
         <ChatBox isOpen={isBotChatOpened} />
       </div>
 
       <div className="absolute bottom-4 right-4 md:right-1/2 transform md:translate-x-1/2 z-50">
-        <Dock className="bg-accent/5">
-          <DockIcon title="About">
-            <Tooltip>
-              <TooltipTrigger>
+        <Dock className="bg-primary text-primary-foreground">
+          <Tooltip>
+            <TooltipTrigger>
+              <DockIcon title="About">
                 <Link
                   href={getLocalizedUrl(`/about`, locale)}
                   hrefLang={locale}
                 >
                   <IconUserBitcoin className="size-full" />{' '}
                 </Link>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{content.about.title}</p>
-              </TooltipContent>
-            </Tooltip>
-          </DockIcon>
-          <DockIcon title="Projects">
-            <Tooltip>
-              <TooltipTrigger>
+              </DockIcon>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{content.about.title}</p>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger>
+              <DockIcon title="Projects">
                 <Link
                   href={getLocalizedUrl(`/about#projects`, locale)}
                   hrefLang={locale}
                 >
                   <IconLayoutCollage className="size-full" />{' '}
                 </Link>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{content.projects.title}</p>
-              </TooltipContent>
-            </Tooltip>
-          </DockIcon>
-          <Separator orientation="vertical" />
-          <DockIcon title="Posts">
-            <Tooltip>
-              <TooltipTrigger>
+              </DockIcon>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{content.projects.title}</p>
+            </TooltipContent>
+          </Tooltip>
+          <Separator orientation="vertical" className="bg-ring" />
+          <Tooltip>
+            <TooltipTrigger>
+              <DockIcon title="Posts">
                 <Link
                   href={`https://velog.io/@henrynoowah/posts`}
                   target="_blank"
                 >
                   <IconBlockquote className="size-full" />
                 </Link>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{content.posts.title}</p>
-              </TooltipContent>
-            </Tooltip>
-          </DockIcon>
-          <DockIcon title="Github">
-            <Tooltip>
-              <TooltipTrigger>
-                <Link href="https://www.github.com/henrynoowah">
+              </DockIcon>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{content.posts.title}</p>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger>
+              <DockIcon title="Github">
+                <Link href="https://www.github.com/henrynoowah" target="_blank">
                   <IconBrandGithub className="size-full" />{' '}
                 </Link>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{content.github.title}</p>
-              </TooltipContent>
-            </Tooltip>
-          </DockIcon>
-          <Separator orientation="vertical" />
-          <DockIcon
-            title="Chat"
-            onClick={e => {
-              e.stopPropagation();
-              e.preventDefault();
-              toggleChat();
-            }}
-          >
-            <Tooltip>
-              <TooltipTrigger>
+              </DockIcon>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{content.github.title}</p>
+            </TooltipContent>
+          </Tooltip>
+          <Separator orientation="vertical" className="bg-ring" />
+          <Tooltip>
+            <TooltipTrigger>
+              <DockIcon
+                title="Chat"
+                onClick={e => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  toggleChat();
+                }}
+              >
                 <IconMessageCircle className="size-full" />{' '}
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{content.chat.title}</p>
-              </TooltipContent>
-            </Tooltip>
-          </DockIcon>
+              </DockIcon>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{content.chat.title}</p>
+            </TooltipContent>
+          </Tooltip>
         </Dock>
       </div>
     </div>

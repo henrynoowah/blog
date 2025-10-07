@@ -24,7 +24,12 @@ const LocaleToggle = () => {
       <DropdownMenuTrigger>
         <Globe className="size-6" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-32">
+      <DropdownMenuContent
+        align="end"
+        className="w-32"
+        side="bottom"
+        sideOffset={10}
+      >
         <DropdownMenuRadioGroup
           value={locale}
           onValueChange={handleLocaleChange}
