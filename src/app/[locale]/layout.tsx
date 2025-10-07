@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@/providers/theme-provider';
 import { getHTMLTextDir } from 'intlayer';
 import { Metadata } from 'next';
 import type { NextLayoutIntlayer } from 'next-intlayer';
@@ -39,7 +40,11 @@ const LocaleLayout: NextLayoutIntlayer = async ({ children, params }) => {
   const { locale } = await params;
 
   return (
-    <html lang={locale} dir={getHTMLTextDir(locale)}>
+    <html
+      suppressHydrationWarning={true}
+      lang={locale}
+      dir={getHTMLTextDir(locale)}
+    >
       <head>
         <link
           rel="apple-touch-icon"
@@ -61,7 +66,9 @@ const LocaleLayout: NextLayoutIntlayer = async ({ children, params }) => {
         <link rel="shortcut icon" href="#" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body suppressHydrationWarning={true}>{children}</body>
+      <body suppressHydrationWarning={true}>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 };

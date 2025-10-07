@@ -10,6 +10,8 @@
     "intlayer": "concurrently \"next dev\" \"intlayer-editor start\""
   },
   "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-separator": "^1.1.7",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@splinetool/react-spline": "^4.1.0",
     "@splinetool/runtime": "^1.10.39",
@@ -25,6 +27,7 @@
     "motion": "^12.23.12",
     "next": "^15.4.5",
     "next-intlayer": "^5.7.5",
+    "next-themes": "^0.4.6",
     "postprocessing": "^6.37.8",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

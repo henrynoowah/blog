@@ -4,8 +4,8 @@ import { Suspense } from 'react';
 import Nav_mobile from './Nav_mobile';
 import ShowSearchButton from './ShowSearchButton';
 import { LocaleToggle } from '@/app/[locale]/_components/locale-toggle';
-import { ThemeToggle } from '../../theme-toggle';
-import { Locales } from 'intlayer';
+import { getLocalizedUrl, Locales } from 'intlayer';
+import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';
 
 const HEADER_HEIGHT = 72;
 
@@ -16,7 +16,7 @@ interface Params {
     locale: Locales;
     external?: boolean;
   }>;
-  locale?: string;
+  locale?: Locales;
 }
 const Header = ({ navOption, locale }: Params) => {
   return (
@@ -27,7 +27,7 @@ const Header = ({ navOption, locale }: Params) => {
       >
         <div className="w-full flex justify-between max-w-[1920px]">
           <h1 className="relative">
-            <Link href={locale ? `/${locale}` : `/`}>
+            <Link href={getLocalizedUrl(`/`, locale ?? Locales.ENGLISH)}>
               <p className="font-semibold z-10 text-[18px]">NWH</p>
               <p className="font-semibold z-10 text-[8px]">
                 v{packageData.version}
@@ -40,7 +40,7 @@ const Header = ({ navOption, locale }: Params) => {
               <ShowSearchButton />
             </Suspense>
             <LocaleToggle />
-            <ThemeToggle />
+            <AnimatedThemeToggler />
             <div className="flex items-center">
               <Nav_mobile navOption={navOption} />
             </div>

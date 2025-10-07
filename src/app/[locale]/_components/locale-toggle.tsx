@@ -1,51 +1,43 @@
 'use client';
 
-import { themeCheck } from '@/utils/themeCheck';
-import { useParams, useRouter } from 'next/navigation';
-import { MouseEventHandler, useEffect, useState } from 'react';
+import { Locales } from 'intlayer';
+import { useLocale } from 'next-intlayer';
+import { Globe } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 const LocaleToggle = () => {
-  const router = useRouter();
-  const params = useParams();
-  const locale = params.locale as string;
+  const { locale, setLocale } = useLocale();
 
-  const [iconToggle, setIconToggle] = useState<boolean>(themeCheck());
-
-  const handleLocaleSwitch: MouseEventHandler<HTMLButtonElement> = e => {
-    e.preventDefault();
-    router.replace(locale === 'ko' ? '/' : '/ko');
-    setIconToggle(true);
+  const handleLocaleChange = (value: string) => {
+    const newLocale = value as Locales;
+    setLocale(newLocale);
   };
 
-  useEffect(() => {
-    if (iconToggle === true) {
-      setIconToggle(false);
-    }
-  }, [iconToggle]);
-
   return (
-    <button
-      aria-label="Theme Toggle"
-      onClick={handleLocaleSwitch}
-      className="relative size-9 flex justify-center items-center rounded-full text-xs bg-primary text-primary-foreground"
-    >
-      <span
-        className={`absolute ${
-          locale === 'en' || !locale
-            ? 'rotate-0 opacity-100'
-            : 'rotate-180 opacity-0'
-        }  transform transition duration-500 ease-in-out`}
-      >
-        EN
-      </span>
-      <span
-        className={`absolute ${
-          locale === 'ko' ? 'rotate-0 opacity-100' : 'rotate-180 opacity-0'
-        }  transform transition duration-500 ease-in-out`}
-      >
-        KO
-      </span>
-    </button>
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <Globe className="size-6" />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-32">
+        <DropdownMenuRadioGroup
+          value={locale}
+          onValueChange={handleLocaleChange}
+        >
+          <DropdownMenuRadioItem value={Locales.ENGLISH}>
+            {Locales.ENGLISH.toUpperCase()}
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value={Locales.KOREAN}>
+            {Locales.KOREAN.toUpperCase()}
+          </DropdownMenuRadioItem>
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 

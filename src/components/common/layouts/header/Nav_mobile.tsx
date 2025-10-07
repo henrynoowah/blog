@@ -1,6 +1,6 @@
 'use client';
 
-import { Locale } from '@/i18n.config';
+import { Locales } from 'intlayer';
 import Link from 'next/link';
 import { useState } from 'react';
 import Button_nav from './Button_nav';
@@ -10,7 +10,7 @@ interface Params {
   navOption: Array<{
     label: string;
     href: string;
-    locale: Locale;
+    locale: Locales;
     external?: boolean;
   }>;
 }
