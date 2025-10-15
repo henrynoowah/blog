@@ -1,8 +1,5 @@
 'use client';
 
-import { Locales } from 'intlayer';
-import { useLocale } from 'next-intlayer';
-import { Globe } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,12 +7,15 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { locales } from 'intlayer.config';
+import { Globe } from 'lucide-react';
+import { useLocale } from 'next-intlayer';
 
 const LocaleToggle = () => {
   const { locale, setLocale } = useLocale();
 
   const handleLocaleChange = (value: string) => {
-    const newLocale = value as Locales;
+    const newLocale = value;
     setLocale(newLocale);
   };
 
@@ -34,12 +34,11 @@ const LocaleToggle = () => {
           value={locale}
           onValueChange={handleLocaleChange}
         >
-          <DropdownMenuRadioItem value={Locales.ENGLISH}>
-            {Locales.ENGLISH.toUpperCase()}
-          </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value={Locales.KOREAN}>
-            {Locales.KOREAN.toUpperCase()}
-          </DropdownMenuRadioItem>
+          {locales.map(locale => (
+            <DropdownMenuRadioItem key={locale} value={locale}>
+              {locale.toUpperCase()}
+            </DropdownMenuRadioItem>
+          ))}
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>

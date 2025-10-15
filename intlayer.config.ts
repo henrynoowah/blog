@@ -1,13 +1,19 @@
-import { Locales, type IntlayerConfig } from 'intlayer';
+import { type IntlayerConfig, Locales } from 'intlayer';
 
+export const locales = [Locales.ENGLISH, Locales.KOREAN];
+
+/** @type {import('intlayer').IntlayerConfig} */
 const config: IntlayerConfig = {
   internationalization: {
-    locales: [Locales.ENGLISH, Locales.KOREAN],
+    locales,
     defaultLocale: Locales.ENGLISH,
   },
   editor: {
-    applicationURL: 'http://localhost:3000',
     enabled: true,
+  },
+  content: {
+    autoFill: true,
+    watch: true,
   },
 };
 

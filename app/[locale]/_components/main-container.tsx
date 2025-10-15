@@ -29,7 +29,7 @@ const scene = process.env.NEXT_PUBLIC_SPLINE_SCENE!;
 const splitBotId = process.env.NEXT_PUBLIC_SPLINE_BOT_ID!;
 
 const MainContainer = () => {
-  const content = useIntlayer('page');
+  const { ...content } = useIntlayer('home-page');
   const { locale } = useLocale();
 
   const toggleChat = () => {

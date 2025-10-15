@@ -1,7 +1,7 @@
 import { t, type Dictionary } from 'intlayer';
 
-const pageContent: Dictionary = {
-  key: 'page',
+const homePageContent: Dictionary = {
+  key: 'home-page',
   content: {
     home: {
       title: t({
@@ -12,7 +12,7 @@ const pageContent: Dictionary = {
     posts: {
       title: t({
         en: 'Posts',
-        ko: '글',
+        ko: '포스트',
       }),
     },
     about: {
@@ -42,4 +42,4 @@ const pageContent: Dictionary = {
   },
 } satisfies Dictionary;
 
-export default pageContent;
+export default homePageContent;

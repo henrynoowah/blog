@@ -10,6 +10,7 @@
     "intlayer": "concurrently \"next dev\" \"intlayer-editor start\""
   },
   "dependencies": {
+    "@next/env": "^15.5.5",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-separator": "^1.1.7",
     "@radix-ui/react-tooltip": "^1.2.8",

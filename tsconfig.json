@@ -20,10 +20,10 @@
     "baseUrl": ".", // Keep baseUrl
     "paths": { // Keep paths
       "@/*": [
-        "./src/*"
+        "./*"
       ],
       "@/utils/*": [
-        "./src/utils/*"
+        "./utils/*"
       ]
     },
     "incremental": true,
