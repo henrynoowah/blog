@@ -12,7 +12,6 @@ const config: IntlayerConfig = {
     enabled: true,
   },
   content: {
-    autoFill: true,
     watch: true,
   },
 };
