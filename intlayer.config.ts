@@ -10,6 +10,7 @@ const config: IntlayerConfig = {
   },
   editor: {
     enabled: true,
+    applicationURL: 'http://localhost:3000',
   },
   content: {
     watch: true,

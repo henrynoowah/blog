@@ -1,4 +1,9 @@
-export { intlayerMiddleware as middleware } from 'next-intlayer/middleware';
+import {
+  intlayerMiddleware,
+  multipleMiddlewares,
+} from 'next-intlayer/middleware';
+
+export default multipleMiddlewares([intlayerMiddleware]);
 
 export const config = {
   matcher:
