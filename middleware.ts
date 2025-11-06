@@ -1,9 +1,6 @@
-import {
-  intlayerMiddleware,
-  multipleMiddlewares,
-} from 'next-intlayer/middleware';
+import { intlayerMiddleware } from 'next-intlayer/middleware';
 
-export default multipleMiddlewares([intlayerMiddleware]);
+export default intlayerMiddleware;
 
 export const config = {
   matcher:
