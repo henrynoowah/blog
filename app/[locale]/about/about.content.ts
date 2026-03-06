@@ -127,6 +127,44 @@ const aboutContent: Dictionary = {
         }),
       },
     },
+    projects: {
+      title: t({
+        en: 'Projects',
+        ko: '프로젝트',
+      }),
+      items: {
+        contentBuilder: {
+          title: t({
+            en: 'CMS Content Builder',
+            ko: 'CMS 콘텐츠 빌더',
+          }),
+          description: t({
+            en: 'A visual UI editor and content builder with a component-driven architecture. Provides an intuitive drag-and-drop interface for building rich content layouts.',
+            ko: '컴포넌트 기반 아키텍처로 설계된 비주얼 UI 에디터 및 콘텐츠 빌더. 직관적인 드래그 앤 드롭 인터페이스로 리치 콘텐츠 레이아웃을 구성할 수 있습니다.',
+          }),
+          tags: t({
+            en: ['UI Editor', 'CMS', 'Storybook', 'Component Library'],
+            ko: ['UI 에디터', 'CMS', 'Storybook', '컴포넌트 라이브러리'],
+          }),
+          demo: 'https://noowah-content-builder-docs.vercel.app/?path=/story/ui-editor--default',
+        },
+        prVersioning: {
+          title: t({
+            en: 'node-pr-versioning',
+            ko: 'node-pr-versioning',
+          }),
+          description: t({
+            en: 'A GitHub Action that automates Node.js package versioning via PR labels. Supports major/minor/patch bumps, monorepo paths, custom commit messages, tag generation, and dry-run mode.',
+            ko: 'PR 라벨을 통해 Node.js 패키지 버저닝을 자동화하는 GitHub Action. major/minor/patch 버전 업, 모노레포 경로, 커스텀 커밋 메시지, 태그 생성, dry-run 모드를 지원합니다.',
+          }),
+          tags: t({
+            en: ['GitHub Action', 'Node.js', 'Automation', 'CI/CD'],
+            ko: ['GitHub Action', 'Node.js', '자동화', 'CI/CD'],
+          }),
+          github: 'https://github.com/marketplace/actions/node-pr-versioning',
+        },
+      },
+    },
     contact: {
       title: t({
         en: "Let's Work Together",

@@ -6,6 +6,32 @@ import { motion } from 'motion/react';
 import { HeroHighlight, Highlight } from '@/components/ui/hero-highlight';
 import { Timeline } from '@/components/ui/timeline';
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
+import { IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
+
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  github?: string;
+  demo?: string;
+}
+
+const projects: Project[] = [
+  {
+    title: 'CMS Content Builder',
+    description:
+      'A visual UI editor and content builder with a component-driven architecture. Provides an intuitive drag-and-drop interface for building rich content layouts.',
+    tags: ['UI Editor', 'CMS', 'Storybook', 'Component Library'],
+    demo: 'https://noowah-content-builder-docs.vercel.app/?path=/story/ui-editor--default',
+  },
+  {
+    title: 'node-pr-versioning',
+    description:
+      'A GitHub Action that automates Node.js package versioning via PR labels. Supports major/minor/patch bumps, monorepo paths, custom commit messages, tag generation, and dry-run mode.',
+    tags: ['GitHub Action', 'Node.js', 'Automation', 'CI/CD'],
+    github: 'https://github.com/marketplace/actions/node-pr-versioning',
+  },
+];
 
 const timelineData = [
   {
@@ -181,6 +207,70 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
 
       {/* Timeline Section */}
       <Timeline data={timelineData} />
+
+      {/* Projects Section */}
+      <div id="projects" className="max-w-4xl mx-auto px-4 py-20">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-neutral-800 dark:text-white">
+          Projects
+        </h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.1,
+                ease: [0.4, 0, 0.2, 1],
+              }}
+              className="flex flex-col rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 p-6"
+            >
+              <h3 className="text-lg font-semibold text-neutral-800 dark:text-white mb-2">
+                {project.title}
+              </h3>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex-1">
+                {project.description}
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs px-2 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-4 flex gap-4">
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-sm text-neutral-600 dark:text-neutral-400 hover:text-primary dark:hover:text-primary transition-colors"
+                  >
+                    <IconBrandGithub size={16} />
+                    GitHub
+                  </a>
+                )}
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-sm text-neutral-600 dark:text-neutral-400 hover:text-primary dark:hover:text-primary transition-colors"
+                  >
+                    <IconExternalLink size={16} />
+                    Live Demo
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
       {/* Contact Section */}
       <div className="max-w-4xl mx-auto px-4 py-20 text-center">
