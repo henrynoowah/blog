@@ -8,14 +8,14 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Globe } from 'lucide-react';
-import { LocalesValues } from 'intlayer';
+import { Locale } from 'intlayer';
 import { useLocale } from 'next-intlayer';
 
 const LocaleToggle = () => {
   const { locale, availableLocales, setLocale } = useLocale();
 
   const handleLocaleChange = (value: string) => {
-    setLocale(value as LocalesValues);
+    setLocale(value as Locale);
   };
 
   return (
