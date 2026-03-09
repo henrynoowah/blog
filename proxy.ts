@@ -1,6 +1,4 @@
-import { intlayerMiddleware } from 'next-intlayer/middleware';
-
-export default intlayerMiddleware;
+export { intlayerProxy as proxy } from 'next-intlayer/proxy';
 
 export const config = {
   matcher:
