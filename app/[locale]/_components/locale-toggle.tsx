@@ -7,16 +7,15 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { locales } from 'intlayer.config';
 import { Globe } from 'lucide-react';
+import { LocalesValues } from 'intlayer';
 import { useLocale } from 'next-intlayer';
 
 const LocaleToggle = () => {
-  const { locale, setLocale } = useLocale();
+  const { locale, availableLocales, setLocale } = useLocale();
 
   const handleLocaleChange = (value: string) => {
-    const newLocale = value;
-    setLocale(newLocale);
+    setLocale(value as LocalesValues);
   };
 
   return (
@@ -34,9 +33,9 @@ const LocaleToggle = () => {
           value={locale}
           onValueChange={handleLocaleChange}
         >
-          {locales.map(locale => (
-            <DropdownMenuRadioItem key={locale} value={locale}>
-              {locale.toUpperCase()}
+          {availableLocales.map(l => (
+            <DropdownMenuRadioItem key={l} value={l}>
+              {l.toUpperCase()}
             </DropdownMenuRadioItem>
           ))}
         </DropdownMenuRadioGroup>

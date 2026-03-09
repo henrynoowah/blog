@@ -22,12 +22,12 @@
     "concurrently": "^9.2.0",
     "eslint": "^9.32.0",
     "eslint-config-next": "16.0.1",
-    "intlayer": "^7.0.7",
+    "intlayer": "^8.2.2",
     "lodash": "^4.17.21",
     "lucide-react": "^0.536.0",
     "motion": "^12.23.12",
     "next": "16.0.10",
-    "next-intlayer": "^7.0.7",
+    "next-intlayer": "^8.2.2",
     "next-themes": "^0.4.6",
     "react": "19.2.0",
     "react-dom": "19.2.0",
@@ -41,7 +41,7 @@
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "intlayer-editor": "^7.0.7",
+    "intlayer-editor": "^8.2.2",
     "postcss": "^8.5.6",
     "react-syntax-highlighter": "^15.5.0",
     "tailwindcss": "^4.1.11",
@@ -50,8 +50,8 @@
   "resolutions": {
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
-    "@intlayer/cli": "^7.0.7",
-    "@intlayer/config": "^7.0.7",
-    "@intlayer/core": "^7.0.7"
+    "@intlayer/cli": "^8.2.2",
+    "@intlayer/config": "^8.2.2",
+    "@intlayer/core": "^8.2.2"
   }
 }
