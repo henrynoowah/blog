@@ -9,11 +9,11 @@ import Header from '@/components/common/layouts/header/Header';
 import { LocalesValues } from 'intlayer';
 import { Metadata } from 'next';
 import { NextLayoutIntlayer } from 'next-intlayer';
+import { IntlayerServerProvider } from 'next-intlayer/server';
+import { IntlayerClientProvider } from 'next-intlayer';
 
 const AboutsLayouts: NextLayoutIntlayer = async ({ children, params }) => {
   const { locale } = await params;
-
-  // console.log(t)
 
   const navOption: Array<{
     label: string;
@@ -21,27 +21,33 @@ const AboutsLayouts: NextLayoutIntlayer = async ({ children, params }) => {
     locale: LocalesValues;
     external?: boolean;
   }> = [
-    { label: 'home.title', href: '/', locale },
+    { label: 'home', href: '/', locale },
+    { label: 'works', href: '/works', locale },
     {
-      label: 'posts.title',
+      label: 'posts',
       href: 'https://velog.io/@henrynoowah/posts',
       locale,
       external: true,
     },
     {
-      label: 'github.title',
+      label: 'github',
       href: 'https://www.github.com/henrynoowah',
       locale,
       external: true,
     },
   ];
+
   return (
-    <div className="w-full h-screen flex flex-col bg-background transition-colors duration-200 ease-linear overflow-hidden">
-      <Header navOption={navOption} locale={locale} />
-      <main className="relative w-full overflow-y-auto">
-        <div className="w-full h-fit flex justify-center">{children}</div>
-      </main>
-    </div>
+    <IntlayerServerProvider locale={locale}>
+      <IntlayerClientProvider locale={locale}>
+        <div className="w-full h-screen flex flex-col bg-background transition-colors duration-200 ease-linear overflow-hidden">
+          <Header navOption={navOption} locale={locale} />
+          <main className="relative w-full overflow-y-auto">
+            <div className="w-full h-fit flex justify-center">{children}</div>
+          </main>
+        </div>
+      </IntlayerClientProvider>
+    </IntlayerServerProvider>
   );
 };
 

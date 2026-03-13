@@ -21,6 +21,12 @@ const homePageContent: Dictionary = {
         ko: '소개',
       }),
     },
+    works: {
+      title: t({
+        en: 'Works',
+        ko: '작업',
+      }),
+    },
     projects: {
       title: t({
         en: 'Projects',
@@ -38,6 +44,11 @@ const homePageContent: Dictionary = {
         en: 'Chat',
         ko: '채팅',
       }),
+    },
+    nav: {
+      menu: t({ en: 'Menu', ko: '메뉴' }),
+      close: t({ en: 'Close', ko: '닫기' }),
+      portfolio: t({ en: 'Portfolio', ko: '포트폴리오' }),
     },
   },
 } satisfies Dictionary;

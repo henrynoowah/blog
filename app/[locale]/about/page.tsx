@@ -2,301 +2,427 @@
 
 import React from 'react';
 import { NextPageIntlayer } from 'next-intlayer';
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { HeroHighlight, Highlight } from '@/components/ui/hero-highlight';
 import { Timeline } from '@/components/ui/timeline';
-import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
-import { IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import {
+  IconBrandGithub,
+  IconExternalLink,
+  IconCode,
+  IconPalette,
+  IconTool,
+  IconBuildingHospital,
+  IconArrowUpRight,
+} from '@tabler/icons-react';
+import { useRef } from 'react';
+import { useIntlayer } from 'next-intlayer';
 
-interface Project {
-  title: string;
-  description: string;
-  tags: string[];
-  github?: string;
-  demo?: string;
-}
+const iconMap = {
+  frontend: IconCode,
+  design: IconPalette,
+  tools: IconTool,
+  industry: IconBuildingHospital,
+} as const;
 
-const projects: Project[] = [
-  {
-    title: 'CMS Content Builder',
-    description:
-      'A visual UI editor and content builder with a component-driven architecture. Provides an intuitive drag-and-drop interface for building rich content layouts.',
-    tags: ['UI Editor', 'CMS', 'Storybook', 'Component Library'],
+const spanMap: Record<string, string> = {
+  frontend: 'md:col-span-2 md:row-span-1',
+  design: 'md:col-span-1 md:row-span-2',
+  tools: 'md:col-span-1 md:row-span-1',
+  industry: 'md:col-span-1 md:row-span-1',
+};
+
+const projectMeta = {
+  contentBuilder: {
     demo: 'https://noowah-content-builder-docs.vercel.app/?path=/story/ui-editor--default',
+    accent: 'from-primary/20 to-accent/10',
   },
-  {
-    title: 'node-pr-versioning',
-    description:
-      'A GitHub Action that automates Node.js package versioning via PR labels. Supports major/minor/patch bumps, monorepo paths, custom commit messages, tag generation, and dry-run mode.',
-    tags: ['GitHub Action', 'Node.js', 'Automation', 'CI/CD'],
+  prVersioning: {
     github: 'https://github.com/marketplace/actions/node-pr-versioning',
+    accent: 'from-accent/20 to-primary/10',
   },
-];
+} as const;
 
-const timelineData = [
-  {
-    title: '2020',
-    content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-          Graduated with a <strong>Bachelor's degree in Spatial Design</strong>{' '}
-          from Korea Kookmin University. This unique background in spatial
-          design brings a distinctive perspective to frontend development,
-          focusing on user experience and interface spatial relationships.
-        </p>
-        <div className="grid grid-cols-2 gap-4">
-          {/* <img
-            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-            alt="graduation"
-            width={500}
-            height={300}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-sm"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-            alt="spatial design"
-            width={500}
-            height={300}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-sm"
-          /> */}
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: '2022 - Present',
-    content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-          Currently working as a <strong>Frontend Developer | Team Lead</strong>{' '}
-          at CloudHospital, leading frontend development initiatives and
-          managing development teams. Specializing in Next.js, TypeScript, and
-          modern frontend architectures for healthcare applications.
-        </p>
-        <div className="grid grid-cols-2 gap-4">
-          {/* <img
-            src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-            alt="healthcare technology"
-            width={500}
-            height={300}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-sm"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-            alt="team leadership"
-            width={500}
-            height={300}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-sm"
-          /> */}
-        </div>
-      </div>
-    ),
-  },
-];
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <motion.div
+    initial={{ opacity: 0, x: -12 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true }}
+    className="flex items-center gap-3 mb-10"
+  >
+    <div className="w-8 h-px bg-primary" />
+    <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary">
+      {children}
+    </span>
+  </motion.div>
+);
 
 const AboutPage: NextPageIntlayer = ({ params }) => {
+  const content = useIntlayer('about');
+  const introRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: introRef,
+    offset: ['start end', 'end start'],
+  });
+  const introY = useTransform(scrollYProgress, [0, 1], [60, -60]);
+
+  const stats = [
+    { value: content.introduction.stats.experience.value, label: content.introduction.stats.experience.label },
+    { value: content.introduction.stats.leadership.value, label: content.introduction.stats.leadership.label },
+    { value: content.introduction.stats.industry.value, label: content.introduction.stats.industry.label },
+  ];
+
+  const skillCategories = Object.entries(content.skills.categories) as Array<
+    [string, { title: string; skills: string[] }]
+  >;
+
+  const projects = [
+    {
+      key: 'contentBuilder' as const,
+      title: content.projects.items.contentBuilder.title,
+      description: content.projects.items.contentBuilder.description,
+      tags: content.projects.items.contentBuilder.tags as string[],
+      demo: projectMeta.contentBuilder.demo,
+      accent: projectMeta.contentBuilder.accent,
+    },
+    {
+      key: 'prVersioning' as const,
+      title: content.projects.items.prVersioning.title,
+      description: content.projects.items.prVersioning.description,
+      tags: content.projects.items.prVersioning.tags as string[],
+      github: projectMeta.prVersioning.github,
+      accent: projectMeta.prVersioning.accent,
+    },
+  ];
+
+  const timelineData = [
+    {
+      title: content.timeline.education.title,
+      content: (
+        <div>
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+            {content.timeline.education.content}
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: content.timeline.work.title,
+      content: (
+        <div>
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+            {content.timeline.work.content}
+          </p>
+        </div>
+      ),
+    },
+  ];
+
   return (
     <div className="w-full">
-      {/* Hero Section */}
+      {/* ─── Hero ─── */}
       <HeroHighlight>
-        <motion.h1
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: [20, -5, 0],
-          }}
-          transition={{
-            duration: 0.5,
-            ease: [0.4, 0.0, 0.2, 1],
-          }}
-          className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto"
-        >
-          Hi, I'm{' '}
-          <Highlight className="text-black dark:text-white">
-            Hawoon Joh
-          </Highlight>
-          <br />A frontend developer with spatial design expertise
-        </motion.h1>
+        <div className="max-w-5xl mx-auto px-6 w-full">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col items-start md:items-center"
+          >
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-xs font-medium tracking-[0.25em] uppercase text-muted-foreground mb-6"
+            >
+              {content.hero.subtitle}
+            </motion.p>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="font-serif text-5xl md:text-7xl lg:text-8xl font-extrabold text-foreground leading-[0.9] tracking-tight md:text-center uppercase"
+            >
+              {content.hero.name}
+            </motion.h1>
+
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.7, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="w-24 h-px bg-primary/40 mt-8 origin-left"
+            />
+          </motion.div>
+        </div>
       </HeroHighlight>
 
-      {/* Introduction Section */}
-      <div className="max-w-4xl mx-auto px-4 py-20">
-        <TextGenerateEffect
-          words="I'm a frontend developer with 3+ years of experience specializing in Next.js and TypeScript. With a unique background in spatial design from Korea Kookmin University, I bring a distinctive perspective to creating intuitive and visually compelling web applications that prioritize user experience."
-          className="text-center"
-        />
+      {/* ─── Introduction ─── */}
+      <div ref={introRef} className="relative max-w-5xl mx-auto px-6 py-24 md:py-32">
+        <SectionLabel>{content.sections.about}</SectionLabel>
 
-        <div className="mt-16 grid md:grid-cols-3 gap-8">
-          <div className="text-center p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900">
-            <div className="text-3xl font-bold text-primary mb-2">3+</div>
-            <div className="text-neutral-600 dark:text-neutral-400">
-              Years Experience
-            </div>
-          </div>
-          <div className="text-center p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900">
-            <div className="text-3xl font-bold text-primary mb-2">Team</div>
-            <div className="text-neutral-600 dark:text-neutral-400">
-              Leadership Role
-            </div>
-          </div>
-          <div className="text-center p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900">
-            <div className="text-3xl font-bold text-primary mb-2">
-              Healthcare
-            </div>
-            <div className="text-neutral-600 dark:text-neutral-400">
-              Industry Focus
+        <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
+          <motion.div className="md:col-span-7" style={{ y: introY }}>
+            <p className="text-lg md:text-xl leading-relaxed text-foreground/80 font-light">
+              {content.introduction.description}
+            </p>
+          </motion.div>
+
+          <div className="md:col-span-5 md:col-start-8">
+            <div className="flex flex-col gap-0">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={String(stat.label)}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group py-5 border-b border-border/60 last:border-none"
+                >
+                  <div className="flex items-baseline justify-between">
+                    <span className="font-serif text-4xl md:text-5xl font-bold text-primary transition-transform duration-300 group-hover:translate-x-1">
+                      {stat.value}
+                    </span>
+                    <span className="text-xs tracking-[0.15em] uppercase text-muted-foreground">
+                      {stat.label}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Skills Section */}
-      <div className="max-w-4xl mx-auto px-4 py-20">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-neutral-800 dark:text-white">
-          Skills & Technologies
-        </h2>
+      {/* ─── Skills Bento Grid ─── */}
+      <div className="max-w-5xl mx-auto px-6 py-24 md:py-32">
+        <SectionLabel>{content.sections.expertise}</SectionLabel>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            {
-              category: 'Frontend',
-              skills: ['Next.js', 'TypeScript', 'React', 'Tailwind CSS'],
-            },
-            {
-              category: 'Design',
-              skills: ['Spatial Design', 'UI/UX', 'Figma', 'User Experience'],
-            },
-            {
-              category: 'Tools',
-              skills: ['Git', 'VS Code', 'Vercel', 'Team Leadership'],
-            },
-            {
-              category: 'Industry',
-              skills: [
-                'Healthcare Tech',
-                'CloudHospital',
-                'Frontend Architecture',
-                'Team Management',
-              ],
-            },
-          ].map((skillGroup, index) => (
-            <div
-              key={index}
-              className="p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900"
-            >
-              <h3 className="text-xl font-semibold mb-4 text-primary">
-                {skillGroup.category}
-              </h3>
-              <ul className="space-y-2">
-                {skillGroup.skills.map((skill, skillIndex) => (
-                  <li
-                    key={skillIndex}
-                    className="text-neutral-600 dark:text-neutral-400"
-                  >
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-12 leading-tight uppercase"
+        >
+          {content.skills.title}
+        </motion.h2>
+
+        <div className="grid md:grid-cols-3 gap-4 auto-rows-min">
+          {skillCategories.map(([key, category], index) => {
+            const Icon = iconMap[key as keyof typeof iconMap] ?? IconCode;
+            const span = spanMap[key] ?? '';
+            return (
+              <motion.div
+                key={key}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className={span}
+              >
+                <Card className="h-full border-border/40 bg-card/50 backdrop-blur-sm hover:bg-card transition-all duration-500 group overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <CardHeader className="relative">
+                    <div className="flex items-center gap-3 mb-1">
+                      <div className="size-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/40 transition-all duration-500">
+                        <Icon size={18} strokeWidth={1.5} />
+                      </div>
+                      <CardTitle className="text-base font-medium tracking-wide">
+                        {category.title}
+                      </CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="relative">
+                    <div className="flex flex-wrap gap-2">
+                      {(category.skills as string[]).map((skill, skillIndex) => (
+                        <motion.div
+                          key={skill}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.08 + skillIndex * 0.05 }}
+                        >
+                          <Badge
+                            variant="outline"
+                            className="text-xs font-light border-border/60 text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-300"
+                          >
+                            {skill}
+                          </Badge>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
-      {/* Timeline Section */}
+      {/* ─── Timeline ─── */}
       <Timeline data={timelineData} />
 
-      {/* Projects Section */}
-      <div id="projects" className="max-w-4xl mx-auto px-4 py-20">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-neutral-800 dark:text-white">
-          Projects
-        </h2>
-        <div className="grid md:grid-cols-2 gap-6">
+      {/* ─── Projects ─── */}
+      <div id="projects" className="max-w-5xl mx-auto px-6 py-24 md:py-32">
+        <SectionLabel>{content.sections.work}</SectionLabel>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-12 leading-tight uppercase"
+        >
+          {content.projects.title}
+        </motion.h2>
+
+        <div className="flex flex-col gap-6">
           {projects.map((project, index) => (
             <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 24 }}
+              key={project.key}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{
-                duration: 0.4,
-                delay: index * 0.1,
-                ease: [0.4, 0, 0.2, 1],
+                duration: 0.6,
+                delay: index * 0.15,
+                ease: [0.22, 1, 0.36, 1],
               }}
-              className="flex flex-col rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 p-6"
             >
-              <h3 className="text-lg font-semibold text-neutral-800 dark:text-white mb-2">
-                {project.title}
-              </h3>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex-1">
-                {project.description}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs px-2 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-4 flex gap-4">
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm text-neutral-600 dark:text-neutral-400 hover:text-primary dark:hover:text-primary transition-colors"
-                  >
-                    <IconBrandGithub size={16} />
-                    GitHub
-                  </a>
-                )}
-                {project.demo && (
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm text-neutral-600 dark:text-neutral-400 hover:text-primary dark:hover:text-primary transition-colors"
-                  >
-                    <IconExternalLink size={16} />
-                    Live Demo
-                  </a>
-                )}
-              </div>
+              <Card className="overflow-hidden border-border/40 bg-card/50 backdrop-blur-sm hover:bg-card transition-all duration-500 group">
+                <div className="flex flex-col md:flex-row">
+                  <div
+                    className={`w-full md:w-1 md:min-h-full shrink-0 h-1 md:h-auto bg-gradient-to-b ${project.accent} group-hover:md:w-1.5 transition-all duration-500`}
+                  />
+
+                  <div className="flex-1">
+                    <CardHeader className="pb-2">
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-muted-foreground/60 block mb-2">
+                            {String(index + 1).padStart(2, '0')}
+                          </span>
+                          <CardTitle className="font-serif text-2xl md:text-3xl font-bold group-hover:text-primary transition-colors duration-300">
+                            {project.title}
+                          </CardTitle>
+                        </div>
+                        <div className="size-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/40 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300">
+                          <IconArrowUpRight size={16} strokeWidth={1.5} />
+                        </div>
+                      </div>
+                    </CardHeader>
+
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground leading-relaxed font-light max-w-xl">
+                        {project.description}
+                      </p>
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <Badge
+                            key={tag}
+                            variant="outline"
+                            className="text-[10px] font-light border-border/50 text-muted-foreground/70"
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+
+                    <CardFooter className="gap-3 pt-2">
+                      {'github' in project && project.github && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-xs font-light text-muted-foreground hover:text-foreground"
+                          asChild
+                        >
+                          <a href={project.github} target="_blank" rel="noopener noreferrer">
+                            <IconBrandGithub size={14} strokeWidth={1.5} />
+                            {content.projects.source}
+                          </a>
+                        </Button>
+                      )}
+                      {'demo' in project && project.demo && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-xs font-light text-muted-foreground hover:text-foreground"
+                          asChild
+                        >
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                            <IconExternalLink size={14} strokeWidth={1.5} />
+                            {content.projects.demo}
+                          </a>
+                        </Button>
+                      )}
+                    </CardFooter>
+                  </div>
+                </div>
+              </Card>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Contact Section */}
-      <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-neutral-800 dark:text-white">
-          Let's Work Together
-        </h2>
-        <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl mx-auto">
-          I'm always excited about new opportunities and interesting projects.
-          Whether you have a question or just want to say hi, feel free to reach
-          out!
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="mailto:henrynoowah@gmail.com"
-            className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
-          >
-            Get In Touch
-          </a>
-          {/* <a
-            href="/resume.pdf"
-            target="_blank"
-            className="px-8 py-3 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-primary-foreground transition-colors"
-          >
-            Download Resume
-          </a> */}
-        </div>
+      {/* ─── Contact ─── */}
+      <div className="max-w-5xl mx-auto px-6 py-24 md:py-32">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative"
+        >
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div>
+              <SectionLabel>{content.sections.contact}</SectionLabel>
+              <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[0.9] uppercase">
+                {content.contact.titleLine1}
+                <br />
+                <span className="text-primary">{content.contact.titleHighlight}</span>{' '}
+                {content.contact.titleLine2}
+              </h2>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
+              <Button
+                size="lg"
+                className="text-sm font-light tracking-wider rounded-full px-8 h-12"
+                asChild
+              >
+                <a href={`mailto:${content.contact.email}`}>
+                  {content.contact.button}
+                  <IconArrowUpRight size={16} strokeWidth={1.5} />
+                </a>
+              </Button>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full h-px bg-border/60 mt-12 origin-left"
+          />
+
+          <p className="text-xs text-muted-foreground/50 mt-6 tracking-wide">
+            {content.contact.email}
+          </p>
+        </motion.div>
       </div>
     </div>
   );

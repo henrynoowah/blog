@@ -1,15 +1,14 @@
 import { MouseEventHandler, useRef, useState } from 'react';
 
 interface Params {
-  onChange: (isNaOpened: boolean) => void;
+  onChange: (isNavOpened: boolean) => void;
 }
 
 const Button_nav = ({ onChange }: Params) => {
   const ref = useRef<HTMLButtonElement>(null);
-
   const [isNavOpened, setIsNavOpened] = useState<boolean>(false);
 
-  const onClickhandler: MouseEventHandler<HTMLButtonElement> = e => {
+  const onClickHandler: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
     setIsNavOpened(!isNavOpened);
     onChange && onChange(!isNavOpened);
@@ -18,28 +17,24 @@ const Button_nav = ({ onChange }: Params) => {
   return (
     <button
       type="button"
-      onClick={onClickhandler}
+      onClick={onClickHandler}
       ref={ref}
-      className={`size-9 flex justify-center items-center rounded-full bg-primary text-primary-foreground ${
-        isNavOpened ? 'rotate-225' : 'rotate-0'
-      }  transition duration-300 ease-out`}
+      className="size-9 flex items-center justify-center rounded-full text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200"
     >
-      <div
-        className={`size-3.5 relative flex flex-col justify-center group cursor-pointer transition duration-300 ease-linear hover:`}
-      >
+      <div className="w-4 h-3 relative flex flex-col justify-between">
         <span
-          className={`absolute w-full h-0.5 top-0 bg-primary-foreground transition duration-300 ease-linear ${
-            isNavOpened ? 'translate-y-1.5' : ''
+          className={`block w-full h-px bg-current transition-all duration-300 ease-out origin-center ${
+            isNavOpened ? 'translate-y-[5px] rotate-45' : ''
           }`}
         />
         <span
-          className={`absolute w-full h-0.5 bg-primary-foreground transition duration-300 ease-linear opacity-100 ${
-            isNavOpened ? 'rotate-90' : ''
+          className={`block w-full h-px bg-current transition-all duration-200 ease-out ${
+            isNavOpened ? 'opacity-0 scale-x-0' : 'opacity-100'
           }`}
         />
         <span
-          className={`absolute w-full h-0.5 bottom-0 bg-primary-foreground transition duration-300 ease-linear ${
-            isNavOpened ? '-translate-y-1.5' : ''
+          className={`block w-full h-px bg-current transition-all duration-300 ease-out origin-center ${
+            isNavOpened ? '-translate-y-[7px] -rotate-45' : ''
           }`}
         />
       </div>
