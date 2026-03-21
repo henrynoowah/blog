@@ -6,6 +6,10 @@ on:
       - dev
       - main
 
+concurrency:
+  group: create-tag-${{ github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
   create-tag:
     runs-on: ubuntu-latest

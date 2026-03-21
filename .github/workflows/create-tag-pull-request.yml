@@ -8,6 +8,10 @@ on:
       - synchronize
       - opened
 
+concurrency:
+  group: create-tag-${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   create-tag:
     runs-on: ubuntu-latest
