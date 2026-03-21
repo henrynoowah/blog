@@ -1,3 +1,21 @@
+# [0.25.0](https://github.com/henrynoowah/blog/compare/v0.23.0...v0.25.0) (2026-03-21)
+
+
+### Bug Fixes
+
+* add concurrency to create-tag workflows to prevent race condition ([45494ef](https://github.com/henrynoowah/blog/commit/45494ef239ca2b72027bb58771a86aadd2fb03bc))
+* use Locale type instead of LocalesValues in locale toggle ([9496642](https://github.com/henrynoowah/blog/commit/94966425ab0b5a0ec94ab43152ead8a0c4682364))
+
+
+### Features
+
+* add projects section to about page ([c612754](https://github.com/henrynoowah/blog/commit/c6127549a7bc8507ace3f7b0c18ac68b89e52204))
+* nextjs 16 update ([025c910](https://github.com/henrynoowah/blog/commit/025c91084f15468202c1cdcc447d3f3ff446f61b))
+* redesign pages with editorial aesthetic, shadcn/ui, and Korean i18n ([5e17532](https://github.com/henrynoowah/blog/commit/5e17532841ae5b7c55696dfac6bab562ece07c2e))
+* view-transition-update ([5e0f744](https://github.com/henrynoowah/blog/commit/5e0f744bae42a3a36581e0f211ec01edcb54271d))
+
+
+
 # [0.23.0](https://github.com/henrynoowah/blog/compare/v0.22.2...v0.23.0) (2024-10-22)
 
 
@@ -31,15 +49,6 @@
 ### Features
 
 * added vercel.json ([f3627e4](https://github.com/henrynoowah/blog/commit/f3627e4c37fe4c6af1a5c29a01a2520761704736))
-
-
-
-# [0.21.0](https://github.com/henrynoowah/blog/compare/v0.20.0...v0.21.0) (2024-05-09)
-
-
-### Features
-
-* initial i18n configuration added ([225995d](https://github.com/henrynoowah/blog/commit/225995d2f80a6229e6ac7357763e2101fb9c5958))
 
 
 
