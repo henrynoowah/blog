@@ -22,7 +22,7 @@ const AboutsLayouts: NextLayoutIntlayer = async ({ children, params }) => {
     external?: boolean;
   }> = [
     { label: 'home', href: '/', locale },
-    { label: 'works', href: '/works', locale },
+    { label: 'works', href: '/about#projects', locale },
     {
       label: 'posts',
       href: 'https://velog.io/@henrynoowah/posts',
