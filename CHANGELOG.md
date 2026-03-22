@@ -1,9 +1,8 @@
-# [0.25.0](https://github.com/henrynoowah/blog/compare/v0.23.0...v0.25.0) (2026-03-21)
+# [0.26.0](https://github.com/henrynoowah/blog/compare/v0.23.0...v0.26.0) (2026-03-22)
 
 
 ### Bug Fixes
 
-* add concurrency to create-tag workflows to prevent race condition ([45494ef](https://github.com/henrynoowah/blog/commit/45494ef239ca2b72027bb58771a86aadd2fb03bc))
 * use Locale type instead of LocalesValues in locale toggle ([9496642](https://github.com/henrynoowah/blog/commit/94966425ab0b5a0ec94ab43152ead8a0c4682364))
 
 
@@ -11,6 +10,7 @@
 
 * add projects section to about page ([c612754](https://github.com/henrynoowah/blog/commit/c6127549a7bc8507ace3f7b0c18ac68b89e52204))
 * nextjs 16 update ([025c910](https://github.com/henrynoowah/blog/commit/025c91084f15468202c1cdcc447d3f3ff446f61b))
+* redesign about page hero with GSAP morph effect and consolidate works into about ([aa99926](https://github.com/henrynoowah/blog/commit/aa999268d59423de48d3c42e4663cb665b47479f))
 * redesign pages with editorial aesthetic, shadcn/ui, and Korean i18n ([5e17532](https://github.com/henrynoowah/blog/commit/5e17532841ae5b7c55696dfac6bab562ece07c2e))
 * view-transition-update ([5e0f744](https://github.com/henrynoowah/blog/commit/5e0f744bae42a3a36581e0f211ec01edcb54271d))
 
