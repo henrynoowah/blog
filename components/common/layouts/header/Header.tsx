@@ -62,12 +62,12 @@ const Header = ({ navOption, locale }: Params) => {
             </Suspense>
 
             <div className="flex items-center">
-              <button className="size-8 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors duration-200">
+              <div className="size-8 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors duration-200">
                 <LocaleToggle />
-              </button>
-              <button className="size-8 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors duration-200">
+              </div>
+              <div className="size-8 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors duration-200">
                 <AnimatedThemeToggler />
-              </button>
+              </div>
             </div>
 
             <button

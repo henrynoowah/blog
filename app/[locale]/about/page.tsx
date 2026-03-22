@@ -4,6 +4,7 @@ import React from 'react';
 import { NextPageIntlayer } from 'next-intlayer';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { HeroHighlight, Highlight } from '@/components/ui/hero-highlight';
+import { TextScramble } from '@/components/ui/text-scramble';
 import { Timeline } from '@/components/ui/timeline';
 import {
   Card,
@@ -18,36 +19,39 @@ import {
   IconBrandGithub,
   IconExternalLink,
   IconCode,
-  IconPalette,
   IconTool,
   IconBuildingHospital,
   IconArrowUpRight,
+  IconForms,
+  IconAutomation,
 } from '@tabler/icons-react';
 import { useRef } from 'react';
 import { useIntlayer } from 'next-intlayer';
 
 const iconMap = {
   frontend: IconCode,
-  design: IconPalette,
   tools: IconTool,
   industry: IconBuildingHospital,
 } as const;
 
 const spanMap: Record<string, string> = {
   frontend: 'md:col-span-2 md:row-span-1',
-  design: 'md:col-span-1 md:row-span-2',
   tools: 'md:col-span-1 md:row-span-1',
   industry: 'md:col-span-1 md:row-span-1',
 };
 
 const projectMeta = {
+  formBuilder: {
+    demo: 'https://shadcn-rjsf-form-builder.noowah.dev/',
+    icon: IconForms,
+  },
   contentBuilder: {
-    demo: 'https://noowah-content-builder-docs.vercel.app/?path=/story/ui-editor--default',
-    accent: 'from-primary/20 to-accent/10',
+    demo: 'https://content-builder.noowah.dev/',
+    icon: IconCode,
   },
   prVersioning: {
     github: 'https://github.com/marketplace/actions/node-pr-versioning',
-    accent: 'from-accent/20 to-primary/10',
+    icon: IconAutomation,
   },
 } as const;
 
@@ -75,9 +79,9 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
   const introY = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   const stats = [
-    { value: content.introduction.stats.experience.value, label: content.introduction.stats.experience.label },
-    { value: content.introduction.stats.leadership.value, label: content.introduction.stats.leadership.label },
-    { value: content.introduction.stats.industry.value, label: content.introduction.stats.industry.label },
+    { key: 'experience', value: content.introduction.stats.experience.value, label: content.introduction.stats.experience.label },
+    { key: 'leadership', value: content.introduction.stats.leadership.value, label: content.introduction.stats.leadership.label },
+    { key: 'industry', value: content.introduction.stats.industry.value, label: content.introduction.stats.industry.label },
   ];
 
   const skillCategories = Object.entries(content.skills.categories) as Array<
@@ -86,12 +90,20 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
 
   const projects = [
     {
+      key: 'formBuilder' as const,
+      title: content.projects.items.formBuilder.title,
+      description: content.projects.items.formBuilder.description,
+      tags: content.projects.items.formBuilder.tags as string[],
+      demo: projectMeta.formBuilder.demo,
+      icon: projectMeta.formBuilder.icon,
+    },
+    {
       key: 'contentBuilder' as const,
       title: content.projects.items.contentBuilder.title,
       description: content.projects.items.contentBuilder.description,
       tags: content.projects.items.contentBuilder.tags as string[],
       demo: projectMeta.contentBuilder.demo,
-      accent: projectMeta.contentBuilder.accent,
+      icon: projectMeta.contentBuilder.icon,
     },
     {
       key: 'prVersioning' as const,
@@ -99,7 +111,7 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
       description: content.projects.items.prVersioning.description,
       tags: content.projects.items.prVersioning.tags as string[],
       github: projectMeta.prVersioning.github,
-      accent: projectMeta.prVersioning.accent,
+      icon: projectMeta.prVersioning.icon,
     },
   ];
 
@@ -146,14 +158,11 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
               {content.hero.subtitle}
             </motion.p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            <TextScramble
+              text="NOOWAH"
+              revealText="HAWOON"
               className="font-serif text-5xl md:text-7xl lg:text-8xl font-extrabold text-foreground leading-[0.9] tracking-tight md:text-center uppercase"
-            >
-              {content.hero.name}
-            </motion.h1>
+            />
 
             <motion.div
               initial={{ scaleX: 0 }}
@@ -180,7 +189,7 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
             <div className="flex flex-col gap-0">
               {stats.map((stat, index) => (
                 <motion.div
-                  key={String(stat.label)}
+                  key={stat.key}
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -244,7 +253,7 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
                     <div className="flex flex-wrap gap-2">
                       {(category.skills as string[]).map((skill, skillIndex) => (
                         <motion.div
-                          key={skill}
+                          key={`${key}-skill-${skillIndex}`}
                           initial={{ opacity: 0, scale: 0.9 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           viewport={{ once: true }}
@@ -283,97 +292,95 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
           {content.projects.title}
         </motion.h2>
 
-        <div className="flex flex-col gap-6">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.key}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.15,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              <Card className="overflow-hidden border-border/40 bg-card/50 backdrop-blur-sm hover:bg-card transition-all duration-500 group">
-                <div className="flex flex-col md:flex-row">
-                  <div
-                    className={`w-full md:w-1 md:min-h-full shrink-0 h-1 md:h-auto bg-gradient-to-b ${project.accent} group-hover:md:w-1.5 transition-all duration-500`}
-                  />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          {projects.map((project, index) => {
+            const Icon = project.icon;
+            return (
+              <motion.div
+                key={project.key}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                <Card className="h-full overflow-hidden border-border/40 bg-card/50 backdrop-blur-sm group hover:border-primary/30 transition-all duration-500 relative">
+                  {/* Top accent line */}
+                  <div className="h-px w-full bg-border/60 group-hover:bg-primary/60 transition-colors duration-500" />
 
-                  <div className="flex-1">
-                    <CardHeader className="pb-2">
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-muted-foreground/60 block mb-2">
-                            {String(index + 1).padStart(2, '0')}
-                          </span>
-                          <CardTitle className="font-serif text-2xl md:text-3xl font-bold group-hover:text-primary transition-colors duration-300">
-                            {project.title}
-                          </CardTitle>
-                        </div>
-                        <div className="size-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/40 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300">
-                          <IconArrowUpRight size={16} strokeWidth={1.5} />
-                        </div>
+                  <div className="p-5 md:p-6 flex flex-col h-full">
+                    {/* Header: number + icon */}
+                    <div className="flex items-center justify-between mb-6 md:mb-8">
+                      <span className="font-mono text-[10px] tracking-widest text-muted-foreground/50">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <div className="size-9 md:size-10 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/40 transition-all duration-500">
+                        <Icon size={16} strokeWidth={1.5} />
                       </div>
-                    </CardHeader>
+                    </div>
 
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground leading-relaxed font-light max-w-xl">
-                        {project.description}
-                      </p>
-                      <div className="mt-5 flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <Badge
-                            key={tag}
-                            variant="outline"
-                            className="text-[10px] font-light border-border/50 text-muted-foreground/70"
-                          >
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
+                    {/* Title */}
+                    <h3 className="font-serif text-lg md:text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 mb-3">
+                      {project.title}
+                    </h3>
 
-                    <CardFooter className="gap-3 pt-2">
-                      {'github' in project && project.github && (
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="text-xs font-light text-muted-foreground hover:text-foreground"
-                          asChild
+                    {/* Description */}
+                    <p className="text-xs md:text-sm text-muted-foreground/80 leading-relaxed font-light mb-5 flex-1">
+                      {project.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                      {project.tags.map((tag, tagIndex) => (
+                        <Badge
+                          key={`${project.key}-tag-${tagIndex}`}
+                          variant="outline"
+                          className="text-[10px] font-light border-border/50 text-muted-foreground/60"
                         >
-                          <a href={project.github} target="_blank" rel="noopener noreferrer">
-                            <IconBrandGithub size={14} strokeWidth={1.5} />
-                            {content.projects.source}
-                          </a>
-                        </Button>
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+
+                    {/* Divider + actions */}
+                    <div className="h-px w-full bg-border/40 mb-4" />
+                    <div className="flex items-center gap-3">
+                      {'github' in project && project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-[11px] font-medium tracking-wide uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+                        >
+                          <IconBrandGithub size={14} strokeWidth={1.5} />
+                          {content.projects.source}
+                        </a>
                       )}
                       {'demo' in project && project.demo && (
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="text-xs font-light text-muted-foreground hover:text-foreground"
-                          asChild
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-[11px] font-medium tracking-wide uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
                         >
-                          <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                            <IconExternalLink size={14} strokeWidth={1.5} />
-                            {content.projects.demo}
-                          </a>
-                        </Button>
+                          <IconExternalLink size={14} strokeWidth={1.5} />
+                          {content.projects.demo}
+                        </a>
                       )}
-                    </CardFooter>
+                    </div>
                   </div>
-                </div>
-              </Card>
-            </motion.div>
-          ))}
+                </Card>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
       {/* ─── Contact ─── */}
-      <div className="max-w-5xl mx-auto px-6 py-24 md:py-32">
+      <div className="max-w-5xl mx-auto px-6 py-24 md:py-32 overflow-hidden">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -381,10 +388,10 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
           transition={{ duration: 0.8 }}
           className="relative"
         >
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-            <div>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8">
+            <div className="min-w-0">
               <SectionLabel>{content.sections.contact}</SectionLabel>
-              <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[0.9] uppercase">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[0.9] uppercase break-words">
                 {content.contact.titleLine1}
                 <br />
                 <span className="text-primary">{content.contact.titleHighlight}</span>{' '}

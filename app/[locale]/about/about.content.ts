@@ -5,13 +5,10 @@ const aboutContent: Dictionary = {
   content: {
     hero: {
       subtitle: t({
-        en: 'Frontend Developer & Spatial Designer',
-        ko: '프론트엔드 개발자 & 공간 디자이너',
+        en: 'Frontend Developer',
+        ko: '프론트엔드 개발자',
       }),
-      name: t({
-        en: 'Hawoon Joh',
-        ko: '조하운',
-      }),
+      name: 'NOOWAH',
     },
     sections: {
       about: t({
@@ -33,16 +30,8 @@ const aboutContent: Dictionary = {
     },
     introduction: {
       description: t({
-        en: "I'm a frontend developer with 3+ years of experience specializing in Next.js and TypeScript. With a unique background in spatial design from Korea Kookmin University, I bring a distinctive perspective to creating intuitive and visually compelling web applications that prioritize user experience.",
-        ko: '저는 Next.js와 TypeScript를 전문으로 하는 3년 이상의 경험을 가진 프론트엔드 개발자입니다. 국민대학교 공간디자인학과 출신의 독특한 배경을 바탕으로, 사용자 경험을 우선시하는 직관적이고 시각적으로 매력적인 웹 애플리케이션 제작에 차별화된 관점을 제공합니다.',
-      }),
-      highlightWord: t({
-        en: 'spatial design',
-        ko: '공간 디자인',
-      }),
-      experienceHighlight: t({
-        en: '3+ years of experience',
-        ko: '3년 이상의 경력',
+        en: "I'm a frontend developer with 3+ years of experience specializing in Next.js and TypeScript. With a background in spatial design (B.A., Korea Kookmin University), I bring a design-informed perspective to building intuitive and performant web applications.",
+        ko: '저는 Next.js와 TypeScript를 전문으로 하는 3년 이상의 경험을 가진 프론트엔드 개발자입니다. 국민대학교 공간디자인학과 학사 학위를 바탕으로, 직관적이고 성능 높은 웹 애플리케이션 개발에 디자인적 관점을 더합니다.',
       }),
       stats: {
         experience: {
@@ -72,18 +61,11 @@ const aboutContent: Dictionary = {
             ko: ['Next.js', 'TypeScript', 'React', 'Tailwind CSS'],
           }),
         },
-        design: {
-          title: t({ en: 'Design', ko: '디자인' }),
-          skills: t({
-            en: ['Spatial Design', 'UI/UX', 'Figma', 'User Experience'],
-            ko: ['공간 디자인', 'UI/UX', 'Figma', '사용자 경험'],
-          }),
-        },
         tools: {
-          title: t({ en: 'Tools', ko: '도구' }),
+          title: t({ en: 'Tools & DevOps', ko: '도구 & DevOps' }),
           skills: t({
-            en: ['Git', 'VS Code', 'Vercel', 'Team Leadership'],
-            ko: ['Git', 'VS Code', 'Vercel', '팀 리더십'],
+            en: ['Git', 'VS Code', 'Vercel', 'GitHub Actions', 'CI/CD'],
+            ko: ['Git', 'VS Code', 'Vercel', 'GitHub Actions', 'CI/CD'],
           }),
         },
         industry: {
@@ -111,8 +93,8 @@ const aboutContent: Dictionary = {
           ko: '공간디자인학과 학사 학위',
         }),
         content: t({
-          en: "Graduated with a Bachelor's degree in Spatial Design from Korea Kookmin University. This unique background in spatial design brings a distinctive perspective to frontend development, focusing on user experience and interface spatial relationships.",
-          ko: '국민대학교 공간디자인학과에서 학사 학위를 취득했습니다. 공간 디자인의 독특한 배경은 사용자 경험과 인터페이스 공간 관계에 중점을 두어 프론트엔드 개발에 차별화된 관점을 제공합니다.',
+          en: "Graduated with a Bachelor's degree in Spatial Design from Korea Kookmin University. This design background informs my approach to frontend development — focusing on layout, spatial relationships, and user experience.",
+          ko: '국민대학교 공간디자인학과에서 학사 학위를 취득했습니다. 디자인 전공 배경은 레이아웃, 공간 관계, 사용자 경험에 중점을 둔 프론트엔드 개발 접근 방식에 영향을 줍니다.',
         }),
       },
       work: {
@@ -135,6 +117,17 @@ const aboutContent: Dictionary = {
       source: t({ en: 'Source', ko: '소스' }),
       demo: t({ en: 'Demo', ko: '데모' }),
       items: {
+        formBuilder: {
+          title: t({ en: 'shadcn/ui RJSF Form Builder', ko: 'shadcn/ui RJSF 폼 빌더' }),
+          description: t({
+            en: 'A form builder powered by react-jsonschema-form with shadcn/ui components. Generates dynamic forms from JSON Schema with a visual builder interface.',
+            ko: 'shadcn/ui 컴포넌트와 react-jsonschema-form을 활용한 폼 빌더. JSON Schema로부터 동적 폼을 생성하는 비주얼 빌더 인터페이스를 제공합니다.',
+          }),
+          tags: t({
+            en: ['React', 'JSON Schema', 'shadcn/ui', 'Form Builder'],
+            ko: ['React', 'JSON Schema', 'shadcn/ui', '폼 빌더'],
+          }),
+        },
         contentBuilder: {
           title: t({ en: 'CMS Content Builder', ko: 'CMS 콘텐츠 빌더' }),
           description: t({
