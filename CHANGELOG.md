@@ -1,3 +1,12 @@
+# [0.28.0](https://github.com/henrynoowah/noowah.dev/compare/v0.27.0...v0.28.0) (2026-03-23)
+
+
+### Features
+
+* add shadcn popover chat on non-home pages and defer Spline render on route change ([838635b](https://github.com/henrynoowah/noowah.dev/commit/838635b58e5d0d70ffa1d633c74468614ea4af68))
+
+
+
 # [0.27.0](https://github.com/henrynoowah/noowah.dev/compare/v0.23.0...v0.27.0) (2026-03-23)
 
 
@@ -42,15 +51,6 @@
 ### Bug Fixes
 
 * updated middleware matcher to prevent matching public directory ([c4ba54e](https://github.com/henrynoowah/noowah.dev/commit/c4ba54ec1d891f50a81efca103bcecbd35d70b46))
-
-
-
-# [0.22.0](https://github.com/henrynoowah/noowah.dev/compare/v0.21.0...v0.22.0) (2024-05-09)
-
-
-### Features
-
-* added vercel.json ([f3627e4](https://github.com/henrynoowah/noowah.dev/commit/f3627e4c37fe4c6af1a5c29a01a2520761704736))
 
 
 
