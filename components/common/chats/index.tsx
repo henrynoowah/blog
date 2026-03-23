@@ -19,11 +19,6 @@ interface ChatMessage {
   content: string;
 }
 
-interface Params {
-  isOpen: boolean;
-  onClose?: () => void;
-}
-
 const GREETING: ChatMessage = {
   role: 'model',
   content:
@@ -73,15 +68,15 @@ const MarkdownContent = ({ content }: { content: string }) => (
   </ReactMarkdown>
 );
 
-const ChatBox = ({ isOpen, onClose }: Params) => {
+const ChatBoxContent = ({ onClose }: { onClose?: () => void }) => {
   const [messages, setMessages] = useState<ChatMessage[]>([GREETING]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (isOpen) setTimeout(() => inputRef.current?.focus(), 600);
-  }, [isOpen]);
+    setTimeout(() => inputRef.current?.focus(), 100);
+  }, []);
 
   const sendMessage = async () => {
     const text = input.trim();
@@ -93,7 +88,6 @@ const ChatBox = ({ isOpen, onClose }: Params) => {
     setInput('');
     setIsLoading(true);
 
-    // Add empty assistant message to stream into
     setMessages(prev => [...prev, { role: 'model', content: '' }]);
 
     try {
@@ -140,26 +134,7 @@ const ChatBox = ({ isOpen, onClose }: Params) => {
   };
 
   return (
-    <motion.div
-      className={cn(
-        'w-[400px] max-w-full h-[480px] max-h-full bg-primary/20 end-0 rounded-[24px] shadow-xl backdrop-filter backdrop-blur-lg flex flex-col overflow-hidden',
-        isOpen ? 'pointer-events-auto' : 'pointer-events-none'
-      )}
-      initial={{ opacity: 0 }}
-      animate={!!isOpen ? 'open' : 'closed'}
-      variants={{
-        open: () => ({
-          y: 0,
-          opacity: 100,
-          transition: { ease: 'easeInOut', duration: 0.5 },
-        }),
-        closed: () => ({
-          y: 80,
-          opacity: 0,
-          transition: { ease: 'easeOut', duration: 0.5 },
-        }),
-      }}
-    >
+    <div className="flex flex-col h-full">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-primary/20">
         <div className="flex items-center gap-2">
@@ -215,8 +190,40 @@ const ChatBox = ({ isOpen, onClose }: Params) => {
           <IconSend className="size-4" />
         </button>
       </div>
+    </div>
+  );
+};
+
+interface ChatBoxParams {
+  isOpen: boolean;
+  onClose?: () => void;
+}
+
+const ChatBox = ({ isOpen, onClose }: ChatBoxParams) => {
+  return (
+    <motion.div
+      className={cn(
+        'w-[400px] max-w-full h-[480px] max-h-full bg-primary/20 end-0 rounded-[24px] shadow-xl backdrop-filter backdrop-blur-lg overflow-hidden',
+        isOpen ? 'pointer-events-auto' : 'pointer-events-none'
+      )}
+      initial={{ opacity: 0 }}
+      animate={isOpen ? 'open' : 'closed'}
+      variants={{
+        open: () => ({
+          y: 0,
+          opacity: 100,
+          transition: { ease: 'easeInOut', duration: 0.5 },
+        }),
+        closed: () => ({
+          y: 80,
+          opacity: 0,
+          transition: { ease: 'easeOut', duration: 0.5 },
+        }),
+      }}
+    >
+      {isOpen && <ChatBoxContent onClose={onClose} />}
     </motion.div>
   );
 };
 
-export { ChatBox };
+export { ChatBox, ChatBoxContent };

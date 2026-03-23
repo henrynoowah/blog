@@ -2,11 +2,15 @@
 
 import Spline from '@splinetool/react-spline';
 import { Application } from '@splinetool/runtime';
-import { cn } from '@/lib/utils';
 import { motion } from 'motion/react';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef } from 'react';
-import { ChatBox } from '@/components/common/chats';
+import { useEffect, useRef, useState } from 'react';
+import { ChatBox, ChatBoxContent } from '@/components/common/chats';
+import {
+  Popover,
+  PopoverAnchor,
+  PopoverContent,
+} from '@/components/ui/popover';
 import { useChatContext } from './chat-context';
 
 const scene = process.env.NEXT_PUBLIC_SPLINE_SCENE!;
@@ -23,6 +27,16 @@ export function FloatingChat({ locale }: { locale: string }) {
 
   const isHomeRef = useRef(isHome);
   isHomeRef.current = isHome;
+
+  // Defer Spline rendering until the layout animation finishes
+  const [layoutReady, setLayoutReady] = useState(true);
+  const prevIsHome = useRef(isHome);
+  useEffect(() => {
+    if (prevIsHome.current !== isHome) {
+      setLayoutReady(false);
+      prevIsHome.current = isHome;
+    }
+  }, [isHome]);
 
   // Track latest mouse position so we can re-dispatch after the container moves
   const mousePosRef = useRef({ x: 0, y: 0 });
@@ -44,12 +58,13 @@ export function FloatingChat({ locale }: { locale: string }) {
   }, [isHome]);
 
   const onAnimationComplete = () => {
+    setLayoutReady(true);
+
     // Re-dispatch mousemove so Spline recalculates cursor offset against new canvas position
     window.dispatchEvent(
       new MouseEvent('mousemove', {
         clientX: mousePosRef.current.x,
         clientY: mousePosRef.current.y,
-        bubbles: true,
       })
     );
 
@@ -91,6 +106,7 @@ export function FloatingChat({ locale }: { locale: string }) {
             height: '100%',
             borderRadius: 0,
             zIndex: 30,
+            backgroundColor: 'transparent',
           },
           bubble: {
             right: 24,
@@ -99,53 +115,66 @@ export function FloatingChat({ locale }: { locale: string }) {
             height: 64,
             borderRadius: 32,
             zIndex: 50,
+            backgroundColor: 'var(--accent)',
           },
         }}
         style={{
+          border: '1px solid var(--primary)',
           position: 'fixed',
           overflow: 'hidden',
           filter: 'grayscale(0.5) contrast(1.75)',
           pointerEvents: isHome ? 'none' : 'auto',
           cursor: isHome ? 'default' : 'pointer',
         }}
+        className="shadow-xl"
         transition={{ type: 'spring', stiffness: 150, damping: 25 }}
         onAnimationComplete={onAnimationComplete}
         onClick={!isHome ? () => setIsOpen(!isOpen) : undefined}
         whileHover={!isHome ? { scale: 1.1 } : undefined}
         whileTap={!isHome ? { scale: 0.95 } : undefined}
       >
-        {isHome ? (
-          <Spline scene={scene} onLoad={onLoad} />
-        ) : (
-          // Render at 400×400, scale down to fit 64px bubble
-          <div
-            style={{
-              position: 'absolute',
-              width: 400,
-              height: 400,
-              top: '50%',
-              left: '50%',
-              transformOrigin: 'center center',
-              transform: 'translate(-50%, -50%) scale(0.16)',
-              pointerEvents: 'none',
-            }}
-          >
+        {layoutReady &&
+          (isHome ? (
             <Spline scene={scene} onLoad={onLoad} />
-          </div>
-        )}
+          ) : (
+            // Render at 400×400, scale down to fit 64px bubble
+            <div
+              style={{
+                position: 'absolute',
+                width: 400,
+                height: 400,
+                top: '50%',
+                left: '50%',
+                transformOrigin: 'center center',
+                transform: 'translate(-50%, -50%) scale(0.14)',
+                pointerEvents: 'none',
+              }}
+            >
+              <Spline scene={scene} onLoad={onLoad} />
+            </div>
+          ))}
       </motion.div>
 
       {/* Chat box */}
       {isHome ? (
-        // Home: vertically centered, right-aligned — matches original layout
-        <div className="fixed inset-0 flex justify-end items-center pointer-events-none z-40 px-6 pb-16 md:pb-[100px]">
+        // Home: original centered overlay (no popover)
+        <div className="fixed inset-0 flex justify-center items-center pointer-events-none z-40 px-6 lg:translate-x-1/6">
           <ChatBox isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </div>
       ) : (
-        // Other pages: above the bubble
-        <div className="fixed bottom-[104px] right-0 flex justify-end px-6 z-50 pointer-events-none w-full">
-          <ChatBox isOpen={isOpen} onClose={() => setIsOpen(false)} />
-        </div>
+        // Other pages: popover anchored to the bubble
+        <Popover open={isOpen} onOpenChange={setIsOpen}>
+          <PopoverAnchor className="fixed bottom-6 right-6 w-16 h-16" />
+          <PopoverContent
+            side="top"
+            align="end"
+            sideOffset={16}
+            className="w-[400px] h-[480px] max-h-[70vh] p-0 bg-primary/20 backdrop-blur-lg rounded-[24px] shadow-xl overflow-hidden"
+            onOpenAutoFocus={e => e.preventDefault()}
+          >
+            <ChatBoxContent onClose={() => setIsOpen(false)} />
+          </PopoverContent>
+        </Popover>
       )}
     </>
   );
