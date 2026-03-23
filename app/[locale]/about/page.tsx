@@ -79,9 +79,21 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
   const introY = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   const stats = [
-    { key: 'experience', value: content.introduction.stats.experience.value, label: content.introduction.stats.experience.label },
-    { key: 'leadership', value: content.introduction.stats.leadership.value, label: content.introduction.stats.leadership.label },
-    { key: 'industry', value: content.introduction.stats.industry.value, label: content.introduction.stats.industry.label },
+    {
+      key: 'experience',
+      value: content.introduction.stats.experience.value,
+      label: content.introduction.stats.experience.label,
+    },
+    {
+      key: 'leadership',
+      value: content.introduction.stats.leadership.value,
+      label: content.introduction.stats.leadership.label,
+    },
+    {
+      key: 'industry',
+      value: content.introduction.stats.industry.value,
+      label: content.introduction.stats.industry.label,
+    },
   ];
 
   const skillCategories = Object.entries(content.skills.categories) as Array<
@@ -139,7 +151,7 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-hidden">
       {/* ─── Hero ─── */}
       <HeroHighlight>
         <div className="max-w-5xl mx-auto px-6 w-full">
@@ -161,13 +173,17 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
             <TextScramble
               text="NOOWAH"
               revealText="HAWOON"
-              className="font-serif text-5xl md:text-7xl lg:text-8xl font-extrabold text-foreground leading-[0.9] tracking-tight md:text-center uppercase"
+              className="font-serif text-[10vw] md:text-7xl lg:text-8xl font-extrabold text-foreground leading-[0.9] tracking-tight md:text-center uppercase"
             />
 
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ delay: 0.7, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                delay: 0.7,
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="w-24 h-px bg-primary/40 mt-8 origin-left"
             />
           </motion.div>
@@ -175,7 +191,10 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
       </HeroHighlight>
 
       {/* ─── Introduction ─── */}
-      <div ref={introRef} className="relative max-w-5xl mx-auto px-6 py-24 md:py-32">
+      <div
+        ref={introRef}
+        className="relative max-w-5xl mx-auto px-6 py-24 md:py-32"
+      >
         <SectionLabel>{content.sections.about}</SectionLabel>
 
         <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
@@ -234,7 +253,11 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.08,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 className={span}
               >
                 <Card className="h-full border-border/40 bg-card/50 backdrop-blur-sm hover:bg-card transition-all duration-500 group overflow-hidden relative">
@@ -251,22 +274,26 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
                   </CardHeader>
                   <CardContent className="relative">
                     <div className="flex flex-wrap gap-2">
-                      {(category.skills as string[]).map((skill, skillIndex) => (
-                        <motion.div
-                          key={`${key}-skill-${skillIndex}`}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: index * 0.08 + skillIndex * 0.05 }}
-                        >
-                          <Badge
-                            variant="outline"
-                            className="text-xs font-light border-border/60 text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-300"
+                      {(category.skills as string[]).map(
+                        (skill, skillIndex) => (
+                          <motion.div
+                            key={`${key}-skill-${skillIndex}`}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{
+                              delay: index * 0.08 + skillIndex * 0.05,
+                            }}
                           >
-                            {skill}
-                          </Badge>
-                        </motion.div>
-                      ))}
+                            <Badge
+                              variant="outline"
+                              className="text-xs font-light border-border/60 text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-300"
+                            >
+                              {skill}
+                            </Badge>
+                          </motion.div>
+                        )
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -391,10 +418,12 @@ const AboutPage: NextPageIntlayer = ({ params }) => {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8">
             <div className="min-w-0">
               <SectionLabel>{content.sections.contact}</SectionLabel>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[0.9] uppercase break-words">
+              <h2 className="font-serif text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[0.9] uppercase break-words">
                 {content.contact.titleLine1}
                 <br />
-                <span className="text-primary">{content.contact.titleHighlight}</span>{' '}
+                <span className="text-primary">
+                  {content.contact.titleHighlight}
+                </span>{' '}
                 {content.contact.titleLine2}
               </h2>
             </div>

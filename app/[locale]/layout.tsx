@@ -3,6 +3,8 @@ import { getHTMLTextDir } from 'intlayer';
 import { Metadata } from 'next';
 import type { NextLayoutIntlayer } from 'next-intlayer';
 import { Syne, Outfit, Noto_Sans_KR } from 'next/font/google';
+import { ChatProvider } from './_components/chat-context';
+import { FloatingChat } from './_components/floating-chat';
 
 const syne = Syne({
   subsets: ['latin'],
@@ -87,7 +89,12 @@ const LocaleLayout: NextLayoutIntlayer = async ({ children, params }) => {
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body suppressHydrationWarning={true}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <ChatProvider>
+            <FloatingChat locale={locale} />
+            {children}
+          </ChatProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
