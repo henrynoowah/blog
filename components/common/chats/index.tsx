@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import { motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { IconSend, IconX } from '@tabler/icons-react';
@@ -25,7 +26,8 @@ interface Params {
 
 const GREETING: ChatMessage = {
   role: 'model',
-  content: "Hi! I'm Hawoon's AI assistant. Ask me anything about his work, projects, or background.",
+  content:
+    "Hi! I'm Hawoon's AI assistant. Ask me anything about his work, projects, or background.",
 };
 
 const MarkdownContent = ({ content }: { content: string }) => (
@@ -33,10 +35,16 @@ const MarkdownContent = ({ content }: { content: string }) => (
     remarkPlugins={[remarkGfm]}
     components={{
       p: ({ children }) => <p className="mb-1 last:mb-0">{children}</p>,
-      ul: ({ children }) => <ul className="list-disc pl-4 mb-1 space-y-0.5">{children}</ul>,
-      ol: ({ children }) => <ol className="list-decimal pl-4 mb-1 space-y-0.5">{children}</ol>,
+      ul: ({ children }) => (
+        <ul className="list-disc pl-4 mb-1 space-y-0.5">{children}</ul>
+      ),
+      ol: ({ children }) => (
+        <ol className="list-decimal pl-4 mb-1 space-y-0.5">{children}</ol>
+      ),
       li: ({ children }) => <li className="leading-snug">{children}</li>,
-      strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+      strong: ({ children }) => (
+        <strong className="font-semibold">{children}</strong>
+      ),
       code: ({ children, className }) => {
         const isBlock = className?.includes('language-');
         return isBlock ? (
@@ -44,11 +52,18 @@ const MarkdownContent = ({ content }: { content: string }) => (
             <code>{children}</code>
           </pre>
         ) : (
-          <code className="bg-black/20 rounded px-1 py-0.5 text-xs font-mono">{children}</code>
+          <code className="bg-black/20 rounded px-1 py-0.5 text-xs font-mono">
+            {children}
+          </code>
         );
       },
       a: ({ href, children }) => (
-        <a href={href} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:opacity-80">
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2 hover:opacity-80"
+        >
           {children}
         </a>
       ),
@@ -79,7 +94,7 @@ const ChatBox = ({ isOpen, onClose }: Params) => {
     setIsLoading(true);
 
     // Add empty assistant message to stream into
-    setMessages((prev) => [...prev, { role: 'model', content: '' }]);
+    setMessages(prev => [...prev, { role: 'model', content: '' }]);
 
     try {
       const res = await fetch('/api/chat', {
@@ -89,7 +104,9 @@ const ChatBox = ({ isOpen, onClose }: Params) => {
       });
 
       if (!res.ok) {
-        const { error } = await res.json().catch(() => ({ error: 'Something went wrong.' }));
+        const { error } = await res
+          .json()
+          .catch(() => ({ error: 'Something went wrong.' }));
         throw new Error(error);
       }
 
@@ -100,7 +117,7 @@ const ChatBox = ({ isOpen, onClose }: Params) => {
         const { done, value } = await reader.read();
         if (done) break;
         const chunk = decoder.decode(value, { stream: true });
-        setMessages((prev) => {
+        setMessages(prev => {
           const updated = [...prev];
           updated[updated.length - 1] = {
             role: 'model',
@@ -110,8 +127,9 @@ const ChatBox = ({ isOpen, onClose }: Params) => {
         });
       }
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Sorry, something went wrong.';
-      setMessages((prev) => {
+      const msg =
+        err instanceof Error ? err.message : 'Sorry, something went wrong.';
+      setMessages(prev => {
         const updated = [...prev];
         updated[updated.length - 1] = { role: 'model', content: msg };
         return updated;
@@ -123,7 +141,10 @@ const ChatBox = ({ isOpen, onClose }: Params) => {
 
   return (
     <motion.div
-      className="w-[400px] max-w-full h-[480px] max-h-full bg-primary/20 end-0 rounded-[24px] shadow-xl backdrop-filter backdrop-blur-lg flex flex-col overflow-hidden pointer-events-auto"
+      className={cn(
+        'w-[400px] max-w-full h-[480px] max-h-full bg-primary/20 end-0 rounded-[24px] shadow-xl backdrop-filter backdrop-blur-lg flex flex-col overflow-hidden',
+        isOpen ? 'pointer-events-auto' : 'pointer-events-none'
+      )}
       initial={{ opacity: 0 }}
       animate={!!isOpen ? 'open' : 'closed'}
       variants={{
@@ -180,8 +201,8 @@ const ChatBox = ({ isOpen, onClose }: Params) => {
         <input
           ref={inputRef}
           value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && sendMessage()}
+          onChange={e => setInput(e.target.value)}
+          onKeyDown={e => e.key === 'Enter' && !e.shiftKey && sendMessage()}
           placeholder="Ask me anything..."
           disabled={isLoading}
           className="flex-1 bg-primary/20 rounded-full px-4 py-2 text-sm outline-none placeholder:text-foreground/40 disabled:opacity-50"
