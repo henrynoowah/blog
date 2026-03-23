@@ -2,10 +2,11 @@
 
 import { cn } from '@/lib/utils';
 import { motion } from 'motion/react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { IconSend, IconX } from '@tabler/icons-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { useChatContext } from '@/app/[locale]/_components/chat-context';
 import {
   Conversation,
   ConversationContent,
@@ -14,16 +15,7 @@ import {
 import { Message, MessageContent } from '@/components/ui/message';
 import { ShimmeringText } from '@/components/ui/shimmering-text';
 
-interface ChatMessage {
-  role: 'user' | 'model';
-  content: string;
-}
-
-const GREETING: ChatMessage = {
-  role: 'model',
-  content:
-    "Hi! I'm Hawoon's AI assistant. Ask me anything about his work, projects, or background.",
-};
+import type { ChatMessage } from '@/app/[locale]/_components/chat-context';
 
 const MarkdownContent = ({ content }: { content: string }) => (
   <ReactMarkdown
@@ -69,14 +61,19 @@ const MarkdownContent = ({ content }: { content: string }) => (
 );
 
 const ChatBoxContent = ({ onClose }: { onClose?: () => void }) => {
-  const [messages, setMessages] = useState<ChatMessage[]>([GREETING]);
-  const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const {
+    messages,
+    setMessages,
+    input,
+    setInput,
+    isLoading,
+    setIsLoading,
+    inputRef,
+  } = useChatContext();
 
   useEffect(() => {
     setTimeout(() => inputRef.current?.focus(), 100);
-  }, []);
+  }, [inputRef]);
 
   const sendMessage = async () => {
     const text = input.trim();
@@ -203,7 +200,7 @@ const ChatBox = ({ isOpen, onClose }: ChatBoxParams) => {
   return (
     <motion.div
       className={cn(
-        'w-[400px] max-w-full h-[480px] max-h-full bg-primary/20 end-0 rounded-[24px] shadow-xl backdrop-filter backdrop-blur-lg overflow-hidden',
+        'w-[calc(100vw-3rem)] sm:w-[400px] max-w-full h-[60vh] sm:h-[480px] max-h-full bg-primary/20 end-0 rounded-[24px] shadow-xl backdrop-filter backdrop-blur-lg overflow-hidden',
         isOpen ? 'pointer-events-auto' : 'pointer-events-none'
       )}
       initial={{ opacity: 0 }}

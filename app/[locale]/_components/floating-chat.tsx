@@ -169,7 +169,7 @@ export function FloatingChat({ locale }: { locale: string }) {
             side="top"
             align="end"
             sideOffset={16}
-            className="w-[400px] h-[480px] max-h-[70vh] p-0 bg-primary/20 backdrop-blur-lg rounded-[24px] shadow-xl overflow-hidden"
+            className="w-[calc(100vw-3rem)] sm:w-[400px] h-[60vh] sm:h-[480px] max-h-[70vh] p-0 bg-primary/20 backdrop-blur-lg rounded-[24px] shadow-xl overflow-hidden"
             onOpenAutoFocus={e => e.preventDefault()}
           >
             <ChatBoxContent onClose={() => setIsOpen(false)} />
