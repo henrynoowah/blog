@@ -1,3 +1,12 @@
+# [0.29.0](https://github.com/henrynoowah/noowah.dev/compare/v0.28.0...v0.29.0) (2026-03-23)
+
+
+### Features
+
+* persist chat state across routes and fix mobile overflow ([0114261](https://github.com/henrynoowah/noowah.dev/commit/0114261c2983813d305553d5f2d0f8c055227ec8))
+
+
+
 # [0.28.0](https://github.com/henrynoowah/noowah.dev/compare/v0.27.0...v0.28.0) (2026-03-23)
 
 
@@ -42,15 +51,6 @@
 ### Bug Fixes
 
 * updated i18n handling ([464b4fd](https://github.com/henrynoowah/noowah.dev/commit/464b4fdf4cfc0ec12f910b2423c2c500d5387617))
-
-
-
-## [0.22.1](https://github.com/henrynoowah/noowah.dev/compare/v0.22.0...v0.22.1) (2024-05-10)
-
-
-### Bug Fixes
-
-* updated middleware matcher to prevent matching public directory ([c4ba54e](https://github.com/henrynoowah/noowah.dev/commit/c4ba54ec1d891f50a81efca103bcecbd35d70b46))
 
 
 
