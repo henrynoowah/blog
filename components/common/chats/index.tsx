@@ -1,14 +1,129 @@
+'use client';
+
 import { motion } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
+import { IconSend, IconX } from '@tabler/icons-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import {
+  Conversation,
+  ConversationContent,
+  ConversationScrollButton,
+} from '@/components/ui/conversation';
+import { Message, MessageContent } from '@/components/ui/message';
+import { ShimmeringText } from '@/components/ui/shimmering-text';
+
+interface ChatMessage {
+  role: 'user' | 'model';
+  content: string;
+}
 
 interface Params {
   isOpen: boolean;
-  onClose?: (close: boolean) => void;
+  onClose?: () => void;
 }
 
-const ChatBox = ({ isOpen }: Params) => {
+const GREETING: ChatMessage = {
+  role: 'model',
+  content: "Hi! I'm Hawoon's AI assistant. Ask me anything about his work, projects, or background.",
+};
+
+const MarkdownContent = ({ content }: { content: string }) => (
+  <ReactMarkdown
+    remarkPlugins={[remarkGfm]}
+    components={{
+      p: ({ children }) => <p className="mb-1 last:mb-0">{children}</p>,
+      ul: ({ children }) => <ul className="list-disc pl-4 mb-1 space-y-0.5">{children}</ul>,
+      ol: ({ children }) => <ol className="list-decimal pl-4 mb-1 space-y-0.5">{children}</ol>,
+      li: ({ children }) => <li className="leading-snug">{children}</li>,
+      strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+      code: ({ children, className }) => {
+        const isBlock = className?.includes('language-');
+        return isBlock ? (
+          <pre className="bg-black/20 rounded px-2 py-1.5 text-xs overflow-x-auto my-1">
+            <code>{children}</code>
+          </pre>
+        ) : (
+          <code className="bg-black/20 rounded px-1 py-0.5 text-xs font-mono">{children}</code>
+        );
+      },
+      a: ({ href, children }) => (
+        <a href={href} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:opacity-80">
+          {children}
+        </a>
+      ),
+    }}
+  >
+    {content}
+  </ReactMarkdown>
+);
+
+const ChatBox = ({ isOpen, onClose }: Params) => {
+  const [messages, setMessages] = useState<ChatMessage[]>([GREETING]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isOpen) setTimeout(() => inputRef.current?.focus(), 600);
+  }, [isOpen]);
+
+  const sendMessage = async () => {
+    const text = input.trim();
+    if (!text || isLoading) return;
+
+    const userMessage: ChatMessage = { role: 'user', content: text };
+    const nextMessages = [...messages, userMessage];
+    setMessages(nextMessages);
+    setInput('');
+    setIsLoading(true);
+
+    // Add empty assistant message to stream into
+    setMessages((prev) => [...prev, { role: 'model', content: '' }]);
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: nextMessages }),
+      });
+
+      if (!res.ok) {
+        const { error } = await res.json().catch(() => ({ error: 'Something went wrong.' }));
+        throw new Error(error);
+      }
+
+      const reader = res.body!.getReader();
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        const chunk = decoder.decode(value, { stream: true });
+        setMessages((prev) => {
+          const updated = [...prev];
+          updated[updated.length - 1] = {
+            role: 'model',
+            content: updated[updated.length - 1].content + chunk,
+          };
+          return updated;
+        });
+      }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Sorry, something went wrong.';
+      setMessages((prev) => {
+        const updated = [...prev];
+        updated[updated.length - 1] = { role: 'model', content: msg };
+        return updated;
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <motion.div
-      className={`w-[400px] max-w-full h-[480px] max-h-full bg-primary/20 end-0 rounded-[24px] p-4 shadow-xl backdrop-filter backdrop-blur-lg`}
+      className="w-[400px] max-w-full h-[480px] max-h-full bg-primary/20 end-0 rounded-[24px] shadow-xl backdrop-filter backdrop-blur-lg flex flex-col overflow-hidden pointer-events-auto"
       initial={{ opacity: 0 }}
       animate={!!isOpen ? 'open' : 'closed'}
       variants={{
@@ -24,8 +139,60 @@ const ChatBox = ({ isOpen }: Params) => {
         }),
       }}
     >
-      <div className="w-full h-full flex justify-center items-center font-semibold">
-        Coming Soon...!
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-3 border-b border-primary/20">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          <span className="text-sm font-semibold">AI Assistant</span>
+        </div>
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="p-1 rounded-full hover:bg-primary/20 transition-colors"
+          >
+            <IconX className="size-4" />
+          </button>
+        )}
+      </div>
+
+      {/* Messages */}
+      <Conversation className="flex-1">
+        <ConversationContent className="space-y-1">
+          {messages.map((msg, i) => (
+            <Message key={i} from={msg.role === 'user' ? 'user' : 'assistant'}>
+              <MessageContent>
+                {msg.role === 'model' && !msg.content && isLoading ? (
+                  <ShimmeringText text="Thinking..." duration={1.5} />
+                ) : msg.role === 'model' ? (
+                  <MarkdownContent content={msg.content} />
+                ) : (
+                  msg.content
+                )}
+              </MessageContent>
+            </Message>
+          ))}
+        </ConversationContent>
+        <ConversationScrollButton className="bottom-2" />
+      </Conversation>
+
+      {/* Input */}
+      <div className="px-4 py-3 border-t border-primary/20 flex gap-2">
+        <input
+          ref={inputRef}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && sendMessage()}
+          placeholder="Ask me anything..."
+          disabled={isLoading}
+          className="flex-1 bg-primary/20 rounded-full px-4 py-2 text-sm outline-none placeholder:text-foreground/40 disabled:opacity-50"
+        />
+        <button
+          onClick={sendMessage}
+          disabled={isLoading || !input.trim()}
+          className="p-2 rounded-full bg-primary text-primary-foreground disabled:opacity-40 transition-opacity hover:opacity-80"
+        >
+          <IconSend className="size-4" />
+        </button>
       </div>
     </motion.div>
   );

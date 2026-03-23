@@ -86,7 +86,7 @@ const MainContainer = () => {
       <div
         className={`absolute pointer-events-none w-full h-full max-w-[1020px] px-[24px] pt-4 pb-[40px] md:pb-[100px] flex justify-end items-center z-30`}
       >
-        <ChatBox isOpen={isBotChatOpened} />
+        <ChatBox isOpen={isBotChatOpened} onClose={() => setIsBotChatOpened(false)} />
       </div>
 
       <div className="absolute bottom-4 right-4 md:right-1/2 transform md:translate-x-1/2 z-50">
