@@ -57,7 +57,7 @@ const aboutContent: Dictionary = {
       }),
       email: 'henrynoowah@gmail.com',
       github: 'github.com/henrynoowah',
-      velog: 'velog.io/@henrynoowah',
+      blog: t({ en: 'Blog', ko: '블로그' }),
     },
 
     lede: {
@@ -92,7 +92,7 @@ const aboutContent: Dictionary = {
         },
         writing: {
           label: t({ en: 'Writing', ko: '글' }),
-          value: 'velog.io/@henrynoowah',
+          value: t({ en: 'Blog', ko: '블로그' }),
         },
       },
     },

@@ -11,6 +11,7 @@ import { Metadata } from 'next';
 import { NextLayoutIntlayer } from 'next-intlayer';
 import { IntlayerServerProvider } from 'next-intlayer/server';
 import { IntlayerClientProvider } from 'next-intlayer';
+import { getBlogUrl } from '@/lib/blog';
 
 const AboutsLayouts: NextLayoutIntlayer = async ({ children, params }) => {
   // intlayer types `params.locale` as optional; the route only matches with one.
@@ -26,7 +27,7 @@ const AboutsLayouts: NextLayoutIntlayer = async ({ children, params }) => {
     { label: 'works', href: '/about#projects', locale },
     {
       label: 'posts',
-      href: 'https://velog.io/@henrynoowah/posts',
+      href: getBlogUrl(locale),
       locale,
       external: true,
     },

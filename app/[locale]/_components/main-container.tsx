@@ -22,6 +22,7 @@ import { ViewTransition } from 'react';
 import { LocaleToggle } from './locale-toggle';
 import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';
 import { useChatContext } from './chat-context';
+import { getBlogUrl } from '@/lib/blog';
 
 // The home wordmark, split per letter for the shared-element View Transition to
 // the header "NWH" logo. N/W/H share a name with the header letters so they morph
@@ -118,7 +119,7 @@ const MainContainer = () => {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                href={`https://velog.io/@henrynoowah/posts`}
+                href={getBlogUrl(locale)}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={content.posts.title.value}

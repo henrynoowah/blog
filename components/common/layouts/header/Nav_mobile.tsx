@@ -54,6 +54,7 @@ const Nav_mobile = ({ navOption }: Params) => {
                     : nav.href
                 }
                 target={nav.external ? '_blank' : undefined}
+                rel={nav.external ? 'noopener noreferrer' : undefined}
                 className="group flex items-center justify-between py-4 border-b border-border/30 text-foreground hover:text-primary transition-colors duration-200"
               >
                 <span className="text-sm font-light tracking-wide">

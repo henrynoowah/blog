@@ -162,6 +162,7 @@ const Header = ({ navOption, locale }: Params) => {
                         : nav.href
                     }
                     target={nav.external ? '_blank' : undefined}
+                    rel={nav.external ? 'noopener noreferrer' : undefined}
                     onClick={() => setIsOpen(false)}
                     className="group flex items-center gap-4 py-3"
                   >

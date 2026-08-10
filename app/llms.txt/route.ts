@@ -1,4 +1,5 @@
 import { buildBio } from '@/lib/bio';
+import { blogUrls } from '@/lib/blog';
 
 // Replaces the old static public/llms.txt so external crawlers get the same
 // facts as the about page and the chat bot, from the same source.
@@ -15,7 +16,8 @@ export function GET() {
 - [Home (KO)](https://noowah.dev/ko): 랜딩 페이지 및 소개
 - [About (EN)](https://noowah.dev/en/about): Background, work, principles, and projects
 - [About (KO)](https://noowah.dev/ko/about): 배경, 경력, 원칙, 프로젝트
-- [Writing](https://velog.io/@henrynoowah/posts): Blog posts on velog
+- [Writing (EN)](${blogUrls.en}): Blog posts in English
+- [Writing (KO)](${blogUrls.ko}): 블로그 글 (한국어)
 
 # About
 

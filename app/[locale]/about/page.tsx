@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { NextPageIntlayer, useIntlayer } from 'next-intlayer';
+import { NextPageIntlayer, useIntlayer, useLocale } from 'next-intlayer';
 import { motion, useReducedMotion } from 'motion/react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -11,6 +11,7 @@ import {
   IconExternalLink,
   IconArrowUpRight,
 } from '@tabler/icons-react';
+import { getBlogUrl } from '@/lib/blog';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -199,6 +200,7 @@ const raw = (v: unknown) => (v as { value?: string })?.value ?? String(v);
 
 const AboutPage: NextPageIntlayer = () => {
   const c = useIntlayer('about');
+  const { locale } = useLocale();
 
   const pathEntries = Object.entries(c.path.entries) as Array<[string, Entry]>;
   const principles = Object.entries(c.principles.items) as Array<
@@ -766,12 +768,12 @@ const AboutPage: NextPageIntlayer = () => {
               {c.meta.github}
             </a>
             <a
-              href="https://velog.io/@henrynoowah/posts"
+              href={getBlogUrl(locale)}
               target="_blank"
               rel="noopener noreferrer"
               className="block hover:text-primary transition-colors duration-300 normal-case tracking-normal"
             >
-              {c.meta.velog}
+              {c.meta.blog}
             </a>
           </div>
 
