@@ -1,17 +1,24 @@
-export const metadata: Metadata = {
-  title: {
-    default: 'About | Hawoon Joh',
-    template: '%s',
-  },
-};
-
 import Header from '@/components/common/layouts/header/Header';
-import { LocalesValues } from 'intlayer';
+import { getIntlayer, LocalesValues } from 'intlayer';
 import { Metadata } from 'next';
 import { NextLayoutIntlayer } from 'next-intlayer';
 import { IntlayerServerProvider } from 'next-intlayer/server';
 import { IntlayerClientProvider } from 'next-intlayer';
 import { getBlogUrl } from '@/lib/blog';
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ locale?: string }>;
+}): Promise<Metadata> => {
+  const { locale = 'en' } = await params;
+  return {
+    title: {
+      default: String(getIntlayer('metadata', locale).aboutTitle),
+      template: '%s',
+    },
+  };
+};
 
 const AboutsLayouts: NextLayoutIntlayer = async ({ children, params }) => {
   // intlayer types `params.locale` as optional; the route only matches with one.
