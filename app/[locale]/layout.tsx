@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@/providers/theme-provider';
-import { getHTMLTextDir } from 'intlayer';
+import { getHTMLTextDir, getIntlayer } from 'intlayer';
 import { Metadata } from 'next';
 import type { NextLayoutIntlayer } from 'next-intlayer';
 import { Syne, Outfit, Noto_Sans_KR } from 'next/font/google';
@@ -24,37 +24,46 @@ const notoSansKR = Noto_Sans_KR({
   weight: ['300', '400', '500', '700'],
 });
 
-const title = 'NoowaH Blog';
-const description = "Welcome to NoowaH's blog";
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ locale?: string }>;
+}): Promise<Metadata> => {
+  const { locale = 'en' } = await params;
+  const c = getIntlayer('metadata', locale);
+  const title = String(c.title);
+  const description = String(c.description);
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: 'https://noowah.dev',
-  },
-  openGraph: {
+  return {
+    metadataBase: new URL('https://noowah.dev'),
     title,
-    type: 'website',
     description,
-    images: {
-      url: `/twitter-card.png`,
-      width: 1200,
-      height: 630,
-      type: 'image/png',
+    alternates: {
+      canonical: 'https://noowah.dev',
     },
-  },
-  twitter: {
-    title,
-    card: 'summary_large_image',
-    description,
-    images: {
-      url: `/twitter-card.png`,
-      width: 1200,
-      height: 630,
-      type: 'image/png',
+    openGraph: {
+      title,
+      type: 'website',
+      description,
+      images: {
+        url: `/twitter-card.png`,
+        width: 1200,
+        height: 630,
+        type: 'image/png',
+      },
     },
-  },
+    twitter: {
+      title,
+      card: 'summary_large_image',
+      description,
+      images: {
+        url: `/twitter-card.png`,
+        width: 1200,
+        height: 630,
+        type: 'image/png',
+      },
+    },
+  };
 };
 
 const LocaleLayout: NextLayoutIntlayer = async ({ children, params }) => {

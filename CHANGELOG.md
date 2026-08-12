@@ -1,12 +1,14 @@
-# [0.32.0](https://github.com/henrynoowah/noowah.dev/compare/v0.23.0...v0.32.0) (2026-07-31)
+# [0.33.0](https://github.com/henrynoowah/noowah.dev/compare/v0.23.0...v0.33.0) (2026-08-12)
 
 
 ### Bug Fixes
 
 * a11y names + reliable theme toggle with smooth color change ([81b4ecd](https://github.com/henrynoowah/noowah.dev/commit/81b4ecd8141ea25ca4e7fc7a4fa4e7a0f17b6c86))
 * **about:** intlayer array rendering, light-mode contrast, home spline ring ([#52](https://github.com/henrynoowah/noowah.dev/issues/52)) ([6dbc033](https://github.com/henrynoowah/noowah.dev/commit/6dbc033bb360200cc486d80781f4d3b17be03cf8))
+* **about:** unwrap intlayer proxy nodes used as href/mailto targets ([d13eef7](https://github.com/henrynoowah/noowah.dev/commit/d13eef78eb789412480a64bea07af520b5edf9cc))
 * add visible h1 to home page to fix Lighthouse NO_LCP error ([c9b17db](https://github.com/henrynoowah/noowah.dev/commit/c9b17db62d6e08fccb8e93828c16f8a02ea230a3))
-* **chat:** surface dropped streams instead of truncating answers silently ([e56008b](https://github.com/henrynoowah/noowah.dev/commit/e56008bed0d7ca2cfe5795e030981814cbaaebc9))
+* **chat:** make about-bot replies shorter to cut token usage ([002c534](https://github.com/henrynoowah/noowah.dev/commit/002c534d334c36e1e5875ed46b38c76ac863c9cf))
+* **chat:** surface dropped streams instead of silently truncating answers ([#53](https://github.com/henrynoowah/noowah.dev/issues/53)) ([1c54c53](https://github.com/henrynoowah/noowah.dev/commit/1c54c53bd39b20384d7e1a466f028936e893689c))
 * drop bubble morph transition, keep bubble bot inert on chat toggle ([5edd8f3](https://github.com/henrynoowah/noowah.dev/commit/5edd8f31e0082b9666bc36b59a67e0ac8131701a))
 * mobile chat fullscreen, dock overlap, and send button shape ([f53d226](https://github.com/henrynoowah/noowah.dev/commit/f53d22638d2c84e858150c99390276fa51a2c56f))
 * persist dark mode across reloads and navigation ([435f3c5](https://github.com/henrynoowah/noowah.dev/commit/435f3c53f611dbfb08cc3bb2100a9ae6e2e43445))
@@ -22,10 +24,13 @@
 * add llms.txt for AI crawler discovery ([75c788f](https://github.com/henrynoowah/noowah.dev/commit/75c788f03af9f1332bd6d7b806010db9c7808f9e))
 * add projects section to about page ([c612754](https://github.com/henrynoowah/noowah.dev/commit/c6127549a7bc8507ace3f7b0c18ac68b89e52204))
 * add robots.ts, fix chat pronunciation info and iOS input zoom ([694d50e](https://github.com/henrynoowah/noowah.dev/commit/694d50e71ec07c1e5e2120055dd63fd6f0152e14))
+* **blog:** localize external blog links ([f13144e](https://github.com/henrynoowah/noowah.dev/commit/f13144efc3cc9d6f3a16cfb8ea953f0eccd20e83))
+* **chat:** add suggestion badges and NOOWAH origin fact ([bf7cc88](https://github.com/henrynoowah/noowah.dev/commit/bf7cc88bcb6cbbb4fe498a9bfb024d0bed747721))
 * nextjs 16 update ([025c910](https://github.com/henrynoowah/noowah.dev/commit/025c91084f15468202c1cdcc447d3f3ff446f61b))
 * redesign about page hero with GSAP morph and consolidate works ([#48](https://github.com/henrynoowah/noowah.dev/issues/48)) ([b8d37d9](https://github.com/henrynoowah/noowah.dev/commit/b8d37d91d89c34d2fd2308cab69ea07414e1a18c))
 * redesign pages with editorial aesthetic, shadcn/ui, and Korean i18n ([5e17532](https://github.com/henrynoowah/noowah.dev/commit/5e17532841ae5b7c55696dfac6bab562ece07c2e))
 * self-reference canonical domain and add sitemap ([9bb3449](https://github.com/henrynoowah/noowah.dev/commit/9bb3449d92e80d910d5150ba9def384a549ccf91))
+* **seo:** localize site metadata and drop stale blog branding ([f67c0a7](https://github.com/henrynoowah/noowah.dev/commit/f67c0a78dbfa3fa2654c884795063bbcd49b6ebc))
 * shared-element view transitions for wordmark and header toggles ([9bb9643](https://github.com/henrynoowah/noowah.dev/commit/9bb9643e66c03c9b987af1ae9d8e6bacc46846ce))
 * style markdown tables in chat responses ([80cd4fb](https://github.com/henrynoowah/noowah.dev/commit/80cd4fbc1c9764dbb8bfaa326d3785db86726fbf))
 * view-transition-update ([5e0f744](https://github.com/henrynoowah/noowah.dev/commit/5e0f744bae42a3a36581e0f211ec01edcb54271d))
